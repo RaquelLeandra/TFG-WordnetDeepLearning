@@ -1,0 +1,5 @@
+# Copiar desde remoto: 
+
+<code>
+scp myusername@university_computer:/home/myusername/file.odt /local/destination/path/
+</code>
