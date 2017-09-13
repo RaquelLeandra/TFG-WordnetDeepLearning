@@ -13,16 +13,19 @@ synset.txt es la lista con los synsets de imagenet
 """
 
 data = np.load("/media/raquel/Datos/Programación-git/tfg/Data/vgg16_ImageNet_ALLlayers_C1avg_imagenet_train.npz")
-discretData = np.load(
-    "/media/raquel/Datos/Programación-git/tfg/Data/vgg16_ImageNet_imagenet_C1avg_E_FN_KSBsp0.15n0.25_Gall_val_.npy")
+#discretData = np.load(
+#    "/media/raquel/Datos/Programación-git/tfg/Data/vgg16_ImageNet_imagenet_C1avg_E_FN_KSBsp0.15n0.25_Gall_val_.npy")
 imagenet_id = np.genfromtxt("/media/raquel/Datos/Programación-git/tfg/Data/synset.txt", dtype=np.str)
+living_things = np.genfromtxt("/media/raquel/Datos/Programación-git/tfg/Data/living_things.txt", dtype=np.str)
+
+
 
 labels = data['labels']
 matrix = data['data_matrix']
 
 del data
 
-print(labels.shape)
+
 """
 print(imagenet_id[labels[0:50]])
 ['n03937543' 'n02085620' 'n03146219' 'n02641379' 'n03871628' 'n03871628'
@@ -63,3 +66,31 @@ def get_ss_from_label(label):
 print(labels[0])
 print(imagenet_id[labels[0]])
 print(get_ss_from_label(0))
+
+
+def get_index_from_ss(synset):
+    hypo = lambda s: s.hyponyms()
+    path = '/media/raquel/Datos/Programación-git/tfg/Data/' + str(synset) + '.txt'
+    print(path)
+    hyponim_file = open(path, "w")
+    synset_list = []
+    for thing in list(synset.closure(hypo)):
+        synset_list.append(get_in_id(thing))
+        hyponim_file.write(get_in_id(thing) + '\n')
+    hyponim_file.close()
+
+    path2 = '/media/raquel/Datos/Programación-git/tfg/Data/' + str(synset) + '_' + 'index' + '.txt'
+    index_file = open(path2, 'w')
+    i = 0
+    for lab in labels:
+        if imagenet_id[lab] in synset_list:
+            index_file.write(str(i) + '\n')
+        i += 1
+
+    index_file.close()
+
+dog = wn.synsets('dog')[0]
+#get_index_from_ss(dog)
+
+mammal = wn.synsets('mammal')[0]
+get_index_from_ss(mammal)
