@@ -9,5 +9,10 @@ Objetivos:
     *Ni idea, pero tengo el 3.0
     *Comprobar cual es el del vaio -> 3.0 :D
 4.Agrupar las im?genes que pertenezcan a synsets hyp?nimos de "living_thing", "mammal", "dog"
-    y alg?n tipo de perro especialmente frecuente.
+    y alg?n tipo de perro especialmente frecuente. (Hecho)
 5.Hacer que el c?digo sea legible y ir document?ndolo.
+6.Hacer estad?sticas de TODO (scipy matplotlib)
+7.Hacer estad?sticas de las relaciones entre los distintos embeddings
+    *relaciones inter synset con los datos
+    *relaciones intra synset con los datos
+    *relaciones entre los embeddings

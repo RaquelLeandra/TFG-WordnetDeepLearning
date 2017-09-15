@@ -16,8 +16,6 @@ data = np.load("/media/raquel/Datos/Programación-git/tfg/Data/vgg16_ImageNet_AL
 #discretData = np.load(
 #    "/media/raquel/Datos/Programación-git/tfg/Data/vgg16_ImageNet_imagenet_C1avg_E_FN_KSBsp0.15n0.25_Gall_val_.npy")
 imagenet_id = np.genfromtxt("/media/raquel/Datos/Programación-git/tfg/Data/synset.txt", dtype=np.str)
-living_things = np.genfromtxt("/media/raquel/Datos/Programación-git/tfg/Data/living_things.txt", dtype=np.str)
-
 
 
 labels = data['labels']
@@ -51,7 +49,6 @@ def get_wn_ss(imagenet_id):
 
 def get_in_id(wordnet_ss):
     wn_id = wn.ss2of(wordnet_ss)
-    print(wn_id)
     return wn_id[-1] + wn_id[:8]
 
 
@@ -63,22 +60,17 @@ def get_ss_from_label(label):
     print(imagenet_id[labels[label]])
     return get_wn_ss(imagenet_id[labels[label]])
 
-print(labels[0])
-print(imagenet_id[labels[0]])
-print(get_ss_from_label(0))
-
 
 def get_index_from_ss(synset):
     hypo = lambda s: s.hyponyms()
     path = '/media/raquel/Datos/Programación-git/tfg/Data/' + str(synset) + '.txt'
-    print(path)
     hyponim_file = open(path, "w")
     synset_list = []
     for thing in list(synset.closure(hypo)):
-        synset_list.append(get_in_id(thing))
         hyponim_file.write(get_in_id(thing) + '\n')
-    hyponim_file.close()
+        synset_list.append(get_in_id(thing))
 
+    hyponim_file.close()
     path2 = '/media/raquel/Datos/Programación-git/tfg/Data/' + str(synset) + '_' + 'index' + '.txt'
     index_file = open(path2, 'w')
     i = 0
@@ -90,7 +82,51 @@ def get_index_from_ss(synset):
     index_file.close()
 
 dog = wn.synsets('dog')[0]
-#get_index_from_ss(dog)
-
 mammal = wn.synsets('mammal')[0]
-get_index_from_ss(mammal)
+living_things = wn.synset('living_thing.n.01')
+hunting_dogs = wn.synsets('hunting_dog')[0]
+
+synsets = [living_things, mammal, dog, hunting_dogs]
+for synset in synsets:
+    get_index_from_ss(synset)
+
+def stats_from_synset(synset):
+    path = '/media/raquel/Datos/Programación-git/tfg/Data/' + str(synset) + '.txt'
+    index_path = '/media/raquel/Datos/Programación-git/tfg/Data/' + str(synset) + '_index' + '.txt'
+    res_path = path + '_stats' + '.txt'
+    #TODO: añadir exception si no tenemos los datos generados
+    #data = np.genfromtxt(path, dtype=np.str)
+    index = np.genfromtxt(index_path, dtype=np.int)
+
+    labels_size = labels.shape[0]
+    labels_clases = labels.ptp() + 1
+    synset_range = index.ptp()+1
+
+    print('Tenemos ' + str(labels_size) + 'imagenes, de las cuales el '
+          + str(float(index.shape[0]) /labels_size * 100) + ' son ' + str(synset))
+
+#suponiendo que estan ordenados de más general a menos
+
+
+def instra_synset_stats(synsets):
+    j = 0
+    for synset in synsets:
+        index_path = '/media/raquel/Datos/Programación-git/tfg/Data/' + str(synset) + '_index' + '.txt'
+        syn_index = np.genfromtxt(index_path, dtype=np.int)
+        #np.sum(np.in1d(b, a))
+        syn_size = syn_index.shape[0]
+        for i in range(j, len(synsets)):
+            child_path = '/media/raquel/Datos/Programación-git/tfg/Data/' + str(synsets[i]) + '_index' + '.txt'
+            child_index = np.genfromtxt(child_path, dtype=np.int)
+            child_in_synset = np.sum(np.in1d(child_index, syn_index))
+            print('Tenemos ' + str(syn_size) + ' ' + str(synset) + ' de los cuales ' + str(child_in_synset)
+                  + ' son ' + str(synsets[i]))
+        j = j+1
+
+
+instra_synset_stats(synsets)
+
+for synset in synsets:
+    print(str(synset))
+    stats_from_synset(synset)
+    ind = np.where(synsets == synset)

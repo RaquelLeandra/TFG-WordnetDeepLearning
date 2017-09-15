@@ -42,3 +42,4 @@ text_file = open("/media/raquel/Datos/Programación-git/tfg/Data/hunting_dogs.tx
 for thing in list(hunting_dogs.closure(hypo)):
     text_file.write(get_in_id(thing)+'\n')
 text_file.close()
+
