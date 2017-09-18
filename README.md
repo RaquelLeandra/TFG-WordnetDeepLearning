@@ -16,3 +16,6 @@ Objetivos:
     *relaciones inter synset con los datos
     *relaciones intra synset con los datos
     *relaciones entre los embeddings
+    -Distribución de features por imágen. Cuantas features se activan (de cada tipo) para las imágenes de los diversos synsets, y en general (para todas las imágenes).
+    -Distribución de imágenes por feature. Lo mismo pero al revés. También para los diversos synsets y para todo el dataset. También separado por tipo (-1, 0, 1).
+    Ves montando un documento con todas estas pruebas, añadiendo todas las gráficas que puedan ser relevantes. Cuando vuelva las miramos y discutimos.
