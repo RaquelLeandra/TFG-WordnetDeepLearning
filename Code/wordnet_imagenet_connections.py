@@ -8,9 +8,9 @@ class Data:
     """
     def __init__(self):
         # todo: generalizar el tema de los paths
-        self.embedding_path = "/media/raquel/Datos/Programación-git/tfg/Data/vgg16_ImageNet_ALLlayers_C1avg_imagenet_train.npz"
-        self.imagenet_id_path = "/media/raquel/Datos/Programación-git/tfg/Data/synset.txt"
-        self.discretized_embedding_path = '/media/raquel/Datos/Programación-git/tfg/Data/vgg16_ImageNet_imagenet_C1avg_E_FN_KSBsp0.15n0.25_Gall_val_.npy'
+        self.embedding_path = "../Data/vgg16_ImageNet_ALLlayers_C1avg_imagenet_train.npz"
+        self.imagenet_id_path = "../Data/synset.txt"
+        self.discretized_embedding_path = '../Data/vgg16_ImageNet_imagenet_C1avg_E_FN_KSBsp0.15n0.25_Gall_val_.npy'
         self.embedding = np.load(self.embedding_path)
         self.labels = self.embedding['labels']
         #self.matrix = self.embedding['data_matrix']
@@ -51,7 +51,7 @@ class Data:
     def get_index_from_ss(self, synset):
         """Esta función genera un archivo con los índices de la aparición de un synset y sus hiponimos"""
         hypo = lambda s: s.hyponyms()
-        path = '/media/raquel/Datos/Programación-git/tfg/Data/' + str(synset) + '.txt'
+        path = '../Data/' + str(synset) + '.txt'
         hyponim_file = open(path, "w")
         synset_list = []
         for thing in list(synset.closure(hypo)):
@@ -59,7 +59,7 @@ class Data:
             synset_list.append(self.get_in_id(thing))
 
         hyponim_file.close()
-        index_path = '/media/raquel/Datos/Programación-git/tfg/Data/' + str(synset) + '_' + 'index' + '.txt'
+        index_path = '../Data/' + str(synset) + '_' + 'index' + '.txt'
         index_file = open(index_path, 'w')
         i = 0
         for lab in self.labels:
@@ -74,14 +74,14 @@ class Statistics:
     def __init__(self, synsets):
         self.data = Data()
         self.synsets = synsets
-        self.stats_path = '/media/raquel/Datos/Programación-git/tfg/Data/' + str(self.synsets[0:3]) + '_stats.txt'
+        self.stats_path = '../Data/' + str(self.synsets[0:3]) + '_stats.txt'
 
     def data_stats(self):
         stats_file = open(self.stats_path, 'a')
         labels_size = self.data.labels.shape[0]
         for synset in self.synsets:
-            synset_path = '/media/raquel/Datos/Programación-git/tfg/Data/' + str(synset) + '.txt'
-            index_path = '/media/raquel/Datos/Programación-git/tfg/Data/' + str(synset) + '_index' + '.txt'
+            synset_path = '../Data/' + str(synset) + '.txt'
+            index_path = '../Data/' + str(synset) + '_index' + '.txt'
             index = np.genfromtxt(index_path, dtype=np.int)
             if len(index) == 0:
                 self.data.get_index_from_ss(synset)
@@ -96,15 +96,15 @@ class Statistics:
         stats_file = open(self.stats_path, 'a')
         labels_size = self.data.labels.shape[0]
         for synset in self.synsets:
-            synset_path = '/media/raquel/Datos/Programación-git/tfg/Data/' + str(synset) + '.txt'
-            index_path = '/media/raquel/Datos/Programación-git/tfg/Data/' + str(synset) + '_index' + '.txt'
+            synset_path = '../Data/' + str(synset) + '.txt'
+            index_path = '../Data/' + str(synset) + '_index' + '.txt'
             index = np.genfromtxt(index_path, dtype=np.int)
             if len(index) == 0:
                 self.data.get_index_from_ss(synset)
                 index = np.genfromtxt(index_path, dtype=np.int)
 
     def compare_intra_embedding(self,synset):
-        index_path = '/media/raquel/Datos/Programación-git/tfg/Data/' + str(synset) + '_index' + '.txt'
+        index_path = '../Data/' + str(synset) + '_index' + '.txt'
         syn_index = np.genfromtxt(index_path, dtype=np.int)
         total = 0
         for i in syn_index:
@@ -118,12 +118,12 @@ class Statistics:
         stats_file = open(self.stats_path, 'a')
         total_embeddings_communes = []
         for synset in synsets:
-            index_path = '/media/raquel/Datos/Programación-git/tfg/Data/' + str(synset) + '_index' + '.txt'
+            index_path = '../Data/' + str(synset) + '_index' + '.txt'
             syn_index = np.genfromtxt(index_path, dtype=np.int)
             # np.sum(np.in1d(b, a))
             syn_size = syn_index.shape[0]
             for i in range(j, len(synsets)):
-                child_path = '/media/raquel/Datos/Programación-git/tfg/Data/' + str(synsets[i]) + '_index' + '.txt'
+                child_path = '../Data/' + str(synsets[i]) + '_index' + '.txt'
                 child_index = np.genfromtxt(child_path, dtype=np.int)
                 child_in_synset = np.sum(np.in1d(child_index, syn_index))
                 text = 'Tenemos ' + str(syn_size) + ' ' + str(synset) + ' de los cuales ' + str(child_in_synset) \
@@ -133,8 +133,7 @@ class Statistics:
             j = j + 1
             print('embedding común')
             total_embeddings_communes.append(self.compare_intra_embedding(synset))
-            text2 = 'Para el synset ' + str(synset) + ' hay un total de ' + str(total_embeddings_communes) + \
-                    'coincidencias respecto a un total de ' + str(self.data.dmatrix.shape[0]*self.data.dmatrix.shape[1]) + '\n'
+            text2 = 'Para el synset ' + str(synset) + ' hay un total de ' + str(total_embeddings_communes) + 'coincidencias respecto a un total de ' + self.data.dmatrix.shape[1]) + '\n'
             stats_file.write(text2)
 
 
