@@ -108,7 +108,7 @@ class Statistics:
         syn_index = np.genfromtxt(index_path, dtype=np.int)
         total = 0
         for i in syn_index:
-            for j in syn_index:
+            for j in range(i,len(syn_index)):
                 if j != i:
                     total += sum(np.equal(self.data.dmatrix[i, :], self.data.dmatrix[j, :]))
         return total
@@ -131,8 +131,11 @@ class Statistics:
                 print(text)
                 stats_file.write(text)
             j = j + 1
-            total_embeddings_communes.append(self.compare_intra_embedding(self, synset))
-            text2 = 'Para el synset ' + str(synset) + ' hay un total de ' + str(total_embeddings_communes) + 'coincidencias respecto'
+            print('embedding común')
+            total_embeddings_communes.append(self.compare_intra_embedding(synset))
+            text2 = 'Para el synset ' + str(synset) + ' hay un total de ' + str(total_embeddings_communes) + \
+                    'coincidencias respecto a un total de ' + str(self.data.dmatrix.shape[0]*self.data.dmatrix.shape[1]) + '\n'
+            stats_file.write(text2)
 
 
 
