@@ -1,0 +1,29 @@
+Tenemos 50000 imagenes, de las cuales 20500.0, el 41.0 son Synset('living_thing.n.01')
+Tenemos 50000 imagenes, de las cuales 10900.0, el 21.8 son Synset('mammal.n.01')
+Tenemos 50000 imagenes, de las cuales 5900.0, el 11.799999999999999 son Synset('dog.n.01')
+Tenemos 50000 imagenes, de las cuales 3150.0, el 6.3 son Synset('hunting_dog.n.01')
+Tenemos 20500 Synset('living_thing.n.01') de los cuales 20500 son Synset('living_thing.n.01') el 100.0 % 
+Tenemos 20500 Synset('living_thing.n.01') de los cuales 10900 son Synset('mammal.n.01') el 53.1707317073 % 
+Tenemos 20500 Synset('living_thing.n.01') de los cuales 5900 son Synset('dog.n.01') el 28.7804878049 % 
+Tenemos 20500 Synset('living_thing.n.01') de los cuales 3150 son Synset('hunting_dog.n.01') el 15.3658536585 % 
+Dentro de las 50k imágenes tenemos: 
+ un total de 620800000de la matriz de tamaño (50000, 12416)
+ -Features de tipo 1: 144627891 el 23.2970185245 %
+ -Features de tipo -1: 419255437 el 67.534703125 %
+ -Features de tipo 0: 56916672 el 9.16827835052 %
+En el Synset('living_thing.n.01') tenemos 254528000features en total : 
+ -Features de tipo 1: 56498368 el 22.1973095298 % respecto todas las features 1
+ -Features de tipo -1: 175318834 el 68.8799794129 % respecto todas las features -1
+ -Features de tipo 0: 22710798 el 8.92271105733 % respecto todas las features 0
+En el Synset('mammal.n.01') tenemos 135334400features en total : 
+ -Features de tipo 1: 29291207 el 21.643578425 % respecto todas las features 1
+ -Features de tipo -1: 93879932 el 69.3688611321 % respecto todas las features -1
+ -Features de tipo 0: 12163261 el 8.98756044287 % respecto todas las features 0
+En el Synset('dog.n.01') tenemos 73254400features en total : 
+ -Features de tipo 1: 15607206 el 21.3054860868 % respecto todas las features 1
+ -Features de tipo -1: 51058452 el 69.7001845623 % respecto todas las features -1
+ -Features de tipo 0: 6588742 el 8.99432935086 % respecto todas las features 0
+En el Synset('hunting_dog.n.01') tenemos 39110400features en total : 
+ -Features de tipo 1: 8345656 el 21.3387129766 % respecto todas las features 1
+ -Features de tipo -1: 27221401 el 69.6014384921 % respecto todas las features -1
+ -Features de tipo 0: 3543343 el 9.05984853134 % respecto todas las features 0
