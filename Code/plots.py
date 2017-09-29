@@ -28,7 +28,3 @@ plt.pie([float(v) for v in features_total.values()], labels=[float(k) for k in f
 plt.title('Distribución de las features sobre el total')
 plt.show()
 
-""" -Features de tipo 1: 144627891 el 23.2970185245 %
- -Features de tipo -1: 419255437 el 67.534703125 %
- -Features de tipo 0: 56916672 el 9.16827835052 %
- """

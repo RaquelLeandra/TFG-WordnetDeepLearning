@@ -17,3 +17,5 @@ with open('file.txt', 'wb') as handle:
 
 with open('file.txt', 'rb') as handle:
   b = pickle.loads(handle.read())
+
+exec(open('simple_reading.py').read(),globals())

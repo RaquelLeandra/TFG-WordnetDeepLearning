@@ -4,7 +4,7 @@ from itertools import combinations
 import _pickle as pickle
 from os import path
 from os import makedirs
-
+import matplotlib.pyplot as plt
 
 class Data:
     """
@@ -20,6 +20,8 @@ class Data:
         #self.matrix = self.embedding['data_matrix']
         self.dmatrix = np.array(np.load(self.discretized_embedding_path))
         self.imagenet_all_ids = np.genfromtxt(self.imagenet_id_path, dtype=np.str)
+        self.features_category = [-1,0,1]
+        self.colors = ['#3643D2', 'c', '#722672','#BF3FBF']
         self.layers = {
                 'conv1_1': [0,64],        # 1
                 'conv1_2': [64,128],      # 2
@@ -61,9 +63,13 @@ class Statistics:
         self.all_features = self.count_features(self.data.dmatrix)
         self.synsets_features = {}
         self.features_path = self.dir_path + 'features' + str(synsets) + '.pkl'
-        self.features = {}
+        self.images_per_feature_path = self.dir_path + 'images_per_feature' + '.pkl'
+        self.images_per_feature = {}
         self.features_per_layer_path = self.dir_path + 'features_per_layer' + str(synsets) + '.pkl'
+        self.features_per_image_path = self.dir_path + 'features_per_image' + str(synsets) + '.pkl'
+        #Todo: preguntar si es mejor tener esto cargado en la memoria o pillarlo de un archivo cuando lo necesite.
         self.features_per_layer = {}
+        self.features_per_image = {}
 
     def get_in_id(self, wordnet_ss):
         # Esta funcion genera la id de imagenet a partir del synset de wordnet
@@ -115,7 +121,7 @@ class Statistics:
         """
         Devuelve un diccionario con la cantidad de features de cada tipo de la matriz matrix
         """
-        features = {1: 0, -1: 0, 0: 0}
+        features = {-1: 0, 0: 0, 1: 0}
         features[1] += np.sum(np.equal(matrix, 1))
         features[-1] += np.sum(np.equal(matrix, -1))
         features[0] += np.sum(np.equal(matrix, 0))
@@ -185,7 +191,7 @@ class Statistics:
 
         stats_file.close()
 
-    def feature_generate(self):
+    def images_per_feature_per_synset_gen(self):
         """Genera un archivo con el diccionario siguiente:
             Para cada feature(0,...,12k):
                 Para cada tipo(-1,0,1)
@@ -193,36 +199,82 @@ class Statistics:
                         - cantidad de imágenes del synset que tienen ese tipo en la feature en cuestión
 
         """
-        self.features = {}
 
         for feature in range(0, self.data.dmatrix.shape[1]):
-            self.features[feature] = {}
+            self.images_per_feature_per_synset[feature] = {}
             feature_column = self.data.dmatrix[:, feature]
-            for i in [-1, 0, 1]:
-                self.features[feature][i] = {}
+            for i in self.data.features_category:
+                self.images_per_feature_per_synset[feature][i] = {}
                 feature_index = np.where(np.equal(feature_column, i))
                 for synset in self.synsets:
                     index_path = self.dir_path+ str(synset) + '_index' + '.txt'
                     synset_index = np.genfromtxt(index_path, dtype=np.int)
-                    self.features[feature][i][str(synset)] = np.sum(np.in1d(synset_index, feature_index))
-        with open(self.features_path, 'wb') as handle:
-            pickle.dump(self.features, handle)
+                    self.images_per_feature_per_synset[feature][i][str(synset)] = np.sum(np.in1d(synset_index, feature_index))
+        with open(self.features_per_synset_path, 'wb') as handle:
+            pickle.dump(self.images_per_feature_per_synset, handle)
 
-    def features_stats(self):
+    def images_per_feature_gen(self):
+        """Genera un archivo con el diccionario siguiente:
+            Para cada feature(0,...,12k):
+                Para cada tipo(-1,0,1)
+                    cantidad de imágenes del synset que tienen ese categoria en la feature en cuestión
+
+        """
+        for feature in range(0, self.data.dmatrix.shape[1]):
+            self.images_per_feature[feature] = {}
+            feature_column = self.data.dmatrix[:, feature]
+            for i in self.data.features_category:
+                self.images_per_feature[feature][i] = np.sum(np.equal(feature_column,i))
+        with open(self.images_per_feature_path, 'wb') as handle:
+            pickle.dump(self.images_per_feature, handle)
+
+    def images_per_feature_stats(self):
         """"
         Aquí debería sacar las estadísticas de las features y guardarlas en features_stats
 
         """
-        if self.features == {}:
-            self.features = pickle.load(open(self.features_path, 'rb'))
+        if self.images_per_feature == {}:
+            self.images_per_feature = pickle.load(open(self.images_per_feature_path, 'rb'))
         feature_stats_path = self.features_path + '_stats'
         feature_stats_file = open(feature_stats_path,'a')
-        for feature in self.features:
+        for feature in self.images_per_feature:
             feature_stats_file.write(str(feature) + '\n')
-            for i in [-1,0,1]:
+            for i in self.data.features_category:
                 #feature_stats_file.write(str(i) + '\n')
-                feature_stats_file.write(str(i) + ': ' + str(self.features[feature][i]) + '\n')
+                feature_stats_file.write(str(i) + ': ' + str(self.images_per_feature[feature][i]) + '\n')
         feature_stats_file.close()
+
+    def plot_images_per_feature(self):
+        """
+        Here I want to plot the images per feature in an histogram per category
+        :return:
+        """
+        if self.images_per_feature == {}:
+            self.images_per_feature = pickle.load(open(self.images_per_feature_path, 'rb'))
+        for category in self.data.features_category:
+            values = {}
+            for key in self.images_per_feature.keys():
+                values[key] = self.images_per_feature[key][category]
+            plt.hist(list(values.values()))
+            plt.title('Images per feature of ' + str(category) + ' category')
+            plt.savefig('Images per feature of ' + str(category) + ' category' + '.png')
+            plt.show()
+
+    def plot_images_per_feature_of_synset(self,synset):
+        """
+        Here I want to plot the images per feature in an histogram per category
+        :return:
+        """
+        if self.images_per_feature == {}:
+            self.images_per_feature = pickle.load(open(self.features_path, 'rb'))
+        for category in self.data.features_category:
+            values = {}
+            for key in self.images_per_feature.keys():
+                values[key] = self.images_per_feature[key][category][str(synset)]
+            plt.hist(list(values.values()))
+            plt.title('Images per feature of ' + str(category) + ' category')
+            plt.savefig('Images per feature of ' + str(category) + ' category' + '.png')
+            plt.show()
 
     def get_features_per_layer(self):
         """
@@ -240,4 +292,27 @@ class Statistics:
         """"Aquí debería sacar las estadísticas de las features"""
         pass
 
+    def features_per_image_gen(self):
+        """
+        Esta función debería calcular para cada imagen cuantas features de cada tipo se activan
+        Output:
+        Un diccionario tal que:
+        dic[imagen][tipo]=cantidad de features de este tipo que se activan
+        """
+        for image in range(0, len(self.data.labels)):
+            self.features_per_image[image] = self.count_features(self.data.dmatrix[image,:])
+        with open(self.features_per_image_path, 'wb') as handle:
+            pickle.dump(self.features_per_image, handle)
+        return self.features_per_image
 
+    def plot_features_per_image(self):
+        # TODO: Cambiarlo para que lo tome de un archivo
+        if self.features_per_image == {}:
+            self.features_per_image_gen()
+        for category in self.data.features_category:
+            values = {}
+            for key in self.features_per_image.keys():
+                values[key] = self.features_per_image[key][category]
+            plt.hist(list(values.values()))
+            plt.title('Features per image for ' + str(category) + ' category')
+            plt.show()
