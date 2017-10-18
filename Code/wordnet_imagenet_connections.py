@@ -58,30 +58,37 @@ class Statistics:
     def __init__(self, synsets):
         """
             Esta clase genera todas las estadísticas para un conjunto de synsets
-        :param synsets:
+        :param synsets: conjunto de synset del que queremos calcualr las estadísticas
+        :param synset_in_data[ss_to_text(synset)] =  cantidad de elementos del synset en el total
+                synset_in_data['total']
+        :param dir_path es el path donde se guardaran todos los datos generados
+        :param plot_path es el path donde se guardaran los plots
+
         """
         self.data = Data()
         self.synsets = synsets
-        self.textsynsets = [str(s)[8:-7] for s in synsets]
-        self.dir_path = '../Data/' + str(self.synsets) + '/'
+        textsynsets = [str(s)[8:-7] for s in synsets]
+        self.dir_path = '../Data/' + str(textsynsets) + '/'
+        self.plot_path = self.dir_path + 'plots/'
         if not path.exists(self.dir_path):
             makedirs(self.dir_path)
-        self.stats_path = self.dir_path + str(self.synsets) + '_stats.txt'
+        if not path.exists(self.plot_path):
+            makedirs(self.plot_path)
+        self.stats_path = self.dir_path + str(textsynsets) + '_stats.txt'
         self.matrix_size = self.data.dmatrix.shape
         self.total_features = self.matrix_size[0]*self.matrix_size[1]
         self.all_features = self.count_features(self.data.dmatrix)
         self.synset_in_data = {}
         self.synsets_features = {}
-        self.features_path = self.dir_path + 'features' + str(synsets) + '.pkl'
+        self.features_path = self.dir_path + 'features' + str(textsynsets) + '.pkl'
         self.images_per_feature_path = self.dir_path + 'images_per_feature' + '.pkl'
         self.images_per_feature = {}
-        self.features_per_layer_path = self.dir_path + 'features_per_layer' + str(synsets) + '.pkl'
-        self.features_per_image_path = self.dir_path + 'features_per_image' + str(synsets) + '.pkl'
+        self.features_per_layer_path = self.dir_path + 'features_per_layer' + str(textsynsets) + '.pkl'
+        self.features_per_image_path = self.dir_path + 'features_per_image' + str(textsynsets) + '.pkl'
         self.synset_in_data_path = self.dir_path + 'synset_in_data_path' + str()
         #Todo: preguntar si es mejor tener esto cargado en la memoria o pillarlo de un archivo cuando lo necesite.
         self.features_per_layer = {}
         self.features_per_image = {}
-        self.basic_stats = {}
 
     def get_in_id(self, wordnet_ss):
         """
@@ -93,13 +100,17 @@ class Statistics:
         wn_id = wn.ss2of(wordnet_ss)
         return wn_id[-1] + wn_id[:8]
 
+    def ss_to_text(self,synset):
+        """ devuelve el string del nombre del synset en cuestion"""
+        return str(synset)[8:-7]
+
     def get_index_from_ss(self, synset):
         """
         Esta función genera un archivo con los índices(0:999) de la aparición de un synset y sus hiponimos
         y otro con los códigos imagenet de todos los hipónimos
         """
         hypo = lambda s: s.hyponyms()
-        path = self.dir_path + str(synset) + '_index_hyponim' + '.txt'
+        path = self.dir_path + self.ss_to_text(synset) + '_index_hyponim' + '.txt'
         hyponim_file = open(path, "w")
         synset_list = []
         for thing in list(synset.closure(hypo)):
@@ -107,7 +118,7 @@ class Statistics:
             synset_list.append(self.get_in_id(thing))
 
         hyponim_file.close()
-        index_path = self.dir_path + str(synset) + '_' + 'index' + '.txt'
+        index_path = self.dir_path + self.ss_to_text(synset) + '_' + 'index' + '.txt'
         index_file = open(index_path, 'w')
         i = 0
         for lab in self.data.labels:
@@ -120,8 +131,8 @@ class Statistics:
     def data_stats(self):
         """
         This function generates a dictionary with the basic stats
-        devuelve synset in data donde:
-        synset_in_data[str(synset)] = cantidad de elementos del synset en los datos
+        devuelve synset_in_data donde:
+        synset_in_data[ss_to_text(synset)] = cantidad de elementos del synset en los datos
         synset_in_data['total'] =  cantidad total de elementos
 
         """
@@ -130,21 +141,49 @@ class Statistics:
         labels_size = self.data.labels.shape[0]
         self.synset_in_data['total'] = labels_size
         for synset in self.synsets:
-            synset_path = self.dir_path + str(synset) + '.txt'
-            index_path = self.dir_path + str(synset) + '_index' + '.txt'
-            index = np.genfromtxt(index_path, dtype=np.int)
-            if len(index) == 0:
+            synset_path = self.dir_path + self.ss_to_text(synset) + '.txt'
+            index_path = self.dir_path + self.ss_to_text(synset) + '_index' + '.txt'
+            if path.isfile(index_path):
+                index = np.genfromtxt(index_path, dtype=np.int)
+            else:
                 self.get_index_from_ss(synset)
                 index = np.genfromtxt(index_path, dtype=np.int)
-            self.synset_in_data[str(synset)] = index.shape[0]
+            self.synset_in_data[self.ss_to_text(synset)] = index.shape[0]
             text = 'Tenemos ' + str(labels_size) + ' imagenes, de las cuales ' + str(float(index.shape[0])) + \
-                   ', el ' + str(float(index.shape[0]) / labels_size * 100) + ' son ' + str(synset) + '\n'
+                   ', el ' + str(float(index.shape[0]) / labels_size * 100) + ' son ' + self.ss_to_text(synset) + '\n'
             stats_file.write(text)
-            print(text)
         with open(self.synset_in_data_path, 'wb') as handle:
-            pickle.dump(self.images_per_feature_per_synset, handle)
-
+            pickle.dump(self.synset_in_data, handle)
         stats_file.close()
+
+    def plot_synsets_on_data(self):
+        """
+        Hace un barplot y un pieplot de la ditribución de los synsets en los datos
+        :return:
+        """
+
+        if len(self.synset_in_data) == 0:
+            self.data_stats()
+        plt.bar(range(len(self.synset_in_data)), self.synset_in_data.values(), align='center')
+        plt.xticks(range(len(self.synset_in_data)), self.synset_in_data.keys())
+        plt.title('Distribution of the synsets in the data')
+        plt.xlabel('synsets')
+        plt.ylabel('Quantity of synsets')
+        plt.savefig(self.plot_path + 'distribution of synsets bar' + '.png')
+        plt.cla()
+        plt.clf()
+        plt.close()
+        _aux = {}
+        for k in self.synset_in_data.keys():
+            if k != 'total':
+                _aux[k] = self.synset_in_data[k]
+
+        plt.pie([float(v) for v in _aux.values()], labels=[k for k in _aux.keys()],
+                autopct=None)
+        print(str(self.synset_in_data))
+        plt.title('Distribution of the synsets in the data')
+        plt.savefig(self.plot_path + 'distribution of synsets pie' + '.png')
+        plt.show()
 
     def count_features(self, matrix):
         """
@@ -167,8 +206,8 @@ class Statistics:
                + '\n -Features de tipo 1: ' + str(self.all_features[1]) + ' el ' + str(self.all_features[1]/self.total_features * 100) + ' %'
         stats_file.write(text)
         for synset in self.synsets:
-            synset_path = self.dir_path+ str(synset) + '.txt'
-            index_path = self.dir_path+ str(synset) + '_index' + '.txt'
+            synset_path = self.dir_path+ self.ss_to_text(synset) + '.txt'
+            index_path = self.dir_path+ self.ss_to_text(synset) + '_index' + '.txt'
             index = np.genfromtxt(index_path, dtype=np.int)
             if len(index) == 0:
                 self.get_index_from_ss(synset)
@@ -177,7 +216,7 @@ class Statistics:
             self.synsets_features[synset] = self.count_features(self.data.dmatrix[index, :])
             synset_features = self.count_features(self.data.dmatrix[index, :])
             synset_total_features = len(index)*self.matrix_size[1]
-            text = '\nEn el ' + str(synset) + ' tenemos ' + str(synset_total_features) + 'features en total : ' \
+            text = '\nEn el ' + self.ss_to_text(synset) + ' tenemos ' + str(synset_total_features) + 'features en total : ' \
                    + '\n -Features de tipo -1: ' + str(self.synsets_features[synset][-1]) + ' el ' + str(self.synsets_features[synset][-1] / synset_total_features * 100) + ' % respecto todas las features -1' \
                    + '\n -Features de tipo 0: ' + str(self.synsets_features[synset][0]) + ' el ' + str(self.synsets_features[synset][0] / synset_total_features * 100) + ' % respecto todas las features 0' \
                    + '\n -Features de tipo 1: ' + str(self.synsets_features[synset][1]) + ' el ' + str(self.synsets_features[synset][1] / synset_total_features * 100) + ' % respecto todas las features 1'
@@ -186,7 +225,7 @@ class Statistics:
         stats_file.close()
 
     def compare_intra_embedding(self, synset):
-        index_path = self.dir_path + str(synset) + '_index' + '.txt'
+        index_path = self.dir_path + self.ss_to_text(synset) + '_index' + '.txt'
         syn_index = np.genfromtxt(index_path, dtype=np.int)
         total = 0
         for i,j in combinations(syn_index,2):
@@ -199,7 +238,7 @@ class Statistics:
         total_embeddings_communes = []
         trol = 0
         for synset in self.synsets:
-            index_path = self.dir_path+ str(synset) + '_index' + '.txt'
+            index_path = self.dir_path+ self.ss_to_text(synset) + '_index' + '.txt'
             syn_index = np.genfromtxt(index_path, dtype=np.int)
             # np.sum(np.in1d(b, a))
             syn_size = syn_index.shape[0]
@@ -207,7 +246,7 @@ class Statistics:
                 child_path = self.dir_path+ str(self.synsets[i]) + '_index' + '.txt'
                 child_index = np.genfromtxt(child_path, dtype=np.int)
                 child_in_synset = np.sum(np.in1d(child_index, syn_index))
-                text = 'Tenemos ' + str(syn_size) + ' ' + str(synset) + ' de los cuales ' + str(child_in_synset) \
+                text = 'Tenemos ' + str(syn_size) + ' ' + self.ss_to_text(synset) + ' de los cuales ' + str(child_in_synset) \
                        + ' son ' + str(self.synsets[i]) + ' el ' + str(child_in_synset/syn_size * 100) + ' % \n'
                 print(text)
                 stats_file.write(text)
@@ -215,20 +254,21 @@ class Statistics:
             print('embedding común')
             #TODO: esto estaba mal, comprobar que pasa
             #total_embeddings_communes.append(self.compare_intra_embedding(synset))
-            #stats_file.write('Para el synset ' + str(synset) + ' hay un total de ' + str(total_embeddings_communes)
+            #stats_file.write('Para el synset ' + self.ss_to_text(synset) + ' hay un total de ' + str(total_embeddings_communes)
             #                 + 'coincidencias respecto a un total de ' + str(self.data.dmatrix.shape[1]*len(syn_index)) + '\n')
 
         stats_file.close()
 
     def images_per_feature_per_synset_gen(self):
-        """Genera un archivo con el diccionario siguiente:
+        """
+        NO ESTÁ FUNCIONANDO
+        Genera un archivo con el diccionario siguiente:
             Para cada feature(0,...,12k):
                 Para cada tipo(-1,0,1)
                     Para cada synset:
                         - cantidad de imágenes del synset que tienen ese tipo en la feature en cuestión
 
         """
-
         for feature in range(0, self.data.dmatrix.shape[1]):
             self.images_per_feature_per_synset[feature] = {}
             feature_column = self.data.dmatrix[:, feature]
@@ -236,9 +276,9 @@ class Statistics:
                 self.images_per_feature_per_synset[feature][i] = {}
                 feature_index = np.where(np.equal(feature_column, i))
                 for synset in self.synsets:
-                    index_path = self.dir_path+ str(synset) + '_index' + '.txt'
+                    index_path = self.dir_path+ self.ss_to_text(synset) + '_index' + '.txt'
                     synset_index = np.genfromtxt(index_path, dtype=np.int)
-                    self.images_per_feature_per_synset[feature][i][str(synset)] = np.sum(np.in1d(synset_index, feature_index))
+                    self.images_per_feature_per_synset[feature][i][self.ss_to_text(synset)] = np.sum(np.in1d(synset_index, feature_index))
         with open(self.features_per_synset_path, 'wb') as handle:
             pickle.dump(self.images_per_feature_per_synset, handle)
 
@@ -298,7 +338,7 @@ class Statistics:
         for category in self.data.features_category:
             values = {}
             for key in self.images_per_feature.keys():
-                values[key] = self.images_per_feature[key][category][str(synset)]
+                values[key] = self.images_per_feature[key][category][self.ss_to_text(synset)]
             plt.hist(list(values.values()))
             plt.title('Images per feature of ' + str(category) + ' category')
             plt.savefig('Images per feature of ' + str(category) + ' category' + '.png')

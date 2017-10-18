@@ -44,7 +44,8 @@
 <font color="#000000" face="helvetica, arial"><a name="Data">class <strong>Data</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt>Esta&nbsp;clase&nbsp;consiste&nbsp;en&nbsp;los&nbsp;datos&nbsp;que&nbsp;voy&nbsp;a&nbsp;necesitar&nbsp;para&nbsp;hacer&nbsp;las&nbsp;estadísticas.<br>&nbsp;</tt></td></tr>
+<td colspan=2><tt>Esta&nbsp;clase&nbsp;consiste&nbsp;en&nbsp;los&nbsp;datos&nbsp;que&nbsp;voy&nbsp;a&nbsp;necesitar&nbsp;para&nbsp;hacer&nbsp;las&nbsp;estadísticas.<br>
+Que&nbsp;no&nbsp;dependen&nbsp;de&nbsp;los&nbsp;synsets&nbsp;elegidos.<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
 <dl><dt><a name="Data-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
@@ -65,13 +66,21 @@ Data descriptors defined here:<br>
     
 <tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
-<dl><dt><a name="Statistics-__init__"><strong>__init__</strong></a>(self, synsets)</dt><dd><tt>:param&nbsp;synsets:</tt></dd></dl>
+<dl><dt><a name="Statistics-__init__"><strong>__init__</strong></a>(self, synsets)</dt><dd><tt>&nbsp;&nbsp;&nbsp;&nbsp;Esta&nbsp;clase&nbsp;genera&nbsp;todas&nbsp;las&nbsp;estadísticas&nbsp;para&nbsp;un&nbsp;conjunto&nbsp;de&nbsp;synsets<br>
+:param&nbsp;synsets:&nbsp;conjunto&nbsp;de&nbsp;synset&nbsp;del&nbsp;que&nbsp;queremos&nbsp;calcualr&nbsp;las&nbsp;estadísticas<br>
+:param&nbsp;synset_in_data[<a href="#Statistics-ss_to_text">ss_to_text</a>(synset)]&nbsp;=&nbsp;&nbsp;cantidad&nbsp;de&nbsp;elementos&nbsp;del&nbsp;synset&nbsp;en&nbsp;el&nbsp;total<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;synset_in_data['total']<br>
+:param&nbsp;dir_path&nbsp;es&nbsp;el&nbsp;path&nbsp;donde&nbsp;se&nbsp;guardaran&nbsp;todos&nbsp;los&nbsp;datos&nbsp;generados<br>
+:param&nbsp;plot_path&nbsp;es&nbsp;el&nbsp;path&nbsp;donde&nbsp;se&nbsp;guardaran&nbsp;los&nbsp;plots</tt></dd></dl>
 
 <dl><dt><a name="Statistics-compare_intra_embedding"><strong>compare_intra_embedding</strong></a>(self, synset)</dt></dl>
 
 <dl><dt><a name="Statistics-count_features"><strong>count_features</strong></a>(self, matrix)</dt><dd><tt>Devuelve&nbsp;un&nbsp;diccionario&nbsp;con&nbsp;la&nbsp;cantidad&nbsp;de&nbsp;features&nbsp;de&nbsp;cada&nbsp;tipo&nbsp;de&nbsp;la&nbsp;matriz&nbsp;matrix</tt></dd></dl>
 
-<dl><dt><a name="Statistics-data_stats"><strong>data_stats</strong></a>(self)</dt><dd><tt>This&nbsp;function&nbsp;generates&nbsp;a&nbsp;text&nbsp;with&nbsp;the&nbsp;basic&nbsp;stats</tt></dd></dl>
+<dl><dt><a name="Statistics-data_stats"><strong>data_stats</strong></a>(self)</dt><dd><tt>This&nbsp;function&nbsp;generates&nbsp;a&nbsp;dictionary&nbsp;with&nbsp;the&nbsp;basic&nbsp;stats<br>
+devuelve&nbsp;synset_in_data&nbsp;donde:<br>
+synset_in_data[<a href="#Statistics-ss_to_text">ss_to_text</a>(synset)]&nbsp;=&nbsp;cantidad&nbsp;de&nbsp;elementos&nbsp;del&nbsp;synset&nbsp;en&nbsp;los&nbsp;datos<br>
+synset_in_data['total']&nbsp;=&nbsp;&nbsp;cantidad&nbsp;total&nbsp;de&nbsp;elementos</tt></dd></dl>
 
 <dl><dt><a name="Statistics-features_per_image_gen"><strong>features_per_image_gen</strong></a>(self)</dt><dd><tt>Esta&nbsp;función&nbsp;debería&nbsp;calcular&nbsp;para&nbsp;cada&nbsp;imagen&nbsp;cuantas&nbsp;features&nbsp;de&nbsp;cada&nbsp;tipo&nbsp;se&nbsp;activan<br>
 Output:<br>
@@ -95,11 +104,12 @@ Para&nbsp;cada&nbsp;feature(0,...,12k):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Para&nbsp;cada&nbsp;tipo(-1,0,1)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cantidad&nbsp;de&nbsp;imágenes&nbsp;del&nbsp;synset&nbsp;que&nbsp;tienen&nbsp;ese&nbsp;categoria&nbsp;en&nbsp;la&nbsp;feature&nbsp;en&nbsp;cuestión</tt></dd></dl>
 
-<dl><dt><a name="Statistics-images_per_feature_per_synset_gen"><strong>images_per_feature_per_synset_gen</strong></a>(self)</dt><dd><tt>Genera&nbsp;un&nbsp;archivo&nbsp;con&nbsp;el&nbsp;diccionario&nbsp;siguiente:<br>
-Para&nbsp;cada&nbsp;feature(0,...,12k):<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Para&nbsp;cada&nbsp;tipo(-1,0,1)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Para&nbsp;cada&nbsp;synset:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;cantidad&nbsp;de&nbsp;imágenes&nbsp;del&nbsp;synset&nbsp;que&nbsp;tienen&nbsp;ese&nbsp;tipo&nbsp;en&nbsp;la&nbsp;feature&nbsp;en&nbsp;cuestión</tt></dd></dl>
+<dl><dt><a name="Statistics-images_per_feature_per_synset_gen"><strong>images_per_feature_per_synset_gen</strong></a>(self)</dt><dd><tt>NO&nbsp;ESTÁ&nbsp;FUNCIONANDO<br>
+Genera&nbsp;un&nbsp;archivo&nbsp;con&nbsp;el&nbsp;diccionario&nbsp;siguiente:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Para&nbsp;cada&nbsp;feature(0,...,12k):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Para&nbsp;cada&nbsp;tipo(-1,0,1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Para&nbsp;cada&nbsp;synset:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;cantidad&nbsp;de&nbsp;imágenes&nbsp;del&nbsp;synset&nbsp;que&nbsp;tienen&nbsp;ese&nbsp;tipo&nbsp;en&nbsp;la&nbsp;feature&nbsp;en&nbsp;cuestión</tt></dd></dl>
 
 <dl><dt><a name="Statistics-images_per_feature_stats"><strong>images_per_feature_stats</strong></a>(self)</dt><dd><tt>"<br>
 Aquí&nbsp;debería&nbsp;sacar&nbsp;las&nbsp;estadísticas&nbsp;de&nbsp;las&nbsp;features&nbsp;y&nbsp;guardarlas&nbsp;en&nbsp;features_stats</tt></dd></dl>
@@ -117,6 +127,11 @@ la&nbsp;cantidad&nbsp;de&nbsp;imagenes&nbsp;que&nbsp;tienen&nbsp;tantas&nbsp;fea
 
 <dl><dt><a name="Statistics-plot_images_per_feature_of_synset"><strong>plot_images_per_feature_of_synset</strong></a>(self, synset)</dt><dd><tt>Here&nbsp;I&nbsp;want&nbsp;to&nbsp;plot&nbsp;the&nbsp;images&nbsp;per&nbsp;feature&nbsp;in&nbsp;an&nbsp;histogram&nbsp;per&nbsp;category<br>
 :return:</tt></dd></dl>
+
+<dl><dt><a name="Statistics-plot_synsets_on_data"><strong>plot_synsets_on_data</strong></a>(self)</dt><dd><tt>Hace&nbsp;un&nbsp;barplot&nbsp;y&nbsp;un&nbsp;pieplot&nbsp;de&nbsp;la&nbsp;ditribución&nbsp;de&nbsp;los&nbsp;synsets&nbsp;en&nbsp;los&nbsp;datos<br>
+:return:</tt></dd></dl>
+
+<dl><dt><a name="Statistics-ss_to_text"><strong>ss_to_text</strong></a>(self, synset)</dt><dd><tt>devuelve&nbsp;el&nbsp;string&nbsp;del&nbsp;nombre&nbsp;del&nbsp;synset&nbsp;en&nbsp;cuestion</tt></dd></dl>
 
 <hr>
 Data descriptors defined here:<br>

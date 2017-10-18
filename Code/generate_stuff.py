@@ -1,4 +1,4 @@
-from wordnet_imagenet_connections import Statistics
+from Code.wordnet_imagenet_connections import Statistics
 from nltk.corpus import wordnet as wn
 import numpy as np
 import matplotlib.pyplot as plt
@@ -10,11 +10,13 @@ hunting_dogs = wn.synsets('hunting_dog')[0]
 synsets = [living_things, mammal, dog, hunting_dogs]
 minisyn = [hunting_dogs]
 
-#stats = Statistics(synsets)
+stats = Statistics(synsets)
 
+stats.plot_synsets_on_data()
 textsynset = [str(s)[8:-7] for s in synsets]
 
-print(textsynset)
+print(str(textsynset))
+print(str(synsets))
 
 #for syn in synsets:
 #    stats.get_index_from_ss(syn)
