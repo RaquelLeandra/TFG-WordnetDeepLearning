@@ -12,8 +12,8 @@ minisyn = [hunting_dogs]
 
 stats = Statistics(synsets)
 
-stats.plot_synsets_on_data()
-stats.plot_all_features()
+
+stats.plot_features_per_image()
 textsynset = [str(s)[8:-7] for s in synsets]
 
 print(str(textsynset))

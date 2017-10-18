@@ -399,17 +399,22 @@ class Statistics:
         la cantidad de imagenes que tienen tantas features -1
         :return:
         """
-        if self.features_per_image == {}:
-            self.features_per_image = pickle.load(open(self.features_path, 'rb'))
-        if self.features_per_image == {}:
+        if path.isfile(self.features_per_image_path):
+            self.features_per_image = pickle.load(open(self.features_per_image_path, 'rb'))
+        else:
+            pass
             self.features_per_image_gen()
+            self.features_per_image = pickle.load(open(self.features_per_image_path, 'rb'))
+
         for category in self.data.features_category:
             values = {}
             for key in self.features_per_image.keys():
                 values[key] = self.features_per_image[key][category]
-            plt.hist(list(values.values()))
+            plt.hist(list(values.values()),bins = 50)
             plt.title('Features per image for ' + str(category) + ' category')
             plt.ylabel('Quantity of ' + str(category))
             plt.xlabel('Quantity of images')
-            plt.show()
-            plt.savefig(self.dir_path + 'features_per_image' + str(category))
+        #TODO HACER EL PLOT PARA LAS TRES FEATURES JUNTITAS
+            #plt.show()
+            plt.savefig(self.plot_path + 'features_per_image' + str(category))
+            plt.gcf().clear()
