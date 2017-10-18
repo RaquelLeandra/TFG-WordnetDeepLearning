@@ -9,9 +9,13 @@ import matplotlib.pyplot as plt
 class Data:
     """
     Esta clase consiste en los datos que voy a necesitar para hacer las estadísticas.
+    Que no dependen de los synsets elegidos.
+
+
     """
     def __init__(self):
         #TODO cambiar la inicialización de Data para que dependa de la matriz de embeddings
+
         self.embedding_path = "../Data/vgg16_ImageNet_ALLlayers_C1avg_imagenet_train.npz"
         self.imagenet_id_path = "../Data/synset.txt"
         self.discretized_embedding_path = '../Data/vgg16_ImageNet_imagenet_C1avg_E_FN_KSBsp0.15n0.25_Gall_val_.npy'
@@ -52,8 +56,13 @@ class Data:
 
 class Statistics:
     def __init__(self, synsets):
+        """
+            Esta clase genera todas las estadísticas para un conjunto de synsets
+        :param synsets:
+        """
         self.data = Data()
         self.synsets = synsets
+        self.textsynsets = [str(s)[8:-7] for s in synsets]
         self.dir_path = '../Data/' + str(self.synsets) + '/'
         if not path.exists(self.dir_path):
             makedirs(self.dir_path)
@@ -61,17 +70,25 @@ class Statistics:
         self.matrix_size = self.data.dmatrix.shape
         self.total_features = self.matrix_size[0]*self.matrix_size[1]
         self.all_features = self.count_features(self.data.dmatrix)
+        self.synset_in_data = {}
         self.synsets_features = {}
         self.features_path = self.dir_path + 'features' + str(synsets) + '.pkl'
         self.images_per_feature_path = self.dir_path + 'images_per_feature' + '.pkl'
         self.images_per_feature = {}
         self.features_per_layer_path = self.dir_path + 'features_per_layer' + str(synsets) + '.pkl'
         self.features_per_image_path = self.dir_path + 'features_per_image' + str(synsets) + '.pkl'
+        self.synset_in_data_path = self.dir_path + 'synset_in_data_path' + str()
         #Todo: preguntar si es mejor tener esto cargado en la memoria o pillarlo de un archivo cuando lo necesite.
         self.features_per_layer = {}
         self.features_per_image = {}
+        self.basic_stats = {}
 
     def get_in_id(self, wordnet_ss):
+        """
+        Input: Synset
+        :param wordnet_ss:
+        :return: imagenet id
+        """
         # Esta funcion genera la id de imagenet a partir del synset de wordnet
         wn_id = wn.ss2of(wordnet_ss)
         return wn_id[-1] + wn_id[:8]
@@ -101,8 +118,17 @@ class Statistics:
         index_file.close()
 
     def data_stats(self):
+        """
+        This function generates a dictionary with the basic stats
+        devuelve synset in data donde:
+        synset_in_data[str(synset)] = cantidad de elementos del synset en los datos
+        synset_in_data['total'] =  cantidad total de elementos
+
+        """
+
         stats_file = open(self.stats_path, 'a')
         labels_size = self.data.labels.shape[0]
+        self.synset_in_data['total'] = labels_size
         for synset in self.synsets:
             synset_path = self.dir_path + str(synset) + '.txt'
             index_path = self.dir_path + str(synset) + '_index' + '.txt'
@@ -110,11 +136,14 @@ class Statistics:
             if len(index) == 0:
                 self.get_index_from_ss(synset)
                 index = np.genfromtxt(index_path, dtype=np.int)
-
+            self.synset_in_data[str(synset)] = index.shape[0]
             text = 'Tenemos ' + str(labels_size) + ' imagenes, de las cuales ' + str(float(index.shape[0])) + \
                    ', el ' + str(float(index.shape[0]) / labels_size * 100) + ' son ' + str(synset) + '\n'
             stats_file.write(text)
             print(text)
+        with open(self.synset_in_data_path, 'wb') as handle:
+            pickle.dump(self.images_per_feature_per_synset, handle)
+
         stats_file.close()
 
     def count_features(self, matrix):
@@ -240,7 +269,6 @@ class Statistics:
         for feature in self.images_per_feature:
             feature_stats_file.write(str(feature) + '\n')
             for i in self.data.features_category:
-                #feature_stats_file.write(str(i) + '\n')
                 feature_stats_file.write(str(i) + ': ' + str(self.images_per_feature[feature][i]) + '\n')
         feature_stats_file.close()
 
@@ -260,7 +288,7 @@ class Statistics:
             plt.savefig('Images per feature of ' + str(category) + ' category' + '.png')
             plt.show()
 
-    def plot_images_per_feature_of_synset(self,synset):
+    def plot_images_per_feature_of_synset(self, synset):
         """
         Here I want to plot the images per feature in an histogram per category
         :return:
@@ -274,6 +302,9 @@ class Statistics:
             plt.hist(list(values.values()))
             plt.title('Images per feature of ' + str(category) + ' category')
             plt.savefig('Images per feature of ' + str(category) + ' category' + '.png')
+            plt.xlabel('Quantity of ' + str(category))
+            plt.ylabel('Quantity of images')
+            plt.savefig(self.dir_path + 'images_per_feature' + str(category))
             plt.show()
 
     def get_features_per_layer(self):
@@ -306,7 +337,13 @@ class Statistics:
         return self.features_per_image
 
     def plot_features_per_image(self):
-        # TODO: Cambiarlo para que lo tome de un archivo
+        """
+        It does a plot of the features per image for each category.
+        la cantidad de imagenes que tienen tantas features -1
+        :return:
+        """
+        if self.features_per_image == {}:
+            self.features_per_image = pickle.load(open(self.features_path, 'rb'))
         if self.features_per_image == {}:
             self.features_per_image_gen()
         for category in self.data.features_category:
@@ -315,4 +352,7 @@ class Statistics:
                 values[key] = self.features_per_image[key][category]
             plt.hist(list(values.values()))
             plt.title('Features per image for ' + str(category) + ' category')
+            plt.ylabel('Quantity of ' + str(category))
+            plt.xlabel('Quantity of images')
             plt.show()
+            plt.savefig(self.dir_path + 'features_per_image' + str(category))

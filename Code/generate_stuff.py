@@ -10,7 +10,11 @@ hunting_dogs = wn.synsets('hunting_dog')[0]
 synsets = [living_things, mammal, dog, hunting_dogs]
 minisyn = [hunting_dogs]
 
-stats = Statistics(synsets)
+#stats = Statistics(synsets)
+
+textsynset = [str(s)[8:-7] for s in synsets]
+
+print(textsynset)
 
 #for syn in synsets:
 #    stats.get_index_from_ss(syn)
@@ -23,24 +27,24 @@ toydict = {0:{-1:1,0:2,1:3},1:{-1:4,0:5,1:6}}
 #print('inter')
 #stats.inter_synset_stats()
 #print('features_per_layer')
-#stats.get_features_per_layer()
-print('features_stats')
-#stats.features_stats()
-m = stats.features_per_image_gen()
-
-negone = {}
-for key in m.keys():
-    negone[key] = m[key][-1]
-print(str(negone))
-
-zeros = {}
-for key in m.keys():
-    zeros[key] = m[key][0]
-
-one = {}
-for key in m.keys():
-    one[key] = m[key][1]
-
-
-plt.hist( negone.values(), color='g')
-plt.show()
+# #stats.get_features_per_layer()
+# print('features_stats')
+# #stats.features_stats()
+# m = stats.features_per_image_gen()
+#
+# negone = {}
+# for key in m.keys():
+#     negone[key] = m[key][-1]
+# print(str(negone))
+#
+# zeros = {}
+# for key in m.keys():
+#     zeros[key] = m[key][0]
+#
+# one = {}
+# for key in m.keys():
+#     one[key] = m[key][1]
+#
+#
+# plt.hist( negone.values(), color='g')
+# plt.show()

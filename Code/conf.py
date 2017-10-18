@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# imagenet_wordnet_marriage documentation build configuration file, created by
-# sphinx-quickstart on Wed Sep 27 12:01:29 2017.
+# tfg documentation build configuration file, created by
+# sphinx-quickstart on Wed Oct 18 11:55:16 2017.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -32,10 +32,7 @@
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.autodoc',
-    'sphinx.ext.todo',
-    'sphinx.ext.imgmath',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages']
+    'sphinx.ext.todo']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -50,7 +47,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'imagenet_wordnet_marriage'
+project = 'tfg'
 copyright = '2017, raquel'
 author = 'raquel'
 
@@ -104,7 +101,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'imagenet_wordnet_marriagedoc'
+htmlhelp_basename = 'tfgdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -131,7 +128,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'imagenet_wordnet_marriage.tex', 'imagenet\\_wordnet\\_marriage Documentation',
+    (master_doc, 'tfg.tex', 'tfg Documentation',
      'raquel', 'manual'),
 ]
 
@@ -141,7 +138,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'imagenet_wordnet_marriage', 'imagenet_wordnet_marriage Documentation',
+    (master_doc, 'tfg', 'tfg Documentation',
      [author], 1)
 ]
 
@@ -152,31 +149,10 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'imagenet_wordnet_marriage', 'imagenet_wordnet_marriage Documentation',
-     author, 'imagenet_wordnet_marriage', 'One line description of project.',
+    (master_doc, 'tfg', 'tfg Documentation',
+     author, 'tfg', 'One line description of project.',
      'Miscellaneous'),
 ]
 
-
-
-# -- Options for Epub output ----------------------------------------------
-
-# Bibliographic Dublin Core info.
-epub_title = project
-epub_author = author
-epub_publisher = author
-epub_copyright = copyright
-
-# The unique identifier of the text. This can be a ISBN number
-# or the project homepage.
-#
-# epub_identifier = ''
-
-# A unique identification for the text.
-#
-# epub_uid = ''
-
-# A list of files that should not be packed into the epub file.
-epub_exclude_files = ['search.html']
 
 
