@@ -63,7 +63,7 @@ class Statistics:
                 synset_in_data['total']
         :param dir_path es el path donde se guardaran todos los datos generados
         :param plot_path es el path donde se guardaran los plots
-
+        :param all_features: es un diccionario tal que all_features[i] = cantidad de features del tipo i en el embedding
         """
         self.data = Data()
         self.synsets = synsets
@@ -195,6 +195,26 @@ class Statistics:
         features[0] += np.sum(np.equal(matrix, 0))
         return features
 
+    def plot_all_features(self):
+        """
+        Genera un bar plot y un pie plot con la distribución de las features en los datos.
+        :return:
+        """
+
+        plt.bar(range(len(self.all_features)), self.all_features.values(), align='center')
+        plt.xticks(range(len(self.all_features)), self.all_features.keys())
+        plt.title('All features')
+        plt.xlabel('Features')
+        plt.ylabel('Quantity of features')
+        plt.savefig(self.plot_path + 'quantity of features bar' + '.png')
+        plt.cla()
+        plt.clf()
+        plt.pie([float(v) for v in self.all_features.values()], labels=[k for k in self.all_features.keys()],
+                autopct=None)
+        plt.title('All features')
+        plt.savefig(self.plot_path + 'all features pie' + '.png')
+        plt.show()
+
     def inter_synset_stats(self):
         stats_file = open(self.stats_path, 'a')
         labels_size = self.data.labels.shape[0]
@@ -325,7 +345,7 @@ class Statistics:
                 values[key] = self.images_per_feature[key][category]
             plt.hist(list(values.values()))
             plt.title('Images per feature of ' + str(category) + ' category')
-            plt.savefig('Images per feature of ' + str(category) + ' category' + '.png')
+            plt.savefig(self.plot_path +'Images per feature of ' + str(category) + ' category' + '.png')
             plt.show()
 
     def plot_images_per_feature_of_synset(self, synset):
