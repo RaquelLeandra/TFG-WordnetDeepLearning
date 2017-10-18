@@ -161,7 +161,6 @@ class Statistics:
         Hace un barplot y un pieplot de la ditribución de los synsets en los datos
         :return:
         """
-
         if len(self.synset_in_data) == 0:
             self.data_stats()
         plt.bar(range(len(self.synset_in_data)), self.synset_in_data.values(), align='center')
@@ -180,10 +179,8 @@ class Statistics:
 
         plt.pie([float(v) for v in _aux.values()], labels=[k for k in _aux.keys()],
                 autopct=None)
-        print(str(self.synset_in_data))
         plt.title('Distribution of the synsets in the data')
         plt.savefig(self.plot_path + 'distribution of synsets pie' + '.png')
-        plt.show()
 
     def count_features(self, matrix):
         """
@@ -200,7 +197,6 @@ class Statistics:
         Genera un bar plot y un pie plot con la distribución de las features en los datos.
         :return:
         """
-
         plt.bar(range(len(self.all_features)), self.all_features.values(), align='center')
         plt.xticks(range(len(self.all_features)), self.all_features.keys())
         plt.title('All features')
@@ -213,7 +209,6 @@ class Statistics:
                 autopct=None)
         plt.title('All features')
         plt.savefig(self.plot_path + 'all features pie' + '.png')
-        plt.show()
 
     def inter_synset_stats(self):
         stats_file = open(self.stats_path, 'a')
@@ -228,8 +223,10 @@ class Statistics:
         for synset in self.synsets:
             synset_path = self.dir_path+ self.ss_to_text(synset) + '.txt'
             index_path = self.dir_path+ self.ss_to_text(synset) + '_index' + '.txt'
-            index = np.genfromtxt(index_path, dtype=np.int)
-            if len(index) == 0:
+
+            if path.isfile(index_path):
+                index = np.genfromtxt(index_path, dtype=np.int)
+            else:
                 self.get_index_from_ss(synset)
                 index = np.genfromtxt(index_path, dtype=np.int)
 
