@@ -11,7 +11,32 @@ class Data:
     Esta clase consiste en los datos que voy a necesitar para hacer las estadísticas.
     Que no dependen de los synsets elegidos.
 
-
+    self.layers = {
+                'conv1_1': [0,64],        # 1
+                'conv1_2': [64,128],      # 2
+                'conv2_1': [128,256],     # 3
+                'conv2_2': [256,384],     # 4
+                'conv3_1': [384,640],     # 5
+                'conv3_2': [640,896],     # 6
+                'conv3_3': [896,1152],    # 7
+                'conv4_1': [1152,1664],   # 8
+                'conv4_2': [1664,2176],   # 9
+                'conv4_3': [2176,2688],   # 10
+                'conv5_1': [2688,3200],   # 11
+                'conv5_2': [3200,3712],   # 12
+                'conv5_3': [3712,4224],   # 13
+                'fc6':[4224,8320],       # 14
+                'fc7':[8320,12416],      # 15
+                'conv1':[0,128],         # 16
+                'conv2':[128,384],       # 17
+                'conv3':[384,1152],      # 18
+                'conv4':[1152,2688],     # 19
+                'conv5':[2688,4224],     # 20
+                'conv':[0,4224],         # 21
+                '2_5conv':[128,4224],    # 22
+                'fc6tofc7':[4224,12416], # 23
+                #'all':[0,12416]          # 24
+                    }
     """
     def __init__(self):
         #TODO cambiar la inicialización de Data para que dependa de la matriz de embeddings
@@ -385,7 +410,7 @@ class Statistics:
                 self.features_per_image_gen()
                 self.features_per_image = pickle.load(open(self.features_per_image, 'rb'))
         for i in range(len(self.features_per_image.keys())):
-            if self.features_per_image[i][0] == 0:
+            if self.features_per_image[i][0] ==0:
                 print(i)
         print('end')
 
@@ -393,8 +418,8 @@ class Statistics:
         """Genera un archivo con el diccionario siguiente:
             Para cada feature(0,...,12k):
                 Para cada tipo(-1,0,1)
-                    cantidad de imágenes del synset que tienen ese categoria en la feature en cuestión
-
+                    cantidad de imágenes que tienen es categoria en la feature en cuestión
+            images_per_feature[feature][category] = cantidad de imagenes que tienen esa category en la feature
         """
         for feature in range(0, self.data.dmatrix.shape[1]):
             self.images_per_feature[feature] = {}
@@ -406,8 +431,8 @@ class Statistics:
 
     def images_per_feature_stats(self):
         """"
+        MUERTO
         Aquí debería sacar las estadísticas de las features y guardarlas en features_stats
-
         """
         if self.images_per_feature == {}:
             self.images_per_feature = pickle.load(open(self.images_per_feature_path, 'rb'))
@@ -444,6 +469,78 @@ class Statistics:
             plt.savefig(self.plot_path +'Images_per_feature_of_' + str(category) + '_category' + '.png')
             plt.cla()
             plt.clf()
+            plt.boxplot(list(values.values()))
+            plt.title('Images per feature of ' + str(category) + ' category')
+            plt.xlabel('Quantity of images')
+            plt.ylabel('Quantity of features')
+            plt.savefig(self.plot_path + 'Images_per_feature_of_' + str(category) + '_category_box' + '.png')
+            plt.cla()
+            plt.clf()
+
+    def find_contradicction_in_synset(self):
+        """
+        Quiero ver si existe algun synset que tenga el valor -1 y 1 en la misma feature
+        :return:
+        """
+        pass
+
+    def find_outlier_in_images_per_feature(self):
+        """
+        Quiero que me defuelva las features outlier
+
+        :return:
+        """
+        auxlayers = {
+        'conv1': [0, 128],
+        'conv2': [128, 384],
+        'conv3': [384, 1152],
+        'conv4': [1152, 2688],
+        'conv5': [2688, 4224],
+        'fc6': [4224, 8320],
+        'fc7': [8320, 12416]
+               }
+        if self.images_per_feature == {}:
+            if path.isfile(self.images_per_feature_path):
+                self.images_per_feature = pickle.load(open(self.images_per_feature_path, 'rb'))
+            else:
+                self.images_per_feature_gen()
+                self.images_per_feature = pickle.load(open(self.images_per_feature_path, 'rb'))
+
+        for category in self.data.features_category:
+            vals = []
+            print('\n' + str(category) + '\n')
+            for feature in range(len(self.images_per_feature.keys())):
+                vals.append(self.images_per_feature[feature][category])
+            mean = np.mean(vals)
+            std = np.std(vals)
+            print('mean:' + str(mean) + '\n')
+            print('std:' + str(std) + '\n')
+            downliers = [i for i in range(len(vals)) if vals[i] <= mean - 4 * std]
+            upliers = [i for i in range(len(vals)) if vals[i] >= mean + 4 * std]
+            print('lendown ' + str(len(downliers)) + '\n')
+            print('down:' + str(downliers))
+            print('lenup ' + str(len(upliers)) + '\n')
+            print('up:' + str(upliers))
+            layeroutlier = {}
+            for k in list(auxlayers.keys()):
+                layeroutlier[k] = 0
+
+            for i in downliers:
+                for k in list(auxlayers.keys()):
+                    if i in range(auxlayers[k][0],auxlayers[k][1]):
+                        layeroutlier[k] +=1
+
+            for i in upliers:
+                for k in list(auxlayers.keys()):
+                    if i in range(auxlayers[k][0],auxlayers[k][1]):
+                        layeroutlier[k] +=1
+
+            print(layeroutlier)
+            plt.bar(range(len(layeroutlier)), layeroutlier.values(), align='center')
+            plt.xticks(range(len(layeroutlier)), layeroutlier.keys())
+            plt.grid()
+            plt.show()
+
 
     def features_per_layer_gen(self):
         """

@@ -32,9 +32,10 @@ for i in range(toolbar_width):
         #stats.plot_images_per_feature_of_synset(synset)
     #stats.plot_features_per_layer()
     # update the bar
-    #stats.find_image_without_zero()
+
     sys.stdout.write("-")
     sys.stdout.flush()
+stats.find_outlier_in_images_per_feature()
 
 sys.stdout.write("\n")
 
