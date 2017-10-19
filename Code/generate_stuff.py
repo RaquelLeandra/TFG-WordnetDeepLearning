@@ -2,6 +2,12 @@ from Code.wordnet_imagenet_connections import Statistics
 from nltk.corpus import wordnet as wn
 import numpy as np
 import matplotlib.pyplot as plt
+
+import time
+import sys
+
+toolbar_width = 40
+
 dog = wn.synsets('dog')[0]
 mammal = wn.synsets('mammal')[0]
 living_things = wn.synset('living_thing.n.01')
@@ -12,12 +18,22 @@ minisyn = [hunting_dogs]
 
 stats = Statistics(synsets)
 
+# setup toolbar
+sys.stdout.write("[%s]" % (" " * toolbar_width))
+sys.stdout.flush()
+sys.stdout.write("\b" * (toolbar_width+1)) # return to start of line, after '['
+for i in range(toolbar_width):
+    stats.plot_features_per_image()
+    stats.plot_all_features()
+    stats.plot_images_per_feature()
+    stats.plot_synsets_on_data()
+    for synset in synsets:
+        stats.plot_images_per_feature_of_synset(synset)
+    # update the bar
+    sys.stdout.write("-")
+    sys.stdout.flush()
 
-stats.plot_features_per_image()
-textsynset = [str(s)[8:-7] for s in synsets]
-
-print(str(textsynset))
-print(str(synsets))
+sys.stdout.write("\n")
 
 #for syn in synsets:
 #    stats.get_index_from_ss(syn)
