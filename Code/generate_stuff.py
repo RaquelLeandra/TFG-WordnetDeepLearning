@@ -23,12 +23,13 @@ sys.stdout.write("[%s]" % (" " * toolbar_width))
 sys.stdout.flush()
 sys.stdout.write("\b" * (toolbar_width+1)) # return to start of line, after '['
 for i in range(toolbar_width):
-    stats.plot_features_per_image()
-    stats.plot_all_features()
-    stats.plot_images_per_feature()
-    stats.plot_synsets_on_data()
-    for synset in synsets:
-        stats.plot_images_per_feature_of_synset(synset)
+    #stats.plot_features_per_image()
+    #stats.plot_all_features()
+    #stats.plot_images_per_feature()
+    #stats.plot_synsets_on_data()
+    stats.plot_intra_synset()
+    #for synset in synsets:
+        #stats.plot_images_per_feature_of_synset(synset)
     # update the bar
     sys.stdout.write("-")
     sys.stdout.flush()
