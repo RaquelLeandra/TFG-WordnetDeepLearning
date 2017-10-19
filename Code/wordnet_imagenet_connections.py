@@ -79,7 +79,7 @@ class Statistics:
         self.total_features = self.matrix_size[0]*self.matrix_size[1]
         self.all_features = self.count_features(self.data.dmatrix)
         self.synset_in_data = {}
-        self.synsets_features = {}
+        self.features_per_synset = {}
         self.features_path = self.dir_path + 'features' + str(textsynsets) + '.pkl'
         self.images_per_feature_path = self.dir_path + 'images_per_feature' + '.pkl'
         self.images_per_feature = {}
@@ -217,6 +217,11 @@ class Statistics:
         plt.clf()
 
     def inter_synset_stats(self):
+        """
+        TENGO QUE REESTRUCTURAR ESTA FUNCIÓN POR QUE ES UN CAOS
+        :return: 
+        """
+        
         stats_file = open(self.stats_path, 'a')
         labels_size = self.data.labels.shape[0]
         #todo: arreglar esto para no tener que hardcodearlo
@@ -236,13 +241,12 @@ class Statistics:
                 self.get_index_from_ss(synset)
                 index = np.genfromtxt(index_path, dtype=np.int)
 
-            self.synsets_features[synset] = self.count_features(self.data.dmatrix[index, :])
-            synset_features = self.count_features(self.data.dmatrix[index, :])
+            self.features_per_synset[synset] = self.count_features(self.data.dmatrix[index, :])
             synset_total_features = len(index)*self.matrix_size[1]
             text = '\nEn el ' + self.ss_to_text(synset) + ' tenemos ' + str(synset_total_features) + 'features en total : ' \
-                   + '\n -Features de tipo -1: ' + str(self.synsets_features[synset][-1]) + ' el ' + str(self.synsets_features[synset][-1] / synset_total_features * 100) + ' % respecto todas las features -1' \
-                   + '\n -Features de tipo 0: ' + str(self.synsets_features[synset][0]) + ' el ' + str(self.synsets_features[synset][0] / synset_total_features * 100) + ' % respecto todas las features 0' \
-                   + '\n -Features de tipo 1: ' + str(self.synsets_features[synset][1]) + ' el ' + str(self.synsets_features[synset][1] / synset_total_features * 100) + ' % respecto todas las features 1'
+                   + '\n -Features de tipo -1: ' + str(self.features_per_synset[synset][-1]) + ' el ' + str(self.features_per_synset[synset][-1] / synset_total_features * 100) + ' % respecto todas las features -1' \
+                   + '\n -Features de tipo 0: ' + str(self.features_per_synset[synset][0]) + ' el ' + str(self.features_per_synset[synset][0] / synset_total_features * 100) + ' % respecto todas las features 0' \
+                   + '\n -Features de tipo 1: ' + str(self.features_per_synset[synset][1]) + ' el ' + str(self.features_per_synset[synset][1] / synset_total_features * 100) + ' % respecto todas las features 1'
             stats_file.write(text)
 
         stats_file.close()
@@ -354,18 +358,19 @@ class Statistics:
             if path.isfile(self.images_per_feature_per_synset_path):
                 self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path, 'rb'))
             else:
+                print('va a tardar')
                 self.images_per_feature_per_synset_gen()
-                self.images_per_feature = pickle.load(open(self.images_per_feature_per_synset_path),'rb')
+                self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path),'rb')
 
         for category in self.data.features_category:
             values = {}
             for key in self.images_per_feature_per_synset.keys():
                 values[key] = self.images_per_feature_per_synset[key][category][self.ss_to_text(synset)]
             plt.hist(list(values.values()), bins = 50)
-            plt.title('Images per feature of ' + str(category) +'of the synset ' + self.ss_to_text(synset) +  ' category')
+            plt.title('Images per feature of ' + str(category) +' of the synset ' + self.ss_to_text(synset) +  ' category')
             plt.xlabel('Quantity of ' + str(category))
             plt.ylabel('Quantity of images')
-            plt.savefig('Images per feature of ' + str(category) + ' category' + self.ss_to_text(synset)+ '.png')
+            plt.savefig(self.plot_path + 'Images_per_feature_of_' + str(category) + '_category_' + self.ss_to_text(synset)+ '.png')
             plt.cla()
             plt.clf()
 
@@ -420,7 +425,7 @@ class Statistics:
                 values[key] = self.images_per_feature[key][category]
             plt.hist(list(values.values()),bins = 50)
             plt.title('Images per feature of ' + str(category) + ' category')
-            plt.xlabel('Quantity of images' )
+            plt.xlabel('Quantity of images')
             plt.ylabel('Quantity of features')
             plt.savefig(self.plot_path +'Images_per_feature_of_' + str(category) + '_category' + '.png')
             plt.cla()
