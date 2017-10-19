@@ -83,9 +83,14 @@ Output:<br>
 Un&nbsp;diccionario&nbsp;tal&nbsp;que:<br>
 dic[imagen][tipo]=cantidad&nbsp;de&nbsp;features&nbsp;de&nbsp;este&nbsp;tipo&nbsp;que&nbsp;se&nbsp;activan</tt></dd></dl>
 
-<dl><dt><a name="Statistics-features_per_layer_stats"><strong>features_per_layer_stats</strong></a>(self, synsets)</dt><dd><tt>"Aquí&nbsp;debería&nbsp;sacar&nbsp;las&nbsp;estadísticas&nbsp;de&nbsp;las&nbsp;features</tt></dd></dl>
+<dl><dt><a name="Statistics-features_per_layer_gen"><strong>features_per_layer_gen</strong></a>(self)</dt><dd><tt>Crea&nbsp;un&nbsp;diccionario&nbsp;de&nbsp;texto&nbsp;con&nbsp;la&nbsp;información&nbsp;de&nbsp;features&nbsp;por&nbsp;layer<br>
+:return:features_per_layer[layer][category]&nbsp;&nbsp;=&nbsp;cantidad&nbsp;de&nbsp;features&nbsp;de&nbsp;la&nbsp;category&nbsp;tal&nbsp;en&nbsp;el&nbsp;layer</tt></dd></dl>
 
-<dl><dt><a name="Statistics-get_features_per_layer"><strong>get_features_per_layer</strong></a>(self)</dt><dd><tt>Crea&nbsp;un&nbsp;archivo&nbsp;de&nbsp;texto&nbsp;con&nbsp;la&nbsp;información&nbsp;de&nbsp;features<br>
+<dl><dt><a name="Statistics-features_per_layer_stats"><strong>features_per_layer_stats</strong></a>(self, synsets)</dt><dd><tt>"<br>
+MUERTO<br>
+Aquí&nbsp;debería&nbsp;sacar&nbsp;las&nbsp;estadísticas&nbsp;de&nbsp;las&nbsp;features</tt></dd></dl>
+
+<dl><dt><a name="Statistics-find_image_without_zero"><strong>find_image_without_zero</strong></a>(self)</dt><dd><tt>Quiero&nbsp;que&nbsp;me&nbsp;devuelva&nbsp;la&nbsp;posición&nbsp;de&nbsp;las&nbsp;imágenes&nbsp;que&nbsp;no&nbsp;tengan&nbsp;ningun&nbsp;cero<br>
 :return:</tt></dd></dl>
 
 <dl><dt><a name="Statistics-get_in_id"><strong>get_in_id</strong></a>(self, wordnet_ss)</dt><dd><tt>Input:&nbsp;Synset<br>
@@ -111,7 +116,8 @@ Genera&nbsp;un&nbsp;archivo&nbsp;con&nbsp;el&nbsp;diccionario&nbsp;siguiente:<br
 <dl><dt><a name="Statistics-images_per_feature_stats"><strong>images_per_feature_stats</strong></a>(self)</dt><dd><tt>"<br>
 Aquí&nbsp;debería&nbsp;sacar&nbsp;las&nbsp;estadísticas&nbsp;de&nbsp;las&nbsp;features&nbsp;y&nbsp;guardarlas&nbsp;en&nbsp;features_stats</tt></dd></dl>
 
-<dl><dt><a name="Statistics-inter_synset_stats"><strong>inter_synset_stats</strong></a>(self)</dt></dl>
+<dl><dt><a name="Statistics-inter_synset_stats"><strong>inter_synset_stats</strong></a>(self)</dt><dd><tt>TENGO&nbsp;QUE&nbsp;REESTRUCTURAR&nbsp;ESTA&nbsp;FUNCIÓN&nbsp;POR&nbsp;QUE&nbsp;ES&nbsp;UN&nbsp;CAOS<br>
+:return:</tt></dd></dl>
 
 <dl><dt><a name="Statistics-intra_synset_gen"><strong>intra_synset_gen</strong></a>(self)</dt><dd><tt>Genera&nbsp;un&nbsp;diccionario&nbsp;con&nbsp;la&nbsp;relacion&nbsp;interna&nbsp;de&nbsp;los&nbsp;synsets:<br>
 &nbsp;<br>
@@ -125,7 +131,11 @@ dict[synset][synsethijo]&nbsp;=&nbsp;cantidad&nbsp;de&nbsp;synset&nbsp;hijo&nbsp
 la&nbsp;cantidad&nbsp;de&nbsp;imagenes&nbsp;que&nbsp;tienen&nbsp;tantas&nbsp;features&nbsp;-1<br>
 :return:</tt></dd></dl>
 
-<dl><dt><a name="Statistics-plot_features_per_synset"><strong>plot_features_per_synset</strong></a>(self)</dt></dl>
+<dl><dt><a name="Statistics-plot_features_per_layer"><strong>plot_features_per_layer</strong></a>(self)</dt><dd><tt>pinta&nbsp;un&nbsp;barplot&nbsp;de&nbsp;las&nbsp;features&nbsp;para&nbsp;cada&nbsp;layer<br>
+:return:</tt></dd></dl>
+
+<dl><dt><a name="Statistics-plot_features_per_synset"><strong>plot_features_per_synset</strong></a>(self)</dt><dd><tt>Hace&nbsp;un&nbsp;plot&nbsp;para&nbsp;cada&nbsp;synset&nbsp;de&nbsp;la&nbsp;cantidad&nbsp;de&nbsp;features&nbsp;de&nbsp;cada&nbsp;tipo&nbsp;que&nbsp;hay<br>
+:return:</tt></dd></dl>
 
 <dl><dt><a name="Statistics-plot_images_per_feature"><strong>plot_images_per_feature</strong></a>(self)</dt><dd><tt>Here&nbsp;I&nbsp;want&nbsp;to&nbsp;plot&nbsp;the&nbsp;images&nbsp;per&nbsp;feature&nbsp;in&nbsp;an&nbsp;histogram&nbsp;per&nbsp;category<br>
 &nbsp;<br>
@@ -135,7 +145,9 @@ En&nbsp;el&nbsp;eje&nbsp;x&nbsp;pone&nbsp;la&nbsp;cantidad&nbsp;de&nbsp;imagenes
 <dl><dt><a name="Statistics-plot_images_per_feature_of_synset"><strong>plot_images_per_feature_of_synset</strong></a>(self, synset)</dt><dd><tt>Here&nbsp;I&nbsp;want&nbsp;to&nbsp;plot&nbsp;the&nbsp;images&nbsp;per&nbsp;feature&nbsp;in&nbsp;an&nbsp;histogram&nbsp;per&nbsp;category<br>
 :return:</tt></dd></dl>
 
-<dl><dt><a name="Statistics-plot_intra_synset"><strong>plot_intra_synset</strong></a>(self)</dt></dl>
+<dl><dt><a name="Statistics-plot_intra_synset"><strong>plot_intra_synset</strong></a>(self)</dt><dd><tt>hace&nbsp;un&nbsp;barplot&nbsp;de&nbsp;la&nbsp;distribución&nbsp;interna&nbsp;de&nbsp;los&nbsp;synsets&nbsp;para&nbsp;cada&nbsp;synset<br>
+(cuantos&nbsp;mamals&nbsp;hay&nbsp;en&nbsp;living&nbsp;thing&nbsp;por&nbsp;ejemplo)<br>
+:return:</tt></dd></dl>
 
 <dl><dt><a name="Statistics-plot_synsets_on_data"><strong>plot_synsets_on_data</strong></a>(self)</dt><dd><tt>Hace&nbsp;un&nbsp;barplot&nbsp;y&nbsp;un&nbsp;pieplot&nbsp;de&nbsp;la&nbsp;ditribución&nbsp;de&nbsp;los&nbsp;synsets&nbsp;en&nbsp;los&nbsp;datos<br>
 :return:</tt></dd></dl>
