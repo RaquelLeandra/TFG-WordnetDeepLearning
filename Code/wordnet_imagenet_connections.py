@@ -286,7 +286,7 @@ class Statistics:
             syn_size = syn_index.shape[0]
             self.intra_synset[self.ss_to_text(synset)] = {}
             for i in range(j, len(self.synsets)):
-                child_path = self.dir_path+ str(self.synsets[i]) + '_index' + '.txt'
+                child_path = self.dir_path + self.ss_to_text(self.synsets[i]) + '_index' + '.txt'
                 child_index = np.genfromtxt(child_path, dtype=np.int)
                 child_in_synset = np.sum(np.in1d(child_index, syn_index))
                 self.intra_synset[self.ss_to_text(synset)][self.ss_to_text(self.synsets[i])] = child_in_synset
@@ -302,8 +302,7 @@ class Statistics:
 
     def plot_intra_synset(self):
         """
-        FALTA TESTEAR
-        hace un barplot de la distribución interna de los synsets
+        hace un barplot de la distribución interna de los synsets para cada synset
         (cuantos mamals hay en living thing por ejemplo)
         :return:
         """
@@ -319,7 +318,7 @@ class Statistics:
             plt.title('Distribution of the synsets')
             plt.xlabel('synsets')
             plt.ylabel('Quantity of synsets')
-            plt.savefig(self.plot_path + 'distribution_of_inter_synsets_bar' + '.png')
+            plt.savefig(self.plot_path + 'distribution_of_inter_synsets_bar_' + self.ss_to_text(synset) + '.png')
             plt.cla()
             plt.clf()
             plt.close()
