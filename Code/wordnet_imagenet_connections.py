@@ -86,9 +86,13 @@ class Statistics:
         self.features_per_layer_path = self.dir_path + 'features_per_layer' + str(textsynsets) + '.pkl'
         self.features_per_image_path = self.dir_path + 'features_per_image' + str(textsynsets) + '.pkl'
         self.synset_in_data_path = self.dir_path + 'synset_in_data_path' + str()
+        self.images_per_feature_per_synset_path = self.dir_path + 'images_per_featre_per_synset' + str(textsynsets) + '.pkl'
+        self.images_per_feature_per_synset = {}
         #Todo: preguntar si es mejor tener esto cargado en la memoria o pillarlo de un archivo cuando lo necesite.
         self.features_per_layer = {}
         self.features_per_image = {}
+        self.intra_synset = {}
+        self.intra_synset_path = self.dir_path + 'intra_synset' + str(textsynsets) + '.pkl'
 
     def get_in_id(self, wordnet_ss):
         """
@@ -128,7 +132,7 @@ class Statistics:
 
         index_file.close()
 
-    def data_stats(self):
+    def synset_in_data_gen(self):
         """
         This function generates a dictionary with the basic stats
         devuelve synset_in_data donde:
@@ -162,13 +166,13 @@ class Statistics:
         :return:
         """
         if len(self.synset_in_data) == 0:
-            self.data_stats()
+            self.synset_in_data_gen()
         plt.bar(range(len(self.synset_in_data)), self.synset_in_data.values(), align='center')
         plt.xticks(range(len(self.synset_in_data)), self.synset_in_data.keys())
         plt.title('Distribution of the synsets in the data')
         plt.xlabel('synsets')
         plt.ylabel('Quantity of synsets')
-        plt.savefig(self.plot_path + 'distribution of synsets bar' + '.png')
+        plt.savefig(self.plot_path + 'distribution_of_synsets_bar' + '.png')
         plt.cla()
         plt.clf()
         plt.close()
@@ -180,7 +184,7 @@ class Statistics:
         plt.pie([float(v) for v in _aux.values()], labels=[k for k in _aux.keys()],
                 autopct=None)
         plt.title('Distribution of the synsets in the data')
-        plt.savefig(self.plot_path + 'distribution of synsets pie' + '.png')
+        plt.savefig(self.plot_path + 'distribution_of_synsets_pie' + '.png')
 
     def count_features(self, matrix):
         """
@@ -200,15 +204,17 @@ class Statistics:
         plt.bar(range(len(self.all_features)), self.all_features.values(), align='center')
         plt.xticks(range(len(self.all_features)), self.all_features.keys())
         plt.title('All features')
-        plt.xlabel('Features')
+        plt.xlabel('Categories')
         plt.ylabel('Quantity of features')
-        plt.savefig(self.plot_path + 'quantity of features bar' + '.png')
+        plt.savefig(self.plot_path + 'quantity_of_features_bar' + '.png')
         plt.cla()
         plt.clf()
         plt.pie([float(v) for v in self.all_features.values()], labels=[k for k in self.all_features.keys()],
                 autopct=None)
         plt.title('All features')
         plt.savefig(self.plot_path + 'all features pie' + '.png')
+        plt.cla()
+        plt.clf()
 
     def inter_synset_stats(self):
         stats_file = open(self.stats_path, 'a')
@@ -241,6 +247,14 @@ class Statistics:
 
         stats_file.close()
 
+    def plot_features_per_synset(self):
+        """
+        Hace un plot para cada synset de la cantidad de features de cada tipo que hay
+        :return:
+        """
+        for synset in self.synsets:
+            pass
+
     def compare_intra_embedding(self, synset):
         index_path = self.dir_path + self.ss_to_text(synset) + '_index' + '.txt'
         syn_index = np.genfromtxt(index_path, dtype=np.int)
@@ -249,41 +263,73 @@ class Statistics:
             total += np.sum(np.equal(self.data.dmatrix[i, :], self.data.dmatrix[j, :]))
         return total
 
-    def intra_synset_stats(self):
+    def intra_synset_gen(self):
+        """
+        Genera un diccionario con la relacion interna de los synsets:
+
+        dict[synset][synsethijo] = cantidad de synset hijo en synset
+        :return:
+        """
         j = 0
         stats_file = open(self.stats_path, 'a')
         total_embeddings_communes = []
         trol = 0
+        self.intra_synset = {}
         for synset in self.synsets:
             index_path = self.dir_path+ self.ss_to_text(synset) + '_index' + '.txt'
             syn_index = np.genfromtxt(index_path, dtype=np.int)
             # np.sum(np.in1d(b, a))
             syn_size = syn_index.shape[0]
+            self.intra_synset[self.ss_to_text(synset)] = {}
             for i in range(j, len(self.synsets)):
                 child_path = self.dir_path+ str(self.synsets[i]) + '_index' + '.txt'
                 child_index = np.genfromtxt(child_path, dtype=np.int)
                 child_in_synset = np.sum(np.in1d(child_index, syn_index))
+                self.intra_synset[self.ss_to_text(synset)][self.ss_to_text(self.synsets[i])] = child_in_synset
                 text = 'Tenemos ' + str(syn_size) + ' ' + self.ss_to_text(synset) + ' de los cuales ' + str(child_in_synset) \
                        + ' son ' + str(self.synsets[i]) + ' el ' + str(child_in_synset/syn_size * 100) + ' % \n'
                 print(text)
                 stats_file.write(text)
             j = j + 1
             print('embedding común')
-            #TODO: esto estaba mal, comprobar que pasa
-            #total_embeddings_communes.append(self.compare_intra_embedding(synset))
-            #stats_file.write('Para el synset ' + self.ss_to_text(synset) + ' hay un total de ' + str(total_embeddings_communes)
-            #                 + 'coincidencias respecto a un total de ' + str(self.data.dmatrix.shape[1]*len(syn_index)) + '\n')
-
+        with open(self.intra_synset_path, 'wb') as handle:
+            pickle.dump(self.intra_synset, handle)
         stats_file.close()
+
+    def plot_intra_synset(self):
+        """
+        FALTA TESTEAR
+        hace un barplot de la distribución interna de los synsets
+        (cuantos mamals hay en living thing por ejemplo)
+        :return:
+        """
+        if path.isfile(self.intra_synset_path):
+            self.intra_synset = pickle.load(open(self.intra_synset_path, 'rb'))
+        else:
+            self.intra_synset_gen()
+            self.intra_synset = pickle.load(open(self.intra_synset_path, 'rb'))
+
+        for synset in self.synsets:
+            plt.bar(range(len(self.intra_synset[self.ss_to_text(synset)])), self.intra_synset[self.ss_to_text(synset)].values(), align='center')
+            plt.xticks(range(len(self.intra_synset[self.ss_to_text(synset)])), self.intra_synset[self.ss_to_text(synset)].keys())
+            plt.title('Distribution of the synsets')
+            plt.xlabel('synsets')
+            plt.ylabel('Quantity of synsets')
+            plt.savefig(self.plot_path + 'distribution_of_inter_synsets_bar' + '.png')
+            plt.cla()
+            plt.clf()
+            plt.close()
+
 
     def images_per_feature_per_synset_gen(self):
         """
-        NO ESTÁ FUNCIONANDO
+        TARDA INFINITO
         Genera un archivo con el diccionario siguiente:
             Para cada feature(0,...,12k):
                 Para cada tipo(-1,0,1)
                     Para cada synset:
                         - cantidad de imágenes del synset que tienen ese tipo en la feature en cuestión
+            dict[feature][category][synset]
 
         """
         for feature in range(0, self.data.dmatrix.shape[1]):
@@ -296,8 +342,33 @@ class Statistics:
                     index_path = self.dir_path+ self.ss_to_text(synset) + '_index' + '.txt'
                     synset_index = np.genfromtxt(index_path, dtype=np.int)
                     self.images_per_feature_per_synset[feature][i][self.ss_to_text(synset)] = np.sum(np.in1d(synset_index, feature_index))
-        with open(self.features_per_synset_path, 'wb') as handle:
+        with open(self.images_per_feature_per_synset_path, 'wb') as handle:
             pickle.dump(self.images_per_feature_per_synset, handle)
+
+    def plot_images_per_feature_of_synset(self, synset):
+        """
+        Here I want to plot the images per feature in an histogram per category
+        :return:
+        """
+        if self.images_per_feature_per_synset == {}:
+            if path.isfile(self.images_per_feature_per_synset_path):
+                self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path, 'rb'))
+            else:
+                self.images_per_feature_per_synset_gen()
+                self.images_per_feature = pickle.load(open(self.images_per_feature_per_synset_path),'rb')
+
+        for category in self.data.features_category:
+            values = {}
+            for key in self.images_per_feature_per_synset.keys():
+                values[key] = self.images_per_feature_per_synset[key][category][self.ss_to_text(synset)]
+            plt.hist(list(values.values()), bins = 50)
+            plt.title('Images per feature of ' + str(category) +'of the synset ' + self.ss_to_text(synset) +  ' category')
+            plt.xlabel('Quantity of ' + str(category))
+            plt.ylabel('Quantity of images')
+            plt.savefig('Images per feature of ' + str(category) + ' category' + self.ss_to_text(synset)+ '.png')
+            plt.cla()
+            plt.clf()
+
 
     def images_per_feature_gen(self):
         """Genera un archivo con el diccionario siguiente:
@@ -332,37 +403,30 @@ class Statistics:
     def plot_images_per_feature(self):
         """
         Here I want to plot the images per feature in an histogram per category
+
+        En el eje x pone la cantidad de imagenes del dataset que tienen la cantidad de feaures de l eje y
         :return:
         """
         if self.images_per_feature == {}:
-            self.images_per_feature = pickle.load(open(self.images_per_feature_path, 'rb'))
+            if path.isfile(self.images_per_feature_path):
+                self.images_per_feature = pickle.load(open(self.images_per_feature_path, 'rb'))
+            else:
+                self.images_per_feature_gen()
+                self.images_per_feature = pickle.load(open(self.images_per_feature_path, 'rb'))
+
         for category in self.data.features_category:
             values = {}
             for key in self.images_per_feature.keys():
                 values[key] = self.images_per_feature[key][category]
-            plt.hist(list(values.values()))
+            plt.hist(list(values.values()),bins = 50)
             plt.title('Images per feature of ' + str(category) + ' category')
-            plt.savefig(self.plot_path +'Images per feature of ' + str(category) + ' category' + '.png')
-            plt.show()
+            plt.xlabel('Quantity of images' )
+            plt.ylabel('Quantity of features')
+            plt.savefig(self.plot_path +'Images_per_feature_of_' + str(category) + '_category' + '.png')
+            plt.cla()
+            plt.clf()
 
-    def plot_images_per_feature_of_synset(self, synset):
-        """
-        Here I want to plot the images per feature in an histogram per category
-        :return:
-        """
-        if self.images_per_feature == {}:
-            self.images_per_feature = pickle.load(open(self.features_path, 'rb'))
-        for category in self.data.features_category:
-            values = {}
-            for key in self.images_per_feature.keys():
-                values[key] = self.images_per_feature[key][category][self.ss_to_text(synset)]
-            plt.hist(list(values.values()))
-            plt.title('Images per feature of ' + str(category) + ' category')
-            plt.savefig('Images per feature of ' + str(category) + ' category' + '.png')
-            plt.xlabel('Quantity of ' + str(category))
-            plt.ylabel('Quantity of images')
-            plt.savefig(self.dir_path + 'images_per_feature' + str(category))
-            plt.show()
+
 
     def get_features_per_layer(self):
         """
