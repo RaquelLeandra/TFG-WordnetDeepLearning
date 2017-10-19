@@ -373,6 +373,18 @@ class Statistics:
             plt.cla()
             plt.clf()
 
+    def find_image_without_zero(self):
+        """
+        Quiero que me devuelva la posición de las imágenes que no tengan ningun cero
+        :return:
+        """
+        if self.images_per_feature == {}:
+            if path.isfile(self.images_per_feature_path):
+                self.images_per_feature = pickle.load(open(self.images_per_feature_path, 'rb'))
+            else:
+                self.images_per_feature_gen()
+                self.images_per_feature = pickle.load(open(self.images_per_feature_path, 'rb'))
+
 
     def images_per_feature_gen(self):
         """Genera un archivo con el diccionario siguiente:
@@ -430,12 +442,10 @@ class Statistics:
             plt.cla()
             plt.clf()
 
-
-
-    def get_features_per_layer(self):
+    def features_per_layer_gen(self):
         """
-        Crea un archivo de texto con la información de features
-        :return:
+        Crea un diccionario de texto con la información de features por layer
+        :return:features_per_layer[layer][category]  = cantidad de features de la category tal en el layer
         """
         #TODO: falta que calcule las estadísticas
         for layer in self.data.layers:
@@ -444,8 +454,31 @@ class Statistics:
         with open(self.features_per_layer_path, 'wb') as handle:
             pickle.dump(self.features_per_layer, handle)
 
+    def plot_features_per_layer(self):
+        """
+        pinta un barplot de las features para cada layer
+        :return:
+        """
+        if path.isfile(self.features_per_layer_path):
+            self.features_per_layer = pickle.load(open(self.features_per_layer_path, 'rb'))
+        else:
+            self.features_per_layer_gen()
+            self.features_per_layer = pickle.load(open(self.features_per_layer_path, 'rb'))
+
+        for layer in self.data.layers:
+            plt.bar(range(len(self.features_per_layer[layer])), self.features_per_layer[layer].values(), align='center')
+            plt.xticks(range(len(self.features_per_layer[layer])), self.features_per_layer[layer].keys())
+            plt.title('Fatures of the layer ' + layer)
+            plt.xlabel('Features')
+            plt.ylabel('Quantity of features')
+            plt.savefig(self.plot_path + 'features_per_layer_of_' + layer + '.png')
+            plt.cla()
+            plt.clf()
+
     def features_per_layer_stats(self, synsets):
-        """"Aquí debería sacar las estadísticas de las features"""
+        """"
+        MUERTO
+        Aquí debería sacar las estadísticas de las features"""
         pass
 
     def features_per_image_gen(self):
