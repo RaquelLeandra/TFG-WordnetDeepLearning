@@ -378,13 +378,16 @@ class Statistics:
         Quiero que me devuelva la posición de las imágenes que no tengan ningun cero
         :return:
         """
-        if self.images_per_feature == {}:
-            if path.isfile(self.images_per_feature_path):
-                self.images_per_feature = pickle.load(open(self.images_per_feature_path, 'rb'))
+        if self.features_per_image == {}:
+            if path.isfile(self.features_per_image_path):
+                self.features_per_image = pickle.load(open(self.features_per_image_path, 'rb'))
             else:
-                self.images_per_feature_gen()
-                self.images_per_feature = pickle.load(open(self.images_per_feature_path, 'rb'))
-
+                self.features_per_image_gen()
+                self.features_per_image = pickle.load(open(self.features_per_image, 'rb'))
+        for i in range(len(self.features_per_image.keys())):
+            if self.features_per_image[i][0] == 0:
+                print(i)
+        print('end')
 
     def images_per_feature_gen(self):
         """Genera un archivo con el diccionario siguiente:
