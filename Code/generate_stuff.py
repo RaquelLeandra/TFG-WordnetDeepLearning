@@ -27,9 +27,10 @@ for i in range(toolbar_width):
     #stats.plot_all_features()
     #stats.plot_images_per_feature()
     #stats.plot_synsets_on_data()
-    stats.plot_intra_synset()
+    #stats.plot_intra_synset()
     #for synset in synsets:
         #stats.plot_images_per_feature_of_synset(synset)
+    stats.plot_features_per_layer()
     # update the bar
     sys.stdout.write("-")
     sys.stdout.flush()
