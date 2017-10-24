@@ -43,7 +43,7 @@ class Data:
 
         self.embedding_path = "../Data/vgg16_ImageNet_ALLlayers_C1avg_imagenet_train.npz"
         self.imagenet_id_path = "../Data/synset.txt"
-        self.discretized_embedding_path = '../Data/vgg16_ImageNet_imagenet_C1avg_E_FN_KSBsp0.15n0.25_Gall_val_.npy'
+        self.discretized_embedding_path = '../Data/vgg16_ImageNet_imagenet_C1avg_E_FN_KSBsp0.19n0.31_Gall_train_.npy'
         self.embedding = np.load(self.embedding_path)
         self.labels = self.embedding['labels']
         #self.matrix = self.embedding['data_matrix']
@@ -93,7 +93,7 @@ class Statistics:
         self.data = Data()
         self.synsets = synsets
         textsynsets = [str(s)[8:-7] for s in synsets]
-        self.dir_path = '../Data/' + str(textsynsets) + '/'
+        self.dir_path = '../Data/' + str(textsynsets) + '_31' + '/'
         self.plot_path = self.dir_path + 'plots/'
         if not path.exists(self.dir_path):
             makedirs(self.dir_path)
@@ -104,6 +104,7 @@ class Statistics:
         self.total_features = self.matrix_size[0]*self.matrix_size[1]
         self.all_features = self.count_features(self.data.dmatrix)
         self.synset_in_data = {}
+        self.features_per_synset_path = self.dir_path + 'features_per_synset' + '.pkl'
         self.features_per_synset = {}
         self.features_path = self.dir_path + 'features' + str(textsynsets) + '.pkl'
         self.images_per_feature_path = self.dir_path + 'images_per_feature' + '.pkl'
@@ -113,7 +114,6 @@ class Statistics:
         self.synset_in_data_path = self.dir_path + 'synset_in_data_path' + str()
         self.images_per_feature_per_synset_path = self.dir_path + 'images_per_featre_per_synset' + str(textsynsets) + '.pkl'
         self.images_per_feature_per_synset = {}
-        #Todo: preguntar si es mejor tener esto cargado en la memoria o pillarlo de un archivo cuando lo necesite.
         self.features_per_layer = {}
         self.features_per_image = {}
         self.intra_synset = {}
@@ -157,6 +157,13 @@ class Statistics:
 
         index_file.close()
 
+    def printlatex(self,filename):
+        path = self.dir_path + 'latex'
+        stats_file = open(path, 'a')
+        text = r'\b' + 'egin{figure}[h] \n \centering \n \includegraphics[scale=0.5] {Images/' + filename + '} \n \end{figure}\n'
+        stats_file.write(text)
+        stats_file.close()
+
     def synset_in_data_gen(self):
         """
         This function generates a dictionary with the basic stats
@@ -197,7 +204,10 @@ class Statistics:
         plt.title('Distribution of the synsets in the data')
         plt.xlabel('synsets')
         plt.ylabel('Quantity of synsets')
+        plt.grid()
         plt.savefig(self.plot_path + 'distribution_of_synsets_bar' + '.png')
+        name = 'distribution_of_synsets_bar' + '.png'
+        self.printlatex(name)
         plt.cla()
         plt.clf()
         plt.close()
@@ -209,11 +219,17 @@ class Statistics:
         plt.pie([float(v) for v in _aux.values()], labels=[k for k in _aux.keys()],
                 autopct=None)
         plt.title('Distribution of the synsets in the data')
+        plt.grid()
         plt.savefig(self.plot_path + 'distribution_of_synsets_pie' + '.png')
+        plt.cla()
+        plt.clf()
+        name = 'distribution_of_synsets_pie' + '.png'
+        self.printlatex(name)
 
     def count_features(self, matrix):
         """
         Devuelve un diccionario con la cantidad de features de cada tipo de la matriz matrix
+        features[category] = cantidad de category de la matriz
         """
         features = {-1: 0, 0: 0, 1: 0}
         features[1] += np.sum(np.equal(matrix, 1))
@@ -231,19 +247,28 @@ class Statistics:
         plt.title('All features')
         plt.xlabel('Categories')
         plt.ylabel('Quantity of features')
+        plt.grid()
         plt.savefig(self.plot_path + 'quantity_of_features_bar' + '.png')
+        name = 'quantity_of_features_bar' + '.png'
+        self.printlatex(name)
         plt.cla()
         plt.clf()
         plt.pie([float(v) for v in self.all_features.values()], labels=[k for k in self.all_features.keys()],
                 autopct=None)
         plt.title('All features')
-        plt.savefig(self.plot_path + 'all features pie' + '.png')
+        plt.grid()
+        plt.savefig(self.plot_path + 'all_features_pie' + '.png')
+        name = 'all_features_pie' + '.png'
+        self.printlatex(name)
         plt.cla()
         plt.clf()
 
-    def inter_synset_stats(self):
+    def features_per_synset_gen(self):
         """
         TENGO QUE REESTRUCTURAR ESTA FUNCIÓN POR QUE ES UN CAOS
+        genera un diccionario de la forma
+        feaures_per_synset[synset][category] = la cantidad de elementos que tienen el valor category dentro de la
+        seccion de la matriz correspondiente al synset
         :return: 
         """
         
@@ -266,14 +291,18 @@ class Statistics:
                 self.get_index_from_ss(synset)
                 index = np.genfromtxt(index_path, dtype=np.int)
 
-            self.features_per_synset[synset] = self.count_features(self.data.dmatrix[index, :])
+            self.features_per_synset[self.ss_to_text(synset)] = self.count_features(self.data.dmatrix[index, :])
             synset_total_features = len(index)*self.matrix_size[1]
+            """
+            Esta parte con el cambio que he hecho iba a petar
             text = '\nEn el ' + self.ss_to_text(synset) + ' tenemos ' + str(synset_total_features) + 'features en total : ' \
                    + '\n -Features de tipo -1: ' + str(self.features_per_synset[synset][-1]) + ' el ' + str(self.features_per_synset[synset][-1] / synset_total_features * 100) + ' % respecto todas las features -1' \
                    + '\n -Features de tipo 0: ' + str(self.features_per_synset[synset][0]) + ' el ' + str(self.features_per_synset[synset][0] / synset_total_features * 100) + ' % respecto todas las features 0' \
                    + '\n -Features de tipo 1: ' + str(self.features_per_synset[synset][1]) + ' el ' + str(self.features_per_synset[synset][1] / synset_total_features * 100) + ' % respecto todas las features 1'
             stats_file.write(text)
-
+            """
+        with open(self.features_per_synset_path, 'wb') as handle:
+            pickle.dump(self.features_per_synset, handle)
         stats_file.close()
 
     def plot_features_per_synset(self):
@@ -281,8 +310,25 @@ class Statistics:
         Hace un plot para cada synset de la cantidad de features de cada tipo que hay
         :return:
         """
+        if path.isfile(self.features_per_synset_path):
+            self.features_per_synset = pickle.load(open(self.features_per_synset_path, 'rb'))
+        else:
+            self.features_per_synset_gen()
+            self.features_per_synset = pickle.load(open(self.features_per_synset_path, 'rb'))
+
         for synset in self.synsets:
-            pass
+            plt.bar(range(len(self.features_per_synset[self.ss_to_text(synset)])), self.features_per_synset[self.ss_to_text(synset)].values(), align='center')
+            plt.xticks(range(len(self.features_per_synset[self.ss_to_text(synset)])), self.features_per_synset[self.ss_to_text(synset)].keys())
+            plt.title('Quantity of features per synset of ' + self.ss_to_text(synset))
+            plt.xlabel('Categories')
+            plt.ylabel('Quantity of features')
+            plt.grid()
+            plt.savefig(self.plot_path + 'features_per_synset_bar_' + self.ss_to_text(synset) + '.png')
+            name = 'features_per_synset_bar_' + self.ss_to_text(synset) + '.png'
+            self.printlatex(name)
+            plt.cla()
+            plt.clf()
+            plt.close()
 
     def compare_intra_embedding(self, synset):
         index_path = self.dir_path + self.ss_to_text(synset) + '_index' + '.txt'
@@ -341,9 +387,12 @@ class Statistics:
             plt.bar(range(len(self.intra_synset[self.ss_to_text(synset)])), self.intra_synset[self.ss_to_text(synset)].values(), align='center')
             plt.xticks(range(len(self.intra_synset[self.ss_to_text(synset)])), self.intra_synset[self.ss_to_text(synset)].keys())
             plt.title('Distribution of the synsets')
-            plt.xlabel('synsets')
-            plt.ylabel('Quantity of synsets')
+            plt.xlabel('Synsets')
+            plt.ylabel('Quantity of images')
+            plt.grid()
             plt.savefig(self.plot_path + 'distribution_of_inter_synsets_bar_' + self.ss_to_text(synset) + '.png')
+            name = 'distribution_of_inter_synsets_bar_' + self.ss_to_text(synset) + '.png'
+            self.printlatex(name)
             plt.cla()
             plt.clf()
             plt.close()
@@ -360,6 +409,7 @@ class Statistics:
             dict[feature][category][synset]
 
         """
+        print('Generando images_per_feature_per_synset, tarda una hora')
         for feature in range(0, self.data.dmatrix.shape[1]):
             self.images_per_feature_per_synset[feature] = {}
             feature_column = self.data.dmatrix[:, feature]
@@ -372,6 +422,7 @@ class Statistics:
                     self.images_per_feature_per_synset[feature][i][self.ss_to_text(synset)] = np.sum(np.in1d(synset_index, feature_index))
         with open(self.images_per_feature_per_synset_path, 'wb') as handle:
             pickle.dump(self.images_per_feature_per_synset, handle)
+        print('Ha generado images_per_feature_per_synset')
 
     def plot_images_per_feature_of_synset(self, synset):
         """
@@ -391,10 +442,13 @@ class Statistics:
             for key in self.images_per_feature_per_synset.keys():
                 values[key] = self.images_per_feature_per_synset[key][category][self.ss_to_text(synset)]
             plt.hist(list(values.values()), bins = 50)
-            plt.title('Images per feature of ' + str(category) +' of the synset ' + self.ss_to_text(synset) +  ' category')
+            plt.title('Images per feature of ' + str(category) +' of the synset ' + self.ss_to_text(synset))
             plt.xlabel('Quantity of ' + str(category))
             plt.ylabel('Quantity of images')
+            plt.grid()
             plt.savefig(self.plot_path + 'Images_per_feature_of_' + str(category) + '_category_' + self.ss_to_text(synset)+ '.png')
+            name = 'Images_per_feature_of_' + str(category) + '_category_' + self.ss_to_text(synset) + '.png'
+            self.printlatex(name)
             plt.cla()
             plt.clf()
 
@@ -466,19 +520,24 @@ class Statistics:
             plt.title('Images per feature of ' + str(category) + ' category')
             plt.xlabel('Quantity of images')
             plt.ylabel('Quantity of features')
+            plt.grid()
             plt.savefig(self.plot_path +'Images_per_feature_of_' + str(category) + '_category' + '.png')
+            name = 'Images_per_feature_of_' + str(category) + '_category' + '.png'
+            self.printlatex(name)
             plt.cla()
             plt.clf()
             plt.boxplot(list(values.values()))
             plt.title('Images per feature of ' + str(category) + ' category')
-            plt.xlabel('Quantity of images')
-            plt.ylabel('Quantity of features')
+            plt.grid()
             plt.savefig(self.plot_path + 'Images_per_feature_of_' + str(category) + '_category_box' + '.png')
+            name = 'Images_per_feature_of_' + str(category) + '_category_box' + '.png'
+            self.printlatex(name)
             plt.cla()
             plt.clf()
 
     def find_contradicction_in_synset(self):
         """
+        es un copypaste
         Quiero ver si existe algun synset que tenga el valor -1 y 1 en la misma feature
         :return:
         """
@@ -538,8 +597,14 @@ class Statistics:
             print(layeroutlier)
             plt.bar(range(len(layeroutlier)), layeroutlier.values(), align='center')
             plt.xticks(range(len(layeroutlier)), layeroutlier.keys())
+            plt.title('Outliers images per features of ' + str(category))
+            plt.xlabel('Features')
             plt.grid()
-            plt.show()
+            plt.savefig(self.plot_path + 'outliers' + str(category) + '.png')
+            name = 'outliers' + str(category) + '.png'
+            self.printlatex(name)
+            plt.cla()
+            plt.clf()
 
 
     def features_per_layer_gen(self):
@@ -547,7 +612,6 @@ class Statistics:
         Crea un diccionario de texto con la información de features por layer
         :return:features_per_layer[layer][category]  = cantidad de features de la category tal en el layer
         """
-        #TODO: falta que calcule las estadísticas
         for layer in self.data.layers:
             section = self.data.dmatrix[:, range(self.data.layers[layer][0], self.data.layers[layer][1])]
             self.features_per_layer[layer] = self.count_features(section)
@@ -571,15 +635,13 @@ class Statistics:
             plt.title('Fatures of the layer ' + layer)
             plt.xlabel('Features')
             plt.ylabel('Quantity of features')
+            plt.grid()
             plt.savefig(self.plot_path + 'features_per_layer_of_' + layer + '.png')
+            name = 'features_per_layer_of_' + layer + '.png'
+            self.printlatex(name)
             plt.cla()
             plt.clf()
 
-    def features_per_layer_stats(self, synsets):
-        """"
-        MUERTO
-        Aquí debería sacar las estadísticas de las features"""
-        pass
 
     def features_per_image_gen(self):
         """
@@ -617,5 +679,24 @@ class Statistics:
             plt.xlabel('Quantity of images')
         #TODO HACER EL PLOT PARA LAS TRES FEATURES JUNTITAS
             #plt.show()
+            plt.grid()
             plt.savefig(self.plot_path + 'features_per_image' + str(category))
-            plt.gcf().clear()
+            name = 'features_per_image' + str(category)
+            self.printlatex(name)
+            plt.cla()
+            plt.clf()
+
+    def plot_all(self):
+        """
+        ORDENAR LOS PLOTS
+        Esta funcion llama a todos los plots que tengo
+        """
+        self.plot_features_per_image()
+        self.plot_all_features()
+        self.plot_features_per_synset()
+        self.plot_images_per_feature()
+        self.plot_synsets_on_data()
+        self.plot_intra_synset()
+        #for synset in self.synsets:
+        #    self.plot_images_per_feature_of_synset(synset)
+        self.plot_features_per_layer()

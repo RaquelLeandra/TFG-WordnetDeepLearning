@@ -1,0 +1,4560 @@
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_2_5conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6tofc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image-1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image0} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/quantity_of_features_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/all_features_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_2_5conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6tofc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image-1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image0} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/quantity_of_features_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/all_features_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_2_5conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6tofc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image-1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image0} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/quantity_of_features_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/all_features_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_2_5conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6tofc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image-1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image0} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/quantity_of_features_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/all_features_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_2_5conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6tofc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image-1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image0} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/quantity_of_features_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/all_features_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_2_5conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6tofc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image-1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image0} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/quantity_of_features_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/all_features_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_2_5conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6tofc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image-1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image0} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/quantity_of_features_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/all_features_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_2_5conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6tofc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image-1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image0} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/quantity_of_features_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/all_features_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_2_5conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6tofc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image-1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image0} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/quantity_of_features_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/all_features_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_2_5conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6tofc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image-1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image0} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/quantity_of_features_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/all_features_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_2_5conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6tofc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image-1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image0} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/quantity_of_features_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/all_features_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_2_5conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6tofc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image-1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image0} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/quantity_of_features_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/all_features_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_2_5conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6tofc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image-1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image0} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/quantity_of_features_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/all_features_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_2_5conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6tofc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image-1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image0} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/quantity_of_features_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/all_features_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_2_5conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6tofc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image-1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image0} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/quantity_of_features_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/all_features_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_2_5conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6tofc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image-1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image0} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/quantity_of_features_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/all_features_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_2_5conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6tofc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image-1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image0} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_image1} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/quantity_of_features_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/all_features_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_box.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_bar.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_synsets_pie.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/distribution_of_inter_synsets_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_-1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_0_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/Images_per_feature_of_1_category_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5_3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv1.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv2.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv3.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv4.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv5.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_2_5conv.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_layer_of_fc6tofc7.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_living_thing.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_mammal.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_dog.png} 
+ \end{figure}
+\begin{figure}[h] 
+ \centering 
+ \includegraphics[scale=0.5] {Images/features_per_synset_bar_hunting_dog.png} 
+ \end{figure}

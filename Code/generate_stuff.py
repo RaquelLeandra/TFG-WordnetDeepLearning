@@ -13,29 +13,32 @@ mammal = wn.synsets('mammal')[0]
 living_things = wn.synset('living_thing.n.01')
 hunting_dogs = wn.synsets('hunting_dog')[0]
 
-synsets = [living_things, mammal, dog, hunting_dogs]
+synsets_living = [living_things, mammal, dog, hunting_dogs]
 minisyn = [hunting_dogs]
 
-stats = Statistics(synsets)
+
+object = wn.synsets('artifact')[0]
+instrum = wn.synset('instrumentality.n.03')
+conv = wn.synset('conveyance.n.03')
+wheeled_vehicle = wn.synsets('wheeled_vehicle')[0]
+
+synsets_non_living = [object, instrum, conv, wheeled_vehicle]
+
+
+stats_living = Statistics(synsets_living)
+stats_non_living = Statistics(synsets_non_living)
 
 # setup toolbar
 sys.stdout.write("[%s]" % (" " * toolbar_width))
 sys.stdout.flush()
 sys.stdout.write("\b" * (toolbar_width+1)) # return to start of line, after '['
 for i in range(toolbar_width):
-    #stats.plot_features_per_image()
-    #stats.plot_all_features()
-    #stats.plot_images_per_feature()
-    #stats.plot_synsets_on_data()
-    #stats.plot_intra_synset()
-    #for synset in synsets:
-        #stats.plot_images_per_feature_of_synset(synset)
-    #stats.plot_features_per_layer()
-    # update the bar
-
+    #stats.plot_all()
+    stats_living.images_per_feature_per_synset_gen()
+    stats_non_living.images_per_feature_per_synset_gen()
     sys.stdout.write("-")
     sys.stdout.flush()
-stats.find_outlier_in_images_per_feature()
+
 
 sys.stdout.write("\n")
 
