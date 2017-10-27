@@ -5,6 +5,8 @@ import _pickle as pickle
 from os import path
 from os import makedirs
 import matplotlib.pyplot as plt
+import gc
+
 
 class Data:
     """
@@ -38,49 +40,74 @@ class Data:
                 #'all':[0,12416]          # 24
                     }
     """
-    def __init__(self):
-        #TODO cambiar la inicialización de Data para que dependa de la matriz de embeddings
 
+    def __init__(self, version):
+        """
+
+        :param version: Es la versión del embedding que queremos cargar (25,31,19)
+        """
+        self.version = version
         self.embedding_path = "../Data/vgg16_ImageNet_ALLlayers_C1avg_imagenet_train.npz"
         self.imagenet_id_path = "../Data/synset.txt"
-        self.discretized_embedding_path = '../Data/vgg16_ImageNet_imagenet_C1avg_E_FN_KSBsp0.19n0.31_Gall_train_.npy'
-        self.embedding = np.load(self.embedding_path)
-        self.labels = self.embedding['labels']
-        #self.matrix = self.embedding['data_matrix']
+        if version == 25:
+            _embedding = 'vgg16_ImageNet_imagenet_C1avg_E_FN_KSBsp0.15n0.25_Gall_train_.npy'
+        elif version == 19:
+            _embedding = 'vgg16_ImageNet_imagenet_C1avg_E_FN_KSBsp0.11n0.19_Gall_train_.npy'
+        elif version == 31:
+            _embedding = 'vgg16_ImageNet_imagenet_C1avg_E_FN_KSBsp0.19n0.31_Gall_train_.npy'
+        else:
+            print('ERROR DE LA LECHE, METE UNA VERSIÓN VÁLIDA')
+        self.discretized_embedding_path = '../Data/Embeddings/' + _embedding
+        print('Estamos usando ' + _embedding[-20:-16])
+        embedding = np.load(self.embedding_path)
+        self.labels = embedding['labels']
+        # self.matrix = self.embedding['data_matrix']
+        del embedding
         self.dmatrix = np.array(np.load(self.discretized_embedding_path))
         self.imagenet_all_ids = np.genfromtxt(self.imagenet_id_path, dtype=np.str)
-        self.features_category = [-1,0,1]
-        self.colors = ['#3643D2', 'c', '#722672','#BF3FBF']
+        self.features_category = [-1, 0, 1]
+        self.colors = ['#3643D2', 'c', '#722672', '#BF3FBF']
         self.layers = {
-                'conv1_1': [0,64],        # 1
-                'conv1_2': [64,128],      # 2
-                'conv2_1': [128,256],     # 3
-                'conv2_2': [256,384],     # 4
-                'conv3_1': [384,640],     # 5
-                'conv3_2': [640,896],     # 6
-                'conv3_3': [896,1152],    # 7
-                'conv4_1': [1152,1664],   # 8
-                'conv4_2': [1664,2176],   # 9
-                'conv4_3': [2176,2688],   # 10
-                'conv5_1': [2688,3200],   # 11
-                'conv5_2': [3200,3712],   # 12
-                'conv5_3': [3712,4224],   # 13
-                'fc6':[4224,8320],       # 14
-                'fc7':[8320,12416],      # 15
-                'conv1':[0,128],         # 16
-                'conv2':[128,384],       # 17
-                'conv3':[384,1152],      # 18
-                'conv4':[1152,2688],     # 19
-                'conv5':[2688,4224],     # 20
-                'conv':[0,4224],         # 21
-                '2_5conv':[128,4224],    # 22
-                'fc6tofc7':[4224,12416], # 23
-                #'all':[0,12416]          # 24
-                    }
+            'conv1_1': [0, 64],  # 1
+            'conv1_2': [64, 128],  # 2
+            'conv2_1': [128, 256],  # 3
+            'conv2_2': [256, 384],  # 4
+            'conv3_1': [384, 640],  # 5
+            'conv3_2': [640, 896],  # 6
+            'conv3_3': [896, 1152],  # 7
+            'conv4_1': [1152, 1664],  # 8
+            'conv4_2': [1664, 2176],  # 9
+            'conv4_3': [2176, 2688],  # 10
+            'conv5_1': [2688, 3200],  # 11
+            'conv5_2': [3200, 3712],  # 12
+            'conv5_3': [3712, 4224],  # 13
+            'fc6': [4224, 8320],  # 14
+            'fc7': [8320, 12416],  # 15
+            'conv1': [0, 128],  # 16
+            'conv2': [128, 384],  # 17
+            'conv3': [384, 1152],  # 18
+            'conv4': [1152, 2688],  # 19
+            'conv5': [2688, 4224],  # 20
+            'conv': [0, 4224],  # 21
+            '2_5conv': [128, 4224],  # 22
+            'fc6tofc7': [4224, 12416],  # 23
+            # 'all':[0,12416]          # 24
+        }
+
+    def __del__(self):
+        self.embedding = None
+        self.dmatrix = None
+        self.version = None
+        self.embedding_path = None
+        self.layers = None
+        self.labels = None
+        self.features_category = None
+        self.colors = None
+        gc.collect()
 
 
 class Statistics:
-    def __init__(self, synsets):
+    def __init__(self, synsets, data):
         """
             Esta clase genera todas las estadísticas para un conjunto de synsets
         :param synsets: conjunto de synset del que queremos calcualr las estadísticas
@@ -90,10 +117,10 @@ class Statistics:
         :param plot_path es el path donde se guardaran los plots
         :param all_features: es un diccionario tal que all_features[i] = cantidad de features del tipo i en el embedding
         """
-        self.data = Data()
+        self.data = data
         self.synsets = synsets
         textsynsets = [str(s)[8:-7] for s in synsets]
-        self.dir_path = '../Data/' + str(textsynsets) + '_31' + '/'
+        self.dir_path = '../Data/' + str(textsynsets) + str(data.version) + '/'
         self.plot_path = self.dir_path + 'plots/'
         if not path.exists(self.dir_path):
             makedirs(self.dir_path)
@@ -101,7 +128,7 @@ class Statistics:
             makedirs(self.plot_path)
         self.stats_path = self.dir_path + str(textsynsets) + '_stats.txt'
         self.matrix_size = self.data.dmatrix.shape
-        self.total_features = self.matrix_size[0]*self.matrix_size[1]
+        self.total_features = self.matrix_size[0] * self.matrix_size[1]
         self.all_features = self.count_features(self.data.dmatrix)
         self.synset_in_data = {}
         self.features_per_synset_path = self.dir_path + 'features_per_synset' + '.pkl'
@@ -112,12 +139,14 @@ class Statistics:
         self.features_per_layer_path = self.dir_path + 'features_per_layer' + str(textsynsets) + '.pkl'
         self.features_per_image_path = self.dir_path + 'features_per_image' + str(textsynsets) + '.pkl'
         self.synset_in_data_path = self.dir_path + 'synset_in_data_path' + str()
-        self.images_per_feature_per_synset_path = self.dir_path + 'images_per_featre_per_synset' + str(textsynsets) + '.pkl'
+        self.images_per_feature_per_synset_path = self.dir_path + 'images_per_featre_per_synset' + str(
+            textsynsets) + '.pkl'
         self.images_per_feature_per_synset = {}
         self.features_per_layer = {}
         self.features_per_image = {}
         self.intra_synset = {}
         self.intra_synset_path = self.dir_path + 'intra_synset' + str(textsynsets) + '.pkl'
+        self.outlier_path = self.dir_path + 'outliers.txt'
 
     def get_in_id(self, wordnet_ss):
         """
@@ -129,7 +158,7 @@ class Statistics:
         wn_id = wn.ss2of(wordnet_ss)
         return wn_id[-1] + wn_id[:8]
 
-    def ss_to_text(self,synset):
+    def ss_to_text(self, synset):
         """ devuelve el string del nombre del synset en cuestion"""
         return str(synset)[8:-7]
 
@@ -157,7 +186,7 @@ class Statistics:
 
         index_file.close()
 
-    def printlatex(self,filename):
+    def printlatex(self, filename):
         path = self.dir_path + 'latex'
         stats_file = open(path, 'a')
         text = r'\b' + 'egin{figure}[h] \n \centering \n \includegraphics[scale=0.5] {Images/' + filename + '} \n \end{figure}\n'
@@ -271,19 +300,22 @@ class Statistics:
         seccion de la matriz correspondiente al synset
         :return: 
         """
-        
+
         stats_file = open(self.stats_path, 'a')
         labels_size = self.data.labels.shape[0]
-        #todo: arreglar esto para no tener que hardcodearlo
+        # todo: arreglar esto para no tener que hardcodearlo
         text = 'Dentro de las 50k imágenes tenemos: \n un total de ' \
                + str(self.total_features) + 'de la matriz de tamaño ' + str(self.matrix_size) \
-               + '\n -Features de tipo -1: ' + str(self.all_features[-1]) + ' el ' + str(self.all_features[-1]/self.total_features * 100) + ' %' \
-               + '\n -Features de tipo 0: ' + str(self.all_features[0]) + ' el ' + str(self.all_features[0]/self.total_features * 100) + ' %' \
-               + '\n -Features de tipo 1: ' + str(self.all_features[1]) + ' el ' + str(self.all_features[1]/self.total_features * 100) + ' %'
+               + '\n -Features de tipo -1: ' + str(self.all_features[-1]) + ' el ' + str(
+            self.all_features[-1] / self.total_features * 100) + ' %' \
+               + '\n -Features de tipo 0: ' + str(self.all_features[0]) + ' el ' + str(
+            self.all_features[0] / self.total_features * 100) + ' %' \
+               + '\n -Features de tipo 1: ' + str(self.all_features[1]) + ' el ' + str(
+            self.all_features[1] / self.total_features * 100) + ' %'
         stats_file.write(text)
         for synset in self.synsets:
-            synset_path = self.dir_path+ self.ss_to_text(synset) + '.txt'
-            index_path = self.dir_path+ self.ss_to_text(synset) + '_index' + '.txt'
+            synset_path = self.dir_path + self.ss_to_text(synset) + '.txt'
+            index_path = self.dir_path + self.ss_to_text(synset) + '_index' + '.txt'
 
             if path.isfile(index_path):
                 index = np.genfromtxt(index_path, dtype=np.int)
@@ -292,7 +324,7 @@ class Statistics:
                 index = np.genfromtxt(index_path, dtype=np.int)
 
             self.features_per_synset[self.ss_to_text(synset)] = self.count_features(self.data.dmatrix[index, :])
-            synset_total_features = len(index)*self.matrix_size[1]
+            synset_total_features = len(index) * self.matrix_size[1]
             """
             Esta parte con el cambio que he hecho iba a petar
             text = '\nEn el ' + self.ss_to_text(synset) + ' tenemos ' + str(synset_total_features) + 'features en total : ' \
@@ -317,8 +349,10 @@ class Statistics:
             self.features_per_synset = pickle.load(open(self.features_per_synset_path, 'rb'))
 
         for synset in self.synsets:
-            plt.bar(range(len(self.features_per_synset[self.ss_to_text(synset)])), self.features_per_synset[self.ss_to_text(synset)].values(), align='center')
-            plt.xticks(range(len(self.features_per_synset[self.ss_to_text(synset)])), self.features_per_synset[self.ss_to_text(synset)].keys())
+            plt.bar(range(len(self.features_per_synset[self.ss_to_text(synset)])),
+                    self.features_per_synset[self.ss_to_text(synset)].values(), align='center')
+            plt.xticks(range(len(self.features_per_synset[self.ss_to_text(synset)])),
+                       self.features_per_synset[self.ss_to_text(synset)].keys())
             plt.title('Quantity of features per synset of ' + self.ss_to_text(synset))
             plt.xlabel('Categories')
             plt.ylabel('Quantity of features')
@@ -334,7 +368,7 @@ class Statistics:
         index_path = self.dir_path + self.ss_to_text(synset) + '_index' + '.txt'
         syn_index = np.genfromtxt(index_path, dtype=np.int)
         total = 0
-        for i,j in combinations(syn_index,2):
+        for i, j in combinations(syn_index, 2):
             total += np.sum(np.equal(self.data.dmatrix[i, :], self.data.dmatrix[j, :]))
         return total
 
@@ -351,7 +385,7 @@ class Statistics:
         trol = 0
         self.intra_synset = {}
         for synset in self.synsets:
-            index_path = self.dir_path+ self.ss_to_text(synset) + '_index' + '.txt'
+            index_path = self.dir_path + self.ss_to_text(synset) + '_index' + '.txt'
             syn_index = np.genfromtxt(index_path, dtype=np.int)
             # np.sum(np.in1d(b, a))
             syn_size = syn_index.shape[0]
@@ -361,12 +395,13 @@ class Statistics:
                 child_index = np.genfromtxt(child_path, dtype=np.int)
                 child_in_synset = np.sum(np.in1d(child_index, syn_index))
                 self.intra_synset[self.ss_to_text(synset)][self.ss_to_text(self.synsets[i])] = child_in_synset
-                text = 'Tenemos ' + str(syn_size) + ' ' + self.ss_to_text(synset) + ' de los cuales ' + str(child_in_synset) \
-                       + ' son ' + str(self.synsets[i]) + ' el ' + str(child_in_synset/syn_size * 100) + ' % \n'
-                print(text)
+                text = 'Tenemos ' + str(syn_size) + ' ' + self.ss_to_text(synset) + ' de los cuales ' + str(
+                    child_in_synset) \
+                       + ' son ' + str(self.synsets[i]) + ' el ' + str(child_in_synset / syn_size * 100) + ' % \n'
+                # print(text)
                 stats_file.write(text)
             j = j + 1
-            print('embedding común')
+            # print('embedding común')
         with open(self.intra_synset_path, 'wb') as handle:
             pickle.dump(self.intra_synset, handle)
         stats_file.close()
@@ -384,8 +419,10 @@ class Statistics:
             self.intra_synset = pickle.load(open(self.intra_synset_path, 'rb'))
 
         for synset in self.synsets:
-            plt.bar(range(len(self.intra_synset[self.ss_to_text(synset)])), self.intra_synset[self.ss_to_text(synset)].values(), align='center')
-            plt.xticks(range(len(self.intra_synset[self.ss_to_text(synset)])), self.intra_synset[self.ss_to_text(synset)].keys())
+            plt.bar(range(len(self.intra_synset[self.ss_to_text(synset)])),
+                    self.intra_synset[self.ss_to_text(synset)].values(), align='center')
+            plt.xticks(range(len(self.intra_synset[self.ss_to_text(synset)])),
+                       self.intra_synset[self.ss_to_text(synset)].keys())
             plt.title('Distribution of the synsets')
             plt.xlabel('Synsets')
             plt.ylabel('Quantity of images')
@@ -396,7 +433,6 @@ class Statistics:
             plt.cla()
             plt.clf()
             plt.close()
-
 
     def images_per_feature_per_synset_gen(self):
         """
@@ -417,9 +453,10 @@ class Statistics:
                 self.images_per_feature_per_synset[feature][i] = {}
                 feature_index = np.where(np.equal(feature_column, i))
                 for synset in self.synsets:
-                    index_path = self.dir_path+ self.ss_to_text(synset) + '_index' + '.txt'
+                    index_path = self.dir_path + self.ss_to_text(synset) + '_index' + '.txt'
                     synset_index = np.genfromtxt(index_path, dtype=np.int)
-                    self.images_per_feature_per_synset[feature][i][self.ss_to_text(synset)] = np.sum(np.in1d(synset_index, feature_index))
+                    self.images_per_feature_per_synset[feature][i][self.ss_to_text(synset)] = np.sum(
+                        np.in1d(synset_index, feature_index))
         with open(self.images_per_feature_per_synset_path, 'wb') as handle:
             pickle.dump(self.images_per_feature_per_synset, handle)
         print('Ha generado images_per_feature_per_synset')
@@ -435,19 +472,88 @@ class Statistics:
             else:
                 print('va a tardar')
                 self.images_per_feature_per_synset_gen()
-                self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path),'rb')
+                self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path), 'rb')
 
         for category in self.data.features_category:
             values = {}
             for key in self.images_per_feature_per_synset.keys():
                 values[key] = self.images_per_feature_per_synset[key][category][self.ss_to_text(synset)]
-            plt.hist(list(values.values()), bins = 50)
-            plt.title('Images per feature of ' + str(category) +' of the synset ' + self.ss_to_text(synset))
+            plt.hist(list(values.values()), bins=50)
+            plt.title('Images per feature of ' + str(category) + ' of the synset ' + self.ss_to_text(synset))
             plt.xlabel('Quantity of ' + str(category))
-            plt.ylabel('Quantity of images')
+            plt.ylabel('Quantity of features')
             plt.grid()
-            plt.savefig(self.plot_path + 'Images_per_feature_of_' + str(category) + '_category_' + self.ss_to_text(synset)+ '.png')
+            plt.savefig(self.plot_path + 'Images_per_feature_of_' + str(category) + '_category_' + self.ss_to_text(
+                synset) + '.png')
             name = 'Images_per_feature_of_' + str(category) + '_category_' + self.ss_to_text(synset) + '.png'
+            self.printlatex(name)
+            plt.cla()
+            plt.clf()
+
+    def is_in_layer(self, feature, layer):
+        return feature in range(layer[0], layer[1])
+
+    def plot_images_per_feature_of_synset_per_layer(self, synset):
+        """
+        Here I want to plot the images per feature in an histogram per category
+        :return:
+        """
+        if self.images_per_feature_per_synset == {}:
+            if path.isfile(self.images_per_feature_per_synset_path):
+                self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path, 'rb'))
+            else:
+                print('va a tardar')
+                self.images_per_feature_per_synset_gen()
+                self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path), 'rb')
+
+        for category in self.data.features_category:
+            values = {}
+            values['conv'] = {}
+            values['fc6tofc7'] = {}
+            for key in self.images_per_feature_per_synset.keys():
+                if self.is_in_layer(key, self.data.layers['conv']):
+                    values['conv'][key] = self.images_per_feature_per_synset[key][category][self.ss_to_text(synset)]
+                else:
+                    values['fc6tofc7'][key] = self.images_per_feature_per_synset[key][category][self.ss_to_text(synset)]
+
+            plt.hist(list(values['conv'].values()), bins=50, color='#194C33')
+            plt.title('Images per feature of ' + str(category) + ' of the synset ' + self.ss_to_text(
+                synset) + ' of the convolutional layer')
+            plt.xlabel('Quantity of ' + str(category))
+            plt.ylabel('Quantity of features')
+            plt.grid()
+            plt.savefig(self.plot_path + 'Images_per_feature_of_' + str(category) + '_category_' + self.ss_to_text(
+                synset) + '_conv.png')
+            name = 'Images_per_feature_of_' + str(category) + '_category_' + self.ss_to_text(synset) + '_conv.png'
+            self.printlatex(name)
+            plt.cla()
+            plt.clf()
+
+            plt.hist(list(values['fc6tofc7'].values()), bins=50, color='crimson')
+            plt.title('Images per feature of ' + str(category) + ' of the synset ' + self.ss_to_text(
+                synset) + 'of the full connected layer')
+            plt.xlabel('Quantity of ' + str(category))
+            plt.ylabel('Quantity of features')
+            plt.grid()
+            plt.savefig(self.plot_path + 'Images_per_feature_of_' + str(category) + '_category_' + self.ss_to_text(
+                synset) + '_fc.png')
+            name = 'Images_per_feature_of_' + str(category) + '_category_' + self.ss_to_text(synset) + '_fc.png'
+            self.printlatex(name)
+            plt.cla()
+            plt.clf()
+
+            # El histograma acumulativo separado entre conv y fc
+            plt.hist([list(values['conv'].values()), list(values['fc6tofc7'].values())], bins=50, histtype='barstacked',
+                     color=['#194C33', 'crimson'], label=['conv', 'fc'])
+            plt.title('Images per feature of ' + str(category) + ' of the synset ' + self.ss_to_text(
+                synset) + ' of the conv and fc layers')
+            plt.xlabel('Quantity of ' + str(category))
+            plt.ylabel('Quantity of features')
+            plt.legend()
+            plt.grid()
+            plt.savefig(self.plot_path + 'Images_per_feature_of_' + str(category) + '_category_' + self.ss_to_text(
+                synset) + 'all_layers.png')
+            name = 'Images_per_feature_of_' + str(category) + '_category_' + self.ss_to_text(synset) + 'all_layers.png'
             self.printlatex(name)
             plt.cla()
             plt.clf()
@@ -464,7 +570,7 @@ class Statistics:
                 self.features_per_image_gen()
                 self.features_per_image = pickle.load(open(self.features_per_image, 'rb'))
         for i in range(len(self.features_per_image.keys())):
-            if self.features_per_image[i][0] ==0:
+            if self.features_per_image[i][0] == 0:
                 print(i)
         print('end')
 
@@ -479,7 +585,7 @@ class Statistics:
             self.images_per_feature[feature] = {}
             feature_column = self.data.dmatrix[:, feature]
             for i in self.data.features_category:
-                self.images_per_feature[feature][i] = np.sum(np.equal(feature_column,i))
+                self.images_per_feature[feature][i] = np.sum(np.equal(feature_column, i))
         with open(self.images_per_feature_path, 'wb') as handle:
             pickle.dump(self.images_per_feature, handle)
 
@@ -491,7 +597,7 @@ class Statistics:
         if self.images_per_feature == {}:
             self.images_per_feature = pickle.load(open(self.images_per_feature_path, 'rb'))
         feature_stats_path = self.features_path + '_stats'
-        feature_stats_file = open(feature_stats_path,'a')
+        feature_stats_file = open(feature_stats_path, 'a')
         for feature in self.images_per_feature:
             feature_stats_file.write(str(feature) + '\n')
             for i in self.data.features_category:
@@ -516,12 +622,13 @@ class Statistics:
             values = {}
             for key in self.images_per_feature.keys():
                 values[key] = self.images_per_feature[key][category]
-            plt.hist(list(values.values()),bins = 50)
+
+            plt.hist(list(values.values()), bins=50)
             plt.title('Images per feature of ' + str(category) + ' category')
             plt.xlabel('Quantity of images')
             plt.ylabel('Quantity of features')
             plt.grid()
-            plt.savefig(self.plot_path +'Images_per_feature_of_' + str(category) + '_category' + '.png')
+            plt.savefig(self.plot_path + 'Images_per_feature_of_' + str(category) + '_category' + '.png')
             name = 'Images_per_feature_of_' + str(category) + '_category' + '.png'
             self.printlatex(name)
             plt.cla()
@@ -534,6 +641,31 @@ class Statistics:
             self.printlatex(name)
             plt.cla()
             plt.clf()
+
+            values = {}
+            values['conv'] = {}
+            values['fc6tofc7'] = {}
+
+            for key in self.images_per_feature.keys():
+                if self.is_in_layer(key, self.data.layers['conv']):
+                    values['conv'][key] = self.images_per_feature[key][category]
+                else:
+                    values['fc6tofc7'][key] = self.images_per_feature[key][category]
+
+            # El histograma acumulativo separado entre conv y fc
+            plt.hist([list(values['conv'].values()), list(values['fc6tofc7'].values())], bins=50, histtype='barstacked',
+                     color=['#194C33', 'crimson'], label=['conv', 'fc'])
+            plt.title('Images per feature of ' + str(category) + ' of the conv and fc layers')
+            plt.xlabel('Quantity of ' + str(category))
+            plt.ylabel('Quantity of features')
+            plt.legend()
+            plt.grid()
+            plt.savefig(self.plot_path + 'Images_per_feature_of_' + str(category) + '_category_' + 'all_layers.png')
+            name = 'Images_per_feature_of_' + str(category) + '_category_' + 'all_layers.png'
+            self.printlatex(name)
+            plt.cla()
+            plt.clf()
+
 
     def find_contradicction_in_synset(self):
         """
@@ -550,14 +682,16 @@ class Statistics:
         :return:
         """
         auxlayers = {
-        'conv1': [0, 128],
-        'conv2': [128, 384],
-        'conv3': [384, 1152],
-        'conv4': [1152, 2688],
-        'conv5': [2688, 4224],
-        'fc6': [4224, 8320],
-        'fc7': [8320, 12416]
-               }
+            'conv1': [0, 128],
+            'conv2': [128, 384],
+            'conv3': [384, 1152],
+            'conv4': [1152, 2688],
+            'conv5': [2688, 4224],
+            'fc6': [4224, 8320],
+            'fc7': [8320, 12416]
+        }
+
+        outlier_file = open(self.outlier_path, 'w')
         if self.images_per_feature == {}:
             if path.isfile(self.images_per_feature_path):
                 self.images_per_feature = pickle.load(open(self.images_per_feature_path, 'rb'))
@@ -565,36 +699,42 @@ class Statistics:
                 self.images_per_feature_gen()
                 self.images_per_feature = pickle.load(open(self.images_per_feature_path, 'rb'))
 
+        outlier_file.write('We are using the embedding ' + str(self.data.version) + '\n')
+        outlier_file.write('Outliers from the synsets ' + self.ss_to_text(self.synsets) + '\n')
         for category in self.data.features_category:
             vals = []
-            print('\n' + str(category) + '\n')
+            # print('\n' + str(category) + '\n')
             for feature in range(len(self.images_per_feature.keys())):
                 vals.append(self.images_per_feature[feature][category])
             mean = np.mean(vals)
             std = np.std(vals)
-            print('mean:' + str(mean) + '\n')
-            print('std:' + str(std) + '\n')
+            # print('mean:' + str(mean) + '\n')
+            # print('std:' + str(std) + '\n')
             downliers = [i for i in range(len(vals)) if vals[i] <= mean - 4 * std]
             upliers = [i for i in range(len(vals)) if vals[i] >= mean + 4 * std]
-            print('lendown ' + str(len(downliers)) + '\n')
-            print('down:' + str(downliers))
-            print('lenup ' + str(len(upliers)) + '\n')
-            print('up:' + str(upliers))
+            outliers = [i for i in range(len(vals)) if vals[i] >= mean + 4 * std or vals[i] <= mean - 4 * std]
+            # print('lendown ' + str(len(downliers)) + '\n')
+            # print('down:' + str(downliers))
+            # print('lenup ' + str(len(upliers)) + '\n')
+            # print('up:' + str(upliers))
             layeroutlier = {}
             for k in list(auxlayers.keys()):
                 layeroutlier[k] = 0
 
             for i in downliers:
                 for k in list(auxlayers.keys()):
-                    if i in range(auxlayers[k][0],auxlayers[k][1]):
-                        layeroutlier[k] +=1
+                    if i in range(auxlayers[k][0], auxlayers[k][1]):
+                        layeroutlier[k] += 1
 
             for i in upliers:
                 for k in list(auxlayers.keys()):
-                    if i in range(auxlayers[k][0],auxlayers[k][1]):
-                        layeroutlier[k] +=1
+                    if i in range(auxlayers[k][0], auxlayers[k][1]):
+                        layeroutlier[k] += 1
 
-            print(layeroutlier)
+            outlier_file.write('category ' + str(category) + '\n')
+            outlier_file.write(str(outliers) + '\n Distribution in the layers: \n')
+            outlier_file.write(str(layeroutlier) + '\n')
+            # print(layeroutlier)
             plt.bar(range(len(layeroutlier)), layeroutlier.values(), align='center')
             plt.xticks(range(len(layeroutlier)), layeroutlier.keys())
             plt.title('Outliers images per features of ' + str(category))
@@ -605,7 +745,7 @@ class Statistics:
             self.printlatex(name)
             plt.cla()
             plt.clf()
-
+        outlier_file.close()
 
     def features_per_layer_gen(self):
         """
@@ -642,7 +782,6 @@ class Statistics:
             plt.cla()
             plt.clf()
 
-
     def features_per_image_gen(self):
         """
         Esta función debería calcular para cada imagen cuantas features de cada tipo se activan
@@ -651,7 +790,7 @@ class Statistics:
         dic[imagen][tipo]=cantidad de features de este tipo que se activan
         """
         for image in range(0, len(self.data.labels)):
-            self.features_per_image[image] = self.count_features(self.data.dmatrix[image,:])
+            self.features_per_image[image] = self.count_features(self.data.dmatrix[image, :])
         with open(self.features_per_image_path, 'wb') as handle:
             pickle.dump(self.features_per_image, handle)
         return self.features_per_image
@@ -673,12 +812,12 @@ class Statistics:
             values = {}
             for key in self.features_per_image.keys():
                 values[key] = self.features_per_image[key][category]
-            plt.hist(list(values.values()),bins = 50)
+            plt.hist(list(values.values()), bins=50)
             plt.title('Features per image for ' + str(category) + ' category')
             plt.ylabel('Quantity of ' + str(category))
             plt.xlabel('Quantity of images')
-        #TODO HACER EL PLOT PARA LAS TRES FEATURES JUNTITAS
-            #plt.show()
+            # TODO HACER EL PLOT PARA LAS TRES FEATURES JUNTITAS
+            # plt.show()
             plt.grid()
             plt.savefig(self.plot_path + 'features_per_image' + str(category))
             name = 'features_per_image' + str(category)
@@ -697,6 +836,7 @@ class Statistics:
         self.plot_images_per_feature()
         self.plot_synsets_on_data()
         self.plot_intra_synset()
-        #for synset in self.synsets:
-        #    self.plot_images_per_feature_of_synset(synset)
+        for synset in self.synsets:
+            self.plot_images_per_feature_of_synset(synset)
+            self.plot_images_per_feature_of_synset_per_layer(synset)
         self.plot_features_per_layer()
