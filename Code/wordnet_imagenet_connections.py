@@ -830,16 +830,30 @@ class Statistics:
         Esta funcion llama a todos los plots que tengo
         """
         self.plot_features_per_image()
+        plt.cla()
+        plt.clf()
         self.plot_all_features()
+        plt.cla()
+        plt.clf()
         self.plot_features_per_synset()
+        plt.cla()
+        plt.clf()
         self.plot_images_per_feature()
+        plt.cla()
+        plt.clf()
         self.plot_synsets_on_data()
+        plt.cla()
+        plt.clf()
         self.plot_intra_synset()
         for synset in self.synsets:
             self.plot_images_per_feature_of_synset(synset)
             self.plot_images_per_feature_of_synset_per_layer(synset)
         self.plot_features_per_layer()
+        plt.cla()
+        plt.clf()
         self.plot_matrix()
+        plt.cla()
+        plt.clf()
 
     def get_representive(self, synset):
         """
