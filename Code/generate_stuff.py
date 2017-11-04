@@ -20,7 +20,7 @@ wheeled_vehicle = wn.synsets('wheeled_vehicle')[0]
 
 synsets_non_living = [object, instrum, conv, wheeled_vehicle]
 
-embeddings_version = [19, 31]
+embeddings_version = [19, 25, 31]
 for version in embeddings_version:
 
     data = Data(version)
@@ -33,10 +33,8 @@ for version in embeddings_version:
     sys.stdout.flush()
     sys.stdout.write("\b" * (toolbar_width + 1))  # return to start of line, after '['
 
-    for synset in synsets_living:
-        stats_living.plot_images_per_feature_of_synset(synset)
-    for synset in synsets_non_living:
-        stats_non_living.plot_images_per_feature_of_synset(synset)
+    stats_living.plot_all()
+    stats_non_living.plot_all()
 
     for i in range(toolbar_width):
         sys.stdout.write("-")
