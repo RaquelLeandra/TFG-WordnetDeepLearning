@@ -461,35 +461,6 @@ class Statistics:
             pickle.dump(self.images_per_feature_per_synset, handle)
         print('Ha generado images_per_feature_per_synset')
 
-    def plot_images_per_feature_of_synset(self, synset):
-        """
-        Here I want to plot the images per feature in an histogram per category
-        :return:
-        """
-        if self.images_per_feature_per_synset == {}:
-            if path.isfile(self.images_per_feature_per_synset_path):
-                self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path, 'rb'))
-            else:
-                print('va a tardar')
-                self.images_per_feature_per_synset_gen()
-                self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path), 'rb')
-
-        for category in self.data.features_category:
-            values = {}
-            for key in self.images_per_feature_per_synset.keys():
-                values[key] = self.images_per_feature_per_synset[key][category][self.ss_to_text(synset)]
-            plt.hist(list(values.values()), bins=50)
-            plt.title('Images per feature of ' + str(category) + ' of the synset ' + self.ss_to_text(synset))
-            plt.xlabel('Quantity of ' + str(category))
-            plt.ylabel('Quantity of features')
-            plt.grid()
-            plt.savefig(self.plot_path + 'Images_per_feature_of_' + str(category) + '_category_' + self.ss_to_text(
-                synset) + '.png')
-            name = 'Images_per_feature_of_' + str(category) + '_category_' + self.ss_to_text(synset) + '.png'
-            self.printlatex(name)
-            plt.cla()
-            plt.clf()
-
     def is_in_layer(self, feature, layer):
         return feature in range(layer[0], layer[1])
 
@@ -666,7 +637,6 @@ class Statistics:
             plt.cla()
             plt.clf()
 
-
     def find_contradicction_in_synset(self):
         """
         es un copypaste
@@ -825,6 +795,35 @@ class Statistics:
             plt.cla()
             plt.clf()
 
+    def plot_images_per_feature_of_synset(self, synset):
+        """
+        Here I want to plot the images per feature in an histogram per category
+        :return:
+        """
+        if self.images_per_feature_per_synset == {}:
+            if path.isfile(self.images_per_feature_per_synset_path):
+                self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path, 'rb'))
+            else:
+                print('va a tardar')
+                self.images_per_feature_per_synset_gen()
+                self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path), 'rb')
+
+        for category in self.data.features_category:
+            values = {}
+            for key in self.images_per_feature_per_synset.keys():
+                values[key] = self.images_per_feature_per_synset[key][category][self.ss_to_text(synset)]
+            plt.hist(list(values.values()), bins=50)
+            plt.title('Images per feature of ' + str(category) + ' of the synset ' + self.ss_to_text(synset))
+            plt.xlabel('Quantity of ' + str(category))
+            plt.ylabel('Quantity of features')
+            plt.grid()
+            plt.savefig(self.plot_path + 'Images_per_feature_of_' + str(category) + '_category_' + self.ss_to_text(
+                synset) + '.png')
+            name = 'Images_per_feature_of_' + str(category) + '_category_' + self.ss_to_text(synset) + '.png'
+            self.printlatex(name)
+            plt.cla()
+            plt.clf()
+
     def plot_all(self):
         """
         ORDENAR LOS PLOTS
@@ -840,3 +839,109 @@ class Statistics:
             self.plot_images_per_feature_of_synset(synset)
             self.plot_images_per_feature_of_synset_per_layer(synset)
         self.plot_features_per_layer()
+        self.plot_matrix()
+
+    def get_representive(self, synset):
+        """
+        Quiero que me devuelva un vector tal que el valor i sea el que tiene mayor proporción dentro del synset.
+        representative[feature] = 1, -1 o 0 según el valor que se repite más veces.
+        Utilizo como valor auxiliar un diccionario de la siguiente forma, que obtengo de images_per_feature_per_synset
+        dict[feature] = {1: cantidad de 1, -1: cantidad de -1, 0: cantidad de 0}
+
+        :param synset:
+        :return: representative
+        """
+        if self.images_per_feature_per_synset == {}:
+            if path.isfile(self.images_per_feature_per_synset_path):
+                self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path, 'rb'))
+            else:
+                print('Generando images_per_feature_per_synset')
+                self.images_per_feature_per_synset_gen()
+                self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path), 'rb')
+
+        representative = []
+        #aux[feature][category] = cantidad de valores de la category en cuestion para la feature tal
+        aux = {}
+        for feature in self.images_per_feature_per_synset.keys():
+            aux[feature] = {}
+            for category in self.images_per_feature_per_synset[feature].keys():
+                aux[feature][category] = self.images_per_feature_per_synset[feature][category][self.ss_to_text(synset)]
+        for feature in aux:
+            representative.append(max(aux[feature], key=aux[feature].get))
+        return representative
+
+    def changes_matrix(self, synset1, synset2):
+        """
+        Genero una matriz de los cambios de los valores para el vector representante del synset1 al synset2:
+
+          | -1     0    1
+        ------------------
+        -1| a     b     c
+        0 | d     e     f
+        1 | g     h     i
+
+        donde el valor a sería la cantidad de -1 que se mantienen constantes entre un synset y el otro.
+        El valor b sería los 0 del synset 1 que pasan a ser -1 en el synset 2
+        etd.
+
+        :param synset1:
+        :param synset2:
+        :return: cambios
+        """
+        rep1 = self.get_representive(synset1)
+        rep2 = self.get_representive(synset2)
+        changes = np.zeros([3,3])
+        for feature in range(0,len(rep1)):
+            r1 = rep1[feature]
+            r2 = rep2[feature]
+            if r1 == r2 == -1:
+                changes[0][0] +=1
+            elif r1 == r2 == 0:
+                changes[1][1] += 1
+            elif r1 == r2 == 1:
+                changes[2][2] += 1
+
+            elif r1 == -1 and r2 == 0:
+                changes[1][0] += 1
+            elif r1 == -1 and r2 == 1:
+                changes[2][0] += 1
+
+            elif r1 == 0 and r2 == -1:
+                changes[0][1] += 1
+            elif r1 == 0 and r2 == 1:
+                changes[2][1] += 1
+
+            elif r1 == 1 and r2 == -1:
+                changes[0][2] += 1
+            elif r1 == 1 and r2 == 0:
+                changes[1][2] += 1
+
+        fig, ax = plt.subplots(figsize=(5, 5))
+        diag = np.zeros([3, 3])
+        diag[0, 0] += 1
+        diag[1, 1] += 1
+        diag[2, 2] += 1
+        ax.matshow(diag, cmap=plt.cm.Blues, alpha=0.3)
+        for i in range(changes.shape[0]):
+            for j in range(changes.shape[1]):
+                ax.text(x=j, y=i, s=changes[i, j], va='center', ha='center', fontsize=20)
+        plt.xticks([0, 1, 2], [-1, 0, 1])
+        plt.yticks([0, 1, 2], [-1, 0, 1])
+        plt.xlabel('Original values')
+        plt.ylabel('New values')
+        plt.title('Changes from ' + self.ss_to_text(synset1) + ' to ' + self.ss_to_text(synset2))
+        plt.tight_layout()
+        plt.savefig(self.plot_path + 'Changes from ' + self.ss_to_text(synset1) + ' to ' + self.ss_to_text(synset2) + '.png')
+        name = 'Changes from ' + self.ss_to_text(synset1) + ' to ' + self.ss_to_text(synset2) + '.png'
+        self.printlatex(name)
+        plt.cla()
+        plt.clf()
+
+    def plot_matrix(self):
+        """
+        Quiero pintar la matriz de cambios para cada synset
+        :return:
+        """
+        for synset1 in self.synsets:
+            for synset2 in self.synsets:
+                self.changes_matrix(synset1,synset2)
