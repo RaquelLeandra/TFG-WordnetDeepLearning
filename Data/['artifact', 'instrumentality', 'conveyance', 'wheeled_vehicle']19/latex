@@ -1,1520 +1,1520 @@
 
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_image-1}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_image-1}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_image-1}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_image-1}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_image-1}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_image-1}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_image0}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_image0}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_image0}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_image0}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_image0}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_image0}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_image1}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_image1}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_image1}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_image1}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_image1}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_image1}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/quantity_of_features_bar.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/quantity_of_features_bar.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/quantity_of_features_bar.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/quantity_of_features_bar.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/quantity_of_features_bar.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/quantity_of_features_bar.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/all_features_pie.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/all_features_pie.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/all_features_pie.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/all_features_pie.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/all_features_pie.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/all_features_pie.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_synset_bar_artifact.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_synset_bar_artifact.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_synset_bar_artifact.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_synset_bar_artifact.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_synset_bar_artifact.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_synset_bar_artifact.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_synset_bar_instrumentality.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_synset_bar_instrumentality.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_synset_bar_instrumentality.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_synset_bar_instrumentality.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_synset_bar_instrumentality.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_synset_bar_instrumentality.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_synset_bar_conveyance.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_synset_bar_conveyance.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_synset_bar_conveyance.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_synset_bar_conveyance.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_synset_bar_conveyance.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_synset_bar_conveyance.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_synset_bar_wheeled_vehicle.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_synset_bar_wheeled_vehicle.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_synset_bar_wheeled_vehicle.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_synset_bar_wheeled_vehicle.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_synset_bar_wheeled_vehicle.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_synset_bar_wheeled_vehicle.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_box.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_box.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_box.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_box.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_box.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_box.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_all_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_all_layers.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_all_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_all_layers.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_all_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_all_layers.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_box.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_box.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_box.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_box.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_box.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_box.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_all_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_all_layers.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_all_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_all_layers.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_all_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_all_layers.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_box.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_box.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_box.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_box.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_box.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_box.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_all_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_all_layers.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_all_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_all_layers.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_all_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_all_layers.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/distribution_of_synsets_bar.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/distribution_of_synsets_bar.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/distribution_of_synsets_bar.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/distribution_of_synsets_bar.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/distribution_of_synsets_bar.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/distribution_of_synsets_bar.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/distribution_of_synsets_pie.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/distribution_of_synsets_pie.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/distribution_of_synsets_pie.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/distribution_of_synsets_pie.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/distribution_of_synsets_pie.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/distribution_of_synsets_pie.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/distribution_of_inter_synsets_bar_artifact.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/distribution_of_inter_synsets_bar_artifact.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/distribution_of_inter_synsets_bar_artifact.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/distribution_of_inter_synsets_bar_artifact.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/distribution_of_inter_synsets_bar_artifact.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/distribution_of_inter_synsets_bar_artifact.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/distribution_of_inter_synsets_bar_instrumentality.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/distribution_of_inter_synsets_bar_instrumentality.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/distribution_of_inter_synsets_bar_instrumentality.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/distribution_of_inter_synsets_bar_instrumentality.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/distribution_of_inter_synsets_bar_instrumentality.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/distribution_of_inter_synsets_bar_instrumentality.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/distribution_of_inter_synsets_bar_conveyance.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/distribution_of_inter_synsets_bar_conveyance.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/distribution_of_inter_synsets_bar_conveyance.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/distribution_of_inter_synsets_bar_conveyance.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/distribution_of_inter_synsets_bar_conveyance.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/distribution_of_inter_synsets_bar_conveyance.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/distribution_of_inter_synsets_bar_wheeled_vehicle.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/distribution_of_inter_synsets_bar_wheeled_vehicle.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/distribution_of_inter_synsets_bar_wheeled_vehicle.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/distribution_of_inter_synsets_bar_wheeled_vehicle.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/distribution_of_inter_synsets_bar_wheeled_vehicle.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/distribution_of_inter_synsets_bar_wheeled_vehicle.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_artifact.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_artifact.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_artifact.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_artifact.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_artifact.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_artifact.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_artifact.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_artifact.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_artifact.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_artifact.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_artifact.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_artifact.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_artifact.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_artifact.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_artifact.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_artifact.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_artifact.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_artifact.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_artifact_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_artifact_conv.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_artifact_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_artifact_conv.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_artifact_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_artifact_conv.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_artifact_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_artifact_fc.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_artifact_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_artifact_fc.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_artifact_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_artifact_fc.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_artifactall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_artifactall_layers.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_artifactall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_artifactall_layers.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_artifactall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_artifactall_layers.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_artifact_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_artifact_conv.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_artifact_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_artifact_conv.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_artifact_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_artifact_conv.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_artifact_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_artifact_fc.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_artifact_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_artifact_fc.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_artifact_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_artifact_fc.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_artifactall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_artifactall_layers.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_artifactall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_artifactall_layers.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_artifactall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_artifactall_layers.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_artifact_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_artifact_conv.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_artifact_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_artifact_conv.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_artifact_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_artifact_conv.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_artifact_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_artifact_fc.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_artifact_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_artifact_fc.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_artifact_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_artifact_fc.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_artifactall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_artifactall_layers.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_artifactall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_artifactall_layers.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_artifactall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_artifactall_layers.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_instrumentality.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_instrumentality.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_instrumentality.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_instrumentality.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_instrumentality.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_instrumentality.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_instrumentality.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_instrumentality.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_instrumentality.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_instrumentality.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_instrumentality.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_instrumentality.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_instrumentality.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_instrumentality.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_instrumentality.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_instrumentality.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_instrumentality.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_instrumentality.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_instrumentality_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_instrumentality_conv.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_instrumentality_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_instrumentality_conv.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_instrumentality_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_instrumentality_conv.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_instrumentality_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_instrumentality_fc.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_instrumentality_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_instrumentality_fc.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_instrumentality_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_instrumentality_fc.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_instrumentalityall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_instrumentalityall_layers.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_instrumentalityall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_instrumentalityall_layers.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_instrumentalityall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_instrumentalityall_layers.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_instrumentality_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_instrumentality_conv.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_instrumentality_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_instrumentality_conv.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_instrumentality_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_instrumentality_conv.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_instrumentality_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_instrumentality_fc.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_instrumentality_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_instrumentality_fc.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_instrumentality_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_instrumentality_fc.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_instrumentalityall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_instrumentalityall_layers.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_instrumentalityall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_instrumentalityall_layers.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_instrumentalityall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_instrumentalityall_layers.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_instrumentality_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_instrumentality_conv.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_instrumentality_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_instrumentality_conv.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_instrumentality_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_instrumentality_conv.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_instrumentality_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_instrumentality_fc.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_instrumentality_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_instrumentality_fc.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_instrumentality_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_instrumentality_fc.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_instrumentalityall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_instrumentalityall_layers.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_instrumentalityall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_instrumentalityall_layers.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_instrumentalityall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_instrumentalityall_layers.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_conveyance.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_conveyance.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_conveyance.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_conveyance.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_conveyance.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_conveyance.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_conveyance.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_conveyance.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_conveyance.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_conveyance.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_conveyance.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_conveyance.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_conveyance.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_conveyance.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_conveyance.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_conveyance.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_conveyance.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_conveyance.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_conveyance_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_conveyance_conv.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_conveyance_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_conveyance_conv.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_conveyance_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_conveyance_conv.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_conveyance_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_conveyance_fc.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_conveyance_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_conveyance_fc.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_conveyance_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_conveyance_fc.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_conveyanceall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_conveyanceall_layers.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_conveyanceall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_conveyanceall_layers.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_conveyanceall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_conveyanceall_layers.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_conveyance_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_conveyance_conv.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_conveyance_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_conveyance_conv.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_conveyance_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_conveyance_conv.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_conveyance_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_conveyance_fc.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_conveyance_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_conveyance_fc.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_conveyance_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_conveyance_fc.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_conveyanceall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_conveyanceall_layers.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_conveyanceall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_conveyanceall_layers.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_conveyanceall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_conveyanceall_layers.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_conveyance_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_conveyance_conv.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_conveyance_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_conveyance_conv.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_conveyance_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_conveyance_conv.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_conveyance_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_conveyance_fc.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_conveyance_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_conveyance_fc.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_conveyance_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_conveyance_fc.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_conveyanceall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_conveyanceall_layers.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_conveyanceall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_conveyanceall_layers.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_conveyanceall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_conveyanceall_layers.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_wheeled_vehicle.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_wheeled_vehicle.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_wheeled_vehicle.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_wheeled_vehicle.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_wheeled_vehicle.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_wheeled_vehicle.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_wheeled_vehicle.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_wheeled_vehicle.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_wheeled_vehicle.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_wheeled_vehicle.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_wheeled_vehicle.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_wheeled_vehicle.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_wheeled_vehicle.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_wheeled_vehicle.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_wheeled_vehicle.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_wheeled_vehicle.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_wheeled_vehicle.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_wheeled_vehicle.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_wheeled_vehicle_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_wheeled_vehicle_conv.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_wheeled_vehicle_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_wheeled_vehicle_conv.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_wheeled_vehicle_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_wheeled_vehicle_conv.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_wheeled_vehicle_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_wheeled_vehicle_fc.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_wheeled_vehicle_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_wheeled_vehicle_fc.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_wheeled_vehicle_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_wheeled_vehicle_fc.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_wheeled_vehicleall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_wheeled_vehicleall_layers.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_wheeled_vehicleall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_wheeled_vehicleall_layers.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_wheeled_vehicleall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_wheeled_vehicleall_layers.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_wheeled_vehicle_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_wheeled_vehicle_conv.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_wheeled_vehicle_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_wheeled_vehicle_conv.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_wheeled_vehicle_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_wheeled_vehicle_conv.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_wheeled_vehicle_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_wheeled_vehicle_fc.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_wheeled_vehicle_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_wheeled_vehicle_fc.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_wheeled_vehicle_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_wheeled_vehicle_fc.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_wheeled_vehicleall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_wheeled_vehicleall_layers.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_wheeled_vehicleall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_wheeled_vehicleall_layers.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_wheeled_vehicleall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_wheeled_vehicleall_layers.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_wheeled_vehicle_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_wheeled_vehicle_conv.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_wheeled_vehicle_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_wheeled_vehicle_conv.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_wheeled_vehicle_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_wheeled_vehicle_conv.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_wheeled_vehicle_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_wheeled_vehicle_fc.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_wheeled_vehicle_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_wheeled_vehicle_fc.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_wheeled_vehicle_fc.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_wheeled_vehicle_fc.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_wheeled_vehicleall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_wheeled_vehicleall_layers.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_wheeled_vehicleall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_wheeled_vehicleall_layers.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_wheeled_vehicleall_layers.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_wheeled_vehicleall_layers.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv1_1.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv1_1.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv1_1.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv1_1.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv1_1.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv1_1.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv1_2.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv1_2.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv1_2.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv1_2.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv1_2.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv1_2.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv2_1.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv2_1.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv2_1.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv2_1.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv2_1.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv2_1.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv2_2.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv2_2.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv2_2.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv2_2.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv2_2.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv2_2.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv3_1.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv3_1.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv3_1.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv3_1.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv3_1.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv3_1.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv3_2.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv3_2.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv3_2.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv3_2.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv3_2.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv3_2.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv3_3.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv3_3.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv3_3.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv3_3.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv3_3.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv3_3.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv4_1.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv4_1.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv4_1.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv4_1.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv4_1.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv4_1.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv4_2.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv4_2.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv4_2.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv4_2.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv4_2.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv4_2.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv4_3.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv4_3.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv4_3.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv4_3.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv4_3.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv4_3.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv5_1.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv5_1.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv5_1.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv5_1.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv5_1.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv5_1.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv5_2.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv5_2.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv5_2.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv5_2.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv5_2.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv5_2.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv5_3.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv5_3.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv5_3.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv5_3.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv5_3.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv5_3.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_fc6.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_fc6.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_fc6.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_fc6.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_fc6.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_fc6.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_fc7.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_fc7.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_fc7.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_fc7.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_fc7.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_fc7.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv1.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv1.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv1.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv1.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv1.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv1.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv2.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv2.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv2.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv2.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv2.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv2.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv3.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv3.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv3.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv3.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv3.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv3.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv4.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv4.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv4.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv4.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv4.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv4.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv5.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv5.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv5.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv5.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv5.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv5.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_conv.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_conv.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_conv.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_2_5conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_2_5conv.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_2_5conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_2_5conv.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_2_5conv.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_2_5conv.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
         
        \begin{figure}[h] 
             \centering
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_fc6tofc7.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_layer_of_fc6tofc7.png}
             \caption*{Embedding 19}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_fc6tofc7.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_layer_of_fc6tofc7.png}
             \caption*{Embedding 25}
  	        \end{subfigure}
-            \begin{subfigure}[b]{0.3	extwidth}
-            \includegraphics[width=	extwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_fc6tofc7.png}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_layer_of_fc6tofc7.png}
             \caption*{Embedding 31}
  	        \end{subfigure}       
         \end{figure}
