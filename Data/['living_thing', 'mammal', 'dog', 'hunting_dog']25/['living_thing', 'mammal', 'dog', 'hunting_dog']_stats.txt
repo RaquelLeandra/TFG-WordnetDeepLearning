@@ -92,3 +92,7 @@ Tenemos 50000 imagenes, de las cuales 20500.0, el 41.0 son living_thing
 Tenemos 50000 imagenes, de las cuales 10900.0, el 21.8 son mammal
 Tenemos 50000 imagenes, de las cuales 5900.0, el 11.799999999999999 son dog
 Tenemos 50000 imagenes, de las cuales 3150.0, el 6.3 son hunting_dog
+Tenemos 50000 imagenes, de las cuales 20500.0, el 41.0 son living_thing
+Tenemos 50000 imagenes, de las cuales 10900.0, el 21.8 son mammal
+Tenemos 50000 imagenes, de las cuales 5900.0, el 11.799999999999999 son dog
+Tenemos 50000 imagenes, de las cuales 3150.0, el 6.3 son hunting_dog

@@ -1,666 +1,1521 @@
 
        \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_image-1} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_image-1} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_image-1}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_image0} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_image0} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_image0}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_image1} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_image1} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_image1}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/quantity_of_features_bar.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/quantity_of_features_bar.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/quantity_of_features_bar.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/all_features_pie.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/all_features_pie.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/all_features_pie.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_synset_bar_living_thing.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_synset_bar_living_thing.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_synset_bar_living_thing.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_synset_bar_mammal.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_synset_bar_mammal.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_synset_bar_mammal.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_synset_bar_dog.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_synset_bar_dog.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_synset_bar_dog.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_synset_bar_hunting_dog.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_synset_bar_hunting_dog.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_synset_bar_hunting_dog.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_box.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_box.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_box.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_all_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_all_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_all_layers.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_box.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_box.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_box.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_all_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_all_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_all_layers.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_box.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_box.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_box.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_all_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_all_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_all_layers.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/distribution_of_synsets_bar.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/distribution_of_synsets_bar.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/distribution_of_synsets_bar.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/distribution_of_synsets_pie.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/distribution_of_synsets_pie.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/distribution_of_synsets_pie.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/distribution_of_inter_synsets_bar_living_thing.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/distribution_of_inter_synsets_bar_living_thing.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/distribution_of_inter_synsets_bar_living_thing.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/distribution_of_inter_synsets_bar_mammal.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/distribution_of_inter_synsets_bar_mammal.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/distribution_of_inter_synsets_bar_mammal.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/distribution_of_inter_synsets_bar_dog.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/distribution_of_inter_synsets_bar_dog.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/distribution_of_inter_synsets_bar_dog.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/distribution_of_inter_synsets_bar_hunting_dog.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/distribution_of_inter_synsets_bar_hunting_dog.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/distribution_of_inter_synsets_bar_hunting_dog.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_living_thing.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_living_thing.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_living_thing.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_living_thing.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_living_thing.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_living_thing.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_living_thing.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_living_thing.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_living_thing.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_living_thing_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_living_thing_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_living_thing_conv.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_living_thing_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_living_thing_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_living_thing_fc.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_living_thingall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_living_thingall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_living_thingall_layers.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_living_thing_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_living_thing_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_living_thing_conv.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_living_thing_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_living_thing_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_living_thing_fc.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_living_thingall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_living_thingall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_living_thingall_layers.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_living_thing_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_living_thing_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_living_thing_conv.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_living_thing_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_living_thing_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_living_thing_fc.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_living_thingall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_living_thingall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_living_thingall_layers.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_mammal.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_mammal.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_mammal.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_mammal.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_mammal.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_mammal.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_mammal.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_mammal.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_mammal.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_mammal_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_mammal_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_mammal_conv.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_mammal_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_mammal_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_mammal_fc.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_mammalall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_mammalall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_mammalall_layers.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_mammal_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_mammal_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_mammal_conv.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_mammal_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_mammal_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_mammal_fc.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_mammalall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_mammalall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_mammalall_layers.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_mammal_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_mammal_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_mammal_conv.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_mammal_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_mammal_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_mammal_fc.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_mammalall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_mammalall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_mammalall_layers.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_dog.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_dog.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_dog.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_dog.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_dog.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_dog.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_dog.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_dog.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_dog.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_dog_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_dog_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_dog_conv.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_dog_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_dog_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_dog_fc.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_dogall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_dogall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_dogall_layers.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_dog_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_dog_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_dog_conv.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_dog_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_dog_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_dog_fc.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_dogall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_dogall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_dogall_layers.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_dog_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_dog_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_dog_conv.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_dog_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_dog_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_dog_fc.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_dogall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_dogall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_dogall_layers.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_hunting_dog.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_hunting_dog.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_hunting_dog.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_hunting_dog.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_hunting_dog.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_hunting_dog.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_hunting_dog.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_hunting_dog.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_hunting_dog.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_hunting_dog_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_hunting_dog_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_hunting_dog_conv.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_hunting_dog_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_hunting_dog_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_hunting_dog_fc.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_hunting_dogall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_hunting_dogall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_hunting_dogall_layers.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_hunting_dog_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_hunting_dog_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_hunting_dog_conv.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_hunting_dog_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_hunting_dog_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_hunting_dog_fc.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_hunting_dogall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_hunting_dogall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_hunting_dogall_layers.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_hunting_dog_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_hunting_dog_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_hunting_dog_conv.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_hunting_dog_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_hunting_dog_fc.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_hunting_dog_fc.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_hunting_dogall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_hunting_dogall_layers.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_hunting_dogall_layers.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv1_1.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv1_1.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv1_1.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv1_2.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv1_2.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv1_2.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv2_1.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv2_1.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv2_1.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv2_2.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv2_2.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv2_2.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv3_1.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv3_1.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv3_1.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv3_2.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv3_2.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv3_2.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv3_3.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv3_3.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv3_3.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv4_1.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv4_1.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv4_1.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv4_2.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv4_2.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv4_2.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv4_3.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv4_3.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv4_3.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv5_1.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv5_1.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv5_1.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv5_2.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv5_2.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv5_2.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv5_3.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv5_3.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv5_3.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_fc6.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_fc6.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_fc6.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_fc7.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_fc7.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_fc7.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv1.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv1.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv1.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv2.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv2.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv2.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv3.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv3.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv3.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv4.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv4.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv4.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv5.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv5.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv5.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_2_5conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_2_5conv.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_2_5conv.png}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_fc6tofc7.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_fc6tofc7.png} 
-            \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_fc6tofc7.png}       
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_image-1}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_image-1}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_image-1}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_image0}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_image0}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_image0}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_image1}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_image1}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_image1}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/quantity_of_features_bar.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/quantity_of_features_bar.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/quantity_of_features_bar.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/all_features_pie.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/all_features_pie.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/all_features_pie.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_synset_bar_living_thing.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_synset_bar_living_thing.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_synset_bar_living_thing.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_synset_bar_mammal.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_synset_bar_mammal.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_synset_bar_mammal.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_synset_bar_dog.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_synset_bar_dog.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_synset_bar_dog.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_synset_bar_hunting_dog.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_synset_bar_hunting_dog.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_synset_bar_hunting_dog.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_box.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_box.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_box.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_all_layers.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_all_layers.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_all_layers.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_box.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_box.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_box.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_all_layers.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_all_layers.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_all_layers.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_box.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_box.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_box.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_all_layers.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_all_layers.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_all_layers.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/distribution_of_synsets_bar.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/distribution_of_synsets_bar.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/distribution_of_synsets_bar.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/distribution_of_synsets_pie.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/distribution_of_synsets_pie.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/distribution_of_synsets_pie.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/distribution_of_inter_synsets_bar_living_thing.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/distribution_of_inter_synsets_bar_living_thing.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/distribution_of_inter_synsets_bar_living_thing.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/distribution_of_inter_synsets_bar_mammal.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/distribution_of_inter_synsets_bar_mammal.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/distribution_of_inter_synsets_bar_mammal.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/distribution_of_inter_synsets_bar_dog.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/distribution_of_inter_synsets_bar_dog.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/distribution_of_inter_synsets_bar_dog.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/distribution_of_inter_synsets_bar_hunting_dog.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/distribution_of_inter_synsets_bar_hunting_dog.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/distribution_of_inter_synsets_bar_hunting_dog.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_living_thing.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_living_thing.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_living_thing.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_living_thing.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_living_thing.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_living_thing.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_living_thing.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_living_thing.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_living_thing.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_living_thing_conv.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_living_thing_conv.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_living_thing_conv.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_living_thing_fc.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_living_thing_fc.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_living_thing_fc.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_living_thingall_layers.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_living_thingall_layers.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_living_thingall_layers.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_living_thing_conv.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_living_thing_conv.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_living_thing_conv.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_living_thing_fc.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_living_thing_fc.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_living_thing_fc.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_living_thingall_layers.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_living_thingall_layers.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_living_thingall_layers.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_living_thing_conv.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_living_thing_conv.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_living_thing_conv.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_living_thing_fc.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_living_thing_fc.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_living_thing_fc.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_living_thingall_layers.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_living_thingall_layers.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_living_thingall_layers.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_mammal.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_mammal.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_mammal.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_mammal.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_mammal.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_mammal.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_mammal.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_mammal.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_mammal.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_mammal_conv.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_mammal_conv.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_mammal_conv.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_mammal_fc.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_mammal_fc.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_mammal_fc.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_mammalall_layers.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_mammalall_layers.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_mammalall_layers.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_mammal_conv.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_mammal_conv.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_mammal_conv.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_mammal_fc.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_mammal_fc.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_mammal_fc.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_mammalall_layers.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_mammalall_layers.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_mammalall_layers.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_mammal_conv.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_mammal_conv.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_mammal_conv.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_mammal_fc.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_mammal_fc.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_mammal_fc.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_mammalall_layers.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_mammalall_layers.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_mammalall_layers.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_dog.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_dog.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_dog.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_dog.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_dog.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_dog.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_dog.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_dog.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_dog.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_dog_conv.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_dog_conv.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_dog_conv.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_dog_fc.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_dog_fc.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_dog_fc.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_dogall_layers.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_dogall_layers.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_dogall_layers.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_dog_conv.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_dog_conv.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_dog_conv.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_dog_fc.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_dog_fc.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_dog_fc.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_dogall_layers.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_dogall_layers.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_dogall_layers.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_dog_conv.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_dog_conv.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_dog_conv.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_dog_fc.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_dog_fc.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_dog_fc.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_dogall_layers.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_dogall_layers.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_dogall_layers.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_hunting_dog.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_hunting_dog.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_hunting_dog.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_hunting_dog.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_hunting_dog.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_hunting_dog.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_hunting_dog.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_hunting_dog.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_hunting_dog.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_hunting_dog_conv.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_hunting_dog_conv.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_hunting_dog_conv.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_hunting_dog_fc.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_hunting_dog_fc.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_hunting_dog_fc.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_hunting_dogall_layers.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_hunting_dogall_layers.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_hunting_dogall_layers.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_hunting_dog_conv.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_hunting_dog_conv.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_hunting_dog_conv.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_hunting_dog_fc.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_hunting_dog_fc.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_hunting_dog_fc.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_hunting_dogall_layers.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_hunting_dogall_layers.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_hunting_dogall_layers.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_hunting_dog_conv.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_hunting_dog_conv.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_hunting_dog_conv.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_hunting_dog_fc.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_hunting_dog_fc.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_hunting_dog_fc.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_hunting_dogall_layers.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_hunting_dogall_layers.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_hunting_dogall_layers.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv1_1.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv1_1.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv1_1.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv1_2.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv1_2.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv1_2.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv2_1.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv2_1.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv2_1.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv2_2.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv2_2.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv2_2.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv3_1.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv3_1.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv3_1.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv3_2.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv3_2.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv3_2.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv3_3.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv3_3.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv3_3.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv4_1.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv4_1.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv4_1.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv4_2.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv4_2.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv4_2.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv4_3.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv4_3.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv4_3.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv5_1.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv5_1.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv5_1.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv5_2.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv5_2.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv5_2.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv5_3.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv5_3.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv5_3.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_fc6.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_fc6.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_fc6.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_fc7.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_fc7.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_fc7.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv1.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv1.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv1.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv2.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv2.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv2.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv3.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv3.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv3.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv4.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv4.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv4.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv5.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv5.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv5.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_2_5conv.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_2_5conv.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_2_5conv.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_fc6tofc7.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_fc6tofc7.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3	extwidth}
+            \includegraphics[width=	extwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_fc6tofc7.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
         \end{figure}
         

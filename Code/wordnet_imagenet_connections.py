@@ -153,7 +153,6 @@ class Statistics:
         stats_file.close()
         plt.rcParams['figure.figsize'] = [8.0, 8.0]
 
-
     def get_in_id(self, wordnet_ss):
         """
         Input: Synset
@@ -198,10 +197,19 @@ class Statistics:
         text = r'\b' + 'egin{figure}[h] \n \centering \n \includegraphics[scale=0.5] {Images/' + filename + '} \n \end{figure}\n'
         ntext = '''
        \\begin{figure}[h] 
-            \centering 
-            \includegraphics[scale=0.3] {'''+str(self.textsynsets) +'19/plots/' + filename + '''} 
-            \includegraphics[scale=0.3] {'''+str(self.textsynsets) +'25/plots/' + filename + '''} 
-            \includegraphics[scale=0.3] {'''+str(self.textsynsets) +'31/plots/' + filename + '''}       
+            \centering
+            \\begin{subfigure}[b]{0.3\\textwidth}
+            \includegraphics[width=\\textwidth] {''' + str(self.textsynsets) + '19/plots/' + filename + '''}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \\begin{subfigure}[b]{0.3\\textwidth}
+            \includegraphics[width=\\textwidth] {''' + str(self.textsynsets) + '25/plots/' + filename + '''}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \\begin{subfigure}[b]{0.3\\textwidth}
+            \includegraphics[width=\\textwidth] {''' + str(self.textsynsets) + '31/plots/' + filename + '''}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
         \end{figure}
         '''
         stats_file.write(ntext)
@@ -872,7 +880,7 @@ class Statistics:
         plt.cla()
         plt.close("all")
         plt.clf()
-        #self.plot_matrix()
+        # self.plot_matrix()
         plt.cla()
         plt.clf()
         plt.close("all")
@@ -904,7 +912,7 @@ class Statistics:
                 self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path), 'rb')
 
         representative = []
-        #aux[feature][category] = cantidad de valores de la category en cuestion para la feature tal
+        # aux[feature][category] = cantidad de valores de la category en cuestion para la feature tal
         aux = {}
         for feature in self.images_per_feature_per_synset.keys():
             aux[feature] = {}
@@ -934,12 +942,12 @@ class Statistics:
         """
         rep1 = self.get_representive(synset1)
         rep2 = self.get_representive(synset2)
-        changes = np.zeros([3,3])
-        for feature in range(0,len(rep1)):
+        changes = np.zeros([3, 3])
+        for feature in range(0, len(rep1)):
             r1 = rep1[feature]
             r2 = rep2[feature]
             if r1 == r2 == -1:
-                changes[0][0] +=1
+                changes[0][0] += 1
             elif r1 == r2 == 0:
                 changes[1][1] += 1
             elif r1 == r2 == 1:
@@ -975,7 +983,8 @@ class Statistics:
         plt.ylabel('New values')
         plt.title('Changes from ' + self.ss_to_text(synset1) + ' to ' + self.ss_to_text(synset2))
         plt.tight_layout()
-        plt.savefig(self.plot_path + 'Changes from ' + self.ss_to_text(synset1) + ' to ' + self.ss_to_text(synset2) + '.png')
+        plt.savefig(
+            self.plot_path + 'Changes from ' + self.ss_to_text(synset1) + ' to ' + self.ss_to_text(synset2) + '.png')
         name = 'Changes from ' + self.ss_to_text(synset1) + ' to ' + self.ss_to_text(synset2) + '.png'
         self.printlatex(name)
         plt.cla()
