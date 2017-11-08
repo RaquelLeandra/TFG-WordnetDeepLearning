@@ -1,4 +1,4 @@
-from Code.wordnet_imagenet_connections import Statistics, Data
+from wordnet_imagenet_connections import Statistics, Data
 from nltk.corpus import wordnet as wn
 import numpy as np
 import sys

@@ -119,34 +119,40 @@ class Statistics:
         """
         self.data = data
         self.synsets = synsets
-        textsynsets = [str(s)[8:-7] for s in synsets]
-        self.dir_path = '../Data/' + str(textsynsets) + str(data.version) + '/'
+        self.textsynsets = [str(s)[8:-7] for s in synsets]
+        self.dir_path = '../Data/' + str(self.textsynsets) + str(data.version) + '/'
         self.plot_path = self.dir_path + 'plots/'
         if not path.exists(self.dir_path):
             makedirs(self.dir_path)
         if not path.exists(self.plot_path):
             makedirs(self.plot_path)
-        self.stats_path = self.dir_path + str(textsynsets) + '_stats.txt'
+        self.stats_path = self.dir_path + str(self.textsynsets) + '_stats.txt'
         self.matrix_size = self.data.dmatrix.shape
         self.total_features = self.matrix_size[0] * self.matrix_size[1]
         self.all_features = self.count_features(self.data.dmatrix)
         self.synset_in_data = {}
         self.features_per_synset_path = self.dir_path + 'features_per_synset' + '.pkl'
         self.features_per_synset = {}
-        self.features_path = self.dir_path + 'features' + str(textsynsets) + '.pkl'
+        self.features_path = self.dir_path + 'features' + str(self.textsynsets) + '.pkl'
         self.images_per_feature_path = self.dir_path + 'images_per_feature' + '.pkl'
         self.images_per_feature = {}
-        self.features_per_layer_path = self.dir_path + 'features_per_layer' + str(textsynsets) + '.pkl'
-        self.features_per_image_path = self.dir_path + 'features_per_image' + str(textsynsets) + '.pkl'
+        self.features_per_layer_path = self.dir_path + 'features_per_layer' + str(self.textsynsets) + '.pkl'
+        self.features_per_image_path = self.dir_path + 'features_per_image' + str(self.textsynsets) + '.pkl'
         self.synset_in_data_path = self.dir_path + 'synset_in_data_path' + str()
         self.images_per_feature_per_synset_path = self.dir_path + 'images_per_featre_per_synset' + str(
-            textsynsets) + '.pkl'
+            self.textsynsets) + '.pkl'
         self.images_per_feature_per_synset = {}
         self.features_per_layer = {}
         self.features_per_image = {}
         self.intra_synset = {}
-        self.intra_synset_path = self.dir_path + 'intra_synset' + str(textsynsets) + '.pkl'
+        self.intra_synset_path = self.dir_path + 'intra_synset' + str(self.textsynsets) + '.pkl'
         self.outlier_path = self.dir_path + 'outliers.txt'
+        pathu = self.dir_path + 'latex'
+        stats_file = open(pathu, 'w')
+        stats_file.write('')
+        stats_file.close()
+        plt.rcParams['figure.figsize'] = [8.0, 8.0]
+
 
     def get_in_id(self, wordnet_ss):
         """
@@ -190,7 +196,15 @@ class Statistics:
         path = self.dir_path + 'latex'
         stats_file = open(path, 'a')
         text = r'\b' + 'egin{figure}[h] \n \centering \n \includegraphics[scale=0.5] {Images/' + filename + '} \n \end{figure}\n'
-        stats_file.write(text)
+        ntext = '''
+       \\begin{figure}[h] 
+            \centering 
+            \includegraphics[scale=0.3] {'''+str(self.textsynsets) +'19/plots/' + filename + '''} 
+            \includegraphics[scale=0.3] {'''+str(self.textsynsets) +'25/plots/' + filename + '''} 
+            \includegraphics[scale=0.3] {'''+str(self.textsynsets) +'31/plots/' + filename + '''}       
+        \end{figure}
+        '''
+        stats_file.write(ntext)
         stats_file.close()
 
     def synset_in_data_gen(self):
@@ -829,31 +843,47 @@ class Statistics:
         ORDENAR LOS PLOTS
         Esta funcion llama a todos los plots que tengo
         """
+        plt.rcParams['figure.figsize'] = [8.0, 8.0]
         self.plot_features_per_image()
         plt.cla()
         plt.clf()
+        plt.close("all")
         self.plot_all_features()
         plt.cla()
         plt.clf()
+        plt.close("all")
         self.plot_features_per_synset()
         plt.cla()
         plt.clf()
+        plt.close("all")
         self.plot_images_per_feature()
         plt.cla()
         plt.clf()
+        plt.close("all")
         self.plot_synsets_on_data()
         plt.cla()
         plt.clf()
+        plt.close("all")
         self.plot_intra_synset()
         for synset in self.synsets:
             self.plot_images_per_feature_of_synset(synset)
             self.plot_images_per_feature_of_synset_per_layer(synset)
         self.plot_features_per_layer()
         plt.cla()
+        plt.close("all")
         plt.clf()
-        self.plot_matrix()
+        #self.plot_matrix()
         plt.cla()
         plt.clf()
+        plt.close("all")
+
+    def existsfile(self, path):
+        """
+        TODO: QUIERO QUE NO GENERE LAS IMAGENES SI YA LAS TENGO
+        :param path:
+        :return:
+        """
+        return path.isfile(path)
 
     def get_representive(self, synset):
         """
@@ -958,4 +988,4 @@ class Statistics:
         """
         for synset1 in self.synsets:
             for synset2 in self.synsets:
-                self.changes_matrix(synset1,synset2)
+                self.changes_matrix(synset1, synset2)
