@@ -12,6 +12,7 @@
 \usepackage{natbib}
 \usepackage{graphicx}
 \usepackage{color}
+\usepackage{morefloats}
 \definecolor{blue}{RGB}{0,51,102}
 
 \graphicspath{{./pictures/}}
@@ -20,99 +21,81 @@
 
 \maketitle
 
-\tableofcontents
+%\tableofcontents
 
 \section{Data}
 \subsection{Initial Data}
 \begin{itemize}
-\item Embedding matrix of size $(50000, 12416)$, con $62080000$ features.
-\item \textbf{labels} Labels vector of size $50k$ which every label is in numeric format $(0,999)$
-\item \textbf{synsets = synset0 synset1 synset2 ...} The set of synsets that we will analyze: 
-
-$ synsets = [living\_things, mammal, dog, hunting\_dogs]$
-
-\item \textbf{categories = \{-1 0 1 \}} The possible values of the features.
-\item \textbf{The layers}:
-\begin{minted}{python}
-self.layers = {
-            'conv1_1': [0, 64],  # 1
-            'conv1_2': [64, 128],  # 2
-            'conv2_1': [128, 256],  # 3
-            'conv2_2': [256, 384],  # 4
-            'conv3_1': [384, 640],  # 5
-            'conv3_2': [640, 896],  # 6
-            'conv3_3': [896, 1152],  # 7
-            'conv4_1': [1152, 1664],  # 8
-            'conv4_2': [1664, 2176],  # 9
-            'conv4_3': [2176, 2688],  # 10
-            'conv5_1': [2688, 3200],  # 11
-            'conv5_2': [3200, 3712],  # 12
-            'conv5_3': [3712, 4224],  # 13
-            'fc6': [4224, 8320],  # 14
-            'fc7': [8320, 12416],  # 15
-            'conv1': [0, 128],  # 16
-            'conv2': [128, 384],  # 17
-            'conv3': [384, 1152],  # 18
-            'conv4': [1152, 2688],  # 19
-            'conv5': [2688, 4224],  # 20
-            'conv': [0, 4224],  # 21
-            '2_5conv': [128, 4224],  # 22
-            'fc6tofc7': [4224, 12416],  # 23
-            # 'all':[0,12416]          # 24
-        }
-\end{minted}
+	\item Embedding matrix of size $(50000, 12416)$, con $62080000$ features.
+	\item \textbf{labels} Labels vector of size $50k$ which every label is in numeric format $(0,999)$
+	\item \textbf{synsets = synset0 synset1 synset2 ...} The set of synsets that we will analyze: 
+	      	      	      
+	      $synsets_living_things = [living\_things, mammal, dog, hunting\_dogs]$
+	      $synsets_non_living_things = [artifact, instrumentality, conveyance, wheeled_vehicle]$
+	      	      	      
+	\item \textbf{categories = \{-1 0 1 \}} The possible values of the features.
+	\item \textbf{The layers}:
+	      \begin{minted}{python}
+	      	self.layers = {
+	      		'conv1_1': [0, 64],  # 1
+	      		'conv1_2': [64, 128],  # 2
+	      		'conv2_1': [128, 256],  # 3
+	      		'conv2_2': [256, 384],  # 4
+	      		'conv3_1': [384, 640],  # 5
+	      		'conv3_2': [640, 896],  # 6
+	      		'conv3_3': [896, 1152],  # 7
+	      		'conv4_1': [1152, 1664],  # 8
+	      		'conv4_2': [1664, 2176],  # 9
+	      		'conv4_3': [2176, 2688],  # 10
+	      		'conv5_1': [2688, 3200],  # 11
+	      		'conv5_2': [3200, 3712],  # 12
+	      		'conv5_3': [3712, 4224],  # 13
+	      		'fc6': [4224, 8320],  # 14
+	      		'fc7': [8320, 12416],  # 15
+	      		'conv1': [0, 128],  # 16
+	      		'conv2': [128, 384],  # 17
+	      		'conv3': [384, 1152],  # 18
+	      		'conv4': [1152, 2688],  # 19
+	      		'conv5': [2688, 4224],  # 20
+	      		'conv': [0, 4224],  # 21
+	      		'2_5conv': [128, 4224],  # 22
+	      		'fc6tofc7': [4224, 12416],  # 23
+	      		# 'all':[0,12416]          # 24
+	      	}
+	      	self.reduced_layers = {
+	      		'conv1': [0, 128],
+	      		'conv2': [128, 384],
+	      		'conv3': [384, 1152],
+	      		'conv4': [1152, 2688],
+	      		'conv5': [2688, 4224],
+	      		'fc6': [4224, 8320],
+	      		'fc7': [8320, 12416]
+	      	}
+	      \end{minted}
 \end{itemize}
 \subsection{Generated Data}
 \begin{itemize}
-\item \textbf{synset\_index\_hyponim.txt} A list with all the hyponims of every synset.
-
-
-\item \textbf{synset\_index.txt}For each synset a list with the index of the elements of the hyponim list in the embedding.
-
-
-\item Un diccionario con la cantidad de imágenes que tiene cada feature para cada category. 
-\item \textbf{features\_per\_image[synsets].pkl} dfd
-\item \textbf{features\_per\_layer[synsets].pkl}dsf
-\item \textbf{Images/\_per\_feature\_per\_synset[synsets].pkl} Genera un diccionario tal que:
-
-dict[features][category][synset] = cantidad e imagenes del synset que tienen esta categoria en cuestión.
-\item \textbf{intra\_synset[synsets].pkl}fdsfs
+	\item \textbf{synset\_index\_hyponim.txt} A list with all the hyponims of every synset.
+	      	      	      
+	      	      	      
+	\item \textbf{synset\_index.txt}For each synset a list with the index of the elements of the hyponim list in the embedding.
+	      	      	      
+	      	      	      
+	\item Un diccionario con la cantidad de imágenes que tiene cada feature para cada category. 
+	\item \textbf{features\_per\_image[synsets].pkl} dfd
+	\item \textbf{features\_per\_layer[synsets].pkl}dsf
+	\item \textbf{Images/\_per\_feature\_per\_synset[synsets].pkl} Genera un diccionario tal que:
+	      	      	      
+	      dict[features][category][synset] = cantidad e imagenes del synset que tienen esta categoria en cuestión.
+	\item \textbf{intra\_synset[synsets].pkl}fdsfs
 \end{itemize}
 
-\section{Objetivos}
-
-
-\begin{itemize}
-\item Estadísticas del dataset por imagen del conjunto de synsets \textbf{(hecho)}
-\item Estadísticas internas para cada synset(que synsets son subconjunto de cual y en que proporción)\textbf{(hecho)}
-\item Estadísticas totales de la distribución de las features respecto a toda la matriz de imágenes. \textbf{(solo faltan grafiquillas)}
-\item  Estadísticas totales de la distribución de las features respecto a toda la matriz de imágenes por layer.\textbf{(falta escribir + grafiquillas)}
-\item Estadísticas de las features respecto el subconjunto de imágenes de cada synset. \textbf{(faltan grafiquillas)}
-\item Estadísticas de las features respecto el subconjunto de imágenes de cada synset por layer.\textbf{(falta todo)}
-\item Distribución de imágenes por feature (para 1, -1, 0):
-\begin{itemize}
-\item respecto a todas las imágenes
-\item respecto a cada uno de los subconjuntos de imágenes de cada synset 
-\end{itemize}
-\textbf{está calculado, falta escribir}
-\item Repetir para el resto de embeddings
-\item Montarlo para que me genere todo automático para cada conjunto de synsets.
-\item Hacer que guarde todo en maps  
-\item Features por imagen: Para cada imagen cuantas features (de cada category) se activan. Usando todos los valores obtenidos dibujo un histograma
-para cada category de feature. Con el eje de las x siendo la frecuencia y el de las y la cantidad de imágenes que cumplen eso.
-\item Imágenes por feature: Para cada features (de cada category), cuantas imágenes toman este valor. Usando todos los valores obtenidos dibujo un histograma
-para cada category de feature. Con el eje de las x siendo la frecuencia y el de las y la cantidad de imágenes que cumplen eso.  
-\item Comprobar si dentro de un mismo synset hay features que se den con 1 y -1.
-\item Hacer las distribuciones de la suma.
-\item Ordenar del código y generar una documentación y tests.
-
-\end{itemize}
 
 \newpage
 
 \section{Análisis Base}
 
-\begin{figure}[h] 
+\begin{figure}[ht] 
 	\centering 
 	\includegraphics[width=0.45\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/distribution_of_synsets_bar.png}  
 	\includegraphics[width=0.45\textwidth]{['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/distribution_of_synsets_bar.png}
@@ -130,61 +113,61 @@ para cada category de feature. Con el eje de las x siendo la frecuencia y el de 
 
 \subsection{Intra sinset}
 
-%\texttt{%\begin{figure}[h] 
+%\texttt{%\begin{figure}[ht] 
 % \centering 
 % \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/distribution_of_inter_synsets_bar_living_thing.png} 
 %\includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/distribution_of_inter_synsets_bar_living_thing.png} 
 %\includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/distribution_of_inter_synsets_bar_living_thing.png} 
 % \end{figure}
-%\begin{figure}[h] 
+%\begin{figure}[ht] 
 % \centering 
 % \includegraphics[scale=0.3] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/distribution_of_inter_synsets_bar_mammal.png} 
 % \end{figure}
-%\begin{figure}[h] 
+%\begin{figure}[ht] 
 % \centering 
 % \includegraphics[width=0.45\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/distribution_of_inter_synsets_bar_dog.png} 
 % \end{figure}}
-\begin{figure}[h] 
+\begin{figure}[ht] 
 	\centering 
 	\begin{subfigure}[b]{0.45\textwidth}
 		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/distribution_of_synsets_bar.png} 
 		\caption*{Living Things} 
 	\end{subfigure}
 	\begin{subfigure}[b]{0.45\textwidth}
-	\includegraphics[width=\textwidth]{['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/distribution_of_inter_synsets_bar_artifact.png}
-	\caption*{Non Living Things} 
+		\includegraphics[width=\textwidth]{['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/distribution_of_inter_synsets_bar_artifact.png}
+		\caption*{Non Living Things} 
 	\end{subfigure}
 \end{figure}
 
-\begin{figure}[h] 
+\begin{figure}[ht] 
 	\centering 
 	\includegraphics[width=0.45\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/distribution_of_inter_synsets_bar_living_thing.png}  
 	\includegraphics[width=0.45\textwidth]{['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/distribution_of_inter_synsets_bar_instrumentality.png}
 \end{figure}
 
-\begin{figure}[h] 
+\begin{figure}[ht] 
 	\centering 
 	\includegraphics[width=0.45\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/distribution_of_inter_synsets_bar_mammal.png}  
 	\includegraphics[width=0.45\textwidth]{['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/distribution_of_inter_synsets_bar_artifact.png}
 \end{figure}
 
-\begin{figure}[h] 
+\begin{figure}[ht] 
 	\centering 
 	\includegraphics[width=0.45\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/distribution_of_inter_synsets_bar_dog.png}  
 	\includegraphics[width=0.45\textwidth]{['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/distribution_of_inter_synsets_bar_conveyance.png}
 \end{figure}
 
-\begin{figure}[h] 
+\begin{figure}[ht] 
 	\centering 
 	\includegraphics[width=0.45\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/distribution_of_inter_synsets_bar_hunting_dog.png}  
 	\includegraphics[width=0.45\textwidth]{['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/distribution_of_inter_synsets_bar_wheeled_vehicle.png}
 \end{figure}
 
- \newpage
- \clearpage
+\newpage
+\clearpage
 \subsection{Distribución total de las features}
 
-%\begin{figure}[h] 
+%\begin{figure}[ht] 
 %	\centering 
 %	\begin{subfigure}[b]{0.45\textwidth}
 %		  \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/quantity_of_features_bar.png} 
@@ -197,7 +180,7 @@ para cada category de feature. Con el eje de las x siendo la frecuencia y el de 
 %	\caption*{Embedding 19}
 %\end{figure}
 %
-%\begin{figure}[h] 
+%\begin{figure}[ht] 
 %	\centering 
 %	\begin{subfigure}[b]{0.45\textwidth}
 %		 \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/quantity_of_features_bar.png} 
@@ -210,7 +193,7 @@ para cada category de feature. Con el eje de las x siendo la frecuencia y el de 
 %	\caption*{Embedding 25}
 %\end{figure}
 %
-%\begin{figure}[h] 
+%\begin{figure}[ht] 
 %	\centering 
 %	\begin{subfigure}[b]{0.45\textwidth}
 %		 \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/quantity_of_features_bar.png} 
@@ -223,211 +206,211 @@ para cada category de feature. Con el eje de las x siendo la frecuencia y el de 
 %	\caption*{Embedding 31}
 %\end{figure}
 
-\begin{figure}[h] 
- \centering 
+\begin{figure}[ht] 
+	\centering 
 	\begin{subfigure}[b]{0.3\textwidth}
- 		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/quantity_of_features_bar.png}
- 		\caption*{Embedding 19}
- 	\end{subfigure}
- 	\begin{subfigure}[b]{0.3\textwidth}
- 		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/quantity_of_features_bar.png}
- 		\caption*{Embedding 25}
- 	\end{subfigure}
- 	\begin{subfigure}[b]{0.3\textwidth}
- 		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/quantity_of_features_bar.png}
- 		\caption*{Embedding 31}
- 	\end{subfigure}
- \end{figure}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/quantity_of_features_bar.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/quantity_of_features_bar.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/quantity_of_features_bar.png}
+		\caption*{Embedding 31}
+	\end{subfigure}
+\end{figure}
 
  
- \begin{figure}[h] 
- \centering 
- \end{figure}
+\begin{figure}[ht] 
+	\centering 
+\end{figure}
  
 \subsection{Distribución de las features por layer}
 
-\begin{figure}[h] 
- \centering 
+\begin{figure}[ht] 
+	\centering 
 	\begin{subfigure}[b]{0.3\textwidth}
- 		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv1.png}
- 		\caption*{Embedding 19}
- 	\end{subfigure}
- 	\begin{subfigure}[b]{0.3\textwidth}
- 		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv1.png}
- 		\caption*{Embedding 25}
- 	\end{subfigure}
- 	\begin{subfigure}[b]{0.3\textwidth}
- 		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv1.png}
- 		\caption*{Embedding 31}
- 	\end{subfigure}
- \end{figure}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv1.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv1.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv1.png}
+		\caption*{Embedding 31}
+	\end{subfigure}
+\end{figure}
  
  
 
- \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv2.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv2.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv2.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv2.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv2.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv2.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv3.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv3.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv3.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv3.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv3.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv3.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv4.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv4.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv4.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv4.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv4.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv4.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv5.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv5.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv5.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_conv5.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_conv5.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_conv5.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
         
-         \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_fc6.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_fc6.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_fc6.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_fc6.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_fc6.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_fc6.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_fc7.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_fc7.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_fc7.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_layer_of_fc7.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_layer_of_fc7.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_layer_of_fc7.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
 \newpage
 \clearpage
 
 \subsection{Distribución de las features por synset}
 
-\begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_synset_bar_artifact.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_synset_bar_artifact.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_synset_bar_artifact.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_synset_bar_artifact.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_synset_bar_artifact.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_synset_bar_artifact.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_synset_bar_instrumentality.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_synset_bar_instrumentality.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_synset_bar_instrumentality.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_synset_bar_instrumentality.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_synset_bar_instrumentality.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_synset_bar_instrumentality.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_synset_bar_conveyance.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_synset_bar_conveyance.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_synset_bar_conveyance.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_synset_bar_conveyance.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_synset_bar_conveyance.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_synset_bar_conveyance.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_synset_bar_wheeled_vehicle.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_synset_bar_wheeled_vehicle.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_synset_bar_wheeled_vehicle.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/features_per_synset_bar_wheeled_vehicle.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/features_per_synset_bar_wheeled_vehicle.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/features_per_synset_bar_wheeled_vehicle.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
 
 
 
@@ -437,1115 +420,1089 @@ para cada category de feature. Con el eje de las x siendo la frecuencia y el de 
 %Calculo para cada imagen las features que se activan, respecto la matriz total de datos.
 There are for each image the total counting of features active, for the different possible categories ($-1,0,1$):
 
-\begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_image-1}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_image-1}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_image-1}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_image-1}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_image-1}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_image-1}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_image0}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_image0}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_image0}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_image0}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_image0}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_image0}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_image1}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_image1}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_image1}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/features_per_image1}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/features_per_image1}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/features_per_image1}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
 
 \newpage
 \clearpage
 \subsection{Images per feature}
 Now I calculate for each feature how many images activate in each specific category:
-\begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
 
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_all_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_all_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_all_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_box.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_box.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_box.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}        
-\begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_all_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_all_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_all_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_box.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_box.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_box.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}        
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
 
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_all_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_all_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_all_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_all_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_all_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_all_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_box.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_box.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_box.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_box.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_box.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_box.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-\begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_all_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_all_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_all_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_all_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_all_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_all_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-         \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_box.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_box.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_box.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_box.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_box.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_box.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
 \newpage
 \clearpage
 
 
 \subsection{Images per feature per synset}
 
-\begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_living_thingall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_living_thingall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_living_thingall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_living_thingall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_living_thingall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_living_thingall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
 
-\begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_living_thingall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_living_thingall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_living_thingall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_living_thingall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_living_thingall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_living_thingall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
 
-\begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_living_thingall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_living_thingall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_living_thingall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_living_thingall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_living_thingall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_living_thingall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-\begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_mammalall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_mammalall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_mammalall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}        
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_mammalall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_mammalall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_mammalall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}        
         
-        \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_mammalall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_mammalall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_mammalall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_mammalall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_mammalall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_mammalall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-        \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_mammalall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_mammalall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_mammalall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_mammalall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_mammalall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_mammalall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
 
-\begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_dogall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_dogall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_dogall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_dogall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_dogall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_dogall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
         
-         \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_dogall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_dogall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_dogall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_dogall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_dogall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_dogall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
         
-        \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_dogall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_dogall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_dogall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_dogall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_dogall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_dogall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
         
         
-        \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_hunting_dogall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_hunting_dogall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_hunting_dogall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_-1_category_hunting_dogall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_-1_category_hunting_dogall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_-1_category_hunting_dogall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
         
-        \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_hunting_dogall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_hunting_dogall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_hunting_dogall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_0_category_hunting_dogall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_0_category_hunting_dogall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_0_category_hunting_dogall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
         
-        \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_hunting_dogall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_hunting_dogall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_hunting_dogall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Images_per_feature_of_1_category_hunting_dogall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Images_per_feature_of_1_category_hunting_dogall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Images_per_feature_of_1_category_hunting_dogall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
         
-        \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_artifactall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_artifactall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_artifactall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_artifactall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_artifactall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_artifactall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-         \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_instrumentalityall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_instrumentalityall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_instrumentalityall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_instrumentalityall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_instrumentalityall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_instrumentalityall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-         \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_instrumentalityall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_instrumentalityall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_instrumentalityall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
-        
-        
-        \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_instrumentalityall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_instrumentalityall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_instrumentalityall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
-        
-         \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_conveyanceall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_conveyanceall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_conveyanceall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
-        
-        \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_conveyanceall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_conveyanceall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_conveyanceall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
-        
-        \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_conveyanceall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_conveyanceall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_conveyanceall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
-        
-        \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_wheeled_vehicleall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_wheeled_vehicleall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_wheeled_vehicleall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_instrumentalityall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_instrumentalityall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_instrumentalityall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
         
-        \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_wheeled_vehicleall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_wheeled_vehicleall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_wheeled_vehicleall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_instrumentalityall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_instrumentalityall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_instrumentalityall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-        \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_wheeled_vehicleall_layers.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_wheeled_vehicleall_layers.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_wheeled_vehicleall_layers.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_conveyanceall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_conveyanceall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_conveyanceall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
+        
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_conveyanceall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_conveyanceall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_conveyanceall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
+        
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_conveyanceall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_conveyanceall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_conveyanceall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
+        
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_-1_category_wheeled_vehicleall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_-1_category_wheeled_vehicleall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_-1_category_wheeled_vehicleall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
+        
+        
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_0_category_wheeled_vehicleall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_0_category_wheeled_vehicleall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_0_category_wheeled_vehicleall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
+        
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Images_per_feature_of_1_category_wheeled_vehicleall_layers.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Images_per_feature_of_1_category_wheeled_vehicleall_layers.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Images_per_feature_of_1_category_wheeled_vehicleall_layers.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
 \newpage
 \clearpage
 
 
 \subsection{Comprobación de que las cosas tinen sentido}
 \begin{itemize}
-\item \textbf{Hay alguna imagen que no tenga ninguna feature con valor cero? } No, ninguna
-\item \textbf{Hay algun synset que tenga valor 1 y -1 para la misma feature? } Si, bastantes.
-Estamos tomando: 
-
-La feature tiene el valor i para el synset si lo tiene para alguna imagen del synset(Estamos estudiando la submatriz correspondiente al synset)
+	\item \textbf{Hay alguna imagen que no tenga ninguna feature con valor cero? } No, ninguna
+	\item \textbf{Hay algun synset que tenga valor 1 y -1 para la misma feature? } Si, bastantes.
+	      Estamos tomando: 
+	      	      	      
+	      La feature tiene el valor i para el synset si lo tiene para alguna imagen del synset(Estamos estudiando la submatriz correspondiente al synset)
 \end{itemize}
 \subsection{Estudio de los outliers de imagenes per feature}
 
 
-\begin{figure}[h] 
- \centering 
- \includegraphics[width=0.45\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/outliers-1.png} 
- \caption{ Category: -1}
- \end{figure}
-\begin{figure}[h] 
- \centering 
- \includegraphics[width=0.45\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/outliers0.png} 
- \caption{ Category: 0}
- \end{figure}
-\begin{figure}[h] 
- \centering 
- \includegraphics[width=0.45\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/outliers1.png} 
-  \caption{ Category: 1}
- \end{figure}
+\begin{figure}[ht] 
+	\centering 
+	\includegraphics[width=0.45\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/outliers-1.png} 
+	\caption{ Category: -1}
+\end{figure}
+\begin{figure}[ht] 
+	\centering 
+	\includegraphics[width=0.45\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/outliers0.png} 
+	\caption{ Category: 0}
+\end{figure}
+\begin{figure}[ht] 
+	\centering 
+	\includegraphics[width=0.45\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/outliers1.png} 
+	\caption{ Category: 1}
+\end{figure}
 
 \subsection{Matrices de cambio}
 
-\begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from living_thing to living_thing.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from living_thing to living_thing.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from living_thing to living_thing.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from living_thing to living_thing.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from living_thing to living_thing.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from living_thing to living_thing.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from living_thing to mammal.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from living_thing to mammal.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from living_thing to mammal.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from living_thing to mammal.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from living_thing to mammal.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from living_thing to mammal.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from living_thing to dog.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from living_thing to dog.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from living_thing to dog.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from living_thing to dog.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from living_thing to dog.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from living_thing to dog.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from living_thing to hunting_dog.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from living_thing to hunting_dog.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from living_thing to hunting_dog.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from living_thing to hunting_dog.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from living_thing to hunting_dog.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from living_thing to hunting_dog.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from mammal to living_thing.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from mammal to living_thing.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from mammal to living_thing.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from mammal to living_thing.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from mammal to living_thing.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from mammal to living_thing.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from mammal to mammal.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from mammal to mammal.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from mammal to mammal.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from mammal to mammal.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from mammal to mammal.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from mammal to mammal.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from mammal to dog.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from mammal to dog.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from mammal to dog.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from mammal to dog.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from mammal to dog.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from mammal to dog.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from mammal to hunting_dog.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from mammal to hunting_dog.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from mammal to hunting_dog.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from mammal to hunting_dog.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from mammal to hunting_dog.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from mammal to hunting_dog.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from dog to living_thing.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from dog to living_thing.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from dog to living_thing.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from dog to living_thing.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from dog to living_thing.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from dog to living_thing.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from dog to mammal.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from dog to mammal.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from dog to mammal.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from dog to mammal.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from dog to mammal.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from dog to mammal.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from dog to dog.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from dog to dog.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from dog to dog.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from dog to dog.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from dog to dog.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from dog to dog.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from dog to hunting_dog.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from dog to hunting_dog.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from dog to hunting_dog.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from dog to hunting_dog.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from dog to hunting_dog.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from dog to hunting_dog.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from hunting_dog to living_thing.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from hunting_dog to living_thing.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from hunting_dog to living_thing.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from hunting_dog to living_thing.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from hunting_dog to living_thing.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from hunting_dog to living_thing.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from hunting_dog to mammal.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from hunting_dog to mammal.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from hunting_dog to mammal.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from hunting_dog to mammal.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from hunting_dog to mammal.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from hunting_dog to mammal.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from hunting_dog to dog.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from hunting_dog to dog.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from hunting_dog to dog.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from hunting_dog to dog.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from hunting_dog to dog.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from hunting_dog to dog.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from hunting_dog to hunting_dog.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from hunting_dog to hunting_dog.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from hunting_dog to hunting_dog.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from hunting_dog to hunting_dog.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from hunting_dog to hunting_dog.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from hunting_dog to hunting_dog.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
 
 
 
 
-\begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from artifact to artifact.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from artifact to artifact.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from artifact to artifact.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from artifact to artifact.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from artifact to artifact.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from artifact to artifact.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from artifact to instrumentality.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from artifact to instrumentality.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from artifact to instrumentality.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from artifact to instrumentality.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from artifact to instrumentality.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from artifact to instrumentality.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from artifact to conveyance.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from artifact to conveyance.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from artifact to conveyance.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from artifact to conveyance.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from artifact to conveyance.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from artifact to conveyance.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from artifact to wheeled_vehicle.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from artifact to wheeled_vehicle.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from artifact to wheeled_vehicle.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from artifact to wheeled_vehicle.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from artifact to wheeled_vehicle.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from artifact to wheeled_vehicle.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from instrumentality to artifact.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from instrumentality to artifact.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from instrumentality to artifact.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from instrumentality to artifact.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from instrumentality to artifact.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from instrumentality to artifact.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from instrumentality to instrumentality.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from instrumentality to instrumentality.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from instrumentality to instrumentality.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from instrumentality to instrumentality.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from instrumentality to instrumentality.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from instrumentality to instrumentality.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from instrumentality to conveyance.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from instrumentality to conveyance.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from instrumentality to conveyance.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from instrumentality to conveyance.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from instrumentality to conveyance.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from instrumentality to conveyance.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from instrumentality to wheeled_vehicle.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from instrumentality to wheeled_vehicle.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from instrumentality to wheeled_vehicle.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from instrumentality to wheeled_vehicle.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from instrumentality to wheeled_vehicle.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from instrumentality to wheeled_vehicle.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from conveyance to artifact.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from conveyance to artifact.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from conveyance to artifact.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from conveyance to artifact.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from conveyance to artifact.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from conveyance to artifact.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from conveyance to instrumentality.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from conveyance to instrumentality.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from conveyance to instrumentality.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from conveyance to instrumentality.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from conveyance to instrumentality.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from conveyance to instrumentality.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from conveyance to conveyance.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from conveyance to conveyance.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from conveyance to conveyance.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from conveyance to conveyance.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from conveyance to conveyance.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from conveyance to conveyance.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from conveyance to wheeled_vehicle.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from conveyance to wheeled_vehicle.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from conveyance to wheeled_vehicle.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from conveyance to wheeled_vehicle.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from conveyance to wheeled_vehicle.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from conveyance to wheeled_vehicle.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from wheeled_vehicle to artifact.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from wheeled_vehicle to artifact.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from wheeled_vehicle to artifact.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from wheeled_vehicle to artifact.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from wheeled_vehicle to artifact.png}
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from wheeled_vehicle to artifact.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from wheeled_vehicle to instrumentality.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from wheeled_vehicle to instrumentality.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from wheeled_vehicle to instrumentality.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from wheeled_vehicle to conveyance.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from wheeled_vehicle to conveyance.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from wheeled_vehicle to conveyance.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
-        
-       \begin{figure}[h] 
-            \centering
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from wheeled_vehicle to wheeled_vehicle.png}
-            \caption*{Embedding 19}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from wheeled_vehicle to wheeled_vehicle.png}
-            \caption*{Embedding 25}
- 	        \end{subfigure}
-            \begin{subfigure}[b]{0.3\textwidth}
-            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from wheeled_vehicle to wheeled_vehicle.png}
-            \caption*{Embedding 31}
- 	        \end{subfigure}       
-        \end{figure}
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from wheeled_vehicle to instrumentality.png}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from wheeled_vehicle to conveyance.png}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from wheeled_vehicle to wheeled_vehicle.png}
+		\caption*{Embedding 19}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from wheeled_vehicle to instrumentality.png}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from wheeled_vehicle to conveyance.png}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from wheeled_vehicle to wheeled_vehicle.png}		
+		\caption*{Embedding 25}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from wheeled_vehicle to instrumentality.png}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from wheeled_vehicle to conveyance.png}
+		\includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from wheeled_vehicle to wheeled_vehicle.png}
+		\caption*{Embedding 31}
+	\end{subfigure}       
+\end{figure}
         
 
 \end{document}
