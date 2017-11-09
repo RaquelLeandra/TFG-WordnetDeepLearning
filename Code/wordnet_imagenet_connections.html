@@ -104,10 +104,46 @@ Data descriptors defined here:<br>
 :param&nbsp;plot_path&nbsp;es&nbsp;el&nbsp;path&nbsp;donde&nbsp;se&nbsp;guardaran&nbsp;los&nbsp;plots<br>
 :param&nbsp;all_features:&nbsp;es&nbsp;un&nbsp;diccionario&nbsp;tal&nbsp;que&nbsp;all_features[i]&nbsp;=&nbsp;cantidad&nbsp;de&nbsp;features&nbsp;del&nbsp;tipo&nbsp;i&nbsp;en&nbsp;el&nbsp;embedding</tt></dd></dl>
 
+<dl><dt><a name="Statistics-changes_matrix"><strong>changes_matrix</strong></a>(self, synset1, synset2)</dt><dd><tt>Genero&nbsp;una&nbsp;matriz&nbsp;de&nbsp;los&nbsp;cambios&nbsp;de&nbsp;los&nbsp;valores&nbsp;para&nbsp;el&nbsp;vector&nbsp;representante&nbsp;del&nbsp;synset1&nbsp;al&nbsp;synset2:<br>
+&nbsp;<br>
+&nbsp;&nbsp;|&nbsp;-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;1<br>
+------------------<br>
+-1|&nbsp;a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c<br>
+0&nbsp;|&nbsp;d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f<br>
+1&nbsp;|&nbsp;g&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i<br>
+&nbsp;<br>
+donde&nbsp;el&nbsp;valor&nbsp;a&nbsp;sería&nbsp;la&nbsp;cantidad&nbsp;de&nbsp;-1&nbsp;que&nbsp;se&nbsp;mantienen&nbsp;constantes&nbsp;entre&nbsp;un&nbsp;synset&nbsp;y&nbsp;el&nbsp;otro.<br>
+El&nbsp;valor&nbsp;b&nbsp;sería&nbsp;los&nbsp;0&nbsp;del&nbsp;synset&nbsp;1&nbsp;que&nbsp;pasan&nbsp;a&nbsp;ser&nbsp;-1&nbsp;en&nbsp;el&nbsp;synset&nbsp;2<br>
+etd.<br>
+&nbsp;<br>
+:param&nbsp;synset1:<br>
+:param&nbsp;synset2:<br>
+:return:&nbsp;cambios</tt></dd></dl>
+
+<dl><dt><a name="Statistics-changes_matrix_per_layer"><strong>changes_matrix_per_layer</strong></a>(self, synset1, synset2, layer)</dt><dd><tt>Genero&nbsp;una&nbsp;matriz&nbsp;de&nbsp;los&nbsp;cambios&nbsp;de&nbsp;los&nbsp;valores&nbsp;para&nbsp;el&nbsp;vector&nbsp;representante&nbsp;del&nbsp;synset1&nbsp;al&nbsp;synset2:<br>
+&nbsp;<br>
+&nbsp;&nbsp;|&nbsp;-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;1<br>
+------------------<br>
+-1|&nbsp;a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c<br>
+0&nbsp;|&nbsp;d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f<br>
+1&nbsp;|&nbsp;g&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i<br>
+&nbsp;<br>
+donde&nbsp;el&nbsp;valor&nbsp;a&nbsp;sería&nbsp;la&nbsp;cantidad&nbsp;de&nbsp;-1&nbsp;que&nbsp;se&nbsp;mantienen&nbsp;constantes&nbsp;entre&nbsp;un&nbsp;synset&nbsp;y&nbsp;el&nbsp;otro.<br>
+El&nbsp;valor&nbsp;b&nbsp;sería&nbsp;los&nbsp;0&nbsp;del&nbsp;synset&nbsp;1&nbsp;que&nbsp;pasan&nbsp;a&nbsp;ser&nbsp;-1&nbsp;en&nbsp;el&nbsp;synset&nbsp;2<br>
+etd.<br>
+&nbsp;<br>
+:param&nbsp;synset1:<br>
+:param&nbsp;synset2:<br>
+:return:&nbsp;cambios</tt></dd></dl>
+
 <dl><dt><a name="Statistics-compare_intra_embedding"><strong>compare_intra_embedding</strong></a>(self, synset)</dt></dl>
 
 <dl><dt><a name="Statistics-count_features"><strong>count_features</strong></a>(self, matrix)</dt><dd><tt>Devuelve&nbsp;un&nbsp;diccionario&nbsp;con&nbsp;la&nbsp;cantidad&nbsp;de&nbsp;features&nbsp;de&nbsp;cada&nbsp;tipo&nbsp;de&nbsp;la&nbsp;matriz&nbsp;matrix<br>
 features[category]&nbsp;=&nbsp;cantidad&nbsp;de&nbsp;category&nbsp;de&nbsp;la&nbsp;matriz</tt></dd></dl>
+
+<dl><dt><a name="Statistics-existsfile"><strong>existsfile</strong></a>(self, path)</dt><dd><tt>TODO:&nbsp;QUIERO&nbsp;QUE&nbsp;NO&nbsp;GENERE&nbsp;LAS&nbsp;IMAGENES&nbsp;SI&nbsp;YA&nbsp;LAS&nbsp;TENGO<br>
+:param&nbsp;path:<br>
+:return:</tt></dd></dl>
 
 <dl><dt><a name="Statistics-features_per_image_gen"><strong>features_per_image_gen</strong></a>(self)</dt><dd><tt>Esta&nbsp;función&nbsp;debería&nbsp;calcular&nbsp;para&nbsp;cada&nbsp;imagen&nbsp;cuantas&nbsp;features&nbsp;de&nbsp;cada&nbsp;tipo&nbsp;se&nbsp;activan<br>
 Output:<br>
@@ -141,13 +177,22 @@ Quiero&nbsp;ver&nbsp;si&nbsp;existe&nbsp;algun&nbsp;synset&nbsp;que&nbsp;tenga&n
 <dl><dt><a name="Statistics-get_index_from_ss"><strong>get_index_from_ss</strong></a>(self, synset)</dt><dd><tt>Esta&nbsp;función&nbsp;genera&nbsp;un&nbsp;archivo&nbsp;con&nbsp;los&nbsp;índices(0:999)&nbsp;de&nbsp;la&nbsp;aparición&nbsp;de&nbsp;un&nbsp;synset&nbsp;y&nbsp;sus&nbsp;hiponimos<br>
 y&nbsp;otro&nbsp;con&nbsp;los&nbsp;códigos&nbsp;imagenet&nbsp;de&nbsp;todos&nbsp;los&nbsp;hipónimos</tt></dd></dl>
 
-<dl><dt><a name="Statistics-get_representant"><strong>get_representant</strong></a>(self, synset)</dt><dd><tt>Quiero&nbsp;que&nbsp;me&nbsp;devuelva&nbsp;un&nbsp;vector&nbsp;tal&nbsp;que&nbsp;el&nbsp;valor&nbsp;i&nbsp;sea&nbsp;el&nbsp;que&nbsp;tiene&nbsp;mayor&nbsp;proporción&nbsp;dentro&nbsp;del&nbsp;synset.<br>
-Para&nbsp;cálculos&nbsp;posteriores&nbsp;me&nbsp;gustaría&nbsp;guardar&nbsp;un&nbsp;diccionario:<br>
-v[feature]&nbsp;=&nbsp;1,&nbsp;-1&nbsp;o&nbsp;0&nbsp;según&nbsp;el&nbsp;valor&nbsp;que&nbsp;se&nbsp;repite&nbsp;más&nbsp;veces.<br>
+<dl><dt><a name="Statistics-get_representive"><strong>get_representive</strong></a>(self, synset)</dt><dd><tt>Quiero&nbsp;que&nbsp;me&nbsp;devuelva&nbsp;un&nbsp;vector&nbsp;tal&nbsp;que&nbsp;el&nbsp;valor&nbsp;i&nbsp;sea&nbsp;el&nbsp;que&nbsp;tiene&nbsp;mayor&nbsp;proporción&nbsp;dentro&nbsp;del&nbsp;synset.<br>
+representative[feature]&nbsp;=&nbsp;1,&nbsp;-1&nbsp;o&nbsp;0&nbsp;según&nbsp;el&nbsp;valor&nbsp;que&nbsp;se&nbsp;repite&nbsp;más&nbsp;veces.<br>
+Utilizo&nbsp;como&nbsp;valor&nbsp;auxiliar&nbsp;un&nbsp;diccionario&nbsp;de&nbsp;la&nbsp;siguiente&nbsp;forma,&nbsp;que&nbsp;obtengo&nbsp;de&nbsp;images_per_feature_per_synset<br>
 dict[feature]&nbsp;=&nbsp;{1:&nbsp;cantidad&nbsp;de&nbsp;1,&nbsp;-1:&nbsp;cantidad&nbsp;de&nbsp;-1,&nbsp;0:&nbsp;cantidad&nbsp;de&nbsp;0}<br>
 &nbsp;<br>
 :param&nbsp;synset:<br>
-:return:</tt></dd></dl>
+:return:&nbsp;representative</tt></dd></dl>
+
+<dl><dt><a name="Statistics-get_representive_per_layer"><strong>get_representive_per_layer</strong></a>(self, synset, layer)</dt><dd><tt>Quiero&nbsp;que&nbsp;me&nbsp;devuelva&nbsp;un&nbsp;vector&nbsp;tal&nbsp;que&nbsp;el&nbsp;valor&nbsp;i&nbsp;sea&nbsp;el&nbsp;que&nbsp;tiene&nbsp;mayor&nbsp;proporción&nbsp;dentro&nbsp;del&nbsp;synset.<br>
+representative[feature]&nbsp;=&nbsp;1,&nbsp;-1&nbsp;o&nbsp;0&nbsp;según&nbsp;el&nbsp;valor&nbsp;que&nbsp;se&nbsp;repite&nbsp;más&nbsp;veces.<br>
+Utilizo&nbsp;como&nbsp;valor&nbsp;auxiliar&nbsp;un&nbsp;diccionario&nbsp;de&nbsp;la&nbsp;siguiente&nbsp;forma,&nbsp;que&nbsp;obtengo&nbsp;de&nbsp;images_per_feature_per_synset<br>
+dict[feature]&nbsp;=&nbsp;{1:&nbsp;cantidad&nbsp;de&nbsp;1,&nbsp;-1:&nbsp;cantidad&nbsp;de&nbsp;-1,&nbsp;0:&nbsp;cantidad&nbsp;de&nbsp;0}<br>
+&nbsp;<br>
+:param&nbsp;synset:<br>
+:param&nbsp;layer:<br>
+:return:&nbsp;representative</tt></dd></dl>
 
 <dl><dt><a name="Statistics-images_per_feature_gen"><strong>images_per_feature_gen</strong></a>(self)</dt><dd><tt>Genera&nbsp;un&nbsp;archivo&nbsp;con&nbsp;el&nbsp;diccionario&nbsp;siguiente:<br>
 Para&nbsp;cada&nbsp;feature(0,...,12k):<br>
@@ -203,6 +248,9 @@ En&nbsp;el&nbsp;eje&nbsp;x&nbsp;pone&nbsp;la&nbsp;cantidad&nbsp;de&nbsp;imagenes
 
 <dl><dt><a name="Statistics-plot_intra_synset"><strong>plot_intra_synset</strong></a>(self)</dt><dd><tt>hace&nbsp;un&nbsp;barplot&nbsp;de&nbsp;la&nbsp;distribución&nbsp;interna&nbsp;de&nbsp;los&nbsp;synsets&nbsp;para&nbsp;cada&nbsp;synset<br>
 (cuantos&nbsp;mamals&nbsp;hay&nbsp;en&nbsp;living&nbsp;thing&nbsp;por&nbsp;ejemplo)<br>
+:return:</tt></dd></dl>
+
+<dl><dt><a name="Statistics-plot_matrix"><strong>plot_matrix</strong></a>(self)</dt><dd><tt>Quiero&nbsp;pintar&nbsp;la&nbsp;matriz&nbsp;de&nbsp;cambios&nbsp;para&nbsp;cada&nbsp;synset<br>
 :return:</tt></dd></dl>
 
 <dl><dt><a name="Statistics-plot_synsets_on_data"><strong>plot_synsets_on_data</strong></a>(self)</dt><dd><tt>Hace&nbsp;un&nbsp;barplot&nbsp;y&nbsp;un&nbsp;pieplot&nbsp;de&nbsp;la&nbsp;ditribución&nbsp;de&nbsp;los&nbsp;synsets&nbsp;en&nbsp;los&nbsp;datos<br>
