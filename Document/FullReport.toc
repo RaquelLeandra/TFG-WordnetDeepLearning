@@ -1,14 +1,15 @@
 \contentsline {section}{\numberline {1}Data}{1}
 \contentsline {subsection}{\numberline {1.1}Initial Data}{1}
-\contentsline {subsection}{\numberline {1.2}Generated Data}{1}
+\contentsline {subsection}{\numberline {1.2}Generated Data}{2}
 \contentsline {section}{\numberline {2}Objetivos}{2}
-\contentsline {section}{\numberline {3}An\IeC {\'a}lisis Base}{3}
-\contentsline {subsection}{\numberline {3.1}Intra sinset}{3}
-\contentsline {subsection}{\numberline {3.2}Distribuci\IeC {\'o}n total de las features}{6}
-\contentsline {subsection}{\numberline {3.3}Distribuci\IeC {\'o}n de las features por layer}{6}
-\contentsline {subsection}{\numberline {3.4}Distribuci\IeC {\'o}n de las features por synset}{9}
-\contentsline {subsection}{\numberline {3.5}Features per image}{11}
-\contentsline {subsection}{\numberline {3.6}Images per feature}{13}
-\contentsline {subsection}{\numberline {3.7}Images per feature per synset}{17}
-\contentsline {subsection}{\numberline {3.8}Comprobaci\IeC {\'o}n de que las cosas tinen sentido}{23}
-\contentsline {subsection}{\numberline {3.9}Estudio de los outliers de imagenes per feature}{23}
+\contentsline {section}{\numberline {3}An\IeC {\'a}lisis Base}{4}
+\contentsline {subsection}{\numberline {3.1}Intra sinset}{4}
+\contentsline {subsection}{\numberline {3.2}Distribuci\IeC {\'o}n total de las features}{7}
+\contentsline {subsection}{\numberline {3.3}Distribuci\IeC {\'o}n de las features por layer}{7}
+\contentsline {subsection}{\numberline {3.4}Distribuci\IeC {\'o}n de las features por synset}{10}
+\contentsline {subsection}{\numberline {3.5}Features per image}{12}
+\contentsline {subsection}{\numberline {3.6}Images per feature}{14}
+\contentsline {subsection}{\numberline {3.7}Images per feature per synset}{18}
+\contentsline {subsection}{\numberline {3.8}Comprobaci\IeC {\'o}n de que las cosas tinen sentido}{26}
+\contentsline {subsection}{\numberline {3.9}Estudio de los outliers de imagenes per feature}{26}
+\contentsline {subsection}{\numberline {3.10}Matrices de cambio}{26}
