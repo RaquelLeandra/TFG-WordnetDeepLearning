@@ -947,8 +947,8 @@ class Statistics:
         representative = []
         # aux[feature][category] = cantidad de valores de la category en cuestion para la feature tal
         aux = {}
-        section = self.data.dmatrix[:, range(self.data.layers[layer][0], self.data.layers[layer][1])]
-        for feature in section:
+        #section = self.data.dmatrix[:, range(self.data.layers[layer][0], self.data.layers[layer][1])]
+        for feature in range(self.data.layers[layer][0], self.data.layers[layer][1]):
             aux[feature] = {}
             for category in self.images_per_feature_per_synset[feature].keys():
                 aux[feature][category] = self.images_per_feature_per_synset[feature][category][self.ss_to_text(synset)]
@@ -1104,3 +1104,6 @@ class Statistics:
                 self.changes_matrix(synset1, synset2)
                 for layer in self.data.layers:
                     self.changes_matrix_per_layer(synset1, synset2, layer)
+                    plt.cla()
+                    plt.clf()
+                    plt.close("all")
