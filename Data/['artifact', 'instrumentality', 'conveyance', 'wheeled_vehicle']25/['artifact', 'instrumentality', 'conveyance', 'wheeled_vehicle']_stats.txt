@@ -68,3 +68,7 @@ Tenemos 50000 imagenes, de las cuales 26100.0, el 52.2 son artifact
 Tenemos 50000 imagenes, de las cuales 17900.0, el 35.8 son instrumentality
 Tenemos 50000 imagenes, de las cuales 3600.0, el 7.199999999999999 son conveyance
 Tenemos 50000 imagenes, de las cuales 2200.0, el 4.3999999999999995 son wheeled_vehicle
+Tenemos 50000 imagenes, de las cuales 26100.0, el 52.2 son artifact
+Tenemos 50000 imagenes, de las cuales 17900.0, el 35.8 son instrumentality
+Tenemos 50000 imagenes, de las cuales 3600.0, el 7.199999999999999 son conveyance
+Tenemos 50000 imagenes, de las cuales 2200.0, el 4.3999999999999995 son wheeled_vehicle

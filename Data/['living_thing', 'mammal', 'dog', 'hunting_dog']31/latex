@@ -1519,3 +1519,259 @@
  	        \end{subfigure}       
         \end{figure}
         
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from living_thing to living_thing.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from living_thing to living_thing.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from living_thing to living_thing.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from living_thing to mammal.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from living_thing to mammal.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from living_thing to mammal.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from living_thing to dog.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from living_thing to dog.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from living_thing to dog.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from living_thing to hunting_dog.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from living_thing to hunting_dog.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from living_thing to hunting_dog.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from mammal to living_thing.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from mammal to living_thing.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from mammal to living_thing.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from mammal to mammal.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from mammal to mammal.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from mammal to mammal.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from mammal to dog.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from mammal to dog.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from mammal to dog.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from mammal to hunting_dog.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from mammal to hunting_dog.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from mammal to hunting_dog.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from dog to living_thing.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from dog to living_thing.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from dog to living_thing.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from dog to mammal.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from dog to mammal.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from dog to mammal.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from dog to dog.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from dog to dog.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from dog to dog.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from dog to hunting_dog.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from dog to hunting_dog.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from dog to hunting_dog.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from hunting_dog to living_thing.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from hunting_dog to living_thing.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from hunting_dog to living_thing.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from hunting_dog to mammal.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from hunting_dog to mammal.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from hunting_dog to mammal.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from hunting_dog to dog.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from hunting_dog to dog.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from hunting_dog to dog.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/Changes from hunting_dog to hunting_dog.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/Changes from hunting_dog to hunting_dog.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/Changes from hunting_dog to hunting_dog.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        

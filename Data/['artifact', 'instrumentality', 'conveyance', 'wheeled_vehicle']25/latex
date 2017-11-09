@@ -1519,3 +1519,259 @@
  	        \end{subfigure}       
         \end{figure}
         
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from artifact to artifact.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from artifact to artifact.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from artifact to artifact.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from artifact to instrumentality.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from artifact to instrumentality.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from artifact to instrumentality.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from artifact to conveyance.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from artifact to conveyance.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from artifact to conveyance.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from artifact to wheeled_vehicle.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from artifact to wheeled_vehicle.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from artifact to wheeled_vehicle.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from instrumentality to artifact.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from instrumentality to artifact.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from instrumentality to artifact.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from instrumentality to instrumentality.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from instrumentality to instrumentality.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from instrumentality to instrumentality.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from instrumentality to conveyance.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from instrumentality to conveyance.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from instrumentality to conveyance.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from instrumentality to wheeled_vehicle.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from instrumentality to wheeled_vehicle.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from instrumentality to wheeled_vehicle.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from conveyance to artifact.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from conveyance to artifact.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from conveyance to artifact.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from conveyance to instrumentality.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from conveyance to instrumentality.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from conveyance to instrumentality.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from conveyance to conveyance.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from conveyance to conveyance.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from conveyance to conveyance.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from conveyance to wheeled_vehicle.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from conveyance to wheeled_vehicle.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from conveyance to wheeled_vehicle.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from wheeled_vehicle to artifact.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from wheeled_vehicle to artifact.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from wheeled_vehicle to artifact.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from wheeled_vehicle to instrumentality.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from wheeled_vehicle to instrumentality.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from wheeled_vehicle to instrumentality.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from wheeled_vehicle to conveyance.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from wheeled_vehicle to conveyance.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from wheeled_vehicle to conveyance.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/Changes from wheeled_vehicle to wheeled_vehicle.png}
+            \caption*{Embedding 19}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/Changes from wheeled_vehicle to wheeled_vehicle.png}
+            \caption*{Embedding 25}
+ 	        \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/Changes from wheeled_vehicle to wheeled_vehicle.png}
+            \caption*{Embedding 31}
+ 	        \end{subfigure}       
+        \end{figure}
+        
