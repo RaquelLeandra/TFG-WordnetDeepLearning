@@ -93,6 +93,15 @@ class Data:
             'fc6tofc7': [4224, 12416],  # 23
             # 'all':[0,12416]          # 24
         }
+        self.reduced_layers = {
+            'conv1': [0, 128],
+            'conv2': [128, 384],
+            'conv3': [384, 1152],
+            'conv4': [1152, 2688],
+            'conv5': [2688, 4224],
+            'fc6': [4224, 8320],
+            'fc7': [8320, 12416]
+        }
 
     def __del__(self):
         self.embedding = None
@@ -1102,7 +1111,7 @@ class Statistics:
         for synset1 in self.synsets:
             for synset2 in self.synsets:
                 self.changes_matrix(synset1, synset2)
-                for layer in self.data.layers:
+                for layer in self.data.reduced_layers:
                     self.changes_matrix_per_layer(synset1, synset2, layer)
                     plt.cla()
                     plt.clf()
