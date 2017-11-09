@@ -148,7 +148,10 @@ class Statistics:
         self.intra_synset_path = self.dir_path + 'intra_synset' + str(self.textsynsets) + '.pkl'
         self.outlier_path = self.dir_path + 'outliers.txt'
         pathu = self.dir_path + 'latex'
-        stats_file = open(pathu, 'w')
+        latex_file = open(pathu, 'w')
+        latex_file.write('')
+        latex_file.close()
+        stats_file = open(self.stats_path, 'w')
         stats_file.write('')
         stats_file.close()
         plt.rcParams['figure.figsize'] = [8.0, 8.0]
