@@ -11,4 +11,6 @@
 \contentsline {subsection}{\numberline {2.7}Images per feature per synset}{17}
 \contentsline {subsection}{\numberline {2.8}Comprobaci\IeC {\'o}n de que las cosas tinen sentido}{25}
 \contentsline {subsection}{\numberline {2.9}Estudio de los outliers de imagenes per feature}{25}
-\contentsline {subsection}{\numberline {2.10}Matrices de cambio}{25}
+\contentsline {subsubsection}{\numberline {2.9.1}Living Things}{25}
+\contentsline {subsubsection}{\numberline {2.9.2}Non iving Things}{27}
+\contentsline {subsection}{\numberline {2.10}Matrices de cambio}{29}

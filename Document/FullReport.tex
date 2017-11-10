@@ -30,8 +30,9 @@
 	\item \textbf{labels} Labels vector of size $50k$ which every label is in numeric format $(0,999)$
 	\item \textbf{synsets = synset0 synset1 synset2 ...} The set of synsets that we will analyze: 
 	      	      	      
-	      $synsets_living_things = [living\_things, mammal, dog, hunting\_dogs]$
-	      $synsets_non_living_things = [artifact, instrumentality, conveyance, wheeled_vehicle]$
+	      $synsets\_living\_things = [living\_things, mammal, dog, hunting\_dogs]$
+	      \newline
+	      $synsets\_non\_living\_things = [artifact, instrumentality, conveyance, wheeled\_vehicle]$
 	      	      	      
 	\item \textbf{categories = \{-1 0 1 \}} The possible values of the features.
 	\item \textbf{The layers}:
@@ -82,12 +83,14 @@
 	      	      	      
 	      	      	      
 	\item Un diccionario con la cantidad de imágenes que tiene cada feature para cada category. 
-	\item \textbf{features\_per\_image[synsets].pkl} dfd
-	\item \textbf{features\_per\_layer[synsets].pkl}dsf
+	\item \textbf{features\_per\_image[synsets].pkl} Es un diccionario que contiene :
+	
+	feature\_per\_image[image][category] = cantidad e imagenes de esta categoría
+	\item \textbf{features\_per\_layer[synsets].pkl}features\_per\_layer[layer][category]  = cantidad de features de la category tal en el layer
 	\item \textbf{Images/\_per\_feature\_per\_synset[synsets].pkl} Genera un diccionario tal que:
 	      	      	      
 	      dict[features][category][synset] = cantidad e imagenes del synset que tienen esta categoria en cuestión.
-	\item \textbf{intra\_synset[synsets].pkl}fdsfs
+	\item \textbf{intra\_synset[synsets].pkl}dict[synset][synsethijo] = cantidad de synset hijo en synset
 \end{itemize}
 
 
@@ -994,24 +997,113 @@ Now I calculate for each feature how many images activate in each specific categ
 	      La feature tiene el valor i para el synset si lo tiene para alguna imagen del synset(Estamos estudiando la submatriz correspondiente al synset)
 \end{itemize}
 \subsection{Estudio de los outliers de imagenes per feature}
+\subsubsection{Living Things}
+     
+  
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/outliers-1.png}
+            \caption*{Embedding 19}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/outliers-1.png}
+            \caption*{Embedding 25}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/outliers-1.png}
+            \caption*{Embedding 31}
+            \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/outliers0.png}
+            \caption*{Embedding 19}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/outliers0.png}
+            \caption*{Embedding 25}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/outliers0.png}
+            \caption*{Embedding 31}
+            \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/outliers1.png}
+            \caption*{Embedding 19}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']25/plots/outliers1.png}
+            \caption*{Embedding 25}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']31/plots/outliers1.png}
+            \caption*{Embedding 31}
+            \end{subfigure}       
+        \end{figure}
+        
+        
+\newpage
+\clearpage   
+        
+\subsubsection{Non iving Things}        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/outliers-1.png}
+            \caption*{Embedding 19}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/outliers-1.png}
+            \caption*{Embedding 25}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/outliers-1.png}
+            \caption*{Embedding 31}
+            \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/outliers0.png}
+            \caption*{Embedding 19}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/outliers0.png}
+            \caption*{Embedding 25}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/outliers0.png}
+            \caption*{Embedding 31}
+            \end{subfigure}       
+        \end{figure}
+        
+       \begin{figure}[h] 
+            \centering
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']19/plots/outliers1.png}
+            \caption*{Embedding 19}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']25/plots/outliers1.png}
+            \caption*{Embedding 25}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth] {['artifact', 'instrumentality', 'conveyance', 'wheeled_vehicle']31/plots/outliers1.png}
+            \caption*{Embedding 31}
+            \end{subfigure}       
+        \end{figure}
 
 
-\begin{figure}[ht] 
-	\centering 
-	\includegraphics[width=0.45\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/outliers-1.png} 
-	\caption{ Category: -1}
-\end{figure}
-\begin{figure}[ht] 
-	\centering 
-	\includegraphics[width=0.45\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/outliers0.png} 
-	\caption{ Category: 0}
-\end{figure}
-\begin{figure}[ht] 
-	\centering 
-	\includegraphics[width=0.45\textwidth] {['living_thing', 'mammal', 'dog', 'hunting_dog']19/plots/outliers1.png} 
-	\caption{ Category: 1}
-\end{figure}
-
+\newpage
+\clearpage    
 \subsection{Matrices de cambio}
 
 \begin{figure}[ht] 
