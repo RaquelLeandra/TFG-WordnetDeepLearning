@@ -39,6 +39,8 @@ class Data:
                 'fc6tofc7':[4224,12416], # 23
                 #'all':[0,12416]          # 24
                     }
+
+         self.labels = embedding['labels']
     """
 
     def __init__(self, version):
@@ -192,6 +194,7 @@ class Statistics:
             hyponim_file.write(self.get_in_id(thing) + '\n')
             synset_list.append(self.get_in_id(thing))
 
+        index = []
         hyponim_file.close()
         index_path = self.dir_path + self.ss_to_text(synset) + '_' + 'index' + '.txt'
         index_file = open(index_path, 'w')
@@ -199,9 +202,31 @@ class Statistics:
         for lab in self.data.labels:
             if self.data.imagenet_all_ids[lab] in synset_list:
                 index_file.write(str(i) + '\n')
+                index.append(i)
             i += 1
-
         index_file.close()
+        return index
+
+    def generate_restricted_labels(self, synset):
+        """
+        Esta función genera un vector de labels con 3 valores, 0, 1 generado particionando el vector de labels original,
+        donde los valores corresponden:
+        0 : no pertenece al synset
+        1 : pertenece al synset
+        :param synset:
+        :return:
+        """
+        restricted_labels = [0] * len(self.data.labels)
+        index = self.get_index_from_ss(synset)
+        if not path.exists(self.dir_path + '/labels'):
+            makedirs(self.dir_path + '/labels')
+
+        rl_npz = self.dir_path + '/labels/imagenet_' + self.ss_to_text(synset) + '_labels' + '.npz'
+        for i in index:
+            restricted_labels[i] = 1
+
+        np.savez(rl_npz, np.array(restricted_labels))
+        #return np.array(restricted_labels)
 
     def printlatex(self, filename):
         path = self.dir_path + 'latex'

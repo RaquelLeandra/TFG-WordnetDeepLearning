@@ -1,4 +1,4 @@
-from wordnet_imagenet_connections import Statistics, Data
+from Code.wordnet_imagenet_connections import Statistics, Data
 from nltk.corpus import wordnet as wn
 import numpy as np
 import sys
@@ -33,8 +33,10 @@ for version in embeddings_version:
     sys.stdout.flush()
     sys.stdout.write("\b" * (toolbar_width + 1))  # return to start of line, after '['
 
-    stats_living.plot_all()
-    stats_non_living.plot_all()
+    for synset in stats_living.synsets:
+        stats_living.generate_restricted_labels(synset)
+    for synset in stats_non_living.synsets:
+        stats_non_living.generate_restricted_labels(synset)
 
     for i in range(toolbar_width):
         sys.stdout.write("-")
