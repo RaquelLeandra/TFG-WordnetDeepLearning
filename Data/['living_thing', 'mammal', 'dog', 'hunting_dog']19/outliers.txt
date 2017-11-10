@@ -1,0 +1,14 @@
+We are using the embedding 19
+Outliers from the synsets 'living_thing.n.01'), Synset('mammal.n.01'), Synset('dog.n.01'), Synset('hunting_dog.
+category -1
+[8330, 8711, 8858, 8964, 9096, 9103, 9169, 9589, 9644, 9665, 10138, 10504, 10607, 10630, 10713, 11121, 11143, 11210, 11350, 11520, 11652, 12203, 12247, 12379]
+ Distribution in the layers: 
+{'conv1': 0, 'conv2': 0, 'conv3': 0, 'conv4': 0, 'conv5': 0, 'fc6': 0, 'fc7': 24}
+category 0
+[1597, 2446, 8330, 8711, 8858, 8964, 9096, 9103, 9169, 9589, 9644, 9665, 10138, 10504, 10607, 10630, 10713, 11121, 11143, 11210, 11350, 11520, 11652, 12203, 12247, 12379]
+ Distribution in the layers: 
+{'conv1': 0, 'conv2': 0, 'conv3': 0, 'conv4': 2, 'conv5': 0, 'fc6': 0, 'fc7': 24}
+category 1
+[]
+ Distribution in the layers: 
+{'conv1': 0, 'conv2': 0, 'conv3': 0, 'conv4': 0, 'conv5': 0, 'fc6': 0, 'fc7': 0}
