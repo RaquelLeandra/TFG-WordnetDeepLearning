@@ -64,3 +64,5 @@ target/
 *.toc
 
 Data/
+
+Document/Documento Final/\.DS_Store
