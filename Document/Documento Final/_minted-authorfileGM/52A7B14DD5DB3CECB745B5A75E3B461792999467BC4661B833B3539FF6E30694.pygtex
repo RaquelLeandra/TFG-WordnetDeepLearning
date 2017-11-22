@@ -1,0 +1,1200 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{Data}\PYG{p}{:}
+    \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    Esta clase consiste en los datos que voy a necesitar para hacer las estadísticas.}
+\PYG{l+s+sd}{    Que no dependen de los synsets elegidos.}
+
+\PYG{l+s+sd}{    Attributes:}
+\PYG{l+s+sd}{        version (int): versión del embedding que utilizo puede ser 19, 25 o 31}
+\PYG{l+s+sd}{        embedding\PYGZus{}path (str): path}
+\PYG{l+s+sd}{        layers (dict): Un diccionario tal que}
+\PYG{l+s+sd}{            layers[string correspondiente al layer] = [inicio del layer, final del layer]}
+
+\PYG{l+s+sd}{         labels ()}
+
+\PYG{l+s+sd}{         :parameter version = Version del embedding que utilizo}
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{path}\PYG{p}{,} \PYG{n}{version}\PYG{o}{=}\PYG{l+m+mi}{25}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+\PYG{l+s+sd}{        :param version: Es la versión del embedding que queremos cargar (25,31,19)}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{version} \PYG{o}{=} \PYG{n}{version}
+        \PYG{n}{\PYGZus{}embedding\PYGZus{}path} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}../Data/vgg16\PYGZus{}ImageNet\PYGZus{}ALLlayers\PYGZus{}C1avg\PYGZus{}imagenet\PYGZus{}train.npz\PYGZdq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{imagenet\PYGZus{}id\PYGZus{}path} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}../Data/synset.txt\PYGZdq{}}
+        \PYG{k}{if} \PYG{n}{version} \PYG{o}{==} \PYG{l+m+mi}{25}\PYG{p}{:}
+            \PYG{n}{\PYGZus{}embedding} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}vgg16\PYGZus{}ImageNet\PYGZus{}imagenet\PYGZus{}C1avg\PYGZus{}E\PYGZus{}FN\PYGZus{}KSBsp0.15n0.25\PYGZus{}Gall\PYGZus{}train\PYGZus{}.npy\PYGZsq{}}
+        \PYG{k}{elif} \PYG{n}{version} \PYG{o}{==} \PYG{l+m+mi}{19}\PYG{p}{:}
+            \PYG{n}{\PYGZus{}embedding} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}vgg16\PYGZus{}ImageNet\PYGZus{}imagenet\PYGZus{}C1avg\PYGZus{}E\PYGZus{}FN\PYGZus{}KSBsp0.11n0.19\PYGZus{}Gall\PYGZus{}train\PYGZus{}.npy\PYGZsq{}}
+        \PYG{k}{elif} \PYG{n}{version} \PYG{o}{==} \PYG{l+m+mi}{31}\PYG{p}{:}
+            \PYG{n}{\PYGZus{}embedding} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}vgg16\PYGZus{}ImageNet\PYGZus{}imagenet\PYGZus{}C1avg\PYGZus{}E\PYGZus{}FN\PYGZus{}KSBsp0.19n0.31\PYGZus{}Gall\PYGZus{}train\PYGZus{}.npy\PYGZsq{}}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{n}{\PYGZus{}embedding} \PYG{o}{=} \PYG{n}{path}
+            \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}No has puesto un embedding válido, usando el de defoult (25)\PYGZsq{}}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{discretized\PYGZus{}embedding\PYGZus{}path} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}../Data/Embeddings/\PYGZsq{}} \PYG{o}{+} \PYG{n}{\PYGZus{}embedding}
+        \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Estamos usando \PYGZsq{}} \PYG{o}{+} \PYG{n}{\PYGZus{}embedding}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{20}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{16}\PYG{p}{])}
+        \PYG{n}{embedding} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n}{\PYGZus{}embedding\PYGZus{}path}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{labels} \PYG{o}{=} \PYG{n}{embedding}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}labels\PYGZsq{}}\PYG{p}{]}
+        \PYG{c+c1}{\PYGZsh{} self.matrix = self.embedding[\PYGZsq{}data\PYGZus{}matrix\PYGZsq{}]}
+        \PYG{k}{del} \PYG{n}{embedding}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dmatrix} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{discretized\PYGZus{}embedding\PYGZus{}path}\PYG{p}{))}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{imagenet\PYGZus{}all\PYGZus{}ids} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{genfromtxt}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{imagenet\PYGZus{}id\PYGZus{}path}\PYG{p}{,} \PYG{n}{dtype}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{str}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}category} \PYG{o}{=} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{colors} \PYG{o}{=} \PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}3643D2\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}c\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}722672\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}BF3FBF\PYGZsq{}}\PYG{p}{]}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{layers} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+            \PYG{l+s+s1}{\PYGZsq{}conv1\PYGZus{}1\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{64}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 1}
+            \PYG{l+s+s1}{\PYGZsq{}conv1\PYGZus{}2\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{64}\PYG{p}{,} \PYG{l+m+mi}{128}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 2}
+            \PYG{l+s+s1}{\PYGZsq{}conv2\PYGZus{}1\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{128}\PYG{p}{,} \PYG{l+m+mi}{256}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 3}
+            \PYG{l+s+s1}{\PYGZsq{}conv2\PYGZus{}2\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{256}\PYG{p}{,} \PYG{l+m+mi}{384}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 4}
+            \PYG{l+s+s1}{\PYGZsq{}conv3\PYGZus{}1\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{384}\PYG{p}{,} \PYG{l+m+mi}{640}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 5}
+            \PYG{l+s+s1}{\PYGZsq{}conv3\PYGZus{}2\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{640}\PYG{p}{,} \PYG{l+m+mi}{896}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 6}
+            \PYG{l+s+s1}{\PYGZsq{}conv3\PYGZus{}3\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{896}\PYG{p}{,} \PYG{l+m+mi}{1152}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 7}
+            \PYG{l+s+s1}{\PYGZsq{}conv4\PYGZus{}1\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{1152}\PYG{p}{,} \PYG{l+m+mi}{1664}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 8}
+            \PYG{l+s+s1}{\PYGZsq{}conv4\PYGZus{}2\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{1664}\PYG{p}{,} \PYG{l+m+mi}{2176}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 9}
+            \PYG{l+s+s1}{\PYGZsq{}conv4\PYGZus{}3\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{2176}\PYG{p}{,} \PYG{l+m+mi}{2688}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 10}
+            \PYG{l+s+s1}{\PYGZsq{}conv5\PYGZus{}1\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{2688}\PYG{p}{,} \PYG{l+m+mi}{3200}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 11}
+            \PYG{l+s+s1}{\PYGZsq{}conv5\PYGZus{}2\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{3200}\PYG{p}{,} \PYG{l+m+mi}{3712}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 12}
+            \PYG{l+s+s1}{\PYGZsq{}conv5\PYGZus{}3\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{3712}\PYG{p}{,} \PYG{l+m+mi}{4224}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 13}
+            \PYG{l+s+s1}{\PYGZsq{}fc6\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{4224}\PYG{p}{,} \PYG{l+m+mi}{8320}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 14}
+            \PYG{l+s+s1}{\PYGZsq{}fc7\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{8320}\PYG{p}{,} \PYG{l+m+mi}{12416}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 15}
+            \PYG{l+s+s1}{\PYGZsq{}conv1\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{128}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 16}
+            \PYG{l+s+s1}{\PYGZsq{}conv2\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{128}\PYG{p}{,} \PYG{l+m+mi}{384}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 17}
+            \PYG{l+s+s1}{\PYGZsq{}conv3\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{384}\PYG{p}{,} \PYG{l+m+mi}{1152}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 18}
+            \PYG{l+s+s1}{\PYGZsq{}conv4\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{1152}\PYG{p}{,} \PYG{l+m+mi}{2688}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 19}
+            \PYG{l+s+s1}{\PYGZsq{}conv5\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{2688}\PYG{p}{,} \PYG{l+m+mi}{4224}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 20}
+            \PYG{l+s+s1}{\PYGZsq{}conv\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{4224}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 21}
+            \PYG{l+s+s1}{\PYGZsq{}fc6tofc7\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{4224}\PYG{p}{,} \PYG{l+m+mi}{12416}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 23}
+            \PYG{c+c1}{\PYGZsh{} \PYGZsq{}all\PYGZsq{}:[0,12416]          \PYGZsh{} 24}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{reduced\PYGZus{}layers} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+            \PYG{l+s+s1}{\PYGZsq{}conv1\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{128}\PYG{p}{],}
+            \PYG{l+s+s1}{\PYGZsq{}conv2\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{128}\PYG{p}{,} \PYG{l+m+mi}{384}\PYG{p}{],}
+            \PYG{l+s+s1}{\PYGZsq{}conv3\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{384}\PYG{p}{,} \PYG{l+m+mi}{1152}\PYG{p}{],}
+            \PYG{l+s+s1}{\PYGZsq{}conv4\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{1152}\PYG{p}{,} \PYG{l+m+mi}{2688}\PYG{p}{],}
+            \PYG{l+s+s1}{\PYGZsq{}conv5\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{2688}\PYG{p}{,} \PYG{l+m+mi}{4224}\PYG{p}{],}
+            \PYG{l+s+s1}{\PYGZsq{}fc6\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{4224}\PYG{p}{,} \PYG{l+m+mi}{8320}\PYG{p}{],}
+            \PYG{l+s+s1}{\PYGZsq{}fc7\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{8320}\PYG{p}{,} \PYG{l+m+mi}{12416}\PYG{p}{]}
+        \PYG{p}{\PYGZcb{}}
+
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}del\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{embedding} \PYG{o}{=} \PYG{n+nb+bp}{None}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dmatrix} \PYG{o}{=} \PYG{n+nb+bp}{None}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{version} \PYG{o}{=} \PYG{n+nb+bp}{None}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{embedding\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{None}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{layers} \PYG{o}{=} \PYG{n+nb+bp}{None}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{labels} \PYG{o}{=} \PYG{n+nb+bp}{None}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}category} \PYG{o}{=} \PYG{n+nb+bp}{None}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{colors} \PYG{o}{=} \PYG{n+nb+bp}{None}
+        \PYG{n}{gc}\PYG{o}{.}\PYG{n}{collect}\PYG{p}{()}
+
+	\PYG{k}{class} \PYG{n+nc}{Statistics}\PYG{p}{:}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{synsets}\PYG{p}{,} \PYG{n}{data}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{            Esta clase genera todas las estadísticas para un conjunto de synsets}
+\PYG{l+s+sd}{        :param synsets: conjunto de synset del que queremos calcualr las estadísticas}
+\PYG{l+s+sd}{        :param synset\PYGZus{}in\PYGZus{}data[ss\PYGZus{}to\PYGZus{}text(synset)] =  cantidad de elementos del synset en el total}
+\PYG{l+s+sd}{                synset\PYGZus{}in\PYGZus{}data[\PYGZsq{}total\PYGZsq{}]}
+\PYG{l+s+sd}{        :param dir\PYGZus{}path es el path donde se guardaran todos los datos generados}
+\PYG{l+s+sd}{        :param plot\PYGZus{}path es el path donde se guardaran los plots}
+\PYG{l+s+sd}{        :param all\PYGZus{}features: es un diccionario tal que all\PYGZus{}features[i] = cantidad de features del tipo i en el embedding}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data} \PYG{o}{=} \PYG{n}{data}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synsets} \PYG{o}{=} \PYG{n}{synsets}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{textsynsets} \PYG{o}{=} \PYG{p}{[}\PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{s}\PYG{p}{)[}\PYG{l+m+mi}{8}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{7}\PYG{p}{]} \PYG{k}{for} \PYG{n}{s} \PYG{o+ow}{in} \PYG{n}{synsets}\PYG{p}{]}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}../Data/\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{textsynsets}\PYG{p}{)} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{data}\PYG{o}{.}\PYG{n}{version}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}/\PYGZsq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}plots/\PYGZsq{}}
+        \PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{path}\PYG{o}{.}\PYG{n}{exists}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path}\PYG{p}{):}
+            \PYG{n}{makedirs}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path}\PYG{p}{)}
+        \PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{path}\PYG{o}{.}\PYG{n}{exists}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path}\PYG{p}{):}
+            \PYG{n}{makedirs}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{stats\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{textsynsets}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}stats.txt\PYGZsq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{matrix\PYGZus{}size} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{dmatrix}\PYG{o}{.}\PYG{n}{shape}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{total\PYGZus{}features} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{matrix\PYGZus{}size}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{*} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{matrix\PYGZus{}size}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{all\PYGZus{}features} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{count\PYGZus{}features}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{dmatrix}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synset\PYGZus{}in\PYGZus{}data} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}synset\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}features\PYGZus{}per\PYGZus{}synset\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.pkl\PYGZsq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}synset} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}features\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{textsynsets}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.pkl\PYGZsq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}images\PYGZus{}per\PYGZus{}feature\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.pkl\PYGZsq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}layer\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}features\PYGZus{}per\PYGZus{}layer\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{textsynsets}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.pkl\PYGZsq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}features\PYGZus{}per\PYGZus{}image\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{textsynsets}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.pkl\PYGZsq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synset\PYGZus{}in\PYGZus{}data\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}synset\PYGZus{}in\PYGZus{}data\PYGZus{}path\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{()}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}images\PYGZus{}per\PYGZus{}featre\PYGZus{}per\PYGZus{}synset\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{textsynsets}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.pkl\PYGZsq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}layer} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{intra\PYGZus{}synset} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{intra\PYGZus{}synset\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}intra\PYGZus{}synset\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{textsynsets}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.pkl\PYGZsq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{outlier\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}outliers.txt\PYGZsq{}}
+        \PYG{n}{pathu} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}latex\PYGZsq{}}
+        \PYG{n}{latex\PYGZus{}file} \PYG{o}{=} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n}{pathu}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}w\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{latex\PYGZus{}file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{latex\PYGZus{}file}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+        \PYG{n}{stats\PYGZus{}file} \PYG{o}{=} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{stats\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}w\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{stats\PYGZus{}file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{stats\PYGZus{}file}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{rcParams}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}figure.figsize\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mf}{8.0}\PYG{p}{,} \PYG{l+m+mf}{8.0}\PYG{p}{]}
+
+    \PYG{k}{def} \PYG{n+nf}{get\PYGZus{}in\PYGZus{}id}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{wordnet\PYGZus{}ss}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Input: Synset}
+\PYG{l+s+sd}{        :param wordnet\PYGZus{}ss:}
+\PYG{l+s+sd}{        :return: imagenet id}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{c+c1}{\PYGZsh{} Esta funcion genera la id de imagenet a partir del synset de wordnet}
+        \PYG{n}{wn\PYGZus{}id} \PYG{o}{=} \PYG{n}{wn}\PYG{o}{.}\PYG{n}{ss2of}\PYG{p}{(}\PYG{n}{wordnet\PYGZus{}ss}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{wn\PYGZus{}id}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+} \PYG{n}{wn\PYGZus{}id}\PYG{p}{[:}\PYG{l+m+mi}{8}\PYG{p}{]}
+
+    \PYG{k}{def} \PYG{n+nf}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{synset}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{} devuelve el string del nombre del synset en cuestion\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{return} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)[}\PYG{l+m+mi}{8}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{7}\PYG{p}{]}
+
+    \PYG{k}{def} \PYG{n+nf}{get\PYGZus{}index\PYGZus{}from\PYGZus{}ss}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{synset}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Esta función genera un archivo con los índices(0:999) de la aparición de un synset y sus hiponimos}
+\PYG{l+s+sd}{        y otro con los códigos imagenet de todos los hipónimos}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n}{hypo} \PYG{o}{=} \PYG{k}{lambda} \PYG{n}{s}\PYG{p}{:} \PYG{n}{s}\PYG{o}{.}\PYG{n}{hyponyms}\PYG{p}{()}
+        \PYG{n}{path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}index\PYGZus{}hyponim\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.txt\PYGZsq{}}
+        \PYG{n}{hyponim\PYGZus{}file} \PYG{o}{=} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n}{path}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}w\PYGZdq{}}\PYG{p}{)}
+        \PYG{n}{synset\PYGZus{}list} \PYG{o}{=} \PYG{p}{[]}
+        \PYG{k}{for} \PYG{n}{thing} \PYG{o+ow}{in} \PYG{n+nb}{list}\PYG{p}{(}\PYG{n}{synset}\PYG{o}{.}\PYG{n}{closure}\PYG{p}{(}\PYG{n}{hypo}\PYG{p}{)):}
+            \PYG{n}{hyponim\PYGZus{}file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{get\PYGZus{}in\PYGZus{}id}\PYG{p}{(}\PYG{n}{thing}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{synset\PYGZus{}list}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{get\PYGZus{}in\PYGZus{}id}\PYG{p}{(}\PYG{n}{thing}\PYG{p}{))}
+
+        \PYG{n}{index} \PYG{o}{=} \PYG{p}{[]}
+        \PYG{n}{hyponim\PYGZus{}file}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+        \PYG{n}{index\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}index\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.txt\PYGZsq{}}
+        \PYG{n}{index\PYGZus{}file} \PYG{o}{=} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n}{index\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}w\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}
+        \PYG{k}{for} \PYG{n}{lab} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{labels}\PYG{p}{:}
+            \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{imagenet\PYGZus{}all\PYGZus{}ids}\PYG{p}{[}\PYG{n}{lab}\PYG{p}{]} \PYG{o+ow}{in} \PYG{n}{synset\PYGZus{}list}\PYG{p}{:}
+                \PYG{n}{index\PYGZus{}file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+                \PYG{n}{index}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)}
+            \PYG{n}{i} \PYG{o}{+=} \PYG{l+m+mi}{1}
+        \PYG{n}{index\PYGZus{}file}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+        \PYG{k}{return} \PYG{n}{index}
+
+    \PYG{k}{def} \PYG{n+nf}{generate\PYGZus{}restricted\PYGZus{}labels}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{synset}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Esta función genera un vector de labels con 3 valores, 0, 1 generado particionando el vector de labels original,}
+\PYG{l+s+sd}{        donde los valores corresponden:}
+\PYG{l+s+sd}{        0 : no pertenece al synset}
+\PYG{l+s+sd}{        1 : pertenece al synset}
+\PYG{l+s+sd}{        :param synset:}
+\PYG{l+s+sd}{        :return:}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n}{restricted\PYGZus{}labels} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{*} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{labels}\PYG{p}{)}
+        \PYG{n}{index} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{get\PYGZus{}index\PYGZus{}from\PYGZus{}ss}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)}
+        \PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{path}\PYG{o}{.}\PYG{n}{exists}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}/labels\PYGZsq{}}\PYG{p}{):}
+            \PYG{n}{makedirs}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}/labels\PYGZsq{}}\PYG{p}{)}
+
+        \PYG{n}{rl\PYGZus{}npz} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}/labels/imagenet\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}labels\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.npz\PYGZsq{}}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{index}\PYG{p}{:}
+            \PYG{n}{restricted\PYGZus{}labels}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}
+
+        \PYG{n}{np}\PYG{o}{.}\PYG{n}{savez}\PYG{p}{(}\PYG{n}{rl\PYGZus{}npz}\PYG{p}{,} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n}{restricted\PYGZus{}labels}\PYG{p}{))}
+        \PYG{c+c1}{\PYGZsh{}return np.array(restricted\PYGZus{}labels)}
+
+    \PYG{k}{def} \PYG{n+nf}{printlatex}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{filename}\PYG{p}{):}
+        \PYG{n}{path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}latex\PYGZsq{}}
+        \PYG{n}{stats\PYGZus{}file} \PYG{o}{=} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n}{path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}a\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{text} \PYG{o}{=} \PYG{l+s+sa}{r}\PYG{l+s+s1}{\PYGZsq{}\PYGZbs{}b\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}egin\PYGZob{}figure\PYGZcb{}[h] }\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{ \PYGZbs{}centering }\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{ \PYGZbs{}includegraphics[scale=0.5] \PYGZob{}Images/\PYGZsq{}} \PYG{o}{+} \PYG{n}{filename} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZcb{} }\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{ \PYGZbs{}end\PYGZob{}figure\PYGZcb{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}
+        \PYG{n}{ntext} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+\PYG{l+s+s1}{       }\PYG{l+s+se}{\PYGZbs{}\PYGZbs{}}\PYG{l+s+s1}{begin\PYGZob{}figure\PYGZcb{}[h]}
+\PYG{l+s+s1}{            \PYGZbs{}centering}
+\PYG{l+s+s1}{            }\PYG{l+s+se}{\PYGZbs{}\PYGZbs{}}\PYG{l+s+s1}{begin\PYGZob{}subfigure\PYGZcb{}[b]\PYGZob{}0.3}\PYG{l+s+se}{\PYGZbs{}\PYGZbs{}}\PYG{l+s+s1}{textwidth\PYGZcb{}}
+\PYG{l+s+s1}{            \PYGZbs{}includegraphics[width=}\PYG{l+s+se}{\PYGZbs{}\PYGZbs{}}\PYG{l+s+s1}{textwidth] \PYGZob{}\PYGZsq{}\PYGZsq{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{textsynsets}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}19/plots/\PYGZsq{}} \PYG{o}{+} \PYG{n}{filename} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}\PYGZsq{}\PYGZcb{}}
+\PYG{l+s+s1}{            \PYGZbs{}caption*\PYGZob{}Embedding 19\PYGZcb{}}
+\PYG{l+s+s1}{            \PYGZbs{}end\PYGZob{}subfigure\PYGZcb{}}
+\PYG{l+s+s1}{            }\PYG{l+s+se}{\PYGZbs{}\PYGZbs{}}\PYG{l+s+s1}{begin\PYGZob{}subfigure\PYGZcb{}[b]\PYGZob{}0.3}\PYG{l+s+se}{\PYGZbs{}\PYGZbs{}}\PYG{l+s+s1}{textwidth\PYGZcb{}}
+\PYG{l+s+s1}{            \PYGZbs{}includegraphics[width=}\PYG{l+s+se}{\PYGZbs{}\PYGZbs{}}\PYG{l+s+s1}{textwidth] \PYGZob{}\PYGZsq{}\PYGZsq{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{textsynsets}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}25/plots/\PYGZsq{}} \PYG{o}{+} \PYG{n}{filename} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}\PYGZsq{}\PYGZcb{}}
+\PYG{l+s+s1}{            \PYGZbs{}caption*\PYGZob{}Embedding 25\PYGZcb{}}
+\PYG{l+s+s1}{            \PYGZbs{}end\PYGZob{}subfigure\PYGZcb{}}
+\PYG{l+s+s1}{            }\PYG{l+s+se}{\PYGZbs{}\PYGZbs{}}\PYG{l+s+s1}{begin\PYGZob{}subfigure\PYGZcb{}[b]\PYGZob{}0.3}\PYG{l+s+se}{\PYGZbs{}\PYGZbs{}}\PYG{l+s+s1}{textwidth\PYGZcb{}}
+\PYG{l+s+s1}{            \PYGZbs{}includegraphics[width=}\PYG{l+s+se}{\PYGZbs{}\PYGZbs{}}\PYG{l+s+s1}{textwidth] \PYGZob{}\PYGZsq{}\PYGZsq{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{textsynsets}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}31/plots/\PYGZsq{}} \PYG{o}{+} \PYG{n}{filename} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}\PYGZsq{}\PYGZcb{}}
+\PYG{l+s+s1}{            \PYGZbs{}caption*\PYGZob{}Embedding 31\PYGZcb{}}
+\PYG{l+s+s1}{            \PYGZbs{}end\PYGZob{}subfigure\PYGZcb{}}
+\PYG{l+s+s1}{        \PYGZbs{}end\PYGZob{}figure\PYGZcb{}}
+\PYG{l+s+s1}{        \PYGZsq{}\PYGZsq{}\PYGZsq{}}
+        \PYG{n}{stats\PYGZus{}file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{n}{ntext}\PYG{p}{)}
+        \PYG{n}{stats\PYGZus{}file}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+
+    \PYG{k}{def} \PYG{n+nf}{synset\PYGZus{}in\PYGZus{}data\PYGZus{}gen}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        This function generates a dictionary with the basic stats}
+\PYG{l+s+sd}{        devuelve synset\PYGZus{}in\PYGZus{}data donde:}
+\PYG{l+s+sd}{        synset\PYGZus{}in\PYGZus{}data[ss\PYGZus{}to\PYGZus{}text(synset)] = cantidad de elementos del synset en los datos}
+\PYG{l+s+sd}{        synset\PYGZus{}in\PYGZus{}data[\PYGZsq{}total\PYGZsq{}] =  cantidad total de elementos}
+
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+        \PYG{n}{stats\PYGZus{}file} \PYG{o}{=} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{stats\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}a\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{labels\PYGZus{}size} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{labels}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synset\PYGZus{}in\PYGZus{}data}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}total\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{n}{labels\PYGZus{}size}
+        \PYG{k}{for} \PYG{n}{synset} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synsets}\PYG{p}{:}
+            \PYG{n}{synset\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.txt\PYGZsq{}}
+            \PYG{n}{index\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}index\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.txt\PYGZsq{}}
+            \PYG{k}{if} \PYG{n}{path}\PYG{o}{.}\PYG{n}{isfile}\PYG{p}{(}\PYG{n}{index\PYGZus{}path}\PYG{p}{):}
+                \PYG{n}{index} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{genfromtxt}\PYG{p}{(}\PYG{n}{index\PYGZus{}path}\PYG{p}{,} \PYG{n}{dtype}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{int}\PYG{p}{)}
+            \PYG{k}{else}\PYG{p}{:}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{get\PYGZus{}index\PYGZus{}from\PYGZus{}ss}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)}
+                \PYG{n}{index} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{genfromtxt}\PYG{p}{(}\PYG{n}{index\PYGZus{}path}\PYG{p}{,} \PYG{n}{dtype}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{int}\PYG{p}{)}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synset\PYGZus{}in\PYGZus{}data}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)]} \PYG{o}{=} \PYG{n}{index}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+            \PYG{n}{text} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Tenemos \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{labels\PYGZus{}size}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} imagenes, de las cuales \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{index}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]))} \PYG{o}{+} \PYGZbs{}
+                   \PYG{l+s+s1}{\PYGZsq{}, el \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{index}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])} \PYG{o}{/} \PYG{n}{labels\PYGZus{}size} \PYG{o}{*} \PYG{l+m+mi}{100}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} son \PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}
+            \PYG{n}{stats\PYGZus{}file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{n}{text}\PYG{p}{)}
+        \PYG{k}{with} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synset\PYGZus{}in\PYGZus{}data\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}wb\PYGZsq{}}\PYG{p}{)} \PYG{k}{as} \PYG{n}{handle}\PYG{p}{:}
+            \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{dump}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synset\PYGZus{}in\PYGZus{}data}\PYG{p}{,} \PYG{n}{handle}\PYG{p}{)}
+        \PYG{n}{stats\PYGZus{}file}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+
+    \PYG{k}{def} \PYG{n+nf}{plot\PYGZus{}synsets\PYGZus{}on\PYGZus{}data}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Hace un barplot y un pieplot de la ditribución de los synsets en los datos}
+\PYG{l+s+sd}{        :return:}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{if} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synset\PYGZus{}in\PYGZus{}data}\PYG{p}{)} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synset\PYGZus{}in\PYGZus{}data\PYGZus{}gen}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{bar}\PYG{p}{(}\PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synset\PYGZus{}in\PYGZus{}data}\PYG{p}{)),} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synset\PYGZus{}in\PYGZus{}data}\PYG{o}{.}\PYG{n}{values}\PYG{p}{(),} \PYG{n}{align}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}center\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xticks}\PYG{p}{(}\PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synset\PYGZus{}in\PYGZus{}data}\PYG{p}{)),} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synset\PYGZus{}in\PYGZus{}data}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{())}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Distribution of the synsets in the data\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}synsets\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Quantity of synsets\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}distribution\PYGZus{}of\PYGZus{}synsets\PYGZus{}bar\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}distribution\PYGZus{}of\PYGZus{}synsets\PYGZus{}bar\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{printlatex}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+        \PYG{n}{\PYGZus{}aux} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+        \PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synset\PYGZus{}in\PYGZus{}data}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{():}
+            \PYG{k}{if} \PYG{n}{k} \PYG{o}{!=} \PYG{l+s+s1}{\PYGZsq{}total\PYGZsq{}}\PYG{p}{:}
+                \PYG{n}{\PYGZus{}aux}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synset\PYGZus{}in\PYGZus{}data}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]}
+
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{pie}\PYG{p}{([}\PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{\PYGZus{}aux}\PYG{o}{.}\PYG{n}{values}\PYG{p}{()],} \PYG{n}{labels}\PYG{o}{=}\PYG{p}{[}\PYG{n}{k} \PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n}{\PYGZus{}aux}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{()],}
+                \PYG{n}{autopct}\PYG{o}{=}\PYG{n+nb+bp}{None}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Distribution of the synsets in the data\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}distribution\PYGZus{}of\PYGZus{}synsets\PYGZus{}pie\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+        \PYG{n}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}distribution\PYGZus{}of\PYGZus{}synsets\PYGZus{}pie\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{printlatex}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf}{count\PYGZus{}features}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{matrix}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Devuelve un diccionario con la cantidad de features de cada tipo de la matriz matrix}
+\PYG{l+s+sd}{        features[category] = cantidad de category de la matriz}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n}{features} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{:} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{:} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{:} \PYG{l+m+mi}{0}\PYG{p}{\PYGZcb{}}
+        \PYG{n}{features}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sum}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{equal}\PYG{p}{(}\PYG{n}{matrix}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{))}
+        \PYG{n}{features}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sum}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{equal}\PYG{p}{(}\PYG{n}{matrix}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{))}
+        \PYG{n}{features}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sum}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{equal}\PYG{p}{(}\PYG{n}{matrix}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{))}
+        \PYG{k}{return} \PYG{n}{features}
+
+    \PYG{k}{def} \PYG{n+nf}{plot\PYGZus{}all\PYGZus{}features}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Genera un bar plot y un pie plot con la distribución de las features en los datos.}
+\PYG{l+s+sd}{        :return:}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{bar}\PYG{p}{(}\PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{all\PYGZus{}features}\PYG{p}{)),} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{all\PYGZus{}features}\PYG{o}{.}\PYG{n}{values}\PYG{p}{(),} \PYG{n}{align}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}center\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xticks}\PYG{p}{(}\PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{all\PYGZus{}features}\PYG{p}{)),} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{all\PYGZus{}features}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{())}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}All features\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Categories\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Quantity of features\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}quantity\PYGZus{}of\PYGZus{}features\PYGZus{}bar\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}quantity\PYGZus{}of\PYGZus{}features\PYGZus{}bar\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{printlatex}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{pie}\PYG{p}{([}\PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{all\PYGZus{}features}\PYG{o}{.}\PYG{n}{values}\PYG{p}{()],} \PYG{n}{labels}\PYG{o}{=}\PYG{p}{[}\PYG{n}{k} \PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{all\PYGZus{}features}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{()],}
+                \PYG{n}{autopct}\PYG{o}{=}\PYG{n+nb+bp}{None}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}All features\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}all\PYGZus{}features\PYGZus{}pie\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}all\PYGZus{}features\PYGZus{}pie\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{printlatex}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+
+    \PYG{k}{def} \PYG{n+nf}{features\PYGZus{}per\PYGZus{}synset\PYGZus{}gen}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        TENGO QUE REESTRUCTURAR ESTA FUNCIÓN POR QUE ES UN CAOS}
+\PYG{l+s+sd}{        genera un diccionario de la forma}
+\PYG{l+s+sd}{        feaures\PYGZus{}per\PYGZus{}synset[synset][category] = la cantidad de elementos que tienen el valor category dentro de la}
+\PYG{l+s+sd}{        seccion de la matriz correspondiente al synset}
+\PYG{l+s+sd}{        :return:}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+        \PYG{n}{stats\PYGZus{}file} \PYG{o}{=} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{stats\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}a\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{labels\PYGZus{}size} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{labels}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+        \PYG{c+c1}{\PYGZsh{} todo: arreglar esto para no tener que hardcodearlo}
+        \PYG{n}{text} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Dentro de las 50k imágenes tenemos: }\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{ un total de \PYGZsq{}} \PYGZbs{}
+               \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{total\PYGZus{}features}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}de la matriz de tamaño \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{matrix\PYGZus{}size}\PYG{p}{)} \PYGZbs{}
+               \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{ \PYGZhy{}Features de tipo \PYGZhy{}1: \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{all\PYGZus{}features}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{])} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} el \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{all\PYGZus{}features}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{/} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{total\PYGZus{}features} \PYG{o}{*} \PYG{l+m+mi}{100}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} \PYGZpc{}\PYGZsq{}} \PYGZbs{}
+               \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{ \PYGZhy{}Features de tipo 0: \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{all\PYGZus{}features}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} el \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{all\PYGZus{}features}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{/} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{total\PYGZus{}features} \PYG{o}{*} \PYG{l+m+mi}{100}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} \PYGZpc{}\PYGZsq{}} \PYGZbs{}
+               \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{ \PYGZhy{}Features de tipo 1: \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{all\PYGZus{}features}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{])} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} el \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{all\PYGZus{}features}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{/} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{total\PYGZus{}features} \PYG{o}{*} \PYG{l+m+mi}{100}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} \PYGZpc{}\PYGZsq{}}
+        \PYG{n}{stats\PYGZus{}file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{n}{text}\PYG{p}{)}
+        \PYG{k}{for} \PYG{n}{synset} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synsets}\PYG{p}{:}
+            \PYG{n}{synset\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.txt\PYGZsq{}}
+            \PYG{n}{index\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}index\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.txt\PYGZsq{}}
+
+            \PYG{k}{if} \PYG{n}{path}\PYG{o}{.}\PYG{n}{isfile}\PYG{p}{(}\PYG{n}{index\PYGZus{}path}\PYG{p}{):}
+                \PYG{n}{index} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{genfromtxt}\PYG{p}{(}\PYG{n}{index\PYGZus{}path}\PYG{p}{,} \PYG{n}{dtype}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{int}\PYG{p}{)}
+            \PYG{k}{else}\PYG{p}{:}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{get\PYGZus{}index\PYGZus{}from\PYGZus{}ss}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)}
+                \PYG{n}{index} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{genfromtxt}\PYG{p}{(}\PYG{n}{index\PYGZus{}path}\PYG{p}{,} \PYG{n}{dtype}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{int}\PYG{p}{)}
+
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}synset}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)]} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{count\PYGZus{}features}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{dmatrix}\PYG{p}{[}\PYG{n}{index}\PYG{p}{,} \PYG{p}{:])}
+            \PYG{n}{synset\PYGZus{}total\PYGZus{}features} \PYG{o}{=} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{index}\PYG{p}{)} \PYG{o}{*} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{matrix\PYGZus{}size}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}
+            \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{            Esta parte con el cambio que he hecho iba a petar}
+\PYG{l+s+sd}{            text = \PYGZsq{}\PYGZbs{}nEn el \PYGZsq{} + self.ss\PYGZus{}to\PYGZus{}text(synset) + \PYGZsq{} tenemos \PYGZsq{} + str(synset\PYGZus{}total\PYGZus{}features) + \PYGZsq{}features en total : \PYGZsq{} \PYGZbs{}}
+\PYG{l+s+sd}{                   + \PYGZsq{}\PYGZbs{}n \PYGZhy{}Features de tipo \PYGZhy{}1: \PYGZsq{} + str(self.features\PYGZus{}per\PYGZus{}synset[synset][\PYGZhy{}1]) + \PYGZsq{} el \PYGZsq{} + str(self.features\PYGZus{}per\PYGZus{}synset[synset][\PYGZhy{}1] / synset\PYGZus{}total\PYGZus{}features * 100) + \PYGZsq{} \PYGZpc{} respecto todas las features \PYGZhy{}1\PYGZsq{} \PYGZbs{}}
+\PYG{l+s+sd}{                   + \PYGZsq{}\PYGZbs{}n \PYGZhy{}Features de tipo 0: \PYGZsq{} + str(self.features\PYGZus{}per\PYGZus{}synset[synset][0]) + \PYGZsq{} el \PYGZsq{} + str(self.features\PYGZus{}per\PYGZus{}synset[synset][0] / synset\PYGZus{}total\PYGZus{}features * 100) + \PYGZsq{} \PYGZpc{} respecto todas las features 0\PYGZsq{} \PYGZbs{}}
+\PYG{l+s+sd}{                   + \PYGZsq{}\PYGZbs{}n \PYGZhy{}Features de tipo 1: \PYGZsq{} + str(self.features\PYGZus{}per\PYGZus{}synset[synset][1]) + \PYGZsq{} el \PYGZsq{} + str(self.features\PYGZus{}per\PYGZus{}synset[synset][1] / synset\PYGZus{}total\PYGZus{}features * 100) + \PYGZsq{} \PYGZpc{} respecto todas las features 1\PYGZsq{}}
+\PYG{l+s+sd}{            stats\PYGZus{}file.write(text)}
+\PYG{l+s+sd}{            \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{with} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}synset\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}wb\PYGZsq{}}\PYG{p}{)} \PYG{k}{as} \PYG{n}{handle}\PYG{p}{:}
+            \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{dump}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}synset}\PYG{p}{,} \PYG{n}{handle}\PYG{p}{)}
+        \PYG{n}{stats\PYGZus{}file}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+
+    \PYG{k}{def} \PYG{n+nf}{plot\PYGZus{}features\PYGZus{}per\PYGZus{}synset}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Hace un plot para cada synset de la cantidad de features de cada tipo que hay}
+\PYG{l+s+sd}{        :return:}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{if} \PYG{n}{path}\PYG{o}{.}\PYG{n}{isfile}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}synset\PYGZus{}path}\PYG{p}{):}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}synset} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}synset\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}synset\PYGZus{}gen}\PYG{p}{()}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}synset} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}synset\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+
+        \PYG{k}{for} \PYG{n}{synset} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synsets}\PYG{p}{:}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{bar}\PYG{p}{(}\PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}synset}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)])),}
+                    \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}synset}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)]}\PYG{o}{.}\PYG{n}{values}\PYG{p}{(),} \PYG{n}{align}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}center\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xticks}\PYG{p}{(}\PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}synset}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)])),}
+                       \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}synset}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)]}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{())}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Quantity of features per synset of \PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{))}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Categories\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Quantity of features\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}features\PYGZus{}per\PYGZus{}synset\PYGZus{}bar\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}features\PYGZus{}per\PYGZus{}synset\PYGZus{}bar\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{printlatex}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+
+    \PYG{k}{def} \PYG{n+nf}{compare\PYGZus{}intra\PYGZus{}embedding}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{synset}\PYG{p}{):}
+        \PYG{n}{index\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}index\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.txt\PYGZsq{}}
+        \PYG{n}{syn\PYGZus{}index} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{genfromtxt}\PYG{p}{(}\PYG{n}{index\PYGZus{}path}\PYG{p}{,} \PYG{n}{dtype}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{int}\PYG{p}{)}
+        \PYG{n}{total} \PYG{o}{=} \PYG{l+m+mi}{0}
+        \PYG{k}{for} \PYG{n}{i}\PYG{p}{,} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n}{combinations}\PYG{p}{(}\PYG{n}{syn\PYGZus{}index}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{):}
+            \PYG{n}{total} \PYG{o}{+=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sum}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{equal}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{dmatrix}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{p}{:],} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{dmatrix}\PYG{p}{[}\PYG{n}{j}\PYG{p}{,} \PYG{p}{:]))}
+        \PYG{k}{return} \PYG{n}{total}
+
+    \PYG{k}{def} \PYG{n+nf}{intra\PYGZus{}synset\PYGZus{}gen}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Genera un diccionario con la relacion interna de los synsets:}
+
+\PYG{l+s+sd}{        dict[synset][synsethijo] = cantidad de synset hijo en synset}
+\PYG{l+s+sd}{        :return:}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}
+        \PYG{n}{stats\PYGZus{}file} \PYG{o}{=} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{stats\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}a\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{total\PYGZus{}embeddings\PYGZus{}communes} \PYG{o}{=} \PYG{p}{[]}
+        \PYG{n}{trol} \PYG{o}{=} \PYG{l+m+mi}{0}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{intra\PYGZus{}synset} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+        \PYG{k}{for} \PYG{n}{synset} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synsets}\PYG{p}{:}
+            \PYG{n}{index\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}index\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.txt\PYGZsq{}}
+            \PYG{n}{syn\PYGZus{}index} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{genfromtxt}\PYG{p}{(}\PYG{n}{index\PYGZus{}path}\PYG{p}{,} \PYG{n}{dtype}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{int}\PYG{p}{)}
+            \PYG{c+c1}{\PYGZsh{} np.sum(np.in1d(b, a))}
+            \PYG{n}{syn\PYGZus{}size} \PYG{o}{=} \PYG{n}{syn\PYGZus{}index}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{intra\PYGZus{}synset}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)]} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+            \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{j}\PYG{p}{,} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synsets}\PYG{p}{)):}
+                \PYG{n}{child\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synsets}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}index\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.txt\PYGZsq{}}
+                \PYG{n}{child\PYGZus{}index} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{genfromtxt}\PYG{p}{(}\PYG{n}{child\PYGZus{}path}\PYG{p}{,} \PYG{n}{dtype}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{int}\PYG{p}{)}
+                \PYG{n}{child\PYGZus{}in\PYGZus{}synset} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sum}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{in1d}\PYG{p}{(}\PYG{n}{child\PYGZus{}index}\PYG{p}{,} \PYG{n}{syn\PYGZus{}index}\PYG{p}{))}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{intra\PYGZus{}synset}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)][}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synsets}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])]} \PYG{o}{=} \PYG{n}{child\PYGZus{}in\PYGZus{}synset}
+                \PYG{n}{text} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Tenemos \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{syn\PYGZus{}size}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} \PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} de los cuales \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}
+                    \PYG{n}{child\PYGZus{}in\PYGZus{}synset}\PYG{p}{)} \PYGZbs{}
+                       \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} son \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synsets}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} el \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{child\PYGZus{}in\PYGZus{}synset} \PYG{o}{/} \PYG{n}{syn\PYGZus{}size} \PYG{o}{*} \PYG{l+m+mi}{100}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} \PYGZpc{} }\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}
+                \PYG{c+c1}{\PYGZsh{} print(text)}
+                \PYG{n}{stats\PYGZus{}file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{n}{text}\PYG{p}{)}
+            \PYG{n}{j} \PYG{o}{=} \PYG{n}{j} \PYG{o}{+} \PYG{l+m+mi}{1}
+            \PYG{c+c1}{\PYGZsh{} print(\PYGZsq{}embedding común\PYGZsq{})}
+        \PYG{k}{with} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{intra\PYGZus{}synset\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}wb\PYGZsq{}}\PYG{p}{)} \PYG{k}{as} \PYG{n}{handle}\PYG{p}{:}
+            \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{dump}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{intra\PYGZus{}synset}\PYG{p}{,} \PYG{n}{handle}\PYG{p}{)}
+        \PYG{n}{stats\PYGZus{}file}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+
+    \PYG{k}{def} \PYG{n+nf}{plot\PYGZus{}intra\PYGZus{}synset}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        hace un barplot de la distribución interna de los synsets para cada synset}
+\PYG{l+s+sd}{        (cuantos mamals hay en living thing por ejemplo)}
+\PYG{l+s+sd}{        :return:}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{if} \PYG{n}{path}\PYG{o}{.}\PYG{n}{isfile}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{intra\PYGZus{}synset\PYGZus{}path}\PYG{p}{):}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{intra\PYGZus{}synset} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{intra\PYGZus{}synset\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{intra\PYGZus{}synset\PYGZus{}gen}\PYG{p}{()}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{intra\PYGZus{}synset} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{intra\PYGZus{}synset\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+
+        \PYG{k}{for} \PYG{n}{synset} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synsets}\PYG{p}{:}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{bar}\PYG{p}{(}\PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{intra\PYGZus{}synset}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)])),}
+                    \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{intra\PYGZus{}synset}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)]}\PYG{o}{.}\PYG{n}{values}\PYG{p}{(),} \PYG{n}{align}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}center\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xticks}\PYG{p}{(}\PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{intra\PYGZus{}synset}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)])),}
+                       \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{intra\PYGZus{}synset}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)]}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{())}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Distribution of the synsets\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Synsets\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Quantity of images\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}distribution\PYGZus{}of\PYGZus{}inter\PYGZus{}synsets\PYGZus{}bar\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}distribution\PYGZus{}of\PYGZus{}inter\PYGZus{}synsets\PYGZus{}bar\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{printlatex}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+
+    \PYG{k}{def} \PYG{n+nf}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZus{}gen}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        TARDA INFINITO}
+\PYG{l+s+sd}{        Genera un archivo con el diccionario siguiente:}
+\PYG{l+s+sd}{            Para cada feature(0,...,12k):}
+\PYG{l+s+sd}{                Para cada tipo(\PYGZhy{}1,0,1)}
+\PYG{l+s+sd}{                    Para cada synset:}
+\PYG{l+s+sd}{                        \PYGZhy{} cantidad de imágenes del synset que tienen ese tipo en la feature en cuestión}
+\PYG{l+s+sd}{            dict[feature][category][synset]}
+
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Generando images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset, tarda varias horas :( \PYGZsq{}}\PYG{p}{)}
+        \PYG{k}{for} \PYG{n}{feature} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{dmatrix}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]):}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+            \PYG{n}{feature\PYGZus{}column} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{dmatrix}\PYG{p}{[:,} \PYG{n}{feature}\PYG{p}{]}
+            \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{features\PYGZus{}category}\PYG{p}{:}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{][}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+                \PYG{n}{feature\PYGZus{}index} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{where}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{equal}\PYG{p}{(}\PYG{n}{feature\PYGZus{}column}\PYG{p}{,} \PYG{n}{i}\PYG{p}{))}
+                \PYG{k}{for} \PYG{n}{synset} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synsets}\PYG{p}{:}
+                    \PYG{n}{index\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dir\PYGZus{}path} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}index\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.txt\PYGZsq{}}
+                    \PYG{n}{synset\PYGZus{}index} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{genfromtxt}\PYG{p}{(}\PYG{n}{index\PYGZus{}path}\PYG{p}{,} \PYG{n}{dtype}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{int}\PYG{p}{)}
+                    \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{][}\PYG{n}{i}\PYG{p}{][}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)]} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sum}\PYG{p}{(}
+                        \PYG{n}{np}\PYG{o}{.}\PYG{n}{in1d}\PYG{p}{(}\PYG{n}{synset\PYGZus{}index}\PYG{p}{,} \PYG{n}{feature\PYGZus{}index}\PYG{p}{))}
+        \PYG{k}{with} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}wb\PYGZsq{}}\PYG{p}{)} \PYG{k}{as} \PYG{n}{handle}\PYG{p}{:}
+            \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{dump}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset}\PYG{p}{,} \PYG{n}{handle}\PYG{p}{)}
+        \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Ha generado images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZsq{}}\PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf}{is\PYGZus{}in\PYGZus{}layer}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{feature}\PYG{p}{,} \PYG{n}{layer}\PYG{p}{):}
+        \PYG{k}{return} \PYG{n}{feature} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{layer}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{layer}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{])}
+
+    \PYG{k}{def} \PYG{n+nf}{plot\PYGZus{}images\PYGZus{}per\PYGZus{}feature\PYGZus{}of\PYGZus{}synset\PYGZus{}per\PYGZus{}layer}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{synset}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Here I want to plot the images per feature in an histogram per category}
+\PYG{l+s+sd}{        :return:}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset} \PYG{o}{==} \PYG{p}{\PYGZob{}\PYGZcb{}:}
+            \PYG{k}{if} \PYG{n}{path}\PYG{o}{.}\PYG{n}{isfile}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZus{}path}\PYG{p}{):}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+            \PYG{k}{else}\PYG{p}{:}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZus{}gen}\PYG{p}{()}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+
+        \PYG{k}{for} \PYG{n}{category} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{features\PYGZus{}category}\PYG{p}{:}
+            \PYG{n}{values} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+            \PYG{n}{values}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}conv\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+            \PYG{n}{values}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}fc6tofc7\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+            \PYG{k}{for} \PYG{n}{key} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{():}
+                \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{is\PYGZus{}in\PYGZus{}layer}\PYG{p}{(}\PYG{n}{key}\PYG{p}{,} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{layers}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}conv\PYGZsq{}}\PYG{p}{]):}
+                    \PYG{n}{values}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}conv\PYGZsq{}}\PYG{p}{][}\PYG{n}{key}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset}\PYG{p}{[}\PYG{n}{key}\PYG{p}{][}\PYG{n}{category}\PYG{p}{][}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)]}
+                \PYG{k}{else}\PYG{p}{:}
+                    \PYG{n}{values}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}fc6tofc7\PYGZsq{}}\PYG{p}{][}\PYG{n}{key}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset}\PYG{p}{[}\PYG{n}{key}\PYG{p}{][}\PYG{n}{category}\PYG{p}{][}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)]}
+
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{hist}\PYG{p}{(}\PYG{n+nb}{list}\PYG{p}{(}\PYG{n}{values}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}conv\PYGZsq{}}\PYG{p}{]}\PYG{o}{.}\PYG{n}{values}\PYG{p}{()),} \PYG{n}{bins}\PYG{o}{=}\PYG{l+m+mi}{50}\PYG{p}{,} \PYG{n}{color}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}194C33\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Images per feature of \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} of the synset \PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}
+                \PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} of the convolutional layer\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Quantity of \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{))}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Quantity of features\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}Images\PYGZus{}per\PYGZus{}feature\PYGZus{}of\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}category\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}
+                \PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}conv.png\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Images\PYGZus{}per\PYGZus{}feature\PYGZus{}of\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}category\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}conv.png\PYGZsq{}}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{printlatex}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{hist}\PYG{p}{(}\PYG{n+nb}{list}\PYG{p}{(}\PYG{n}{values}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}fc6tofc7\PYGZsq{}}\PYG{p}{]}\PYG{o}{.}\PYG{n}{values}\PYG{p}{()),} \PYG{n}{bins}\PYG{o}{=}\PYG{l+m+mi}{50}\PYG{p}{,} \PYG{n}{color}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}crimson\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Images per feature of \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} of the synset \PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}
+                \PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}of the full connected layer\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Quantity of \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{))}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Quantity of features\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}Images\PYGZus{}per\PYGZus{}feature\PYGZus{}of\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}category\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}
+                \PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}fc.png\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Images\PYGZus{}per\PYGZus{}feature\PYGZus{}of\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}category\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}fc.png\PYGZsq{}}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{printlatex}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+
+            \PYG{c+c1}{\PYGZsh{} El histograma acumulativo separado entre conv y fc}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{hist}\PYG{p}{([}\PYG{n+nb}{list}\PYG{p}{(}\PYG{n}{values}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}conv\PYGZsq{}}\PYG{p}{]}\PYG{o}{.}\PYG{n}{values}\PYG{p}{()),} \PYG{n+nb}{list}\PYG{p}{(}\PYG{n}{values}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}fc6tofc7\PYGZsq{}}\PYG{p}{]}\PYG{o}{.}\PYG{n}{values}\PYG{p}{())],} \PYG{n}{bins}\PYG{o}{=}\PYG{l+m+mi}{50}\PYG{p}{,} \PYG{n}{histtype}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}barstacked\PYGZsq{}}\PYG{p}{,}
+                     \PYG{n}{color}\PYG{o}{=}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}194C33\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}crimson\PYGZsq{}}\PYG{p}{],} \PYG{n}{label}\PYG{o}{=}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}conv\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}fc\PYGZsq{}}\PYG{p}{])}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Images per feature of \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} of the synset \PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}
+                \PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} of the conv and fc layers\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Quantity of \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{))}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Quantity of features\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}Images\PYGZus{}per\PYGZus{}feature\PYGZus{}of\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}category\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}
+                \PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}all\PYGZus{}layers.png\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Images\PYGZus{}per\PYGZus{}feature\PYGZus{}of\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}category\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}all\PYGZus{}layers.png\PYGZsq{}}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{printlatex}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+
+    \PYG{k}{def} \PYG{n+nf}{find\PYGZus{}image\PYGZus{}without\PYGZus{}zero}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Quiero que me devuelva la posición de las imágenes que no tengan ningun cero}
+\PYG{l+s+sd}{        :return:}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image} \PYG{o}{==} \PYG{p}{\PYGZob{}\PYGZcb{}:}
+            \PYG{k}{if} \PYG{n}{path}\PYG{o}{.}\PYG{n}{isfile}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image\PYGZus{}path}\PYG{p}{):}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+            \PYG{k}{else}\PYG{p}{:}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image\PYGZus{}gen}\PYG{p}{()}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{())):}
+            \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+                \PYG{k}{print}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)}
+        \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}end\PYGZsq{}}\PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}gen}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Genera un archivo con el diccionario siguiente:}
+\PYG{l+s+sd}{            Para cada feature(0,...,12k):}
+\PYG{l+s+sd}{                Para cada tipo(\PYGZhy{}1,0,1)}
+\PYG{l+s+sd}{                    cantidad de imágenes que tienen es categoria en la feature en cuestión}
+\PYG{l+s+sd}{            images\PYGZus{}per\PYGZus{}feature[feature][category] = cantidad de imagenes que tienen esa category en la feature}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{for} \PYG{n}{feature} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{dmatrix}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]):}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+            \PYG{n}{feature\PYGZus{}column} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{dmatrix}\PYG{p}{[:,} \PYG{n}{feature}\PYG{p}{]}
+            \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{features\PYGZus{}category}\PYG{p}{:}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{][}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sum}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{equal}\PYG{p}{(}\PYG{n}{feature\PYGZus{}column}\PYG{p}{,} \PYG{n}{i}\PYG{p}{))}
+        \PYG{k}{with} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}wb\PYGZsq{}}\PYG{p}{)} \PYG{k}{as} \PYG{n}{handle}\PYG{p}{:}
+            \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{dump}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature}\PYG{p}{,} \PYG{n}{handle}\PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}stats}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        MUERTO}
+\PYG{l+s+sd}{        Aquí debería sacar las estadísticas de las features y guardarlas en features\PYGZus{}stats}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature} \PYG{o}{==} \PYG{p}{\PYGZob{}\PYGZcb{}:}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+        \PYG{n}{feature\PYGZus{}stats\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}stats\PYGZsq{}}
+        \PYG{n}{feature\PYGZus{}stats\PYGZus{}file} \PYG{o}{=} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n}{feature\PYGZus{}stats\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}a\PYGZsq{}}\PYG{p}{)}
+        \PYG{k}{for} \PYG{n}{feature} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature}\PYG{p}{:}
+            \PYG{n}{feature\PYGZus{}stats\PYGZus{}file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{feature}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+            \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{features\PYGZus{}category}\PYG{p}{:}
+                \PYG{n}{feature\PYGZus{}stats\PYGZus{}file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}: \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{][}\PYG{n}{i}\PYG{p}{])} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{feature\PYGZus{}stats\PYGZus{}file}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+
+    \PYG{k}{def} \PYG{n+nf}{plot\PYGZus{}images\PYGZus{}per\PYGZus{}feature}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Here I want to plot the images per feature in an histogram per category}
+
+\PYG{l+s+sd}{        En el eje x pone la cantidad de imagenes del dataset que tienen la cantidad de feaures de l eje y}
+\PYG{l+s+sd}{        :return:}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature} \PYG{o}{==} \PYG{p}{\PYGZob{}\PYGZcb{}:}
+            \PYG{k}{if} \PYG{n}{path}\PYG{o}{.}\PYG{n}{isfile}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}path}\PYG{p}{):}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+            \PYG{k}{else}\PYG{p}{:}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}gen}\PYG{p}{()}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+
+        \PYG{k}{for} \PYG{n}{category} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{features\PYGZus{}category}\PYG{p}{:}
+            \PYG{n}{values} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+            \PYG{k}{for} \PYG{n}{key} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{():}
+                \PYG{n}{values}\PYG{p}{[}\PYG{n}{key}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature}\PYG{p}{[}\PYG{n}{key}\PYG{p}{][}\PYG{n}{category}\PYG{p}{]}
+
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{hist}\PYG{p}{(}\PYG{n+nb}{list}\PYG{p}{(}\PYG{n}{values}\PYG{o}{.}\PYG{n}{values}\PYG{p}{()),} \PYG{n}{bins}\PYG{o}{=}\PYG{l+m+mi}{50}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Images per feature of \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} category\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Quantity of images\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Quantity of features\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}Images\PYGZus{}per\PYGZus{}feature\PYGZus{}of\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}category\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Images\PYGZus{}per\PYGZus{}feature\PYGZus{}of\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}category\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{printlatex}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{boxplot}\PYG{p}{(}\PYG{n+nb}{list}\PYG{p}{(}\PYG{n}{values}\PYG{o}{.}\PYG{n}{values}\PYG{p}{()))}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Images per feature of \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} category\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}Images\PYGZus{}per\PYGZus{}feature\PYGZus{}of\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}category\PYGZus{}box\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Images\PYGZus{}per\PYGZus{}feature\PYGZus{}of\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}category\PYGZus{}box\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{printlatex}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+
+            \PYG{n}{values} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+            \PYG{n}{values}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}conv\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+            \PYG{n}{values}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}fc6tofc7\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+
+            \PYG{k}{for} \PYG{n}{key} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{():}
+                \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{is\PYGZus{}in\PYGZus{}layer}\PYG{p}{(}\PYG{n}{key}\PYG{p}{,} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{layers}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}conv\PYGZsq{}}\PYG{p}{]):}
+                    \PYG{n}{values}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}conv\PYGZsq{}}\PYG{p}{][}\PYG{n}{key}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature}\PYG{p}{[}\PYG{n}{key}\PYG{p}{][}\PYG{n}{category}\PYG{p}{]}
+                \PYG{k}{else}\PYG{p}{:}
+                    \PYG{n}{values}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}fc6tofc7\PYGZsq{}}\PYG{p}{][}\PYG{n}{key}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature}\PYG{p}{[}\PYG{n}{key}\PYG{p}{][}\PYG{n}{category}\PYG{p}{]}
+
+            \PYG{c+c1}{\PYGZsh{} El histograma acumulativo separado entre conv y fc}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{hist}\PYG{p}{([}\PYG{n+nb}{list}\PYG{p}{(}\PYG{n}{values}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}conv\PYGZsq{}}\PYG{p}{]}\PYG{o}{.}\PYG{n}{values}\PYG{p}{()),} \PYG{n+nb}{list}\PYG{p}{(}\PYG{n}{values}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}fc6tofc7\PYGZsq{}}\PYG{p}{]}\PYG{o}{.}\PYG{n}{values}\PYG{p}{())],} \PYG{n}{bins}\PYG{o}{=}\PYG{l+m+mi}{50}\PYG{p}{,} \PYG{n}{histtype}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}barstacked\PYGZsq{}}\PYG{p}{,}
+                     \PYG{n}{color}\PYG{o}{=}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}194C33\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}crimson\PYGZsq{}}\PYG{p}{],} \PYG{n}{label}\PYG{o}{=}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}conv\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}fc\PYGZsq{}}\PYG{p}{])}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Images per feature of \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} of the conv and fc layers\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Quantity of \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{))}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Quantity of features\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}Images\PYGZus{}per\PYGZus{}feature\PYGZus{}of\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}category\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}all\PYGZus{}layers.png\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Images\PYGZus{}per\PYGZus{}feature\PYGZus{}of\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}category\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}all\PYGZus{}layers.png\PYGZsq{}}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{printlatex}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+
+    \PYG{k}{def} \PYG{n+nf}{find\PYGZus{}contradicction\PYGZus{}in\PYGZus{}synset}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        es un copypaste}
+\PYG{l+s+sd}{        Quiero ver si existe algun synset que tenga el valor \PYGZhy{}1 y 1 en la misma feature}
+\PYG{l+s+sd}{        :return:}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{pass}
+
+    \PYG{k}{def} \PYG{n+nf}{find\PYGZus{}outlier\PYGZus{}in\PYGZus{}images\PYGZus{}per\PYGZus{}feature}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Quiero que me defuelva las features outlier}
+
+\PYG{l+s+sd}{        :return:}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n}{auxlayers} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+            \PYG{l+s+s1}{\PYGZsq{}conv1\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{128}\PYG{p}{],}
+            \PYG{l+s+s1}{\PYGZsq{}conv2\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{128}\PYG{p}{,} \PYG{l+m+mi}{384}\PYG{p}{],}
+            \PYG{l+s+s1}{\PYGZsq{}conv3\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{384}\PYG{p}{,} \PYG{l+m+mi}{1152}\PYG{p}{],}
+            \PYG{l+s+s1}{\PYGZsq{}conv4\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{1152}\PYG{p}{,} \PYG{l+m+mi}{2688}\PYG{p}{],}
+            \PYG{l+s+s1}{\PYGZsq{}conv5\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{2688}\PYG{p}{,} \PYG{l+m+mi}{4224}\PYG{p}{],}
+            \PYG{l+s+s1}{\PYGZsq{}fc6\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{4224}\PYG{p}{,} \PYG{l+m+mi}{8320}\PYG{p}{],}
+            \PYG{l+s+s1}{\PYGZsq{}fc7\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{8320}\PYG{p}{,} \PYG{l+m+mi}{12416}\PYG{p}{]}
+        \PYG{p}{\PYGZcb{}}
+
+        \PYG{n}{outlier\PYGZus{}file} \PYG{o}{=} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{outlier\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}w\PYGZsq{}}\PYG{p}{)}
+        \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature} \PYG{o}{==} \PYG{p}{\PYGZob{}\PYGZcb{}:}
+            \PYG{k}{if} \PYG{n}{path}\PYG{o}{.}\PYG{n}{isfile}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}path}\PYG{p}{):}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+            \PYG{k}{else}\PYG{p}{:}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}gen}\PYG{p}{()}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+
+        \PYG{n}{outlier\PYGZus{}file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}We are using the embedding \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{version}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{outlier\PYGZus{}file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Outliers from the synsets \PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synsets}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+        \PYG{k}{for} \PYG{n}{category} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{features\PYGZus{}category}\PYG{p}{:}
+            \PYG{n}{vals} \PYG{o}{=} \PYG{p}{[]}
+            \PYG{c+c1}{\PYGZsh{} print(\PYGZsq{}\PYGZbs{}n\PYGZsq{} + str(category) + \PYGZsq{}\PYGZbs{}n\PYGZsq{})}
+            \PYG{k}{for} \PYG{n}{feature} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{())):}
+                \PYG{n}{vals}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{][}\PYG{n}{category}\PYG{p}{])}
+            \PYG{n}{mean} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{mean}\PYG{p}{(}\PYG{n}{vals}\PYG{p}{)}
+            \PYG{n}{std} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{std}\PYG{p}{(}\PYG{n}{vals}\PYG{p}{)}
+            \PYG{c+c1}{\PYGZsh{} print(\PYGZsq{}mean:\PYGZsq{} + str(mean) + \PYGZsq{}\PYGZbs{}n\PYGZsq{})}
+            \PYG{c+c1}{\PYGZsh{} print(\PYGZsq{}std:\PYGZsq{} + str(std) + \PYGZsq{}\PYGZbs{}n\PYGZsq{})}
+            \PYG{n}{downliers} \PYG{o}{=} \PYG{p}{[}\PYG{n}{i} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{vals}\PYG{p}{))} \PYG{k}{if} \PYG{n}{vals}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZlt{}=} \PYG{n}{mean} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{4} \PYG{o}{*} \PYG{n}{std}\PYG{p}{]}
+            \PYG{n}{upliers} \PYG{o}{=} \PYG{p}{[}\PYG{n}{i} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{vals}\PYG{p}{))} \PYG{k}{if} \PYG{n}{vals}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZgt{}=} \PYG{n}{mean} \PYG{o}{+} \PYG{l+m+mi}{4} \PYG{o}{*} \PYG{n}{std}\PYG{p}{]}
+            \PYG{n}{outliers} \PYG{o}{=} \PYG{p}{[}\PYG{n}{i} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{vals}\PYG{p}{))} \PYG{k}{if} \PYG{n}{vals}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZgt{}=} \PYG{n}{mean} \PYG{o}{+} \PYG{l+m+mi}{4} \PYG{o}{*} \PYG{n}{std} \PYG{o+ow}{or} \PYG{n}{vals}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZlt{}=} \PYG{n}{mean} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{4} \PYG{o}{*} \PYG{n}{std}\PYG{p}{]}
+            \PYG{c+c1}{\PYGZsh{} print(\PYGZsq{}lendown \PYGZsq{} + str(len(downliers)) + \PYGZsq{}\PYGZbs{}n\PYGZsq{})}
+            \PYG{c+c1}{\PYGZsh{} print(\PYGZsq{}down:\PYGZsq{} + str(downliers))}
+            \PYG{c+c1}{\PYGZsh{} print(\PYGZsq{}lenup \PYGZsq{} + str(len(upliers)) + \PYGZsq{}\PYGZbs{}n\PYGZsq{})}
+            \PYG{c+c1}{\PYGZsh{} print(\PYGZsq{}up:\PYGZsq{} + str(upliers))}
+            \PYG{n}{layeroutlier} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+            \PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb}{list}\PYG{p}{(}\PYG{n}{auxlayers}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{()):}
+                \PYG{n}{layeroutlier}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}
+
+            \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{downliers}\PYG{p}{:}
+                \PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb}{list}\PYG{p}{(}\PYG{n}{auxlayers}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{()):}
+                    \PYG{k}{if} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{auxlayers}\PYG{p}{[}\PYG{n}{k}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{auxlayers}\PYG{p}{[}\PYG{n}{k}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{]):}
+                        \PYG{n}{layeroutlier}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+
+            \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{upliers}\PYG{p}{:}
+                \PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb}{list}\PYG{p}{(}\PYG{n}{auxlayers}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{()):}
+                    \PYG{k}{if} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{auxlayers}\PYG{p}{[}\PYG{n}{k}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{auxlayers}\PYG{p}{[}\PYG{n}{k}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{]):}
+                        \PYG{n}{layeroutlier}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+
+            \PYG{n}{outlier\PYGZus{}file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}category \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{outlier\PYGZus{}file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{outliers}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{ Distribution in the layers: }\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{outlier\PYGZus{}file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{layeroutlier}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+            \PYG{c+c1}{\PYGZsh{} print(layeroutlier)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{bar}\PYG{p}{(}\PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{layeroutlier}\PYG{p}{)),} \PYG{n}{layeroutlier}\PYG{o}{.}\PYG{n}{values}\PYG{p}{(),} \PYG{n}{align}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}center\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xticks}\PYG{p}{(}\PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{layeroutlier}\PYG{p}{)),} \PYG{n}{layeroutlier}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{())}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Outliers images per features of \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{))}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Features\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}outliers\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}outliers\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{printlatex}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+        \PYG{n}{outlier\PYGZus{}file}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+
+    \PYG{k}{def} \PYG{n+nf}{features\PYGZus{}per\PYGZus{}layer\PYGZus{}gen}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Crea un diccionario de texto con la información de features por layer}
+\PYG{l+s+sd}{        :return:features\PYGZus{}per\PYGZus{}layer[layer][category]  = cantidad de features de la category tal en el layer}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{for} \PYG{n}{layer} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{layers}\PYG{p}{:}
+            \PYG{n}{section} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{dmatrix}\PYG{p}{[:,} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{layers}\PYG{p}{[}\PYG{n}{layer}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{layers}\PYG{p}{[}\PYG{n}{layer}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{])]}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}layer}\PYG{p}{[}\PYG{n}{layer}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{count\PYGZus{}features}\PYG{p}{(}\PYG{n}{section}\PYG{p}{)}
+        \PYG{k}{with} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}layer\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}wb\PYGZsq{}}\PYG{p}{)} \PYG{k}{as} \PYG{n}{handle}\PYG{p}{:}
+            \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{dump}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}layer}\PYG{p}{,} \PYG{n}{handle}\PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf}{plot\PYGZus{}features\PYGZus{}per\PYGZus{}layer}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        pinta un barplot de las features para cada layer}
+\PYG{l+s+sd}{        :return:}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{if} \PYG{n}{path}\PYG{o}{.}\PYG{n}{isfile}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}layer\PYGZus{}path}\PYG{p}{):}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}layer} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}layer\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}layer\PYGZus{}gen}\PYG{p}{()}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}layer} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}layer\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+
+        \PYG{k}{for} \PYG{n}{layer} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{layers}\PYG{p}{:}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{bar}\PYG{p}{(}\PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}layer}\PYG{p}{[}\PYG{n}{layer}\PYG{p}{])),} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}layer}\PYG{p}{[}\PYG{n}{layer}\PYG{p}{]}\PYG{o}{.}\PYG{n}{values}\PYG{p}{(),} \PYG{n}{align}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}center\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xticks}\PYG{p}{(}\PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}layer}\PYG{p}{[}\PYG{n}{layer}\PYG{p}{])),} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}layer}\PYG{p}{[}\PYG{n}{layer}\PYG{p}{]}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{())}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Fatures of the layer \PYGZsq{}} \PYG{o}{+} \PYG{n}{layer}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Features\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Quantity of features\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}features\PYGZus{}per\PYGZus{}layer\PYGZus{}of\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n}{layer} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}features\PYGZus{}per\PYGZus{}layer\PYGZus{}of\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n}{layer} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{printlatex}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+
+    \PYG{k}{def} \PYG{n+nf}{features\PYGZus{}per\PYGZus{}image\PYGZus{}gen}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Esta función debería calcular para cada imagen cuantas features de cada tipo se activan}
+\PYG{l+s+sd}{        Output:}
+\PYG{l+s+sd}{        Un diccionario tal que:}
+\PYG{l+s+sd}{        dic[imagen][tipo]=cantidad de features de este tipo que se activan}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{for} \PYG{n}{image} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{labels}\PYG{p}{)):}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image}\PYG{p}{[}\PYG{n}{image}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{count\PYGZus{}features}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{dmatrix}\PYG{p}{[}\PYG{n}{image}\PYG{p}{,} \PYG{p}{:])}
+        \PYG{k}{with} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}wb\PYGZsq{}}\PYG{p}{)} \PYG{k}{as} \PYG{n}{handle}\PYG{p}{:}
+            \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{dump}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image}\PYG{p}{,} \PYG{n}{handle}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image}
+
+    \PYG{k}{def} \PYG{n+nf}{plot\PYGZus{}features\PYGZus{}per\PYGZus{}image}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        It does a plot of the features per image for each category.}
+\PYG{l+s+sd}{        la cantidad de imagenes que tienen tantas features \PYGZhy{}1}
+\PYG{l+s+sd}{        :return:}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{if} \PYG{n}{path}\PYG{o}{.}\PYG{n}{isfile}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image\PYGZus{}path}\PYG{p}{):}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{k}{pass}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image\PYGZus{}gen}\PYG{p}{()}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+
+        \PYG{k}{for} \PYG{n}{category} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{features\PYGZus{}category}\PYG{p}{:}
+            \PYG{n}{values} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+            \PYG{k}{for} \PYG{n}{key} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{():}
+                \PYG{n}{values}\PYG{p}{[}\PYG{n}{key}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}per\PYGZus{}image}\PYG{p}{[}\PYG{n}{key}\PYG{p}{][}\PYG{n}{category}\PYG{p}{]}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{hist}\PYG{p}{(}\PYG{n+nb}{list}\PYG{p}{(}\PYG{n}{values}\PYG{o}{.}\PYG{n}{values}\PYG{p}{()),} \PYG{n}{bins}\PYG{o}{=}\PYG{l+m+mi}{50}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Features per image for \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} category\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Quantity of \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{))}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Quantity of images\PYGZsq{}}\PYG{p}{)}
+            \PYG{c+c1}{\PYGZsh{} TODO HACER EL PLOT PARA LAS TRES FEATURES JUNTITAS}
+            \PYG{c+c1}{\PYGZsh{} plt.show()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}features\PYGZus{}per\PYGZus{}image\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{))}
+            \PYG{n}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}features\PYGZus{}per\PYGZus{}image\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{printlatex}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+
+    \PYG{k}{def} \PYG{n+nf}{plot\PYGZus{}images\PYGZus{}per\PYGZus{}feature\PYGZus{}of\PYGZus{}synset}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{synset}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Here I want to plot the images per feature in an histogram per category}
+\PYG{l+s+sd}{        :return:}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset} \PYG{o}{==} \PYG{p}{\PYGZob{}\PYGZcb{}:}
+            \PYG{k}{if} \PYG{n}{path}\PYG{o}{.}\PYG{n}{isfile}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZus{}path}\PYG{p}{):}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+            \PYG{k}{else}\PYG{p}{:}
+                \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}va a tardar\PYGZsq{}}\PYG{p}{)}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZus{}gen}\PYG{p}{()}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+
+        \PYG{k}{for} \PYG{n}{category} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{features\PYGZus{}category}\PYG{p}{:}
+            \PYG{n}{values} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+            \PYG{k}{for} \PYG{n}{key} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{():}
+                \PYG{n}{values}\PYG{p}{[}\PYG{n}{key}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset}\PYG{p}{[}\PYG{n}{key}\PYG{p}{][}\PYG{n}{category}\PYG{p}{][}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)]}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{hist}\PYG{p}{(}\PYG{n+nb}{list}\PYG{p}{(}\PYG{n}{values}\PYG{o}{.}\PYG{n}{values}\PYG{p}{()),} \PYG{n}{bins}\PYG{o}{=}\PYG{l+m+mi}{50}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Images per feature of \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} of the synset \PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{))}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Quantity of \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{))}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Quantity of features\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}Images\PYGZus{}per\PYGZus{}feature\PYGZus{}of\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}category\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}
+                \PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Images\PYGZus{}per\PYGZus{}feature\PYGZus{}of\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{category}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}category\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{printlatex}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+
+    \PYG{k}{def} \PYG{n+nf}{plot\PYGZus{}changes\PYGZus{}between\PYGZus{}synset\PYGZus{}reps}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Quiero que printe una gráfica tal que en el valor de las x tenga los elementos de synsets y en el de las ordenadas}
+\PYG{l+s+sd}{        un acumulative plot con la  cantidad de 1, 0 y \PYGZhy{}1 de los representantes del synset en cuestión.}
+\PYG{l+s+sd}{        changes[synset][\PYGZhy{}1]}
+\PYG{l+s+sd}{        :return: void}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{rcParams}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}figure.figsize\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mf}{16.0}\PYG{p}{,} \PYG{l+m+mf}{8.0}\PYG{p}{]}
+        \PYG{n}{changes\PYGZus{}in\PYGZus{}synset} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+        \PYG{n}{ones} \PYG{o}{=} \PYG{p}{[]}
+        \PYG{n}{zeros} \PYG{o}{=} \PYG{p}{[]}
+        \PYG{n}{negones} \PYG{o}{=} \PYG{p}{[]}
+        \PYG{k}{for} \PYG{n}{synset} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synsets}\PYG{p}{:}
+            \PYG{n}{rep} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{get\PYGZus{}representive}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)}
+            \PYG{n}{changes\PYGZus{}in\PYGZus{}synset}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)]} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{count\PYGZus{}features}\PYG{p}{(}\PYG{n}{rep}\PYG{p}{)}
+            \PYG{n}{negones}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{changes\PYGZus{}in\PYGZus{}synset}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)][}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{])}
+            \PYG{n}{zeros}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{changes\PYGZus{}in\PYGZus{}synset}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)][}\PYG{l+m+mi}{0}\PYG{p}{])}
+            \PYG{n}{ones}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{changes\PYGZus{}in\PYGZus{}synset}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)][}\PYG{l+m+mi}{1}\PYG{p}{])}
+
+        \PYG{n}{plot\PYGZus{}index} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synsets}\PYG{p}{))}
+        \PYG{n}{p\PYGZus{}negones} \PYG{o}{=} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{bar}\PYG{p}{(}\PYG{n}{plot\PYGZus{}index}\PYG{p}{,} \PYG{n}{negones}\PYG{p}{,} \PYG{n}{color}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}4C194C\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{p\PYGZus{}zeros} \PYG{o}{=} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{bar}\PYG{p}{(}\PYG{n}{plot\PYGZus{}index}\PYG{p}{,} \PYG{n}{zeros}\PYG{p}{,} \PYG{n}{color}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}7F3FBF\PYGZsq{}}\PYG{p}{,} \PYG{n}{bottom}\PYG{o}{=}\PYG{n}{negones}\PYG{p}{)}
+        \PYG{n}{p\PYGZus{}ones} \PYG{o}{=} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{bar}\PYG{p}{(}\PYG{n}{plot\PYGZus{}index}\PYG{p}{,} \PYG{n}{ones}\PYG{p}{,} \PYG{n}{color}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}3F7FBF\PYGZsq{}}\PYG{p}{,} \PYG{n}{bottom}\PYG{o}{=}\PYG{p}{[}\PYG{n+nb}{sum}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)} \PYG{k}{for} \PYG{n}{x} \PYG{o+ow}{in} \PYG{n+nb}{zip}\PYG{p}{(}\PYG{n}{negones}\PYG{p}{,} \PYG{n}{zeros}\PYG{p}{)])}
+
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Cantidad\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Comparativa entre las categorias por synset\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xticks}\PYG{p}{(}\PYG{n}{plot\PYGZus{}index}\PYG{p}{,} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{textsynsets}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{((}\PYG{n}{p\PYGZus{}negones}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{p\PYGZus{}zeros}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{p\PYGZus{}ones}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]),} \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}1\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}0\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}1\PYGZsq{}}\PYG{p}{))}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{()}
+        \PYG{n}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Comparative\PYGZus{}of\PYGZus{}synsets.png\PYGZsq{}}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path} \PYG{o}{+} \PYG{n}{name}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{printlatex}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{rcParams}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}figure.figsize\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mf}{8.0}\PYG{p}{,} \PYG{l+m+mf}{8.0}\PYG{p}{]}
+
+    \PYG{k}{def} \PYG{n+nf}{plot\PYGZus{}changes\PYGZus{}between\PYGZus{}synset\PYGZus{}reps\PYGZus{}per\PYGZus{}layer}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Quiero que printe una gráfica para cada synset tal que en el valor de las x tenga los elementos de  los layers}
+\PYG{l+s+sd}{        y en el de las ordenadas un acumulative plot con la  cantidad de 1, 0 y \PYGZhy{}1 de los representantes del synset en}
+\PYG{l+s+sd}{        cuestión para cada layer.}
+\PYG{l+s+sd}{        :return: void}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{rcParams}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}figure.figsize\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mf}{16.0}\PYG{p}{,} \PYG{l+m+mf}{8.0}\PYG{p}{]}
+        \PYG{k}{for} \PYG{n}{synset} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synsets}\PYG{p}{:}
+            \PYG{n}{changes\PYGZus{}in\PYGZus{}synset} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+            \PYG{n}{ones} \PYG{o}{=} \PYG{p}{[]}
+            \PYG{n}{zeros} \PYG{o}{=} \PYG{p}{[]}
+            \PYG{n}{negones} \PYG{o}{=} \PYG{p}{[]}
+            \PYG{n}{plot\PYGZus{}index} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{reduced\PYGZus{}layers}\PYG{p}{))}
+            \PYG{k}{for} \PYG{n}{layer} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{reduced\PYGZus{}layers}\PYG{p}{:}
+                \PYG{n}{rep} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{get\PYGZus{}representive\PYGZus{}per\PYGZus{}layer}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{,} \PYG{n}{layer}\PYG{p}{)}
+                \PYG{n}{changes\PYGZus{}in\PYGZus{}synset}\PYG{p}{[}\PYG{n}{layer}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{count\PYGZus{}features}\PYG{p}{(}\PYG{n}{rep}\PYG{p}{)}
+                \PYG{n}{negones}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{changes\PYGZus{}in\PYGZus{}synset}\PYG{p}{[}\PYG{n}{layer}\PYG{p}{][}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{])}
+                \PYG{n}{zeros}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{changes\PYGZus{}in\PYGZus{}synset}\PYG{p}{[}\PYG{n}{layer}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{])}
+                \PYG{n}{ones}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{changes\PYGZus{}in\PYGZus{}synset}\PYG{p}{[}\PYG{n}{layer}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{])}
+            \PYG{n}{p\PYGZus{}negones} \PYG{o}{=} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{bar}\PYG{p}{(}\PYG{n}{plot\PYGZus{}index}\PYG{p}{,} \PYG{n}{negones}\PYG{p}{,} \PYG{n}{color}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}4C194C\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{p\PYGZus{}zeros} \PYG{o}{=} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{bar}\PYG{p}{(}\PYG{n}{plot\PYGZus{}index}\PYG{p}{,} \PYG{n}{zeros}\PYG{p}{,} \PYG{n}{color}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}7F3FBF\PYGZsq{}}\PYG{p}{,} \PYG{n}{bottom}\PYG{o}{=}\PYG{n}{negones}\PYG{p}{)}
+            \PYG{n}{p\PYGZus{}ones} \PYG{o}{=} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{bar}\PYG{p}{(}\PYG{n}{plot\PYGZus{}index}\PYG{p}{,} \PYG{n}{ones}\PYG{p}{,} \PYG{n}{color}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}3F7FBF\PYGZsq{}}\PYG{p}{,} \PYG{n}{bottom}\PYG{o}{=}\PYG{p}{[}\PYG{n+nb}{sum}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)} \PYG{k}{for} \PYG{n}{x} \PYG{o+ow}{in} \PYG{n+nb}{zip}\PYG{p}{(}\PYG{n}{negones}\PYG{p}{,} \PYG{n}{zeros}\PYG{p}{)])}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Cantidad\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Comparativa entre las categorias por layer de \PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{))}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xticks}\PYG{p}{(}\PYG{n}{plot\PYGZus{}index}\PYG{p}{,} \PYG{n+nb}{list}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{reduced\PYGZus{}layers}\PYG{p}{))}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{((}\PYG{n}{p\PYGZus{}negones}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{p\PYGZus{}zeros}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{p\PYGZus{}ones}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]),} \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}1\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}0\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}1\PYGZsq{}}\PYG{p}{))}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{grid}\PYG{p}{()}
+            \PYG{n}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Comparative\PYGZus{}of\PYGZus{}synsets\PYGZus{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path} \PYG{o}{+} \PYG{n}{name}\PYG{p}{)}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{printlatex}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{rcParams}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}figure.figsize\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mf}{8.0}\PYG{p}{,} \PYG{l+m+mf}{8.0}\PYG{p}{]}
+
+    \PYG{k}{def} \PYG{n+nf}{plot\PYGZus{}all}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        ORDENAR LOS PLOTS}
+\PYG{l+s+sd}{        Esta funcion llama a todos los plots que tengo}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{rcParams}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}figure.figsize\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mf}{8.0}\PYG{p}{,} \PYG{l+m+mf}{8.0}\PYG{p}{]}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}features\PYGZus{}per\PYGZus{}image}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{close}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}all\PYGZdq{}}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}all\PYGZus{}features}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{close}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}all\PYGZdq{}}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}features\PYGZus{}per\PYGZus{}synset}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{close}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}all\PYGZdq{}}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}images\PYGZus{}per\PYGZus{}feature}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{close}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}all\PYGZdq{}}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}synsets\PYGZus{}on\PYGZus{}data}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{close}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}all\PYGZdq{}}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}intra\PYGZus{}synset}\PYG{p}{()}
+        \PYG{k}{for} \PYG{n}{synset} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synsets}\PYG{p}{:}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}images\PYGZus{}per\PYGZus{}feature\PYGZus{}of\PYGZus{}synset}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{close}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}all\PYGZdq{}}\PYG{p}{)}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}images\PYGZus{}per\PYGZus{}feature\PYGZus{}of\PYGZus{}synset\PYGZus{}per\PYGZus{}layer}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{close}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}all\PYGZdq{}}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}features\PYGZus{}per\PYGZus{}layer}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{close}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}all\PYGZdq{}}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}matrix}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{close}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}all\PYGZdq{}}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}changes\PYGZus{}between\PYGZus{}synset\PYGZus{}reps}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{close}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}all\PYGZdq{}}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}changes\PYGZus{}between\PYGZus{}synset\PYGZus{}reps\PYGZus{}per\PYGZus{}layer}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{close}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}all\PYGZdq{}}\PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf}{existsfile}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{path}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        TODO: QUIERO QUE NO GENERE LAS IMAGENES SI YA LAS TENGO}
+\PYG{l+s+sd}{        :param path:}
+\PYG{l+s+sd}{        :return:}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{return} \PYG{n}{path}\PYG{o}{.}\PYG{n}{isfile}\PYG{p}{(}\PYG{n}{path}\PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf}{get\PYGZus{}representive}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{synset}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Quiero que me devuelva un vector tal que el valor i sea el que tiene mayor proporción dentro del synset.}
+\PYG{l+s+sd}{        representative[feature] = 1, \PYGZhy{}1 o 0 según el valor que se repite más veces.}
+\PYG{l+s+sd}{        Utilizo como valor auxiliar un diccionario de la siguiente forma, que obtengo de images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset}
+\PYG{l+s+sd}{        dict[feature] = \PYGZob{}1: cantidad de 1, \PYGZhy{}1: cantidad de \PYGZhy{}1, 0: cantidad de 0\PYGZcb{}}
+
+\PYG{l+s+sd}{        :param synset:}
+\PYG{l+s+sd}{        :return: representative}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset} \PYG{o}{==} \PYG{p}{\PYGZob{}\PYGZcb{}:}
+            \PYG{k}{if} \PYG{n}{path}\PYG{o}{.}\PYG{n}{isfile}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZus{}path}\PYG{p}{):}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+            \PYG{k}{else}\PYG{p}{:}
+                \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Generando images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZsq{}}\PYG{p}{)}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZus{}gen}\PYG{p}{()}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+
+        \PYG{n}{representative} \PYG{o}{=} \PYG{p}{[]}
+        \PYG{c+c1}{\PYGZsh{} aux[feature][category] = cantidad de valores de la category en cuestion para la feature tal}
+        \PYG{n}{aux} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+        \PYG{k}{for} \PYG{n}{feature} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{():}
+            \PYG{n}{aux}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+            \PYG{k}{for} \PYG{n}{category} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{]}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{():}
+                \PYG{n}{aux}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{][}\PYG{n}{category}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{][}\PYG{n}{category}\PYG{p}{][}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)]}
+        \PYG{k}{for} \PYG{n}{feature} \PYG{o+ow}{in} \PYG{n}{aux}\PYG{p}{:}
+            \PYG{n}{representative}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{aux}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{],} \PYG{n}{key}\PYG{o}{=}\PYG{n}{aux}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{]}\PYG{o}{.}\PYG{n}{get}\PYG{p}{))}
+        \PYG{k}{return} \PYG{n}{representative}
+
+    \PYG{k}{def} \PYG{n+nf}{get\PYGZus{}representive\PYGZus{}per\PYGZus{}layer}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{synset}\PYG{p}{,} \PYG{n}{layer}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Quiero que me devuelva un vector tal que el valor i sea el que tiene mayor proporción dentro del synset.}
+\PYG{l+s+sd}{        representative[feature] = 1, \PYGZhy{}1 o 0 según el valor que se repite más veces.}
+\PYG{l+s+sd}{        Utilizo como valor auxiliar un diccionario de la siguiente forma, que obtengo de images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset}
+\PYG{l+s+sd}{        dict[feature] = \PYGZob{}1: cantidad de 1, \PYGZhy{}1: cantidad de \PYGZhy{}1, 0: cantidad de 0\PYGZcb{}}
+
+\PYG{l+s+sd}{        :param synset:}
+\PYG{l+s+sd}{        :param layer:}
+\PYG{l+s+sd}{        :return: representative}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset} \PYG{o}{==} \PYG{p}{\PYGZob{}\PYGZcb{}:}
+            \PYG{k}{if} \PYG{n}{path}\PYG{o}{.}\PYG{n}{isfile}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZus{}path}\PYG{p}{):}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+            \PYG{k}{else}\PYG{p}{:}
+                \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Generando images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZsq{}}\PYG{p}{)}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZus{}gen}\PYG{p}{()}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset} \PYG{o}{=} \PYG{n}{pickle}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb}{open}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset\PYGZus{}path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}rb\PYGZsq{}}\PYG{p}{))}
+
+        \PYG{n}{representative} \PYG{o}{=} \PYG{p}{[]}
+        \PYG{c+c1}{\PYGZsh{} aux[feature][category] = cantidad de valores de la category en cuestion para la feature tal}
+        \PYG{n}{aux} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+        \PYG{c+c1}{\PYGZsh{}section = self.data.dmatrix[:, range(self.data.layers[layer][0], self.data.layers[layer][1])]}
+        \PYG{k}{for} \PYG{n}{feature} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{layers}\PYG{p}{[}\PYG{n}{layer}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{layers}\PYG{p}{[}\PYG{n}{layer}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{]):}
+            \PYG{n}{aux}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+            \PYG{k}{for} \PYG{n}{category} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{]}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{():}
+                \PYG{n}{aux}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{][}\PYG{n}{category}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{images\PYGZus{}per\PYGZus{}feature\PYGZus{}per\PYGZus{}synset}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{][}\PYG{n}{category}\PYG{p}{][}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset}\PYG{p}{)]}
+        \PYG{k}{for} \PYG{n}{feature} \PYG{o+ow}{in} \PYG{n}{aux}\PYG{p}{:}
+            \PYG{n}{representative}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{aux}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{],} \PYG{n}{key}\PYG{o}{=}\PYG{n}{aux}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{]}\PYG{o}{.}\PYG{n}{get}\PYG{p}{))}
+        \PYG{k}{return} \PYG{n}{representative}
+
+    \PYG{k}{def} \PYG{n+nf}{changes\PYGZus{}matrix}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{synset1}\PYG{p}{,} \PYG{n}{synset2}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Genero una matriz de los cambios de los valores para el vector representante del synset1 al synset2:}
+
+\PYG{l+s+sd}{          | \PYGZhy{}1     0    1}
+\PYG{l+s+sd}{        \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{        \PYGZhy{}1| a     b     c}
+\PYG{l+s+sd}{        0 | d     e     f}
+\PYG{l+s+sd}{        1 | g     h     i}
+
+\PYG{l+s+sd}{        donde el valor a sería la cantidad de \PYGZhy{}1 que se mantienen constantes entre un synset y el otro.}
+\PYG{l+s+sd}{        El valor b sería los 0 del synset 1 que pasan a ser \PYGZhy{}1 en el synset 2}
+\PYG{l+s+sd}{        etd.}
+
+\PYG{l+s+sd}{        :param synset1:}
+\PYG{l+s+sd}{        :param synset2:}
+\PYG{l+s+sd}{        :return: cambios}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n}{rep1} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{get\PYGZus{}representive}\PYG{p}{(}\PYG{n}{synset1}\PYG{p}{)}
+        \PYG{n}{rep2} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{get\PYGZus{}representive}\PYG{p}{(}\PYG{n}{synset2}\PYG{p}{)}
+        \PYG{n}{changes} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{([}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{])}
+        \PYG{k}{for} \PYG{n}{feature} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{rep1}\PYG{p}{)):}
+            \PYG{n}{r1} \PYG{o}{=} \PYG{n}{rep1}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{]}
+            \PYG{n}{r2} \PYG{o}{=} \PYG{n}{rep2}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{]}
+            \PYG{k}{if} \PYG{n}{r1} \PYG{o}{==} \PYG{n}{r2} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{:}
+                \PYG{n}{changes}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+            \PYG{k}{elif} \PYG{n}{r1} \PYG{o}{==} \PYG{n}{r2} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+                \PYG{n}{changes}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+            \PYG{k}{elif} \PYG{n}{r1} \PYG{o}{==} \PYG{n}{r2} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{p}{:}
+                \PYG{n}{changes}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{][}\PYG{l+m+mi}{2}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+
+            \PYG{k}{elif} \PYG{n}{r1} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{o+ow}{and} \PYG{n}{r2} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+                \PYG{n}{changes}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+            \PYG{k}{elif} \PYG{n}{r1} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{o+ow}{and} \PYG{n}{r2} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{p}{:}
+                \PYG{n}{changes}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+
+            \PYG{k}{elif} \PYG{n}{r1} \PYG{o}{==} \PYG{l+m+mi}{0} \PYG{o+ow}{and} \PYG{n}{r2} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{:}
+                \PYG{n}{changes}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+            \PYG{k}{elif} \PYG{n}{r1} \PYG{o}{==} \PYG{l+m+mi}{0} \PYG{o+ow}{and} \PYG{n}{r2} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{p}{:}
+                \PYG{n}{changes}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+
+            \PYG{k}{elif} \PYG{n}{r1} \PYG{o}{==} \PYG{l+m+mi}{1} \PYG{o+ow}{and} \PYG{n}{r2} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{:}
+                \PYG{n}{changes}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+m+mi}{2}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+            \PYG{k}{elif} \PYG{n}{r1} \PYG{o}{==} \PYG{l+m+mi}{1} \PYG{o+ow}{and} \PYG{n}{r2} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+                \PYG{n}{changes}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{][}\PYG{l+m+mi}{2}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+
+        \PYG{n}{fig}\PYG{p}{,} \PYG{n}{ax} \PYG{o}{=} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{subplots}\PYG{p}{(}\PYG{n}{figsize}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{))}
+        \PYG{n}{diag} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{([}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{])}
+        \PYG{n}{diag}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+        \PYG{n}{diag}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+        \PYG{n}{diag}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+        \PYG{n}{ax}\PYG{o}{.}\PYG{n}{matshow}\PYG{p}{(}\PYG{n}{diag}\PYG{p}{,} \PYG{n}{cmap}\PYG{o}{=}\PYG{n}{plt}\PYG{o}{.}\PYG{n}{cm}\PYG{o}{.}\PYG{n}{Blues}\PYG{p}{,} \PYG{n}{alpha}\PYG{o}{=}\PYG{l+m+mf}{0.3}\PYG{p}{)}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{changes}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]):}
+            \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{changes}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]):}
+                \PYG{n}{ax}\PYG{o}{.}\PYG{n}{text}\PYG{p}{(}\PYG{n}{x}\PYG{o}{=}\PYG{n}{j}\PYG{p}{,} \PYG{n}{y}\PYG{o}{=}\PYG{n}{i}\PYG{p}{,} \PYG{n}{s}\PYG{o}{=}\PYG{n}{changes}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{],} \PYG{n}{va}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}center\PYGZsq{}}\PYG{p}{,} \PYG{n}{ha}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}center\PYGZsq{}}\PYG{p}{,} \PYG{n}{fontsize}\PYG{o}{=}\PYG{l+m+mi}{20}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xticks}\PYG{p}{([}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{],} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{])}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{yticks}\PYG{p}{([}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{],} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{])}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Original values\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}New values\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Changes from \PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset1}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} to \PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset2}\PYG{p}{))}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{tight\PYGZus{}layout}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}Changes from \PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset1}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} to \PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset2}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Changes from \PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset1}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} to \PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset2}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{printlatex}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+
+    \PYG{k}{def} \PYG{n+nf}{changes\PYGZus{}matrix\PYGZus{}per\PYGZus{}layer}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{synset1}\PYG{p}{,} \PYG{n}{synset2}\PYG{p}{,} \PYG{n}{layer}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Genero una matriz de los cambios de los valores para el vector representante del synset1 al synset2 en el layer:}
+
+\PYG{l+s+sd}{          | \PYGZhy{}1     0    1}
+\PYG{l+s+sd}{        \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{l+s+sd}{        \PYGZhy{}1| a     b     c}
+\PYG{l+s+sd}{        0 | d     e     f}
+\PYG{l+s+sd}{        1 | g     h     i}
+
+\PYG{l+s+sd}{        donde el valor a sería la cantidad de \PYGZhy{}1 que se mantienen constantes entre un synset y el otro.}
+\PYG{l+s+sd}{        El valor b sería los 0 del synset 1 que pasan a ser \PYGZhy{}1 en el synset 2}
+\PYG{l+s+sd}{        etd.}
+
+\PYG{l+s+sd}{        :param synset1:}
+\PYG{l+s+sd}{        :param synset2:}
+\PYG{l+s+sd}{        :param layer:}
+\PYG{l+s+sd}{        :return: cambios}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n}{rep1} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{get\PYGZus{}representive\PYGZus{}per\PYGZus{}layer}\PYG{p}{(}\PYG{n}{synset1}\PYG{p}{,} \PYG{n}{layer}\PYG{p}{)}
+        \PYG{n}{rep2} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{get\PYGZus{}representive\PYGZus{}per\PYGZus{}layer}\PYG{p}{(}\PYG{n}{synset2}\PYG{p}{,} \PYG{n}{layer}\PYG{p}{)}
+        \PYG{n}{changes} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{([}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{])}
+        \PYG{k}{for} \PYG{n}{feature} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{rep1}\PYG{p}{)):}
+            \PYG{n}{r1} \PYG{o}{=} \PYG{n}{rep1}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{]}
+            \PYG{n}{r2} \PYG{o}{=} \PYG{n}{rep2}\PYG{p}{[}\PYG{n}{feature}\PYG{p}{]}
+            \PYG{k}{if} \PYG{n}{r1} \PYG{o}{==} \PYG{n}{r2} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{:}
+                \PYG{n}{changes}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+            \PYG{k}{elif} \PYG{n}{r1} \PYG{o}{==} \PYG{n}{r2} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+                \PYG{n}{changes}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+            \PYG{k}{elif} \PYG{n}{r1} \PYG{o}{==} \PYG{n}{r2} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{p}{:}
+                \PYG{n}{changes}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{][}\PYG{l+m+mi}{2}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+
+            \PYG{k}{elif} \PYG{n}{r1} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{o+ow}{and} \PYG{n}{r2} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+                \PYG{n}{changes}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+            \PYG{k}{elif} \PYG{n}{r1} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{o+ow}{and} \PYG{n}{r2} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{p}{:}
+                \PYG{n}{changes}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+
+            \PYG{k}{elif} \PYG{n}{r1} \PYG{o}{==} \PYG{l+m+mi}{0} \PYG{o+ow}{and} \PYG{n}{r2} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{:}
+                \PYG{n}{changes}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+            \PYG{k}{elif} \PYG{n}{r1} \PYG{o}{==} \PYG{l+m+mi}{0} \PYG{o+ow}{and} \PYG{n}{r2} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{p}{:}
+                \PYG{n}{changes}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+
+            \PYG{k}{elif} \PYG{n}{r1} \PYG{o}{==} \PYG{l+m+mi}{1} \PYG{o+ow}{and} \PYG{n}{r2} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{:}
+                \PYG{n}{changes}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+m+mi}{2}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+            \PYG{k}{elif} \PYG{n}{r1} \PYG{o}{==} \PYG{l+m+mi}{1} \PYG{o+ow}{and} \PYG{n}{r2} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+                \PYG{n}{changes}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{][}\PYG{l+m+mi}{2}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+
+        \PYG{n}{fig}\PYG{p}{,} \PYG{n}{ax} \PYG{o}{=} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{subplots}\PYG{p}{(}\PYG{n}{figsize}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{))}
+        \PYG{n}{diag} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{([}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{])}
+        \PYG{n}{diag}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+        \PYG{n}{diag}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+        \PYG{n}{diag}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{]} \PYG{o}{+=} \PYG{l+m+mi}{1}
+        \PYG{n}{ax}\PYG{o}{.}\PYG{n}{matshow}\PYG{p}{(}\PYG{n}{diag}\PYG{p}{,} \PYG{n}{cmap}\PYG{o}{=}\PYG{n}{plt}\PYG{o}{.}\PYG{n}{cm}\PYG{o}{.}\PYG{n}{Blues}\PYG{p}{,} \PYG{n}{alpha}\PYG{o}{=}\PYG{l+m+mf}{0.3}\PYG{p}{)}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{changes}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]):}
+            \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{changes}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]):}
+                \PYG{n}{ax}\PYG{o}{.}\PYG{n}{text}\PYG{p}{(}\PYG{n}{x}\PYG{o}{=}\PYG{n}{j}\PYG{p}{,} \PYG{n}{y}\PYG{o}{=}\PYG{n}{i}\PYG{p}{,} \PYG{n}{s}\PYG{o}{=}\PYG{n}{changes}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{],} \PYG{n}{va}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}center\PYGZsq{}}\PYG{p}{,} \PYG{n}{ha}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}center\PYGZsq{}}\PYG{p}{,} \PYG{n}{fontsize}\PYG{o}{=}\PYG{l+m+mi}{20}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xticks}\PYG{p}{([}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{],} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{])}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{yticks}\PYG{p}{([}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{],} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{])}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Original values\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}New values\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Changes from \PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset1}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} to \PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset2}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} of \PYGZsq{}} \PYG{o}{+} \PYG{n}{layer}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{tight\PYGZus{}layout}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{plot\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}Changes from \PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset1}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} to \PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}
+                \PYG{n}{synset2}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} of \PYGZsq{}} \PYG{o}{+} \PYG{n}{layer} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{name} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Changes from \PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset1}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} to \PYGZsq{}} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{ss\PYGZus{}to\PYGZus{}text}\PYG{p}{(}\PYG{n}{synset2}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{} of \PYGZsq{}} \PYG{o}{+} \PYG{n}{layer} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}.png\PYGZsq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{printlatex}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+        \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+
+    \PYG{k}{def} \PYG{n+nf}{plot\PYGZus{}matrix}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        Quiero pintar la matriz de cambios para cada synset}
+\PYG{l+s+sd}{        :return:}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{for} \PYG{n}{synset1} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synsets}\PYG{p}{:}
+            \PYG{k}{for} \PYG{n}{synset2} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{synsets}\PYG{p}{:}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{changes\PYGZus{}matrix}\PYG{p}{(}\PYG{n}{synset1}\PYG{p}{,} \PYG{n}{synset2}\PYG{p}{)}
+                \PYG{k}{for} \PYG{n}{layer} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{reduced\PYGZus{}layers}\PYG{p}{:}
+                    \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{changes\PYGZus{}matrix}\PYG{p}{(}\PYG{n}{synset1}\PYG{p}{,} \PYG{n}{synset2}\PYG{p}{)}
+                    \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{changes\PYGZus{}matrix\PYGZus{}per\PYGZus{}layer}\PYG{p}{(}\PYG{n}{synset1}\PYG{p}{,} \PYG{n}{synset2}\PYG{p}{,} \PYG{n}{layer}\PYG{p}{)}
+                    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{cla}\PYG{p}{()}
+                    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{clf}\PYG{p}{()}
+                    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{close}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}all\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}
