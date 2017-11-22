@@ -87,15 +87,30 @@
 	
 	feature\_per\_image[image][category] = cantidad e imagenes de esta categoría
 	\item \textbf{features\_per\_layer[synsets].pkl}features\_per\_layer[layer][category]  = cantidad de features de la category tal en el layer
-	\item \textbf{Images/\_per\_feature\_per\_synset[synsets].pkl} Genera un diccionario tal que:
+	\item \textbf{Images\_per\_feature\_per\_synset[synsets].pkl} Genera un diccionario tal que:
 	      	      	      
 	      dict[features][category][synset] = cantidad e imagenes del synset que tienen esta categoria en cuestión.
-	\item \textbf{intra\_synset[synsets].pkl}dict[synset][synsethijo] = cantidad de synset hijo en synset
+	\item \textbf{intra\_synset[synsets].pkl}
+	
+	dict[synset][synsethijo] = cantidad de synset hijo en synset
 \end{itemize}
 
 
 \newpage
+\section{TODOS}
+\begin{itemize}
+\item Matrices mezclando living y nonliving (en proceso)
+\item Buscar una representación mejor para las matrices de cambios (y hacerlo por layer) (en proceso)
+\item Redactar analisis hasta las matrices. 
+\item Obtener el resto de los embeddings que me ha generado Armand.
+%scp -r raquel@vaio:/home/armand/transmision/new_labels /home/raquel/Desktop/tfg/Data/Embeddings/
 
+\item Generar labels para cada synset con valor 1 si el elemento pertenece al synset y 0 else.
+\item Sacar conclusiones respecto a la profundidad de la capa, la "profundidad" del synset y los cambios de -1 a 1.
+Cuanto más específico es el synset y más profunda es la capa deberían cambiar de -1 a 1 más elementos. 
+
+\item continuar con la documentación del código. http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html
+\end{itemize}
 \section{Análisis Base}
 
 \begin{figure}[ht] 
