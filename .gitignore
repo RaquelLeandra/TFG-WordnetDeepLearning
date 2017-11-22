@@ -57,4 +57,10 @@ docs/_build/
 # PyBuilder
 target/
 
-Data/*
+*.aux
+
+*.gz
+
+*.toc
+
+Data/
