@@ -13,43 +13,24 @@ class Data:
     Esta clase consiste en los datos que voy a necesitar para hacer las estadísticas.
     Que no dependen de los synsets elegidos.
 
-    self.layers = {
-                'conv1_1': [0,64],        # 1
-                'conv1_2': [64,128],      # 2
-                'conv2_1': [128,256],     # 3
-                'conv2_2': [256,384],     # 4
-                'conv3_1': [384,640],     # 5
-                'conv3_2': [640,896],     # 6
-                'conv3_3': [896,1152],    # 7
-                'conv4_1': [1152,1664],   # 8
-                'conv4_2': [1664,2176],   # 9
-                'conv4_3': [2176,2688],   # 10
-                'conv5_1': [2688,3200],   # 11
-                'conv5_2': [3200,3712],   # 12
-                'conv5_3': [3712,4224],   # 13
-                'fc6':[4224,8320],       # 14
-                'fc7':[8320,12416],      # 15
-                'conv1':[0,128],         # 16
-                'conv2':[128,384],       # 17
-                'conv3':[384,1152],      # 18
-                'conv4':[1152,2688],     # 19
-                'conv5':[2688,4224],     # 20
-                'conv':[0,4224],         # 21
-                '2_5conv':[128,4224],    # 22
-                'fc6tofc7':[4224,12416], # 23
-                #'all':[0,12416]          # 24
-                    }
+    Attributes:
+        version (int): versión del embedding que utilizo puede ser 19, 25 o 31
+        embedding_path (str): path
+        layers (dict): Un diccionario tal que
+            layers[string correspondiente al layer] = [inicio del layer, final del layer]
 
-         self.labels = embedding['labels']
+         labels ()
+
+         :parameter version = Version del embedding que utilizo
     """
 
-    def __init__(self, version):
+    def __init__(self, path, version=25):
         """
 
         :param version: Es la versión del embedding que queremos cargar (25,31,19)
         """
         self.version = version
-        self.embedding_path = "../Data/vgg16_ImageNet_ALLlayers_C1avg_imagenet_train.npz"
+        _embedding_path = "../Data/vgg16_ImageNet_ALLlayers_C1avg_imagenet_train.npz"
         self.imagenet_id_path = "../Data/synset.txt"
         if version == 25:
             _embedding = 'vgg16_ImageNet_imagenet_C1avg_E_FN_KSBsp0.15n0.25_Gall_train_.npy'
@@ -58,10 +39,11 @@ class Data:
         elif version == 31:
             _embedding = 'vgg16_ImageNet_imagenet_C1avg_E_FN_KSBsp0.19n0.31_Gall_train_.npy'
         else:
-            print('ERROR DE LA LECHE, METE UNA VERSIÓN VÁLIDA')
+            _embedding = path
+            print('No has puesto un embedding válido, usando el de defoult (25)')
         self.discretized_embedding_path = '../Data/Embeddings/' + _embedding
         print('Estamos usando ' + _embedding[-20:-16])
-        embedding = np.load(self.embedding_path)
+        embedding = np.load(_embedding_path)
         self.labels = embedding['labels']
         # self.matrix = self.embedding['data_matrix']
         del embedding
@@ -91,7 +73,6 @@ class Data:
             'conv4': [1152, 2688],  # 19
             'conv5': [2688, 4224],  # 20
             'conv': [0, 4224],  # 21
-            '2_5conv': [128, 4224],  # 22
             'fc6tofc7': [4224, 12416],  # 23
             # 'all':[0,12416]          # 24
         }
@@ -504,7 +485,7 @@ class Statistics:
             dict[feature][category][synset]
 
         """
-        print('Generando images_per_feature_per_synset, tarda una hora')
+        print('Generando images_per_feature_per_synset, tarda varias horas :( ')
         for feature in range(0, self.data.dmatrix.shape[1]):
             self.images_per_feature_per_synset[feature] = {}
             feature_column = self.data.dmatrix[:, feature]
@@ -532,9 +513,8 @@ class Statistics:
             if path.isfile(self.images_per_feature_per_synset_path):
                 self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path, 'rb'))
             else:
-                print('va a tardar')
                 self.images_per_feature_per_synset_gen()
-                self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path), 'rb')
+                self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path, 'rb'))
 
         for category in self.data.features_category:
             values = {}
@@ -865,7 +845,7 @@ class Statistics:
             else:
                 print('va a tardar')
                 self.images_per_feature_per_synset_gen()
-                self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path), 'rb')
+                self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path, 'rb'))
 
         for category in self.data.features_category:
             values = {}
@@ -882,6 +862,77 @@ class Statistics:
             self.printlatex(name)
             plt.cla()
             plt.clf()
+
+    def plot_changes_between_synset_reps(self):
+        """
+        Quiero que printe una gráfica tal que en el valor de las x tenga los elementos de synsets y en el de las ordenadas
+        un acumulative plot con la  cantidad de 1, 0 y -1 de los representantes del synset en cuestión.
+        changes[synset][-1]
+        :return: void
+        """
+        plt.rcParams['figure.figsize'] = [16.0, 8.0]
+        changes_in_synset = {}
+        ones = []
+        zeros = []
+        negones = []
+        for synset in self.synsets:
+            rep = self.get_representive(synset)
+            changes_in_synset[self.ss_to_text(synset)] = self.count_features(rep)
+            negones.append(changes_in_synset[self.ss_to_text(synset)][-1])
+            zeros.append(changes_in_synset[self.ss_to_text(synset)][0])
+            ones.append(changes_in_synset[self.ss_to_text(synset)][1])
+
+        plot_index = np.arange(len(self.synsets))
+        p_negones = plt.bar(plot_index, negones, color='#4C194C')
+        p_zeros = plt.bar(plot_index, zeros, color='#7F3FBF', bottom=negones)
+        p_ones = plt.bar(plot_index, ones, color='#3F7FBF', bottom=[sum(x) for x in zip(negones, zeros)])
+
+        plt.ylabel('Cantidad')
+        plt.title('Comparativa entre las categorias por synset')
+        plt.xticks(plot_index, self.textsynsets)
+        plt.legend((p_negones[0], p_zeros[0], p_ones[0]), ('-1', '0', '1'))
+        plt.grid()
+        name = 'Comparative_of_synsets.png'
+        plt.savefig(self.plot_path + name)
+        self.printlatex(name)
+        plt.cla()
+        plt.clf()
+        plt.rcParams['figure.figsize'] = [8.0, 8.0]
+
+    def plot_changes_between_synset_reps_per_layer(self):
+        """
+        Quiero que printe una gráfica para cada synset tal que en el valor de las x tenga los elementos de  los layers
+        y en el de las ordenadas un acumulative plot con la  cantidad de 1, 0 y -1 de los representantes del synset en
+        cuestión para cada layer.
+        :return: void
+        """
+        plt.rcParams['figure.figsize'] = [16.0, 8.0]
+        for synset in self.synsets:
+            changes_in_synset = {}
+            ones = []
+            zeros = []
+            negones = []
+            plot_index = np.arange(len(self.data.reduced_layers))
+            for layer in self.data.reduced_layers:
+                rep = self.get_representive_per_layer(synset, layer)
+                changes_in_synset[layer] = self.count_features(rep)
+                negones.append(changes_in_synset[layer][-1])
+                zeros.append(changes_in_synset[layer][0])
+                ones.append(changes_in_synset[layer][1])
+            p_negones = plt.bar(plot_index, negones, color='#4C194C')
+            p_zeros = plt.bar(plot_index, zeros, color='#7F3FBF', bottom=negones)
+            p_ones = plt.bar(plot_index, ones, color='#3F7FBF', bottom=[sum(x) for x in zip(negones, zeros)])
+            plt.ylabel('Cantidad')
+            plt.title('Comparativa entre las categorias por layer de ' + self.ss_to_text(synset))
+            plt.xticks(plot_index, list(self.data.reduced_layers))
+            plt.legend((p_negones[0], p_zeros[0], p_ones[0]), ('-1', '0', '1'))
+            plt.grid()
+            name = 'Comparative_of_synsets_' + self.ss_to_text(synset) + '.png'
+            plt.savefig(self.plot_path + name)
+            self.printlatex(name)
+            plt.cla()
+            plt.clf()
+        plt.rcParams['figure.figsize'] = [8.0, 8.0]
 
     def plot_all(self):
         """
@@ -912,12 +963,26 @@ class Statistics:
         self.plot_intra_synset()
         for synset in self.synsets:
             self.plot_images_per_feature_of_synset(synset)
+            plt.cla()
+            plt.clf()
+            plt.close("all")
             self.plot_images_per_feature_of_synset_per_layer(synset)
+            plt.cla()
+            plt.clf()
+            plt.close("all")
         self.plot_features_per_layer()
         plt.cla()
         plt.close("all")
         plt.clf()
         self.plot_matrix()
+        plt.cla()
+        plt.clf()
+        plt.close("all")
+        self.plot_changes_between_synset_reps()
+        plt.cla()
+        plt.clf()
+        plt.close("all")
+        self.plot_changes_between_synset_reps_per_layer()
         plt.cla()
         plt.clf()
         plt.close("all")
@@ -946,7 +1011,7 @@ class Statistics:
             else:
                 print('Generando images_per_feature_per_synset')
                 self.images_per_feature_per_synset_gen()
-                self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path), 'rb')
+                self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path, 'rb'))
 
         representative = []
         # aux[feature][category] = cantidad de valores de la category en cuestion para la feature tal
@@ -976,7 +1041,7 @@ class Statistics:
             else:
                 print('Generando images_per_feature_per_synset')
                 self.images_per_feature_per_synset_gen()
-                self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path), 'rb')
+                self.images_per_feature_per_synset = pickle.load(open(self.images_per_feature_per_synset_path, 'rb'))
 
         representative = []
         # aux[feature][category] = cantidad de valores de la category en cuestion para la feature tal
@@ -1137,6 +1202,7 @@ class Statistics:
             for synset2 in self.synsets:
                 self.changes_matrix(synset1, synset2)
                 for layer in self.data.reduced_layers:
+                    self.changes_matrix(synset1, synset2)
                     self.changes_matrix_per_layer(synset1, synset2, layer)
                     plt.cla()
                     plt.clf()

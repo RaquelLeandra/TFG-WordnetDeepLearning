@@ -3,6 +3,7 @@ El objetivo de este fichero es testear que funcionan las nuevas funciones que le
 Comprobado, parece que funciona. Mantengo la función por si tengo que testear más funciones nuevas
 """
 import numpy as np
+import matplotlib.pyplot as plt
 
 toymatrix = np.array([[1,0,-1,0],[0,1,1,1],[1,-1,0,1]])
 toydict = {0:{-1:1,0:2,1:3},1:{-1:4,0:5,1:6}}
@@ -11,30 +12,19 @@ toylayers = {
         'a': [0, 2],
         'b': [2, 4],
                }
+synsets = ['a','b']
 
+ones = [1,3]
+zeros = [1,2]
+negones = [1,3]
 
-def count_features(matrix):
-    """
-    Devuelve un diccionario con la cantidad de features de cada tipo de la matriz matrix
-    features[category] = cantidad de category de la matriz
-    """
-    features = {-1: 0, 0: 0, 1: 0}
-    features[1] += np.sum(np.equal(matrix, 1))
-    features[-1] += np.sum(np.equal(matrix, -1))
-    features[0] += np.sum(np.equal(matrix, 0))
-    return features
-toyresult = {}
-def images_per_feature_per_layer_gen():
-    """
-    Quiero generar un diccionario tal que
+plot_index = np.arange(len(synsets))
+p_negones = plt.bar(plot_index, negones, color='#4C194C')
+p_zeros = plt.bar(plot_index, zeros, color='#7F3FBF',bottom=negones)
+p_ones = plt.bar(plot_index, ones, color='#3F7FBF',bottom=[sum(x) for x in zip(negones,zeros)])
 
-    :return:dict[layer][category] = cantidad de imagenes que tienen la feature con valor category en este layer
-    """
-    print(toymatrix)
-    for layer in toylayers:
-        section =toymatrix[:, range(toylayers[layer][0], toylayers[layer][1])]
-        print(section)
-        toyresult[layer] = count_features(section)
-    print(toyresult)
-
-images_per_feature_per_layer_gen()
+plt.ylabel('Cantidad')
+plt.title('Comparativa entre las categorias por synset')
+plt.xticks(plot_index, synsets)
+plt.legend((p_negones[0], p_zeros[0], p_ones[0]), ('-1', '0', '1'))
+plt.show()
