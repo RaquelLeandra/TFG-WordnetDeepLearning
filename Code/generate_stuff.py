@@ -3,8 +3,8 @@ from nltk.corpus import wordnet as wn
 import numpy as np
 import sys
 import os
-
-toolbar_width = 40
+import time
+import datetime
 
 dog = wn.synsets('dog')[0]
 mammal = wn.synsets('mammal')[0]
@@ -28,22 +28,29 @@ def generate_stuff():
     #embeddings_version = [19, 25, 31]
     embeddings_version = [25]
     for version in embeddings_version:
-
+        print('Loading data...')
+        ini_time = time.time()
         data = Data('', version)
-
+        data_time = time.time() - ini_time
+        print('Loaded in ', datetime.timedelta(seconds=(time.time() - ini_time)), 'seconds')
         #stats_living = Statistics(synsets_living, data)
         #stats_non_living = Statistics(synsets_non_living, data)
-
         stats_SUPERCOMBO = Statistics(SUPERCOMBO, data)
 
         # for synset in stats_living.synsets:
         #     stats_living.generate_restricted_labels(synset)
         # for synset in stats_non_living.synsets:
         #     stats_non_living.generate_restricted_labels(synset)
-        stats_SUPERCOMBO.plot_changes_between_synset_reps_per_layer()
-        for i in range(toolbar_width):
-            sys.stdout.write("-")
-            sys.stdout.flush()
+        print('Calculating distance1...')
+        ini_time = time.time()
+        print('distance1 living mamal: ', stats_SUPERCOMBO.distance_between_synsets_reps(SUPERCOMBO[0],SUPERCOMBO[1]))
+        print('distance time: ', datetime.timedelta(seconds=(time.time() - ini_time)))
+        str(datetime.timedelta(seconds=666))
+        print('Loading data...')
+        ini_time = time.time()
+        print('distance2 living mamal: ', stats_SUPERCOMBO.distance_between_synsets_global(SUPERCOMBO[0], SUPERCOMBO[1]))
+        print('distance time: ',datetime.timedelta(seconds=(time.time() - ini_time)))
+
         data.__del__()
 
         sys.stdout.write("\n")
@@ -66,8 +73,9 @@ toydict = {0: {-1: 1, 0: 2, 1: 3}, 1: {-1: 4, 0: 5, 1: 6}}
 
 
 def main():
+    ini_time = time.time()
     generate_stuff()
-
+    print('total time', datetime.timedelta(seconds=(time.time() - ini_time)))
 
 if __name__ == "__main__":
     main()

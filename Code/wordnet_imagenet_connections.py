@@ -6,6 +6,7 @@ from os import path
 from os import makedirs
 import matplotlib.pyplot as plt
 import gc
+from collections import Counter
 
 
 class Data:
@@ -164,29 +165,32 @@ class Statistics:
 
     def get_index_from_ss(self, synset):
         """
+        PROBAR
         Esta función genera un archivo con los índices(0:999) de la aparición de un synset y sus hiponimos
         y otro con los códigos imagenet de todos los hipónimos
         """
-        hypo = lambda s: s.hyponyms()
-        path = self.dir_path + self.ss_to_text(synset) + '_index_hyponim' + '.txt'
-        hyponim_file = open(path, "w")
-        synset_list = []
-        for thing in list(synset.closure(hypo)):
-            hyponim_file.write(self.get_in_id(thing) + '\n')
-            synset_list.append(self.get_in_id(thing))
+        ss_path = self.dir_path + self.ss_to_text(synset) + '_index_hyponim' + '.npy'
+        if path.isfile(ss_path):
+            index = np.load(ss_path)
+            return index
+        else:
+            hypo = lambda s: s.hyponyms()
+            hyponim_file = open(ss_path, "w")
+            synset_list = []
+            for thing in list(synset.closure(hypo)):
+                hyponim_file.write(self.get_in_id(thing) + '\n')
+                synset_list.append(self.get_in_id(thing))
 
-        index = []
-        hyponim_file.close()
-        index_path = self.dir_path + self.ss_to_text(synset) + '_' + 'index' + '.txt'
-        index_file = open(index_path, 'w')
-        i = 0
-        for lab in self.data.labels:
-            if self.data.imagenet_all_ids[lab] in synset_list:
-                index_file.write(str(i) + '\n')
-                index.append(i)
-            i += 1
-        index_file.close()
-        return index
+            index = []
+            hyponim_file.close()
+            index_path = self.dir_path + self.ss_to_text(synset) + '_' + 'index' + '.txt'
+            i = 0
+            for lab in self.data.labels:
+                if self.data.imagenet_all_ids[lab] in synset_list:
+                    index.append(i)
+                i += 1
+            np.save(ss_path, index)
+            return index
 
     def generate_restricted_labels(self, synset):
         """
@@ -356,7 +360,7 @@ class Statistics:
         for synset in self.synsets:
             synset_path = self.dir_path + self.ss_to_text(synset) + '.txt'
             index_path = self.dir_path + self.ss_to_text(synset) + '_index' + '.txt'
-
+            # TODO: ARREGLAR ESTO
             if path.isfile(index_path):
                 index = np.genfromtxt(index_path, dtype=np.int)
             else:
@@ -863,6 +867,40 @@ class Statistics:
             plt.cla()
             plt.clf()
 
+    def distance_between_synsets_reps(self, synset1, synset2):
+        """
+        Quiero que esta función me calcule la distancia entre dos synsets adyacentes de wordnet.
+        Con la distancia definida como:
+        abs(proporcion1(representante de s1) - proporcion1(representante de s2))
+        siendo proporcion1 la proporción de 1 del representante.
+        :return: distance (float)
+        """
+        r1 = self.get_represention_fast(synset1)
+        r2 = self.get_represention_fast(synset2)
+        cf1 = self.count_features(r1)
+        cf2 = self.count_features(r2)
+        prop1 = cf1[1]/(cf1[-1] + cf1[0])
+        prop2 = cf2[1] / (cf2[-1] + cf2[0])
+        distance = np.abs(prop1 - prop2)
+        return distance
+
+    def distance_between_synsets_global(self, synset1, synset2):
+        """
+        Quiero que esta función me calcule la distancia entre dos synsets adyacentes de wordnet.
+        Con la distancia definida como:
+        abs(proporcion1(s1) - proporcion1(s2))
+        siendo proporcion1 la proporción de 1 del representante.
+        :return: distance (float)
+        """
+        index1 = self.get_index_from_ss(synset1)
+        cf1 = self.count_features(self.data.dmatrix[index1, :])
+        index2 = self.get_index_from_ss(synset2)
+        cf2 = self.count_features(self.data.dmatrix[index2, :])
+        prop1 = cf1[1] / (cf1[-1] + cf1[0])
+        prop2 = cf2[1] / (cf2[-1] + cf2[0])
+        distance = np.abs(prop1 - prop2)
+        return distance
+
     def plot_changes_between_synset_reps(self):
         """
         Quiero que printe una gráfica tal que en el valor de las x tenga los elementos de synsets y en el de las ordenadas
@@ -876,7 +914,7 @@ class Statistics:
         zeros = []
         negones = []
         for synset in self.synsets:
-            rep = self.get_representive(synset)
+            rep = self.get_represention_fast(synset)
             changes_in_synset[self.ss_to_text(synset)] = self.count_features(rep)
             negones.append(changes_in_synset[self.ss_to_text(synset)][-1])
             zeros.append(changes_in_synset[self.ss_to_text(synset)][0])
@@ -995,8 +1033,21 @@ class Statistics:
         """
         return path.isfile(path)
 
-    def get_representive(self, synset):
+    def get_represention_fast(self, synset):
         """
+        Quiero que me devuelva un vector tal que el valor i sea el que tiene mayor proporción dentro del synset.
+        rep[feature] = 1, -1 o 0 según el valor que se repite más veces.
+        :param synset:
+        :return: rep
+        """
+        index = self.get_index_from_ss(synset)
+        sub_matrix = self.data.dmatrix[index, :]
+        rep = [Counter(sub_matrix[:, i]).most_common()[0][0] for i in range(len(sub_matrix[1]))]
+        return rep
+
+    def bad_get_representive(self, synset):
+        """
+        BORRAR
         Quiero que me devuelva un vector tal que el valor i sea el que tiene mayor proporción dentro del synset.
         representative[feature] = 1, -1 o 0 según el valor que se repite más veces.
         Utilizo como valor auxiliar un diccionario de la siguiente forma, que obtengo de images_per_feature_per_synset
