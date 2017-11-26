@@ -45,7 +45,6 @@ def generate_stuff():
         ini_time = time.time()
         print('distance1 living mamal: ', stats_SUPERCOMBO.distance_between_synsets_reps(SUPERCOMBO[0],SUPERCOMBO[1]))
         print('distance time: ', datetime.timedelta(seconds=(time.time() - ini_time)))
-        str(datetime.timedelta(seconds=666))
         print('Loading data...')
         ini_time = time.time()
         print('distance2 living mamal: ', stats_SUPERCOMBO.distance_between_synsets_global(SUPERCOMBO[0], SUPERCOMBO[1]))

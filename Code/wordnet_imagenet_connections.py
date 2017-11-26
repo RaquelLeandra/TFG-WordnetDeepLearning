@@ -6,7 +6,7 @@ from os import path
 from os import makedirs
 import matplotlib.pyplot as plt
 import gc
-from collections import Counter
+from scipy import stats as st
 
 
 class Data:
@@ -31,7 +31,7 @@ class Data:
         :param version: Es la versión del embedding que queremos cargar (25,31,19)
         """
         self.version = version
-        _embedding_path = "../Data/vgg16_ImageNet_ALLlayers_C1avg_imagenet_train.npz"
+        _embedding_path = "../Data/Embeddings/vgg16_ImageNet_ALLlayers_C1avg_imagenet_train.npz"
         self.imagenet_id_path = "../Data/synset.txt"
         if version == 25:
             _embedding = 'vgg16_ImageNet_imagenet_C1avg_E_FN_KSBsp0.15n0.25_Gall_train_.npy'
@@ -44,10 +44,9 @@ class Data:
             print('No has puesto un embedding válido, usando el de defoult (25)')
         self.discretized_embedding_path = '../Data/Embeddings/' + _embedding
         print('Estamos usando ' + _embedding[-20:-16])
-        embedding = np.load(_embedding_path)
-        self.labels = embedding['labels']
+        # embedding = np.load(_embedding_path)
+        self.labels = np.load('../Data/Embeddings/labels.npy')
         # self.matrix = self.embedding['data_matrix']
-        del embedding
         self.dmatrix = np.array(np.load(self.discretized_embedding_path))
         self.imagenet_all_ids = np.genfromtxt(self.imagenet_id_path, dtype=np.str)
         self.features_category = [-1, 0, 1]
@@ -165,7 +164,6 @@ class Statistics:
 
     def get_index_from_ss(self, synset):
         """
-        PROBAR
         Esta función genera un archivo con los índices(0:999) de la aparición de un synset y sus hiponimos
         y otro con los códigos imagenet de todos los hipónimos
         """
@@ -183,7 +181,6 @@ class Statistics:
 
             index = []
             hyponim_file.close()
-            index_path = self.dir_path + self.ss_to_text(synset) + '_' + 'index' + '.txt'
             i = 0
             for lab in self.data.labels:
                 if self.data.imagenet_all_ids[lab] in synset_list:
@@ -1042,7 +1039,7 @@ class Statistics:
         """
         index = self.get_index_from_ss(synset)
         sub_matrix = self.data.dmatrix[index, :]
-        rep = [Counter(sub_matrix[:, i]).most_common()[0][0] for i in range(len(sub_matrix[1]))]
+        rep = st.mode(sub_matrix, axis=0)[0]
         return rep
 
     def bad_get_representive(self, synset):
@@ -1258,3 +1255,139 @@ class Statistics:
                     plt.cla()
                     plt.clf()
                     plt.close("all")
+
+
+class Distances:
+    def __init__(self, data):
+        self.data = data
+        self.dir_path = '../Data/' + 'Distances' + '/'
+        self.plot_path = self.dir_path + 'plots/'
+        if not path.exists(self.dir_path):
+            makedirs(self.dir_path)
+        if not path.exists(self.plot_path):
+            makedirs(self.plot_path)
+
+    def get_in_id(self, wordnet_ss):
+        """
+        Input: Synset
+        :param wordnet_ss:
+        :return: imagenet id
+        """
+        # Esta funcion genera la id de imagenet a partir del synset de wordnet
+        wn_id = wn.ss2of(wordnet_ss)
+        return wn_id[-1] + wn_id[:8]
+
+    def ss_to_text(self, synset):
+        """ devuelve el string del nombre del synset en cuestion"""
+        return str(synset)[8:-7]
+
+    def get_index_from_ss(self, synset):
+        """
+        Esta función genera un archivo con los índices(0:999) de la aparición de un synset y sus hiponimos
+        y otro con los códigos imagenet de todos los hipónimos
+        """
+        ss_path = self.dir_path + self.ss_to_text(synset) + '_index_hyponim' + '.npy'
+        if path.isfile(ss_path):
+            index = np.load(ss_path)
+            return index
+        else:
+            hypo = lambda s: s.hyponyms()
+            hyponim_file = open(ss_path, "w")
+            synset_list = []
+            for thing in list(synset.closure(hypo)):
+                hyponim_file.write(self.get_in_id(thing) + '\n')
+                synset_list.append(self.get_in_id(thing))
+
+            index = []
+            hyponim_file.close()
+            i = 0
+            for lab in self.data.labels:
+                if self.data.imagenet_all_ids[lab] in synset_list:
+                    index.append(i)
+                i += 1
+            np.save(ss_path, index)
+            return index
+
+    def count_features(self, matrix):
+        """
+        Devuelve un diccionario con la cantidad de features de cada tipo de la matriz matrix
+        features[category] = cantidad de category de la matriz
+        """
+        features = {-1: 0, 0: 0, 1: 0}
+        features[1] += np.sum(np.equal(matrix, 1))
+        features[-1] += np.sum(np.equal(matrix, -1))
+        features[0] += np.sum(np.equal(matrix, 0))
+        return features
+
+    def get_represention_fast(self, synset):
+        """
+        Quiero que me devuelva un vector tal que el valor i sea el que tiene mayor proporción dentro del synset.
+        rep[feature] = 1, -1 o 0 según el valor que se repite más veces.
+        :param synset:
+        :return: rep
+        """
+        index = self.get_index_from_ss(synset)
+        if index != []:
+            sub_matrix = self.data.dmatrix[index, :]
+            rep = st.mode(sub_matrix, axis=0)[0]
+            return rep
+        return []
+
+    def distance_between_synsets_reps(self, synset1, synset2):
+        """
+        Quiero que esta función me calcule la distancia entre dos synsets adyacentes de wordnet.
+        Con la distancia definida como:
+        abs(proporcion1(representante de s1) - proporcion1(representante de s2))
+        siendo proporcion1 la proporción de 1 del representante.
+        :return: distance (float)
+        """
+        r1 = self.get_represention_fast(synset1)
+        r2 = self.get_represention_fast(synset2)
+        cf1 = self.count_features(r1)
+        cf2 = self.count_features(r2)
+        prop1 = cf1[1]/(cf1[-1] + cf1[0])
+        prop2 = cf2[1] / (cf2[-1] + cf2[0])
+        distance = np.abs(prop1 - prop2)
+        return distance
+
+    def plot_changes_between_synset_reps(self, synsets):
+        """
+        Quiero que printe una gráfica tal que en el valor de las x tenga los elementos de synsets y en el de las ordenadas
+        un acumulative plot con la  cantidad de 1, 0 y -1 de los representantes del synset en cuestión.
+        changes[synset][-1]
+        :return: void
+        """
+        plt.rcParams['figure.figsize'] = [20.0, 8.0]
+        changes_in_synset = {}
+        ones = []
+        zeros = []
+        negones = []
+        l = 0
+        textsynsets = []
+        for synset in synsets:
+            rep = self.get_represention_fast(synset)
+            if rep == []:
+                continue
+            l += 1
+            textsynsets.append(str(synset)[8:-7])
+            changes_in_synset[self.ss_to_text(synset)] = self.count_features(rep)
+            negones.append(changes_in_synset[self.ss_to_text(synset)][-1])
+            zeros.append(changes_in_synset[self.ss_to_text(synset)][0])
+            ones.append(changes_in_synset[self.ss_to_text(synset)][1])
+
+        plot_index = np.arange(l)
+        p_negones = plt.bar(plot_index, negones, color='#4C194C')
+        p_zeros = plt.bar(plot_index, zeros, color='#7F3FBF', bottom=negones)
+        p_ones = plt.bar(plot_index, ones, color='#3F7FBF', bottom=[sum(x) for x in zip(negones, zeros)])
+
+        plt.ylabel('Cantidad')
+        plt.title('Comparativa entre las categorias por synset')
+
+        plt.xticks(plot_index, textsynsets)
+        plt.legend((p_negones[0], p_zeros[0], p_ones[0]), ('-1', '0', '1'))
+        plt.grid()
+        name = 'Comparative_of_synsets.png'
+        plt.savefig(self.plot_path + name)
+        plt.cla()
+        plt.clf()
+        plt.rcParams['figure.figsize'] = [8.0, 8.0]
