@@ -9,13 +9,13 @@ claves de data: ['labels', 'data_matrix']
 labels: La clasificación resultante para cada imagen
 data_matrix: el embedding correspondiente
 
-synset.txt es la lista con los synsets de imagenet
+synsets_in_imagenet.txt es la lista con los synsets de imagenet
 """
 
 data = np.load("/media/raquel/Datos/Programación-git/tfg/Data/vgg16_ImageNet_ALLlayers_C1avg_imagenet_train.npz")
 #discretData = np.load(
 #    "/media/raquel/Datos/Programación-git/tfg/Data/vgg16_ImageNet_imagenet_C1avg_E_FN_KSBsp0.15n0.25_Gall_val_.npy")
-imagenet_id = np.genfromtxt("/media/raquel/Datos/Programación-git/tfg/Data/synset.txt", dtype=np.str)
+imagenet_id = np.genfromtxt("/media/raquel/Datos/Programación-git/tfg/Data/synsets_in_imagenet.txt", dtype=np.str)
 
 
 labels = data['labels']
