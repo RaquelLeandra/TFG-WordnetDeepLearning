@@ -77,6 +77,8 @@ def breadth_first_search(synset, imagenet):
 					distance = mydis.distance_between_synsets_reps(parent_state, child_synset)
 					print(ss_to_text(parent_state), ss_to_text(child_synset), distance)
 					if distance < 9999:
+						if distance < 1:
+							distance += 1
 						graph.add_edge(ss_to_text(parent_state), ss_to_text(child_synset), len=distance)
 					graph.draw('../Data/Distances/plots/dogs/' + ss_to_text(synset) + str(i) + '.png',  format='png', prog='neato')
 					i = i + 1
