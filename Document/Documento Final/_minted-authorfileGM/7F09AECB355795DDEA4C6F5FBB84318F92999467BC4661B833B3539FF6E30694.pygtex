@@ -1,0 +1,90 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{class} \PYG{n+nc}{Data}\PYG{p}{:}
+    \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    Esta clase consiste en los datos que voy a necesitar para hacer las estadísticas.}
+\PYG{l+s+sd}{    Que no dependen de los synsets elegidos.}
+
+\PYG{l+s+sd}{    Attributes:}
+\PYG{l+s+sd}{        version (int): versión del embedding que utilizo puede ser 19, 25 o 31}
+\PYG{l+s+sd}{        embedding\PYGZus{}path (str): path}
+\PYG{l+s+sd}{        layers (dict): Un diccionario tal que}
+\PYG{l+s+sd}{            layers[string correspondiente al layer] = [inicio del layer, final del layer]}
+
+\PYG{l+s+sd}{         labels ()}
+
+\PYG{l+s+sd}{         :parameter version = Version del embedding que utilizo}
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{path}\PYG{p}{,} \PYG{n}{version}\PYG{o}{=}\PYG{l+m+mi}{25}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+\PYG{l+s+sd}{        :param version: Es la versión del embedding que queremos cargar (25,31,19)}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{version} \PYG{o}{=} \PYG{n}{version}
+        \PYG{n}{\PYGZus{}embedding\PYGZus{}path} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}../Data/vgg16\PYGZus{}ImageNet\PYGZus{}ALLlayers\PYGZus{}C1avg\PYGZus{}imagenet\PYGZus{}train.npz\PYGZdq{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{imagenet\PYGZus{}id\PYGZus{}path} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}../Data/synset.txt\PYGZdq{}}
+        \PYG{k}{if} \PYG{n}{version} \PYG{o}{==} \PYG{l+m+mi}{25}\PYG{p}{:}
+            \PYG{n}{\PYGZus{}embedding} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}vgg16\PYGZus{}ImageNet\PYGZus{}imagenet\PYGZus{}C1avg\PYGZus{}E\PYGZus{}FN\PYGZus{}KSBsp0.15n0.25\PYGZus{}Gall\PYGZus{}train\PYGZus{}.npy\PYGZsq{}}
+        \PYG{k}{elif} \PYG{n}{version} \PYG{o}{==} \PYG{l+m+mi}{19}\PYG{p}{:}
+            \PYG{n}{\PYGZus{}embedding} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}vgg16\PYGZus{}ImageNet\PYGZus{}imagenet\PYGZus{}C1avg\PYGZus{}E\PYGZus{}FN\PYGZus{}KSBsp0.11n0.19\PYGZus{}Gall\PYGZus{}train\PYGZus{}.npy\PYGZsq{}}
+        \PYG{k}{elif} \PYG{n}{version} \PYG{o}{==} \PYG{l+m+mi}{31}\PYG{p}{:}
+            \PYG{n}{\PYGZus{}embedding} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}vgg16\PYGZus{}ImageNet\PYGZus{}imagenet\PYGZus{}C1avg\PYGZus{}E\PYGZus{}FN\PYGZus{}KSBsp0.19n0.31\PYGZus{}Gall\PYGZus{}train\PYGZus{}.npy\PYGZsq{}}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{n}{\PYGZus{}embedding} \PYG{o}{=} \PYG{n}{path}
+            \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}No has puesto un embedding válido, usando el de defoult (25)\PYGZsq{}}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{discretized\PYGZus{}embedding\PYGZus{}path} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}../Data/Embeddings/\PYGZsq{}} \PYG{o}{+} \PYG{n}{\PYGZus{}embedding}
+        \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Estamos usando \PYGZsq{}} \PYG{o}{+} \PYG{n}{\PYGZus{}embedding}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{20}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{16}\PYG{p}{])}
+        \PYG{n}{embedding} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n}{\PYGZus{}embedding\PYGZus{}path}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{labels} \PYG{o}{=} \PYG{n}{embedding}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}labels\PYGZsq{}}\PYG{p}{]}
+        \PYG{c+c1}{\PYGZsh{} self.matrix = self.embedding[\PYGZsq{}data\PYGZus{}matrix\PYGZsq{}]}
+        \PYG{k}{del} \PYG{n}{embedding}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dmatrix} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{load}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{discretized\PYGZus{}embedding\PYGZus{}path}\PYG{p}{))}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{imagenet\PYGZus{}all\PYGZus{}ids} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{genfromtxt}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{imagenet\PYGZus{}id\PYGZus{}path}\PYG{p}{,} \PYG{n}{dtype}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{str}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}category} \PYG{o}{=} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{colors} \PYG{o}{=} \PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}3643D2\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}c\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}722672\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}BF3FBF\PYGZsq{}}\PYG{p}{]}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{layers} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+            \PYG{l+s+s1}{\PYGZsq{}conv1\PYGZus{}1\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{64}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 1}
+            \PYG{l+s+s1}{\PYGZsq{}conv1\PYGZus{}2\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{64}\PYG{p}{,} \PYG{l+m+mi}{128}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 2}
+            \PYG{l+s+s1}{\PYGZsq{}conv2\PYGZus{}1\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{128}\PYG{p}{,} \PYG{l+m+mi}{256}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 3}
+            \PYG{l+s+s1}{\PYGZsq{}conv2\PYGZus{}2\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{256}\PYG{p}{,} \PYG{l+m+mi}{384}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 4}
+            \PYG{l+s+s1}{\PYGZsq{}conv3\PYGZus{}1\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{384}\PYG{p}{,} \PYG{l+m+mi}{640}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 5}
+            \PYG{l+s+s1}{\PYGZsq{}conv3\PYGZus{}2\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{640}\PYG{p}{,} \PYG{l+m+mi}{896}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 6}
+            \PYG{l+s+s1}{\PYGZsq{}conv3\PYGZus{}3\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{896}\PYG{p}{,} \PYG{l+m+mi}{1152}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 7}
+            \PYG{l+s+s1}{\PYGZsq{}conv4\PYGZus{}1\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{1152}\PYG{p}{,} \PYG{l+m+mi}{1664}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 8}
+            \PYG{l+s+s1}{\PYGZsq{}conv4\PYGZus{}2\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{1664}\PYG{p}{,} \PYG{l+m+mi}{2176}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 9}
+            \PYG{l+s+s1}{\PYGZsq{}conv4\PYGZus{}3\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{2176}\PYG{p}{,} \PYG{l+m+mi}{2688}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 10}
+            \PYG{l+s+s1}{\PYGZsq{}conv5\PYGZus{}1\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{2688}\PYG{p}{,} \PYG{l+m+mi}{3200}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 11}
+            \PYG{l+s+s1}{\PYGZsq{}conv5\PYGZus{}2\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{3200}\PYG{p}{,} \PYG{l+m+mi}{3712}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 12}
+            \PYG{l+s+s1}{\PYGZsq{}conv5\PYGZus{}3\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{3712}\PYG{p}{,} \PYG{l+m+mi}{4224}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 13}
+            \PYG{l+s+s1}{\PYGZsq{}fc6\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{4224}\PYG{p}{,} \PYG{l+m+mi}{8320}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 14}
+            \PYG{l+s+s1}{\PYGZsq{}fc7\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{8320}\PYG{p}{,} \PYG{l+m+mi}{12416}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 15}
+            \PYG{l+s+s1}{\PYGZsq{}conv1\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{128}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 16}
+            \PYG{l+s+s1}{\PYGZsq{}conv2\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{128}\PYG{p}{,} \PYG{l+m+mi}{384}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 17}
+            \PYG{l+s+s1}{\PYGZsq{}conv3\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{384}\PYG{p}{,} \PYG{l+m+mi}{1152}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 18}
+            \PYG{l+s+s1}{\PYGZsq{}conv4\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{1152}\PYG{p}{,} \PYG{l+m+mi}{2688}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 19}
+            \PYG{l+s+s1}{\PYGZsq{}conv5\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{2688}\PYG{p}{,} \PYG{l+m+mi}{4224}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 20}
+            \PYG{l+s+s1}{\PYGZsq{}conv\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{4224}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 21}
+            \PYG{l+s+s1}{\PYGZsq{}fc6tofc7\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{4224}\PYG{p}{,} \PYG{l+m+mi}{12416}\PYG{p}{],}  \PYG{c+c1}{\PYGZsh{} 23}
+            \PYG{c+c1}{\PYGZsh{} \PYGZsq{}all\PYGZsq{}:[0,12416]          \PYGZsh{} 24}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{reduced\PYGZus{}layers} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+            \PYG{l+s+s1}{\PYGZsq{}conv1\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{128}\PYG{p}{],}
+            \PYG{l+s+s1}{\PYGZsq{}conv2\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{128}\PYG{p}{,} \PYG{l+m+mi}{384}\PYG{p}{],}
+            \PYG{l+s+s1}{\PYGZsq{}conv3\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{384}\PYG{p}{,} \PYG{l+m+mi}{1152}\PYG{p}{],}
+            \PYG{l+s+s1}{\PYGZsq{}conv4\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{1152}\PYG{p}{,} \PYG{l+m+mi}{2688}\PYG{p}{],}
+            \PYG{l+s+s1}{\PYGZsq{}conv5\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{2688}\PYG{p}{,} \PYG{l+m+mi}{4224}\PYG{p}{],}
+            \PYG{l+s+s1}{\PYGZsq{}fc6\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{4224}\PYG{p}{,} \PYG{l+m+mi}{8320}\PYG{p}{],}
+            \PYG{l+s+s1}{\PYGZsq{}fc7\PYGZsq{}}\PYG{p}{:} \PYG{p}{[}\PYG{l+m+mi}{8320}\PYG{p}{,} \PYG{l+m+mi}{12416}\PYG{p}{]}
+        \PYG{p}{\PYGZcb{}}
+
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}del\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{embedding} \PYG{o}{=} \PYG{n+nb+bp}{None}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{dmatrix} \PYG{o}{=} \PYG{n+nb+bp}{None}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{version} \PYG{o}{=} \PYG{n+nb+bp}{None}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{embedding\PYGZus{}path} \PYG{o}{=} \PYG{n+nb+bp}{None}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{layers} \PYG{o}{=} \PYG{n+nb+bp}{None}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{labels} \PYG{o}{=} \PYG{n+nb+bp}{None}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{features\PYGZus{}category} \PYG{o}{=} \PYG{n+nb+bp}{None}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{colors} \PYG{o}{=} \PYG{n+nb+bp}{None}
+        \PYG{n}{gc}\PYG{o}{.}\PYG{n}{collect}\PYG{p}{()}
+\end{Verbatim}
