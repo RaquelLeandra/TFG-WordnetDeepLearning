@@ -80,7 +80,7 @@ def breadth_first_search(synset, imagenet):
 						if distance < 1:
 							distance += 1
 						graph.add_edge(ss_to_text(parent_state), ss_to_text(child_synset), len=distance)
-					graph.draw('../Data/Distances/plots/dogs/' + ss_to_text(synset) + str(i) + '.png',  format='png', prog='neato')
+					graph.draw('../Data/Distances/plots/mammals/' + ss_to_text(synset) + str(i) + '.png',  format='png', prog='neato')
 					i = i + 1
 					tree[distances[child_synset]][parent_state].append(child_synset)
 					str_tree[str(distances[child_synset])][ss_to_text(parent_state)].append(ss_to_text(child_synset))
@@ -146,7 +146,6 @@ def get_subtree_from_synset(synset, depht=4):
 
 def load_imagenet_synsets():
 	"""
-	Falta testear que lo lea bien
 	:return:
 	"""
 	with open("../Data/Distances/Common_Data/synsets_in_imagenet.txt") as f:
@@ -160,8 +159,6 @@ def load_imagenet_synsets():
 		hypo = lambda s: s.hyponyms()
 		for thing in list(synset.closure(hypo)):
 			synsets.append(thing)
-
-
 	return synsets
 
 
@@ -181,7 +178,7 @@ def testin_dog():
 
 
 def test_graph():
-	living_things = wn.synsets('dog')[0]
+	living_things = wn.synsets('mammal')[0]
 	syn_mammals, syn_str_mammals = get_hyponims(living_things)
 	print(syn_str_mammals)
 	print(json.dumps(syn_str_mammals, indent=4, sort_keys=True))

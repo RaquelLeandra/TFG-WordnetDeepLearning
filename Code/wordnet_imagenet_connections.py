@@ -119,6 +119,7 @@ class Data:
 				wordnet_to_label[label_to_wordnet[i]['id']] = i
 			with open(_path + 'wordnet_to_label.pkl', 'wb') as handle:
 				pickle.dump(wordnet_to_label, handle)
+
 	def all_synsets_and_sons_gen(self):
 		"""
 		This function calculates all the synsets and their hyponims presents in imagenet and saves it in a pickle.
@@ -1342,38 +1343,6 @@ class Distances:
 		for i in range(0,999):
 			wordnet_to_label[label_to_wordnet[i]] = i
 		print(wordnet_to_label)
-	# def get_index_from_ss(self, synset):
-	# 	"""
-	# 	Esta función genera un archivo con los índices(0:999) de la aparición de un synset y sus hiponimos
-	# 	y otro con los códigos imagenet de todos los hipónimos
-	# 	"""
-	# 	ss_path = self.dir_path+ 'hyponims/' + self.ss_to_text(synset) + '_index_hyponim' + '.npy'
-	# 	if path.isfile(ss_path):
-	# 		index = np.load(ss_path)
-	# 		return index
-	# 	else:
-	# 		hypo = lambda s: s.hyponyms()
-	# 		hyponim_file = open(ss_path, "w")
-	# 		synset_list = []
-	# 		for thing in list(synset.closure(hypo)):
-	# 			hyponim_file.write(self.get_in_id(thing) + '\n')
-	# 			synset_list.append(self.get_in_id(thing))
-	#
-	# 		index = []
-	# 		hyponim_file.close()
-	# 		i = 0
-	# 		for synset in self.data.all_synsets_and_sons:
-	# 			pass
-	# 		# para cada label quiero que me guarde su indice si alguno de los
-	# 		for i in range(len(self.data.labels)):
-	# 			value = 0
-	#
-	# 		for lab in self.data.labels:
-	# 			if self.data.all_synsets_and_sons[lab] in synset_list:
-	# 				index.append(i)
-	# 			i += 1
-	# 		np.save(ss_path, index)
-	# 		return index
 
 	def get_index_from_ss(self, synset):
 		"""
