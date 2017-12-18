@@ -19,11 +19,14 @@
 \usepackage{tikz}
 %\usetikzlibrary{arrows}
 \usetikzlibrary{positioning}
+\usetikzlibrary{matrix}
 
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.10}
 
 \usepackage[nottoc]{tocbibind} %Adds "References" to the table of contents
+
+\usepackage{neuralnetwork}
 
 
 % Theorem Environments: add extra ones at the end if you need it.
@@ -37,7 +40,7 @@
 \newtheorem{conjecture}[theorem]{Conjecture}
 
 \theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
+\newtheorem{definition}[theorem]{Definición}
 \newtheorem{example}[theorem]{Example}
 
 \theoremstyle{remark}
@@ -97,7 +100,6 @@ Thanks to...}
 
 %%%%%%%%%
 \begin{document}
-
 \maketitle
 
 \section{Estructura del TFG: }
@@ -310,7 +312,15 @@ Dotando una neurona de una función de pérdida en la salida podríamos converti
 Las redes neuronales se modelizan como una colección de neuronas conectadas en un grafo acíclico, comúnmente organizado por capas. El tipo más común es el \textit{fully-connected layer}, en el que todas las neuronas de dos capas consecutivas están conectadas entre ellas, mientras que no comparten ninguna conexión con las de su propia capa, como muestra la figura. Si tenemos diversas capas ocultas diremos que se trata de una \textit{red profunda}.
 
 \begin{center}
-\includegraphics[width=0.5\textwidth]{Images/neural_net.jpeg} 
+\begin{neuralnetwork}[height=4]
+		\newcommand{\nodetextclear}[2]{}
+		\newcommand{\nodetextx}[2]{$x_#2$}
+		\newcommand{\nodetexty}[2]{$y_#2$}
+		\inputlayer[count=4, bias=false, title=Capa \\de entrada, text=\nodetextx]
+		\hiddenlayer[count=5, bias=false, title=Capa \\ oculta 1, text=\nodetextclear] \linklayers
+		\hiddenlayer[count=5, bias=false, title=Capa \\ oculta 2, text=\nodetextclear] \linklayers
+		\outputlayer[count=3, title=Capa\\ de salida, text=\nodetexty] \linklayers
+	\end{neuralnetwork}
 \end{center}
 La red neuronal más básica la podemos dividir en: 
 \begin{enumerate}
@@ -345,27 +355,127 @@ De esta forma, aplicando backpropagation iterativamente podemos estimar los peso
 
 Las redes convolucionales son muy similares a las redes neuronales explicadas, las mayores diferencias son que están basadas en un tipo especial de neuronas (las neuronas convolucionales) y que asume explícitamente que la entrada son imágenes, lo que permite añadir ciertas propiedades a la arquitectura. Esto permite hacer un \textit{fordward pass} más eficiente de implementar y reducir significativamente la cantidad de parámetros, nótese que cuantos más parámetros tenga una red, mayor subconjunto de datos de entrenamiento necesitamos para evitar tener sobreajuste.
 
-Típicamente las neuronas convolucionales tienen una entrada limitada, es decir están conectadas solo a un subconjunto de las neuronas de la capa anterior. En contraste, las neuronas de una capa \textit{fully-connected} están conectadas a todas las neuronas de la capa anterior. La idea de convolución puede aplicarse a una entrada de cualquier dimensión. En este caso detallaremos el caso de datos en dos dimensiones, por ser el caso más común y por ser más fácil de entender. Una vez comprendida una convolución 2-dimensional, el lector puede extrapolar a tantas dimensiones como sea necesario.
+Una neurona convolucional es aquella que opera con una convolución\cite{wikiconv}.
+
+\begin{definition} \label{def:convolution}
+Una \textbf{convolución} es una aplicación matemática cuya entrada son dos funciones de valores reales (\textit{x} y \textit{w}) y cuya salida es otra función (\textit{s}). 
+
+Usualmente se denota como $s(t) = (x * w)(t) $.
+
+En el contexto de redes convolucionales llamaremos a \textit{x} \textit{entrada}, a \textit{w} kernel y a la salida \textit{mapa de características}.
+\end{definition}
+
+Nótese que la definición no depende de la dimensión del espacio, es decir, que podemos definir una convolución para tantas dimensiones como necesitemos.
+En el caso concreto de una imagen \textit{I} (de dos dimensiones) y un kernel \textit{K}, la convolución quedaría como: 
+$$
+S(i,j) = (I * K)(i,j) = \sum_m \sum_n I(i +m, j+n) K(m,n)
+$$
+
+
+%\begin{center}
+%\includegraphics[width = 0.5\textwidth]{Images/convolution2.png} 
+%\end{center}
+
+ 
+
+Típicamente las neuronas convolucionales tienen una entrada limitada, es decir están conectadas solo a un subconjunto de las neuronas de la capa anterior. En contraste, las neuronas de una capa \textit{fully-connected} están conectadas a todas las neuronas de la capa anterior. En este caso detallaremos el caso de datos en dos dimensiones, por ser el caso más común y por ser más fácil de entender. Una vez comprendida una convolución 2-dimensional, el lector puede extrapolar a tantas dimensiones como sea necesario.
 
 %Para definir su conectividad de entrada, las neuronas convolucionales asumen la existencia de una cierta estructura en los datos. 
 Para capturar patrones consistentes, espacialmente en un subconjunto de la entrada, las neuronas convolucionales están conectadas a un conjunto de neuronas de la capa anterior que definen parcelas cuadradas (en el caso de convoluciones de dos dimensiones).
 
+
+
+Por su conectividad limitada, las capas convolucionales pueden centrarse en una parcela particular de la entrada. El conjunto de pesos (que sería equivalente al kernel comentado en la definición \ref{def:convolution}) aprendido por esta parcela puede ser relevante para las otras parcelas de la entrada, por tanto, podemos definir neuronas similares que utilicen el mismo kernel, pero que se enfoquen en otra parte de la entrada. Esta idea se conoce como "weight sharing",por que varias neuronas de la misma capa están definidas por un conjunto común de pesos, esto permite tener una considerable cantidad de neuronas utilizando los mismos parámetros. Esto puede ayudar a detectar los mismos patrones en diferentes partes de la entrada. Por ejemplo si tenemos una neurona que detecta ojos, al pasarla por una foto con una cara se activará dos veces.  
+
+
+\begin{figure}[H]
+\label{fig:conv}
 \begin{center}
-\includegraphics[width = 0.5\textwidth]{Images/convolution2.png} 
+%\includegraphics[width = 0.5\textwidth]{Images/convolve.png} 
+\begin{tikzpicture}
+
+	\matrix (mtr) [matrix of nodes,row sep=-\pgflinewidth, nodes={draw}]
+	{
+		0 & 1 & 1 & |[fill=red!30]| 1 & |[fill=red!30]| 0 & |[fill=red!30]| 0 & 0\\
+		0 & 0 & 1 & |[fill=red!30]| 1 & |[fill=red!30]| 1 & |[fill=red!30]| 0 & 0\\
+		0 & 0 & 0 & |[fill=red!30]| 1 & |[fill=red!30]| 1 & |[fill=red!30]| 1 & 0\\
+		0 & 0 & 0 & 1 & 1 & 0 & 0\\
+		0 & 0 & 1 & 1 & 0 & 0 & 0\\
+		0 & 1 & 1 & 0 & 0 & 0 & 0\\
+		1 & 1 & 0 & 0 & 0 & 0 & 0\\
+	};
+
+	\draw[very thick, red] (mtr-1-4.north west) rectangle (mtr-3-6.south east);
+
+	\node [below= of mtr-5-4.south] (lm) {$\bf I$};
+
+	\node[right = 0.2em of mtr] (str) {$*$};
+
+	\matrix (K) [right=0.2em of str,matrix of nodes,row sep=-\pgflinewidth, nodes={draw, fill=blue!30}]
+	{
+		1 & 0 & 1 \\
+		0 & 1 & 0 \\
+		1 & 0 & 1 \\
+	};
+	\node [below = of K-3-2.south] (lk) {$\bf K$};
+
+	\node [right = 0.2em of K] (eq) {$=$};
+
+	\matrix (ret) [right=0.2em of eq,matrix of nodes,row sep=-\pgflinewidth, nodes={draw}]
+	{
+		1 & 4 & 3 & |[fill=green!30]| 4 & 1\\
+		1 & 2 & 4 & 3 & 3\\
+		1 & 2 & 3 & 4 & 1\\
+		1 & 3 & 3 & 1 & 1\\
+		3 & 3 & 1 & 1 & 0\\
+	};
+	\node [below = of ret-4-3.south] (lim) {${\bf I} * {\bf K}$};
+
+	\draw[very thick, green] (ret-1-4.north west) rectangle (ret-1-4.south east);
+
+	\draw[densely dotted, blue, thick] (mtr-1-4.north west) -- (K-1-1.north west);
+	\draw[densely dotted, blue, thick] (mtr-3-4.south west) -- (K-3-1.south west);
+	\draw[densely dotted, blue, thick] (mtr-1-6.north east) -- (K-1-3.north east);
+	\draw[densely dotted, blue, thick] (mtr-3-6.south east) -- (K-3-3.south east);
+
+	\draw[densely dotted, green, thick] (ret-1-4.north west) -- (K-1-1.north west);
+	\draw[densely dotted, green, thick] (ret-1-4.south west) -- (K-3-1.south west);
+	\draw[densely dotted, green, thick] (ret-1-4.north east) -- (K-1-3.north east);
+	\draw[densely dotted, green, thick] (ret-1-4.south east) -- (K-3-3.south east);
+
+	\matrix (K) [right=0.2em of str,matrix of nodes,row sep=-\pgflinewidth, nodes={draw, fill=blue!10}]
+	{
+		1 & 0 & 1 \\
+		0 & 1 & 0 \\
+		1 & 0 & 1 \\
+	};
+
+	\draw[very thick, blue] (K-1-1.north west) rectangle (K-3-3.south east);
+
+	\node[anchor=south east, inner sep=0.01em, blue] at (mtr-1-4.south east) (xx) {\scalebox{.5}{$\times 1$}};
+	\node[anchor=south east, inner sep=0.01em, blue] at (mtr-1-5.south east) (xx) {\scalebox{.5}{$\times 0$}};
+	\node[anchor=south east, inner sep=0.01em, blue] at (mtr-1-6.south east) (xx) {\scalebox{.5}{$\times 1$}};
+	\node[anchor=south east, inner sep=0.01em, blue] at (mtr-2-4.south east) (xx) {\scalebox{.5}{$\times 0$}};
+	\node[anchor=south east, inner sep=0.01em, blue] at (mtr-2-5.south east) (xx) {\scalebox{.5}{$\times 1$}};
+	\node[anchor=south east, inner sep=0.01em, blue] at (mtr-2-6.south east) (xx) {\scalebox{.5}{$\times 0$}};
+	\node[anchor=south east, inner sep=0.01em, blue] at (mtr-3-4.south east) (xx) {\scalebox{.5}{$\times 1$}};
+	\node[anchor=south east, inner sep=0.01em, blue] at (mtr-3-5.south east) (xx) {\scalebox{.5}{$\times 0$}};
+	\node[anchor=south east, inner sep=0.01em, blue] at (mtr-3-6.south east) (xx) {\scalebox{.5}{$\times 1$}};
+
+\end{tikzpicture}
+
 \end{center}
+\caption{Ejemplo de la forma de operar una convolución sobre una imagen.}
+\end{figure}
+
+En la figura \ref{fig:conv} podemos ver un ejemplo del funcionamiento de una convolución con un kernel de tamaño 9 sobre una imagen, en el ejemplo podemos observar como se comparten los pesos a la hora de calcular el resultado.
 
 
-Por su conectividad limitada, las capas convolucionales pueden centrarse en una parcela particular de la entrada. El kernel(e.d, el conjunto de pesos) aprendido por esta parcela puede ser relevante para las otras parcela de la entrada, por tanto, podemos definir neuronas similares que utilicen el mismo kernel, pero que se enfoquen en otra parte de la entrada. Esta idea se conoce como "weight sharing",por que varias neuronas de la misma capa están definidas por un conjunto común de pesos, esto permite tener una considerable cantidad de neuronas utilizando los mismos parámetros. 
-
-\begin{center}
-\includegraphics[width = 0.5\textwidth]{Images/convolve.png} 
-\end{center}
-
-Como ha sido descrito con anterioridad una red convolucional es una secuencia de capas, donde cada capa transforma un volumen de activaciones en otro a través de una función diferenciable los tipos de capa que se suelen utilizar en una red convolucional son: 
+Como ha sido descrito con anterioridad una red convolucional es una secuencia de capas, donde cada capa transforma un volumen de activaciones en otro a través de una función diferenciable los tipos de capa más comunes en una red convolucional son: 
 \begin{itemize}
-\item Capa convolucional, capas adaptadas a imágenes en las que se comparten los pesos.
-\item Capa completa, es el tipo de capa básico, explicado en el capítulo anterior. 
-\item Pooling Layer, consiste en una capa que aplica una reducción matemática a su input(como una media o un max). El objetivo es facilitar a la red que reconozca datos que están relacionados en un sentido espacial (imágenes equivalentes en diferentes posiciones), además típicamente reducen el tamaño de la salida de la capa, lo que provoca una reducción de la complejidad de la red.
+\item Capa convolucional, capas formadas por neuronas convolucionales, la mayoría de capas de una red convolucional serán de este tipo.
+\item Capa completa, es una capa donde todas las neuronas están conectadas entre ellas. Se suele utilizar como capa de clasificación. 
+\item Pooling Layer, consiste en una capa que aplica una reducción matemática a su input(como una media o un max). El objetivo es facilitar a la red que reconozca datos que están relacionados en un sentido espacial (imágenes equivalentes en diferentes posiciones), además reducen el tamaño de la salida de la capa, lo que provoca una reducción de la complejidad de la red.
 \end{itemize}
 
 \begin{center}
@@ -397,7 +507,7 @@ De esta manera puedes reducir significativamente el conjunto de datos necesario 
 
 \end{itemize}
 
-En nuestro caso nos centraremos en transfer learning for features extraction. 
+En nuestro caso nos centraremos en \textit{transfer learning for features extraction}. 
 
 
 
@@ -490,9 +600,17 @@ Hipótesis iniciales:
 Dario Garcia-Gasulla, Armand Vilalta, Ferran Parés, Jonatan Moreno, Eduard Ayguadé, Jesus Labarta, Ulises Cortés, Toyotaro Suzumura, 
 \textit{An Out-of-the-box Full-network Embedding for
 Convolutional Neural Networks}.En arXiv:1705.07706,2017, \url{https://arxiv.org/abs/1705.07706}. 
+
+
+\bibitem{wikiconv}
+\url{https://en.wikipedia.org/wiki/Convolutional_neural_network#Convolutional}
+
+\bibitem{deeplearningbook}
+Deep Learning
+Ian Goodfellow
+Yoshua Bengio
+Aaron Courville
 \end{thebibliography}
-
-
 %Bishop - Pattern Recognition And Machine Learning.pdf
 %Introduction to machine learning Ethem Alpaydın
 %http://cs231n.stanford.edu/
