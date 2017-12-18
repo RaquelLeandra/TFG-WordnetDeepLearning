@@ -27,7 +27,8 @@
 \usepackage[nottoc]{tocbibind} %Adds "References" to the table of contents
 
 \usepackage{neuralnetwork}
-
+\usepackage{xcolor}
+\usepackage{chronology}
 
 % Theorem Environments: add extra ones at the end if you need it.
 
@@ -100,38 +101,11 @@ Thanks to...}
 
 %%%%%%%%%
 \begin{document}
+\pgfmathdeclarefunction{gauss}{2}{\pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
+}
+
 \maketitle
 
-\section{Estructura del TFG: }
-
-\begin{itemize}
-\item \textbf{Introducción (5 pags): }
-\begin{itemize}
-\item FNN (Explicar neural networks, me puedo inspirar en \url{https://upc-mai-dl.github.io/mlp-convnets-theory/})
-\item CNN 
-\item EMbeddings  (Transfer Learning)
-\end{itemize}
-\item \textbf{Related Work (10 pags):}
-\begin{itemize}
-\item FNE 
-\item Wordnet 
-\item imagenet 
-\end{itemize}
-\item \textbf{Approach }
-\begin{itemize}
-\item Hipotesis iniciales 
-\item statistics 
-\item insights 
-\end{itemize}
-\item \textbf{Analysis}
-\begin{itemize}
-\item De wordnet a imagenet: Dado el embedding hemos encontrado patrones con los distintos synsets que concuerdan con las hipótesis
-\item De imagenet a wordnet: Dado el árbol sintáctico y los patrones anteriores podemos generar una distancia con la que representamos lo parecidos que son los siynsets para la imagen. 
-\end{itemize}
-\end{itemize}
-
-%\section{Introducción}
-\newpage
 \section{Conocimientos previos}
 %\subsection{Machine Learning}
 %%- Que es ml y por que está de moda. 
@@ -148,13 +122,14 @@ Thanks to...}
 %En nuestro caso concreto nos centraremos en la aplicación de diversos métodos de ML a el problema de clasificación de imágenes. 
 
 
-\subsection{Redes Neuronales}
-Una \textbf{red neuronal} es un modelo computacional inspirado en la forma de procesar información de las neuronas del cerebro. Las redes neuronales han generado una significativa cantidad de investigación e industria gracias a sus resultados en reconocimiento del habla, visión por computador y procesamiento de texto. Para dejar claro su funcionamiento explicaré primero el funcionamiento de una sola neurona, para después unirlo con las distintas arquitecturas posibles. 
+\subsection{Redes neuronales}
+Una \textbf{red neuronal} es un modelo computacional inspirado en la forma de procesar información de las neuronas del cerebro. Las redes neuronales han generado una significativa cantidad de investigación e industria gracias a sus resultados en reconocimiento del habla, visión por computador y procesamiento de texto. Para dejar claro su funcionamiento explicaré primero el funcionamiento de una sola neurona, para después unirlo con la organización por capas de varias neuronas y finalmente explicar el algoritmo de \textit{backpropagation}. 
 
-\subsubsection{neurona}
+\subsubsection{Una neurona}
 
+\begin{definition} 
 La unidad de computación básica de una red neuronal es una \textbf{neurona}, también llamada nodo o unidad. Su función es recibir una entrada desde otros nodos y calcular una salida. 
-
+\end{definition}
 Cada entrada (\textbf{x}) tiene asociado un peso, que es asignado en base a su importancia relativa a otras entradas. La neurona  aplica una función (\textbf{f}) a la suma ponderada de las entradas como muestra la figura: 
 %\begin{center}
 %\includegraphics[width=0.5\textwidth]{Images/neuron_model.jpeg} 
@@ -186,7 +161,7 @@ Cada entrada (\textbf{x}) tiene asociado un peso, que es asignado en base a su i
         \node[below of=n,font=\scriptsize] { Entrada};
     \end{tikzpicture}
 \end{figure}
-Además de los elementos ya comentados tendremos un término de sesgo (\textbf{b}), cuya función consiste en proveer cada nodo con un valor entrenable que no dependa de la entrada. 
+Además de los elementos ya comentados tendremos un término de sesgo (\textbf{b}), cuyo objetivo es proveer cada nodo con un valor entrenable que no dependa de la entrada. 
 
 La salida de la neurona (\textbf{Y}) se calculara de la siguiente manera: 
 
@@ -194,7 +169,7 @@ $$
 Y = f \left(\sum_i \omega_i x_i + b \right) 
 $$
 
-Llamaremos a \textbf{f} la \textbf{función de activación}, es una función no lineal cuyo propósito es introducir no linealidad a la salida de la neurona. Ésto ayuda a adaptar mejor el modelo a problemas reales, puesto a que estos raramente son lineales. 
+Llamaremos a \textbf{f} la \textbf{función de activación}, es una función (no lineal) cuyo propósito es introducir no linealidad a la salida de la neurona. Ésto ayuda a adaptar mejor el modelo a problemas reales, puesto a que estos raramente son lineales. 
 
 Las funciones de activación más utilizadas son: 
 
@@ -306,10 +281,10 @@ Las funciones de activación más utilizadas son:
 
 %
 
-Dotando una neurona de una función de pérdida en la salida podríamos convertirla en un clasificador lineal, pero la verdadera potencia del método viene dada al unir diversas neuronas en lo que llamaremos capas (layers).
+Dotando una neurona de una función de pérdida en la salida podríamos convertirla en un clasificador lineal, pero la verdadera potencia del método viene dada al unir diversas neuronas en lo que llamaremos capas.
 
 \subsubsection{Organización por capas}
-Las redes neuronales se modelizan como una colección de neuronas conectadas en un grafo acíclico, comúnmente organizado por capas. El tipo más común es la capa completa, en el que todas las neuronas de dos capas consecutivas están conectadas entre ellas, mientras que no comparten ninguna conexión con las de su propia capa, como muestra la figura. Si tenemos diversas capas ocultas diremos que se trata de una \textit{red profunda}.
+Las redes neuronales se modelizan como una colección de neuronas conectadas en un grafo acíclico, comúnmente organizado por capas. El tipo más común de capa es la capa completa(\textit{fully-connected layer}), en el que todas las neuronas de dos capas consecutivas están conectadas entre ellas, mientras que no comparten ninguna conexión con las de su propia capa, como muestra la figura. Si tenemos diversas capas ocultas diremos que se trata de una red profunda (\textit{deep network}).
 
 \begin{center}
 \begin{neuralnetwork}[height=4]
@@ -329,18 +304,18 @@ La red neuronal más básica la podemos dividir en:
 \item Nodos de salida: Colectivamente denominados nodos de salida y son responsables de la computación y transferencia de información al exterior. 
 \end{enumerate}
 
-Dos ejemplos de redes de este tipo serían el perceptron y el multilayer perceptron. 
+%Dos ejemplos de redes de este tipo serían el perceptron y el multilayer perceptron. 
 
-Finalmente, queda explicar como entrenar los distintos parámetros para que se adapten a los datos. 
 
-\subsubsection{Backpropagation}
+\subsubsection{Entrenar la red: Backpropagation}
+Finalmente, queda explicar como entrenar los distintos parámetros para que se adapten a los datos, para ello se utiliza \textbf{backpropagation}.
 
-El algoritmo de backpropagation empieza con un \textit{fordward pass} de los datos por toda la red, la predicción dada por la red se compara con la salida esperada 
-y se calcula un error utilizando la función de pérdida. La pérdida calculada se utiliza para actualizar los pesos de la última capa, buscando los valores de éstos que la minimizan.
+El algoritmo de backpropagation empieza con un \textit{fordward pass}(una evaluación de los datos utilizando toda la red) por toda la red, la predicción dada por la red se compara con la salida esperada 
+y se calcula un error utilizando la función de pérdida (por ejemplo la de mínimos cuadrados). La pérdida calculada se utiliza para actualizar los pesos de la última capa, buscando los valores de éstos que la minimizan.
 
 La complejidad reside en optimizar los pesos de las capas que no están conectadas directamente con la salida. Para resolver esto backpropagation utiliza la regla de la cadena, que permite calcular derivadas de capas previas, y de esta forma actualizar los pesos de las capas restantes. 
 
-Tradicionalmente, el cambio e pesos se ha computado usando el algoritmo de optimización llamado Stochastig Gradient Descent, un método iterativo de minimización.
+Tradicionalmente, el cambio e pesos se ha computado usando el algoritmo de optimización llamado \textit{ Stochastig Gradient Descent}, un método iterativo de minimización.
 
 De esta forma, aplicando backpropagation iterativamente podemos estimar los pesos de todas las capas de una red neuronal para un problema dado.
 
@@ -352,8 +327,10 @@ De esta forma, aplicando backpropagation iterativamente podemos estimar los peso
 \subsection{Redes convolucionales}
 %- Explicar el problema inicial (clasificación de imágenes) y por que es difícil.
 %- Explicar que es una red convolucional 
-
-Las redes convolucionales son muy similares a las redes neuronales explicadas, las mayores diferencias son que están basadas en un tipo especial de neuronas (las neuronas convolucionales) y que asume explícitamente que la entrada son imágenes, lo que permite añadir ciertas propiedades a la arquitectura. Esto permite hacer un \textit{fordward pass} más eficiente de implementar y reducir significativamente la cantidad de parámetros, nótese que cuantos más parámetros tenga una red, mayor subconjunto de datos de entrenamiento necesitamos para evitar tener sobreajuste.
+\begin{definition}
+Una \textbf{red convolucional} es una secuencia de capas de diferentes tipos con al menos una de las capas es una capa convolucional donde cada capa transforma un volumen de activaciones en otro a través de una función diferenciable. 
+\end{definition}
+Las redes convolucionales son muy similares a las redes neuronales explicadas, las mayores diferencias son que contienen un tipo especial de neuronas (las neuronas convolucionales) y que asume explícitamente que la entrada son datos con una estructura concreta(como por ejemplo imágenes), lo que permite añadir ciertas propiedades a la arquitectura. Esto permite hacer un \textit{fordward pass} más eficiente de implementar y reducir significativamente la cantidad de parámetros, (nótese que cuantos más parámetros tenga una red, mayor subconjunto de datos de entrenamiento necesitamos para evitar tener sobre-ajuste).
 
 Una neurona convolucional es aquella que opera con una convolución\cite{wikiconv}.
 
@@ -378,10 +355,10 @@ $$
 
  
 
-Típicamente las neuronas convolucionales tienen una entrada limitada, es decir están conectadas solo a un subconjunto de las neuronas de la capa anterior. En contraste, las neuronas de una capa completa están conectadas a todas las neuronas de la capa anterior. En este caso detallaremos el caso de datos en dos dimensiones, por ser el caso más común y por ser más fácil de entender. Una vez comprendida una convolución 2-dimensional, el lector puede extrapolar a tantas dimensiones como sea necesario.
-
+Típicamente las neuronas convolucionales tienen una entrada limitada, es decir están conectadas solo a un subconjunto de las neuronas de la capa anterior. En contraste, las neuronas de una capa completa están conectadas a todas las neuronas de la capa anterior. %En este caso detallaremos el caso de datos en dos dimensiones, por ser el caso más común y por ser más fácil de entender. Una vez comprendida una convolución 2-dimensional, el lector puede extrapolar a tantas dimensiones como sea necesario.
+De esta forma se reducen la cantidad de parámetros de la red.
 %Para definir su conectividad de entrada, las neuronas convolucionales asumen la existencia de una cierta estructura en los datos. 
-Para capturar patrones consistentes, espacialmente en un subconjunto de la entrada, las neuronas convolucionales están conectadas a un conjunto de neuronas de la capa anterior que definen parcelas cuadradas (en el caso de convoluciones de dos dimensiones).
+%Para capturar patrones consistentes, las neuronas convolucionales están conectadas a un conjunto de neuronas de la capa anterior que definen parcelas cuadradas (en el caso de convoluciones de dos dimensiones).
 
 
 
@@ -471,11 +448,11 @@ Por su conectividad limitada, las capas convolucionales pueden centrarse en una 
 En la figura \ref{fig:conv} podemos ver un ejemplo del funcionamiento de una convolución con un kernel de tamaño 9 sobre una imagen, en el ejemplo podemos observar como se comparten los pesos a la hora de calcular el resultado.
 
 
-Como ha sido descrito con anterioridad una red convolucional es una secuencia de capas, donde cada capa transforma un volumen de activaciones en otro a través de una función diferenciable los tipos de capa más comunes en una red convolucional son: 
+Finalmente queda comentar los tipos de capa más comunes en una red convolucional: 
 \begin{itemize}
 \item Capa convolucional, capas formadas por neuronas convolucionales, la mayoría de capas de una red convolucional serán de este tipo.
 \item Capa completa, es una capa donde todas las neuronas están conectadas entre ellas. Se suele utilizar como capa de clasificación. 
-\item Pooling Layer, consiste en una capa que aplica una reducción matemática a su input(como una media o un max). El objetivo es facilitar a la red que reconozca datos que están relacionados en un sentido espacial (imágenes equivalentes en diferentes posiciones), además reducen el tamaño de la salida de la capa, lo que provoca una reducción de la complejidad de la red.
+\item \textit{Pooling Layer}, consiste en una capa que aplica una reducción matemática a su input(como una media o un max). El objetivo es facilitar a la red que reconozca datos que están relacionados en un sentido espacial (imágenes equivalentes en diferentes posiciones), además reducen el tamaño de la salida de la capa, lo que provoca una reducción de la complejidad de la red.
 \end{itemize}
 
 \begin{center}
@@ -518,28 +495,52 @@ En nuestro caso nos centraremos en \textit{transfer learning for features extrac
 
 \subsection{Full-Network embedding}
 
-%Beyond the layers to extract, there are many other parameters that can affect the feature extraction
-%process. Some of those are evaluated in [7], which includes parameters related with the architec-
-%ture and training of the initial CNN (e.g., network depth and width, distribution of training data,
-%optimization parameters), and parameters related with transfer learning process (e.g., fine-tuning,
-%spatial pooling and dimensionality reduction). 
-%Among the most well established transformations of
-%deep embeddings are a L2 normalization [7, 8], and an unsupervised feature reduction like Principal
-%Component Analysis (PCA) [7, 8, 9]. The quality of the resultant embedding is typically evaluated by
-%the performance of an SVM, trained using the embedding representations, to solve a classification task
-%[7, 8]. Recently, extracted features have also been combined with more sophisticated computer vision
-%techniques, such as the constellation model [6] and Fisher vectors [17], with significant success.
+En general en \textit{transfer learning for feature extraction} es común tomar los valores de activación de una sola capa cercana a la salida, como podemos ver en la figura \ref{fig:base}. El resto de capas se descartan por 
+"ser poco probable que contengan una representación mejor", sin embargo es conocido que todas las capas de una red profunda pueden contribuir a caracterizar los datos de diferentes maneras. Esto implica que la representación más versátil y rica que puede ser generada por un proceso de extracción de características debe incluir todas las capas de la red,es decir, debe definir un \textit{full-network embedding}. 
+\begin{figure}[H]
+\label{fig:base}
+\centering
+\includegraphics[width = 0.8\textwidth]{Images/basecrop.png} 
+\caption{Estructura básica que se suele utilizar en \textit{feature extraction}}
+\end{figure}
+Dado un conjunto de datos \textit{t1}, queremos representarlo en el lenguaje aprendido para una tarea \textit{t0}. Para ello el \textit{full-network embedding} se divide en 4 pasos: 
+\begin{itemize}
+\item El primer paso es hacer un \textbf{forward pass} de cada instancia de datos de \textit{t1} a través del modelo entrenado en \textit{t0}, guardando todos los valores de activación de cada capa de la red, (tanto las convolucionales como las completas). 
 
+\item El segundo paso consiste en un \textbf{spatial average pooling} en los filtros convolucionales. Como se ha explicado en el capítulo sobre redes convolucionales, un filtro convolucional genera varias activaciones para una entrada, para darle la capacidad de obtener información espacial.  El objetivo de este paso es obtener un solo valor de activación para cada filtro, evitando así un aumento de la dimensionalidad. Los valores resultantes se concatenan a los de las capas completas en un solo vector, para generar el \textit{embedding} completo.
 
+\item El tercer paso es una \textbf{estandarización de características}. Puesto a que los valores del \textit{embedding} provienen de distintos tipos de neuronas en distintos puntos de la red hace falta una estandarización. El valor estandarizado de cada categoría se obtiene calculando la media y la desviación típica del conjunto de datos de entrenamiento. De esta forma se pueden integrar los distintos valores en el \textit{embedding}. 
 
-En general en transfer learning for feature extraction es común tomar los valores de activación de una sola capa cercana a la salida. El resto de capas se descartan por 
-"ser poco probable que contengan una representación mejor", sin embargo es conocido que todas las capas de una red profunda pueden contribuir a caracterizar los datos de diferentes maneras. Esto implica que la representación más versatil y rica que puede ser generada por un proceso de extracción de características debe incluir todas las capas de la red,es decir, debe definir un \textit{full-network embedding}. 
+\begin{figure}
+\label{fig:caracterization}
+\centering
+\begin{tikzpicture}
 
-Dado un conjunto de datos \textit{t1}, queremos representarlo en el lenguaje aprendido para una tarea \textit{t0}. Para ello el full-network embedding se divide en n pasos: 
-\begin{enumerate}
-\item El primer paso es hacer un \textit{forward pass} de cada instancia de datos de \textit{t1} a través del modelo entrenado en \textit{t0}, guardando todos los valores de activación de cada capa de la red, (tanto las convolucionales como las completas). 
-\item El segundo paso consiste en un \textit{spatial average pooling} en los filtros convolucionales. Como se ha explicado en el capítulo sobre redes convolucionales, un filtro convolucional genera varias activaciones para una entrada, para darle la capacidad de obtener información espacial.  El objetivo de este paso es obtener un solo valor de activación para cada filtro, evitando así un aumento de la dimensionalidad. Los valores resultantes se concatenan a los de las capas completas en un solo vector, para generar el \textit{embedding} completo.  
-\end{enumerate}
+\begin{axis}[no markers, domain=0:10, samples=100,
+axis lines*=left, xlabel=, ylabel=,
+height=6cm, width=10cm,
+xticklabels={ , , -1 , $ft^-$ , 0 , $ft^+$ , 1},
+ytick=\empty,
+enlargelimits=false, clip=false, axis on top,
+grid = major]
+\addplot [fill=cyan!20, draw=none, domain=-1:1] {gauss(0,1)} \closedcycle;
+\addplot [fill=blue!20, draw=none, domain=-3:-1] {gauss(0,1)} \closedcycle;
+\addplot [fill=blue!20, draw=none, domain=1:3] {gauss(0,1)} \closedcycle;
+\end{axis}
+\end{tikzpicture}
+
+\end{figure}
+
+\item Finalmente se aplica una \textbf{discretización de características} para evitar problemas al intentar explorar un espacio de dimensión tan grande. Ésta discretización consiste en tomar unos límites que dependen de los datos, $ft^-$ y $ft^+$ y reemplazar los valores que tienen un valor atípicamente bajo (todos los valores $x < ft^-$) por un -1, los que tienen un valor típico (todos los valores $ ft^- < x < ft^+$) por un 0 y los que tienen un valor atípicamente alto (todos los valores $ ft^+ < x$) por un 1, como podemos ver en la representación gráfica \ref{fig:caracterization}. Para encontrar los límites se basan en \cite{behaviourcnn}, donde dan una visión estadística sobre como evaluar la importancia de las diferentes características de una red convolucional comparando las activaciones para una clase concreta respecto al resto de clases del conjunto de datos. De esta forma los autores de \cite{behaviourcnn} separan las características en tres conjuntos: \textit{característico por presencia}, \textit{no característico} y \textit{característico por ausencia}.
+
+\end{itemize}
+\begin{figure}[h]
+\label{fig:fne}
+\centering
+\includegraphics[width = 0.8\textwidth]{Images/cropfne.png} 
+\caption{Estructura del \textit{full-network embedding}}
+\end{figure}
+
 
 
 
@@ -562,10 +563,10 @@ En concreto utilizaremos las relaciones de:
 \begin{tikzpicture}[sibling distance=10em,
   every node/.style = {shape=rectangle, rounded corners,
     draw, align=center,
-    top color=white, bottom color=blue!20},
+    top color=blue!20, bottom color=blue!20},
     edge from parent/.style={draw,-latex}
     ]
-  \node {Algo Vivo}
+  \node {Ser Vivo}
   	child{ node {Mamífero}
     	child{ node {Perro}}
     	child{node {Gato}}
@@ -576,9 +577,58 @@ En concreto utilizaremos las relaciones de:
 
 \subsection{Imagenet}
 
-Imagenet es una base de datos de imágenes organizada utilizando la jerarquía de wordnet. Su principal objetivo es dotar a los investigadores en campos relacionados con visión artificial de una base de datos a gran escala con la que poder trabajar. Actualmente consta de 14,197,122 imágenes y  21841 synsets indexados.  
+\textbf{Imagenet} es una base de datos de imágenes organizada utilizando la jerarquía de \textit{wordnet}. Su principal objetivo es dotar a los investigadores en campos relacionados con visión artificial de una base de datos a gran escala con la que poder trabajar. Actualmente consta de 14,197,122 imágenes y  21841 \textit{synsets} indexados.  
+
+Para el full-network embedding utilizaron el subconjunto correspondiente al reto de \textit{imagenet} de 2012 de reconocimiento de imágenes. 
+
+Éste consta de:
+\begin{itemize}
+\item Un conjunto de datos de entrenamiento de 1.2 millones de muestras y 1000 categorías diferentes.
+\item Un conjunto de datos de validación de 50000 muestras y 1000 categorías. 
+\end{itemize}
+
+Entre las posibles categorías podemos encontrar \textit{synsets} de diferentes niveles de especificación, por ejemplo tenemos las categorías: perro, dálmata, pastor alemán... 
+
+\section{Enfoque}
+Partimos de un \textit{full-network embedding} de una red convolucional entrenada en la partición de validación de imagenet, es decir, una matriz de tamaño 50000 muestras por 12416 características, cuyos valores están en $\{-1,0,1\}$, cada muestra con su correspondiente clasificación.
+
+Las características están ordenadas en capas de la siguiente manera: 
+\begin{figure}[h]
+\label{}
+\centering
+\includegraphics[width = 0.8\textwidth]{Images/croplayer.png} 
+\caption{La disposición de las características por capas}
+\end{figure}
+%'fc6': [4224, 8320],  # 14
+%			'fc7': [8320, 12416],  # 15
+%			'conv1': [0, 128],  # 16
+%			'conv2': [128, 384],  # 17
+%			'conv3': [384, 1152],  # 18
+%			'conv4': [1152, 2688],  # 19
+%			'conv5': [2688, 4224],  # 20
 
 
+\subsection{Objetivos e hipótesis iniciales}
+\textbf{Objetivos iniciales}: 
+\begin{itemize}
+\item Analizar el \textit{full-network embedding}(Cantidad de características con valor 1, 0 y -1, distribución de las características en el embedding etc.). 
+\item Analizar el comportamiento de las características en las distintas capas. 
+\item Analizar si hay alguna relación entre los embeddings de las diferentes clases y synsets relacionados con ellas (sus hipónimos e hipérnimos). 
+\end{itemize}
+
+\textbf{Hipótesis iniciales}: 
+\begin{itemize}
+\item Las características se distribuyen de diferente manera en los layers convolucionales y los completos.
+\item Cuanto más concreto es un synset, más características con valor 1 tiene.
+\item Se puede ver una relación entre los embeddings de synsets hipónimos.
+\end{itemize}
+
+
+\subsection{Estadísticas}
+
+\subsection{Intuiciones}
+
+\newpage
 \section{Análisis}
 \subsection{Objetivos}
 La idea principal de tfg es buscar relaciones entre los synsets de wordnet y el full network embedding. 
@@ -587,6 +637,36 @@ Hipótesis iniciales:
 - Cuanto más profundo sea el layer más 1.
 
 
+\section{Estructura del TFG: }
+
+\begin{itemize}
+\item \textbf{Introducción (5 pags): }
+\begin{itemize}
+\item FNN (Explicar neural networks, me puedo inspirar en \url{https://upc-mai-dl.github.io/mlp-convnets-theory/})
+\item CNN 
+\item EMbeddings  (Transfer Learning)
+\end{itemize}
+\item \textbf{Related Work (10 pags):}
+\begin{itemize}
+\item FNE 
+\item Wordnet 
+\item imagenet 
+\end{itemize}
+\item \textbf{Approach }
+\begin{itemize}
+\item Hipotesis iniciales 
+\item statistics 
+\item insights 
+\end{itemize}
+\item \textbf{Analysis}
+\begin{itemize}
+\item De wordnet a fne: Dado el embedding hemos encontrado patrones con los distintos synsets que concuerdan con las hipótesis
+\item De fne a wordnet: Dado el árbol sintáctico y los patrones anteriores podemos generar una distancia con la que representamos lo parecidos que son los siynsets para la imagen. 
+\end{itemize}
+\end{itemize}
+
+%\section{Introducción}
+\newpage
 
 \begin{thebibliography}{9}
 \bibitem{dario}
@@ -609,6 +689,13 @@ Deep Learning
 Ian Goodfellow
 Yoshua Bengio
 Aaron Courville
+
+
+\bibitem{behaviourcnn}
+Dario Garcia-Gasulla, Ferran Parés, Armand Vilalta, Jonatan Moreno, Eduard Ayguadé, Jesús
+Labarta, Ulises Cortés, and Toyotaro Suzumura. On the behavior of convolutional nets for
+feature extraction. arXiv preprint arXiv:1703.01127, 2017.
+
 \end{thebibliography}
 %Bishop - Pattern Recognition And Machine Learning.pdf
 %Introduction to machine learning Ethem Alpaydın
