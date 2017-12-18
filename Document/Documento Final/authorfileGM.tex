@@ -30,6 +30,11 @@
 \usepackage{xcolor}
 \usepackage{chronology}
 
+%\usepackage[demo]{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+
 % Theorem Environments: add extra ones at the end if you need it.
 
 \newtheorem*{theoremA}{Theorem A}
@@ -588,12 +593,12 @@ Para el full-network embedding utilizaron el subconjunto correspondiente al reto
 \end{itemize}
 
 Entre las posibles categorías podemos encontrar \textit{synsets} de diferentes niveles de especificación, por ejemplo tenemos las categorías: perro, dálmata, pastor alemán... 
-
+\newpage
 \section{Enfoque}
 Partimos de un \textit{full-network embedding} de una red convolucional entrenada en la partición de validación de imagenet, es decir, una matriz de tamaño 50000 muestras por 12416 características, cuyos valores están en $\{-1,0,1\}$, cada muestra con su correspondiente clasificación.
 
 Las características están ordenadas en capas de la siguiente manera: 
-\begin{figure}[h]
+\begin{figure}[H]
 \label{}
 \centering
 \includegraphics[width = 0.8\textwidth]{Images/croplayer.png} 
@@ -607,16 +612,75 @@ Las características están ordenadas en capas de la siguiente manera:
 %			'conv4': [1152, 2688],  # 19
 %			'conv5': [2688, 4224],  # 20
 
+Además tomamos 3 embeddings diferentes:
+\begin{itemize}
+\item El básico con los límites en $ft^- = -0.25$ y $ft^+ = +0.25$ 
+\item Un embedding más restrictivo con los límites en $ft^- = -0.19$ y $ft^+ = +0.19$ 
+\item Un embedding menos restrictivo con los límites en $ft^+ = -0.31$ y $ft^+ = +0.31$ 
+\end{itemize}
 
-\subsection{Objetivos e hipótesis iniciales}
+Y finalmente, de todos los \textit{synsets} posibles tomamos dos conjuntos diferentes: 
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  %\includegraphics[width=.4\linewidth]{image1}
+\begin{tikzpicture}[sibling distance=10em,
+  every node/.style = {shape=rectangle, rounded corners,
+    draw, align=center,
+    top color=cyan!20, bottom color=cyan!20},
+    edge from parent/.style={draw,-latex}
+    ]
+  \node {Ser Vivo}
+  	child{ node {Mamífero}
+    	child{ node {Perro}
+			child{node {Perro de caza}    	
+    		}
+    	}
+    };
+\end{tikzpicture}
+  \caption{Seres vivos}
+  \label{fig:sub1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \begin{tikzpicture}[sibling distance=10em,
+  every node/.style = {shape=rectangle, rounded corners,
+    draw, align=center,
+    top color=red!20, bottom color=red!20},
+    edge from parent/.style={draw,-latex}
+    ]
+  \node {Artefacto}
+  	child{ node {Instrumento}
+    	child{ node {Transporte}
+			child{node {Vehículo}    	
+    		}
+    	}
+    };
+\end{tikzpicture}
+  \caption{Objetos}
+  \label{fig:sub2}
+\end{subfigure}
+\caption{Conjuntos de synsets que estudiaremos}
+\label{fig:test}
+\end{figure}
+
+Hemos tomado estos dos conjuntos por estar distribuidos de una forma bastante uniforme entre las clases, como veremos en el capítulo \ref{se:stats}, y por ser de dos ''ramas'' lo más diferentes posibles, para poder comparar el comportamiento del embedding en ambos casos. 
+
+ 
+\subsection{Objetivos}
 \textbf{Objetivos iniciales}: 
 \begin{itemize}
-\item Analizar el \textit{full-network embedding}(Cantidad de características con valor 1, 0 y -1, distribución de las características en el embedding etc.). 
+\item Analizar las diferencias entre los tres \textit{full-network embedding}(Cantidad de características con valor 1, 0 y -1, distribución de las características en el embedding etc.). 
 \item Analizar el comportamiento de las características en las distintas capas. 
 \item Analizar si hay alguna relación entre los embeddings de las diferentes clases y synsets relacionados con ellas (sus hipónimos e hipérnimos). 
 \end{itemize}
 
-\textbf{Hipótesis iniciales}: 
+\subsection{Estadísticas}\label{se:stats}
+
+\subsection{Hipótesis iniciales}
+Por la naturaleza del problema y lo que hemos visto al estudiar la matriz de embedding aparecen las siguientes hipótesis: 
 \begin{itemize}
 \item Las características se distribuyen de diferente manera en los layers convolucionales y los completos.
 \item Cuanto más concreto es un synset, más características con valor 1 tiene.
@@ -624,9 +688,6 @@ Las características están ordenadas en capas de la siguiente manera:
 \end{itemize}
 
 
-\subsection{Estadísticas}
-
-\subsection{Intuiciones}
 
 \newpage
 \section{Análisis}
