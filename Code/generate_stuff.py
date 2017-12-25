@@ -32,23 +32,26 @@ def generate_stuff():
         ini_time = time.time()
         data = Data('', version)
         data_time = time.time() - ini_time
-        print('Loaded in ', datetime.timedelta(seconds=(time.time() - ini_time)), 'seconds')
+
         #stats_living = Statistics(synsets_living, data)
         #stats_non_living = Statistics(synsets_non_living, data)
         stats_SUPERCOMBO = Statistics(SUPERCOMBO, data)
-
+        print('Loaded in ', datetime.timedelta(seconds=(time.time() - ini_time)), 'seconds')
         # for synset in stats_living.synsets:
         #     stats_living.generate_restricted_labels(synset)
         # for synset in stats_non_living.synsets:
         #     stats_non_living.generate_restricted_labels(synset)
-        print('Calculating distance1...')
         ini_time = time.time()
-        print('distance1 living mamal: ', stats_SUPERCOMBO.distance_between_synsets_reps(SUPERCOMBO[0],SUPERCOMBO[1]))
-        print('distance time: ', datetime.timedelta(seconds=(time.time() - ini_time)))
-        print('Loading data...')
-        ini_time = time.time()
-        print('distance2 living mamal: ', stats_SUPERCOMBO.distance_between_synsets_global(SUPERCOMBO[0], SUPERCOMBO[1]))
-        print('distance time: ',datetime.timedelta(seconds=(time.time() - ini_time)))
+        stats_SUPERCOMBO.plot_all()
+        print('plot all time: ', datetime.timedelta(seconds=(time.time() - ini_time)))
+        # print('Calculating distance1...')
+        # ini_time = time.time()
+        # print('distance1 living mamal: ', stats_SUPERCOMBO.distance_between_synsets_reps(SUPERCOMBO[0],SUPERCOMBO[1]))
+        # print('distance time: ', datetime.timedelta(seconds=(time.time() - ini_time)))
+        # print('Loading data...')
+        # ini_time = time.time()
+        # print('distance2 living mamal: ', stats_SUPERCOMBO.distance_between_synsets_global(SUPERCOMBO[0], SUPERCOMBO[1]))
+        # print('distance time: ',datetime.timedelta(seconds=(time.time() - ini_time)))
 
         data.__del__()
 

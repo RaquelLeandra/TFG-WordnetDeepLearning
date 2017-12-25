@@ -322,6 +322,7 @@ class Statistics:
 		Hace un barplot y un pieplot de la ditribución de los synsets en los datos
 		:return:
 		"""
+		plt.rcParams['figure.figsize'] = [12.0, 8.0]
 		if len(self.synset_in_data) == 0:
 			self.synset_in_data_gen()
 		plt.bar(range(len(self.synset_in_data)), self.synset_in_data.values(), align='center')
@@ -350,6 +351,7 @@ class Statistics:
 		plt.clf()
 		name = 'distribution_of_synsets_pie' + '.png'
 		self.printlatex(name)
+		plt.rcParams['figure.figsize'] = [8.0, 8.0]
 
 	def count_features(self, matrix):
 		"""
@@ -1064,18 +1066,18 @@ class Statistics:
 		plt.cla()
 		plt.close("all")
 		plt.clf()
-		self.plot_matrix()
-		plt.cla()
-		plt.clf()
-		plt.close("all")
-		self.plot_changes_between_synset_reps()
-		plt.cla()
-		plt.clf()
-		plt.close("all")
-		self.plot_changes_between_synset_reps_per_layer()
-		plt.cla()
-		plt.clf()
-		plt.close("all")
+		# self.plot_matrix()
+		# plt.cla()
+		# plt.clf()
+		# plt.close("all")
+		# self.plot_changes_between_synset_reps()
+		# plt.cla()
+		# plt.clf()
+		# plt.close("all")
+		# self.plot_changes_between_synset_reps_per_layer()
+		# plt.cla()
+		# plt.clf()
+		# plt.close("all")
 
 	def existsfile(self, path):
 		"""
