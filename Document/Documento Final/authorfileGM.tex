@@ -34,6 +34,9 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{wrapfig}
+\usepackage[nottoc]{tocbibind}
+
+
 
 % Theorem Environments: add extra ones at the end if you need it.
 
@@ -109,12 +112,21 @@ Thanks to...}
 \abstracteng{This should be an abstract in english, up to 1000 characters.}
 
 %%%%%%%%%
+
+
 \begin{document}
+
+
+
 \pgfmathdeclarefunction{gauss}{2}{\pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
 }
 
+
 \maketitle
 
+\tableofcontents
+%\tableofcontents
+\newpage
 \section{Conocimientos previos}
 %\subsection{Machine Learning}
 %%- Que es ml y por que está de moda. 
@@ -350,7 +362,7 @@ Una \textbf{red convolucional} es una secuencia de capas de diferentes tipos, do
 \end{definition}
 Las redes convolucionales son muy similares a las redes neuronales explicadas, las mayores diferencias son que contienen un tipo especial de neuronas (las neuronas convolucionales) y que asume explícitamente que la entrada son datos con una estructura concreta(como por ejemplo imágenes), lo que permite añadir ciertas propiedades a la arquitectura. Esto permite hacer un \textit{fordward pass} más eficiente de implementar y reducir significativamente la cantidad de parámetros.
 
-Una neurona convolucional es aquella que opera con una convolución\cite{wikiconv}.
+Una neurona convolucional es aquella que opera con una convolución\cite{deeplearningbook}.
 
 \begin{definition} \label{def:convolution}
 Una \textbf{convolución} es una aplicación matemática cuya entrada son dos funciones de valores reales (\textbf{x} y \textbf{w}) y cuya salida es otra función (\textbf{s}). 
@@ -555,7 +567,7 @@ En nuestro caso nos centraremos en \textit{transfer learning for features extrac
 \subsection{Full-Network embedding}
 
 En general en \textit{transfer learning for feature extraction} es común tomar los valores de activación de una sola capa cercana a la salida, como podemos ver en la figura \ref{fig:base}. El resto de capas se descartan por 
-"ser poco probable que contengan una representación mejor", sin embargo es conocido que todas las capas de una red profunda pueden contribuir a caracterizar los datos de diferentes maneras. Esto implica que la representación más versátil y rica que puede ser generada por un proceso de \textit{features extraction} debe incluir todas las capas de la red,es decir, debe definir un \textit{full-network embedding}. 
+"ser poco probable que contengan una representación mejor"\cite{onlylastlayers}, sin embargo es conocido que todas las capas de una red profunda pueden contribuir a caracterizar los datos de diferentes maneras. Esto implica que la representación más versátil y rica que puede ser generada por un proceso de \textit{features extraction} debe incluir todas las capas de la red,es decir, debe definir un \textit{full-network embedding}. 
 \begin{figure}[H]
 \centering
 \includegraphics[width = 0.8\textwidth]{Images/basecrop.png} 
@@ -568,7 +580,7 @@ Dado un conjunto de datos \textit{t1}, queremos representarlo en el lenguaje apr
 
 \item El segundo paso consiste en un \textbf{spatial average pooling} en los filtros convolucionales. Como se ha explicado en el capítulo sobre redes convolucionales, un filtro convolucional genera varias activaciones para una entrada, para darle la capacidad de obtener información espacial.  El objetivo de este paso es obtener un solo valor de activación para cada filtro, evitando así un aumento de la dimensionalidad. Los valores resultantes se concatenan a los de las capas completas en un solo vector, para generar el \textit{embedding} completo.
 
-\item El tercer paso es una \textbf{estandarización de características}. Puesto a que los valores del \textit{embedding} provienen de distintos tipos de neuronas en distintos puntos de la red hace falta una estandarización. El valor estandarizado de cada categoría se obtiene calculando la media y la desviación típica del conjunto de datos de entrenamiento. De esta forma se pueden integrar los distintos valores en el \textit{embedding}. 
+\item El tercer paso es una \textbf{estandarización de características}. Puesto a que los valores del \textit{embedding} provienen de distintos tipos de neuronas en distintos puntos de la red, la distribución de las activaciones pueden variar mucho y si se concatenasen todas algunas dominarían sobre las otras. El valor estandarizado de cada categoría se obtiene calculando la media y la desviación típica del conjunto de datos de entrenamiento, es decir, que se estandariza según el contexto de la feature en todo el conjunto de datos. De esta forma se pueden integrar los distintos valores en el \textit{embedding}. 
 
 \begin{figure}
 
@@ -591,14 +603,17 @@ grid = major]
 \label{fig:caracterization}}
 \end{figure}
 
-\item Finalmente se aplica una \textbf{discretización de características} para evitar problemas al intentar explorar un espacio de dimensión tan grande. Ésta discretización consiste en tomar unos límites que dependen de los datos, $ft^-$ y $ft^+$ y reemplazar los valores que tienen un valor atípicamente bajo (todos los valores $x < ft^-$) por un -1, los que tienen un valor típico (todos los valores $ ft^- < x < ft^+$) por un 0 y los que tienen un valor atípicamente alto (todos los valores $ ft^+ < x$) por un 1, como podemos ver en la representación gráfica \ref{fig:caracterization}. Para encontrar los límites se basan en \cite{behaviourcnn}, donde dan una visión estadística sobre como evaluar la importancia de las diferentes características de una red convolucional comparando las activaciones para una clase concreta respecto al resto de clases del conjunto de datos. De esta forma los autores de \cite{behaviourcnn} separan las características en tres conjuntos: \textit{característico por presencia}, \textit{no característico} y \textit{característico por ausencia}.
-
+\item Finalmente se aplica una \textbf{discretización de características} para evitar problemas al intentar explorar un espacio de dimensión tan grande(una sola capa convolucional puede llegar a tener del orden de 100,000,000 parámetros, por ejemplo \cite{cnnexample}). Ésta discretización consiste en tomar unos límites que dependen de los datos, $ft^-$ y $ft^+$ y reemplazar los valores que tienen un valor atípicamente bajo (todos los valores $x < ft^-$) por un -1, los que tienen un valor típico (todos los valores $ ft^- < x < ft^+$) por un 0 y los que tienen un valor atípicamente alto (todos los valores $ ft^+ < x$) por un 1, como podemos ver en la representación gráfica \ref{fig:caracterization}. Para encontrar los límites se basan en \cite{behaviourcnn}, donde dan una visión estadística sobre como evaluar la importancia de las diferentes características de una red convolucional comparando las activaciones para una clase concreta respecto al resto de clases del conjunto de datos. De esta forma los autores de \cite{behaviourcnn} separan las características en tres conjuntos: \textit{característico por presencia}, \textit{no característico} y \textit{característico por ausencia}.
 \end{itemize}
+
+
+En la figura \ref{fig:fnediagram} podemos ver un diagrama de como se desarrollarían los diferentes pasos. Nótese la diferencia con la figura \ref{fig:base}.
+
 \begin{figure}[h]
 \label{fig:fne}
 \centering
 \includegraphics[width = 0.8\textwidth]{Images/cropfne.png} 
-\caption{Estructura del \textit{full-network embedding}}
+\caption{Estructura del \textit{full-network embedding}\label{fig:fnediagram}}
 \end{figure}
 
 
@@ -611,16 +626,36 @@ grid = major]
 En concreto utilizaremos las relaciones de: 
 \begin{itemize}
 
-\item \textbf{Sinonimia} : dos palabras son sinónimos si tienen el mismo significado (ej, gato y minino).
-\item \textbf{Hiponimia}: una palabra es hipónimo de otra si su significado es más específico que el de ésta (ej, silla es hipónimo de mueble). 
-\item \textbf{Hipernimia}: una palabra es hiperónimo de otra si su significado es menos específico que el de ésta (ej, perro es hiperónimo de dálmata). 
+\item \textbf{Sinonimia} : dos palabras son sinónimos si tienen el mismo significado (ej, pelo y cabello, figura \ref{fig:sinonimos}).
+\item \textbf{Hiponimia}: una palabra es hipónimo de otra si su significado es más específico que el de ésta (ej, mamífero es hipónimo de ser vivo, figura \ref{fig:hiponimos}). 
+\item \textbf{Hipernimia}: una palabra es hiperónimo de otra si su significado es menos específico que el de ésta (ej, perro es hiperónimo de dálmata, figura \ref{fig:hiperonimos}). 
  
 \end{itemize}
 
-\begin{figure}[H]
-\centering
 
-\begin{tikzpicture}[sibling distance=10em,
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{tikzpicture}[
+    grow=right,
+    level 1/.style={sibling distance=3.5cm,level distance=3cm},
+    edge from parent/.style={<->, draw, >=latex},
+    edge from parent path={(\tikzparentnode.east) -- (\tikzchildnode.west)},
+    punkt/.style={rectangle, rounded corners, shade, top color=blue!20, bottom color=blue!20, draw=blue!40!black!60, very
+    thick }
+    ]
+
+\node[punkt] {Pelo}
+    %Lower part lv1
+    %Upper part, lv1
+    child {
+        node[punkt] {Cabello}
+    };
+\end{tikzpicture}
+		\caption{Ejemplo de Sinónimos \label{fig:sinonimos}}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\begin{tikzpicture}[sibling distance=10em,
   every node/.style = {shape=rectangle, rounded corners,
     draw, align=center,
     top color=blue!20, bottom color=blue!20},
@@ -632,28 +667,62 @@ En concreto utilizaremos las relaciones de:
     	child{node {Gato}}
     };
 \end{tikzpicture}
-\caption{Ejemplo de hipónimos}
+		\caption{Ejemplo de Hipónimos \label{fig:hiponimos}}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\begin{tikzpicture}[sibling distance=10em,
+  every node/.style = {shape=rectangle, rounded corners,
+    draw, align=center,
+    top color=blue!20, bottom color=blue!20},
+    edge from parent/.style={<-, draw,>=latex}
+    ]
+  \node {Perro}
+    	child{node {Dálmata}}
+    	child{node {Cachorro}
+    	};
+\end{tikzpicture}
+		\caption{Ejemplo de Hiperónimos \label{fig:hiperonimos}}
+	\end{subfigure}       
 \end{figure}
+
+%
+%\begin{figure}[H]
+%\centering
+%
+%\begin{tikzpicture}[sibling distance=10em,
+%  every node/.style = {shape=rectangle, rounded corners,
+%    draw, align=center,
+%    top color=blue!20, bottom color=blue!20},
+%    edge from parent/.style={draw,-latex}
+%    ]
+%  \node {Ser Vivo}
+%  	child{ node {Mamífero}
+%    	child{ node {Perro}}
+%    	child{node {Gato}}
+%    };
+%\end{tikzpicture}
+%\caption{Ejemplo de hipónimos}
+%\end{figure}
 
 \subsection{Imagenet}
 
-\textbf{Imagenet} es una base de datos de imágenes organizada utilizando la jerarquía de \textit{wordnet}. Su principal objetivo es dotar a los investigadores en campos relacionados con visión artificial de una base de datos a gran escala con la que poder trabajar. Actualmente consta de 14,197,122 imágenes y  21841 \textit{synsets} indexados.  
+\textbf{Imagenet} es una base de datos de imágenes organizada utilizando la jerarquía de \textit{wordnet}. Su principal objetivo es dotar a los investigadores en campos relacionados con visión artificial de una base de datos a gran escala con la que poder trabajar. Actualmente consta de 14,197,122 imágenes y  21,841 \textit{synsets} indexados.  
 
 Para el full-network embedding utilizaron el subconjunto correspondiente al reto de \textit{imagenet} de 2012 de reconocimiento de imágenes. 
 
 Éste consta de:
 \begin{itemize}
-\item Un conjunto de datos de entrenamiento de 1.2 millones de muestras y 1000 categorías diferentes.
-\item Un conjunto de datos de validación de 50000 muestras y 1000 categorías. 
+\item Un conjunto de datos de entrenamiento de 1.2 millones de muestras y 1,000 categorías diferentes.
+\item Un conjunto de datos de validación de 50,000 muestras y 1,000 categorías. 
 \end{itemize}
 
 Entre las posibles categorías podemos encontrar \textit{synsets} de diferentes niveles de especificación, por ejemplo tenemos las categorías: perro, dálmata, pastor alemán... 
 \newpage
 \section{Enfoque}
 
-En nuestro caso estudiaremos un \textit{full-network embedding} obtenido a partir de la tarea origen  $(\mathcal{T_S} = $Clasificación de imágenes$,\mathcal{D_S} =$ 1.2 M imágenes de imagenet con sus correspondientes clases$ )$ y una tarea de destino $(\mathcal{T_T} = $Clasificación de imágenes$,\mathcal{D_T} =$ 50000 imágenes de imagenet con sus correspondientes clases$ )$. Es decir, partiendo de una red convolucional entrenada con todo el conjunto de datos de entrenamiento de imagenet, hemos generado un lenguaje de representación para el conjunto de datos de validación de imagenet. Lo que resulta en el \textit{full-network embedding} con el que trabajaremos. 
+En nuestro caso estudiaremos un \textit{full-network embedding} obtenido a partir de la tarea origen  $(\mathcal{T_S} = $Clasificación de imágenes$,\mathcal{D_S} =$ 1.2 M imágenes de imagenet con sus correspondientes clases$ )$ y una tarea de destino $(\mathcal{T_T} = $Clasificación de imágenes$,\mathcal{D_T} =$ 50,000 imágenes de imagenet con sus correspondientes clases$ )$. Es decir, partiendo de una red convolucional entrenada con todo el conjunto de datos de entrenamiento de imagenet, hemos generado un lenguaje de representación para el conjunto de datos de validación de imagenet. Lo que resulta en el \textit{full-network embedding} con el que trabajaremos. 
 
-El \textit{full-network embedding} consiste en una matriz de tamaño 50000 muestras por 12416 características, cuyos valores están en $\{-1,0,1\}$. Para cada muestra también tenemos su correspondiente clasificación(un valor entre 0 y 999 que representa la clase de imagenet con la que fue clasificado).
+El \textit{full-network embedding} consiste en una matriz de tamaño 50,000 muestras por 12,416 características, como observamos en la figura \ref{fig:featuresperlayer}, cuyos valores están en $\{-1,0,1\}$. Para cada muestra también tenemos su correspondiente clasificación(un valor entre 0 y 999 que representa la clase de imagenet con la que fue clasificado).
 
 Es importante remarcar el significado de las diferentes categorías.
 \begin{itemize}
@@ -671,7 +740,7 @@ Las características están ordenadas en capas de la siguiente manera:
 \label{}
 \centering
 \includegraphics[width = 0.8\textwidth]{Images/croplayer.png} 
-\caption{La disposición de las características por capas}
+\caption{La disposición de las características por capas \label{fig:featuresperlayer}}
 \end{figure}
 %'fc6': [4224, 8320],  # 14
 %			'fc7': [8320, 12416],  # 15
@@ -688,7 +757,7 @@ Las características están ordenadas en capas de la siguiente manera:
 %\item Un embedding menos restrictivo con los límites en $ft^+ = -0.31$ y $ft^+ = +0.31$ 
 %\end{itemize}
 
-Y finalmente, de todos los \textit{synsets} posibles tomamos dos conjuntos diferentes: 
+Y finalmente, de todos los \textit{synsets} posibles tomamos dos subconjuntos diferentes: 
 
 \begin{figure}[H]
 \centering
@@ -735,14 +804,14 @@ Y finalmente, de todos los \textit{synsets} posibles tomamos dos conjuntos difer
 
 \end{figure}
 
-Hemos tomado estos dos conjuntos por estar distribuidos de una forma bastante uniforme entre las clases, como veremos en el capítulo \ref{se:stats}, y por ser de dos ''ramas'' lo más diferentes posibles, para poder comparar el comportamiento del embedding en ambos casos. 
+Hemos tomado estos dos conjuntos por estar distribuidos de una forma bastante uniforme entre las clases, como veremos en el capítulo \ref{se:stats}, y por ser de dos ''ramas'' lo más diferentes posibles,además están en sitios parecidos respecto a la jerarquía global, y por tanto representan niveles de abstracción parecidos. 
 
  
 \subsection{Objetivos}
 Partiendo de los datos comentados y del trabajo publicado en \cite{fne} tomamos varios \textbf{objetivos} a partir de los que desarrollar el trabajo.
 
 \begin{itemize}
-\item Analizar el \textit{embedding} dado y elcomportamiento de las \textit{features} en las distintas capas. 
+\item Analizar el \textit{embedding} dado y el comportamiento de las \textit{features} en las distintas capas. 
 \item Analizar si hay alguna relación entre los embeddings de las diferentes clases y synsets relacionados con ellas (sus hipónimos e hipérnimos). 
 \end{itemize}
 
@@ -750,9 +819,8 @@ Partiendo de los datos comentados y del trabajo publicado en \cite{fne} tomamos 
 La finalidad de este capítulo es hacer un estudio inicial de los datos de los que se dispone, es decir, de los correspondientes a los distintos \textit{embeddings} y a los \textit{synsets} que hemos tomado para el estudio. 
 
 \subsubsection{Embedding}
-Primero de todo estudiaremos las estadísticas generales del \textit{embeddings}. 
-
-Para empezar comparamos la cantidad de elementos de cada \textit{feature} en los distintos \textit{embeddings}. 
+Primero de todo estudiaremos las estadísticas generales del \textit{embeddings}.
+Para empezar comparamos la cantidad de elementos de cada \textit{feature}. 
 
 \begin{figure}[ht] 
 	\centering
@@ -871,40 +939,12 @@ Explicación de la distancia definida entre los synsets, demostración de que es
 
 %\section{Introducción}
 \newpage
-
-\begin{thebibliography}{9}
-\bibitem{dario}
-\url{https://upc-mai-dl.github.io/mlp-convnets-theory/}
-
-\bibitem{stanford} 
-\url{http://cs231n.stanford.edu/}. 
-
-\bibitem{fne} 
-Dario Garcia-Gasulla, Armand Vilalta, Ferran Parés, Jonatan Moreno, Eduard Ayguadé, Jesus Labarta, Ulises Cortés, Toyotaro Suzumura, 
-\textit{An Out-of-the-box Full-network Embedding for
-Convolutional Neural Networks}.En arXiv:1705.07706,2017, \url{https://arxiv.org/abs/1705.07706}. 
+%\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{unsrt}
+\bibliography{biblio}
 
 
-\bibitem{wikiconv}
-\url{https://en.wikipedia.org/wiki/Convolutional_neural_network#Convolutional}
-
-\bibitem{deeplearningbook}
-Deep Learning
-Ian Goodfellow
-Yoshua Bengio
-Aaron Courville
-
-
-\bibitem{behaviourcnn}
-Dario Garcia-Gasulla, Ferran Parés, Armand Vilalta, Jonatan Moreno, Eduard Ayguadé, Jesús
-Labarta, Ulises Cortés, and Toyotaro Suzumura. On the behavior of convolutional nets for
-feature extraction. arXiv preprint arXiv:1703.01127, 2017.
-
-
-\bibitem{imagencnn}
-\url{https://leonardoaraujosantos.gitbooks.io/artificial-inteligence/content/neural_networks.html}
-
-\end{thebibliography}
+%\url{https://leonardoaraujosantos.gitbooks.io/artificial-inteligence/content/neural_networks.html}
 %Bishop - Pattern Recognition And Machine Learning.pdf
 %Introduction to machine learning Ethem Alpaydın
 %http://cs231n.stanford.edu/

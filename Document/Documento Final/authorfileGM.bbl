@@ -1,0 +1,38 @@
+\begin{thebibliography}{1}
+
+\bibitem{deeplearningbook}
+Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
+\newblock {\em Deep Learning}.
+\newblock MIT Press, 2016.
+\newblock \url{http://www.deeplearningbook.org}.
+
+\bibitem{behaviourcnn}
+Dario Garcia{-}Gasulla, Ferran Par{\'{e}}s, Armand Vilalta, Jonathan Moreno,
+  Eduard Ayguad{\'{e}}, Jes{\'{u}}s Labarta, Ulises Cort{\'{e}}s, and Toyotaro
+  Suzumura.
+\newblock On the behavior of convolutional nets for feature extraction.
+\newblock {\em CoRR}, abs/1703.01127, 2017.
+
+\bibitem{onlylastlayers}
+Jeff Donahue, Yangqing Jia, Oriol Vinyals, Judy Hoffman, Ning Zhang, Eric
+  Tzeng, and Trevor Darrell.
+\newblock Decaf: {A} deep convolutional activation feature for generic visual
+  recognition.
+\newblock {\em CoRR}, abs/1310.1531, 2013.
+
+\bibitem{cnnexample}
+Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E Hinton.
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock In F.~Pereira, C.~J.~C. Burges, L.~Bottou, and K.~Q. Weinberger,
+  editors, {\em Advances in Neural Information Processing Systems 25}, pages
+  1097--1105. Curran Associates, Inc., 2012.
+
+\bibitem{fne}
+Dario Garcia{-}Gasulla, Armand Vilalta, Ferran Par{\'{e}}s, Jonathan Moreno,
+  Eduard Ayguad{\'{e}}, Jes{\'{u}}s Labarta, Ulises Cort{\'{e}}s, and Toyotaro
+  Suzumura.
+\newblock An out-of-the-box full-network embedding for convolutional neural
+  networks.
+\newblock {\em CoRR}, abs/1705.07706, 2017.
+
+\end{thebibliography}
