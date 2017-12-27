@@ -182,7 +182,7 @@ Degree in Mathematics\\[0.2em]
           {}
 \titleformat{\subsubsection}
           {\normalfont\large\bfseries} 
-          {\huge\thesubsection}
+          {\Large\thesubsubsection}
           {1ex \@plus.2ex}
           {}
 \titleformat{\paragraf}

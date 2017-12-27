@@ -1,5 +1,10 @@
 \begin{thebibliography}{1}
 
+\bibitem{Bishop2006}
+Christopher~M. Bishop.
+\newblock {\em {Pattern recognition and machine learning}}.
+\newblock Springer, New York :, 2006.
+
 \bibitem{deeplearningbook}
 Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
 \newblock {\em Deep Learning}.
