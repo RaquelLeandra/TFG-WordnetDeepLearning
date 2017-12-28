@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{Bishop2006}
 Christopher~M. Bishop.
@@ -10,6 +10,37 @@ Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
 \newblock {\em Deep Learning}.
 \newblock MIT Press, 2016.
 \newblock \url{http://www.deeplearningbook.org}.
+
+\bibitem{he2016deep}
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\newblock Deep residual learning for image recognition.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 770--778, 2016.
+
+\bibitem{pan2010survey}
+Sinno~Jialin Pan and Qiang Yang.
+\newblock A survey on transfer learning.
+\newblock {\em IEEE Transactions on knowledge and data engineering},
+  22(10):1345--1359, 2010.
+
+\bibitem{yosinski2014transferable}
+Jason Yosinski, Jeff Clune, Yoshua Bengio, and Hod Lipson.
+\newblock How transferable are features in deep neural networks?
+\newblock In {\em Advances in Neural Information Processing Systems 27}, pages
+  3320--3328, 2014.
+
+\bibitem{azizpour2016factors}
+Hossein Azizpour, Ali~Sharif Razavian, Josephine Sullivan, Atsuto Maki, and
+  Stefan Carlsson.
+\newblock Factors of transferability for a generic convnet representation.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  38(9):1790--1802, 2016.
+
+\bibitem{sharif2014cnn}
+Ali Sharif~Razavian, Hossein Azizpour, Josephine Sullivan, and Stefan Carlsson.
+\newblock Cnn features off-the-shelf: an astounding baseline for recognition.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition Workshops}, pages 806--813, 2014.
 
 \bibitem{behaviourcnn}
 Dario Garcia{-}Gasulla, Ferran Par{\'{e}}s, Armand Vilalta, Jonathan Moreno,

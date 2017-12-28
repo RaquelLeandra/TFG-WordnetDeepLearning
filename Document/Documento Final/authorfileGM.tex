@@ -35,6 +35,11 @@
 \usepackage{subcaption}
 \usepackage{wrapfig}
 \usepackage[nottoc]{tocbibind}
+\usepackage{enumitem}
+\setlist{  
+  listparindent=\parindent,
+  parsep=0pt,
+}
 
 
 
@@ -102,8 +107,8 @@
 \titol{ Wordnet y Deep Learning: Una posible unión}
 \titolcurt{Short title}
 \authorStudent{Raquel Leandra Pérez Arnal}
-\supervisors{(name of the supervisor/s of the master's thesis)}
-\monthYear{Month, year}
+\supervisors{Dario Garcia Gasulla y Claudio Ulises Cortés García}
+\monthYear{Enero, 2017}
 
 %\msc[2010]{Primary  	55M25, 57P10, Secondary 55P15, 57R19, 57N15.}
 
@@ -152,9 +157,9 @@ Una \textbf{red neuronal} es un modelo computacional inspirado en la forma de pr
 \subsubsection{Una neurona}
 
 \begin{definition} 
-La unidad de computación básica de una red neuronal es una \textbf{neurona}, también llamada nodo o unidad. Ésta, recibe una entrada sobre la que le aplica una función para generar na salida.
+La unidad de computación básica de una red neuronal es una \textbf{neurona}, también llamada nodo o unidad. Ésta, recibe una entrada sobre la que le aplica una función para generar una salida.
 \end{definition}
-Cada entrada (\textbf{x}) tiene asociado un peso (\textbf{w}), que es aprendido en base a su importancia relativa a otras entradas, a la salida y al objetivo de la red. La neurona  aplica una función (\textbf{f}) a la suma ponderada de las entradas como muestra la figura: 
+Cada entrada (\textbf{x}) tiene asociado un peso (\textbf{w}), que es aprendido en base a su importancia relativa a otras entradas, a la salida y al objetivo de la red. La neurona  aplica una función (\textbf{f}) a la suma ponderada de las entradas. 
 %\begin{center}
 %\includegraphics[width=0.5\textwidth]{Images/neuron_model.jpeg} 
 %\end{center}
@@ -278,9 +283,7 @@ Las funciones de activación más utilizadas son:
 %\includegraphics[scale=1]{Images/relu.png} 
 \end{itemize}
 
-%
-
-Dotando una neurona de una función de pérdida en la salida podríamos convertirla en un clasificador lineal, pero la verdadera potencia del método viene dada al unir diversas neuronas en lo que llamaremos capas.
+En la figura \ref{fig:perceptron} podemos ver un ejemplo visual del comportamiento de una sola neurona.
 \begin{figure}[H]
 \centering
  \begin{tikzpicture}
@@ -310,6 +313,10 @@ Dotando una neurona de una función de pérdida en la salida podríamos converti
     \caption{Ejemplo de una neurona \label{fig:perceptron}}
 \end{figure}
 
+
+Dotando una neurona de una función de pérdida en la salida podríamos convertirla en un clasificador lineal, pero la verdadera potencia del método viene dada al unir diversas neuronas en lo que llamaremos capas.
+
+
 \subsubsection{Organización por capas}
 Las redes neuronales se modelizan como una colección de neuronas conectadas en un grafo acíclico, comúnmente organizado por capas. El tipo más común de capa es la capa completa(\textit{fully-connected layer}), en el que todas las neuronas de una capa están conectadas con las de la capa posterior a ésta, mientras que no comparten ninguna conexión con las de su propia capa, como muestra la figura \ref{fig:red neuronal}. %Si tenemos diversas capas ocultas diremos que se trata de una red profunda (\textit{deep network}).
 \begin{figure}
@@ -336,10 +343,10 @@ La red neuronal más básica la podemos dividir en:
 \item Neuronas de salida: Colectivamente denominados capa de salida y son responsables de generar la salia de la red neuronal calculada a partir de la entrada y procesada por varias capas. 
 \end{enumerate}
 
-Matemáticamente la notación (tomada de \cite{Bishop2006}) varía ligeramente al añadir capas. Si tenemos una muestra de tamaño $N$ y una red con $M$ capas, las activaciones ($a_j^{(k)}$) para cada neurona $j$ de la capa $k$ serían: 
+Matemáticamente la notación (tomada de \cite{Bishop2006}) varía ligeramente al añadir capas. Si tenemos una muestra de tamaño $N$ y una red con $M$ capas,definimos las activaciones ($a_j^{(k)}$) para cada neurona $j$ de la capa $k$ como: 
 \begin{equ}[H]
 \begin{equation*}
-a_j^{(k)}(\mathbf{x},\mathbf{w}) = \sum_{i=1}^N w_{ji}^{k}x_i + w_{j0}^{(k)}
+a_j^{(k)}(\mathbf{x},\mathbf{w}) = \sum_{i=1}^N w_{ji}^{(k)}x_i + w_{j0}^{(k)}
 \end{equation*}
 \caption{\label{eq:activaciones}}
 \end{equ}
@@ -368,7 +375,7 @@ De esta forma nos queda una estructura formada por pesos ordenados en distintos 
 \subsubsection{Entrenar la red: Backpropagation}\label{sec:backpropagation}
 Finalmente, queda explicar como entrenar los distintos parámetros para que se adapten a los datos, para ello se utiliza \textbf{backpropagation}.
 
-La idea general del algoritmo consiste en minimizar una función de error, que depende de los pesos.
+La idea general del algoritmo consiste en obtener las derivadas parciales de la función de error respecto a los pesos utilizando la regla de la cadena. Con el objetivo de, una vez tengamos las derivadas, utilizar un algoritmo de minimización sobre la función de error.
 
 Sea $E(\mathbf{w})$ nuestra función de error,que depende de los pesos $\mathbf{w}$, y $\mathbf{t}$ el vector objetivo, es decir, los valores que debería dar la red neuronal dada la entrada $\mathbf{X} = \{\mathbf{x}_1, ..., \mathbf{x}_N\}$. 
 
@@ -391,12 +398,12 @@ a_j^{(k)} &= \sum_{i=0}^N w_{ji}z_i^{(k)} & E_n &= \frac{1}{2} \sum_h (y_{nh} - 
 \end{equ}
 Donde $a_j^{(k)}$ a la activación de la neurona $j$ de la capa $k$ y el índice $h$ corresponde a cada una de las coordenadas de los vectores $\mathbf{y}$ y $\mathbf{t}$.
  
-Para minimizar $E(\mathbf{w})$, minimizamos cada una de las $E_n$, para ello derivamos respecto cada uno de los pesos e igualamos a cero. Al ser una función convexa el resultado será un mínimo. 
-El cálculo de la derivada quedaría:
+Para calcular las derivadas de $E(\mathbf{w})$, calcularemos cada una de las de $E_n$. 
+Como vemos en la siguiente ecuación:
 
 \begin{equ}[H]
 \begin{align*}
-\frac{\partial E_n}{\partial w_{ji}^{(k)}} = (y_{nj} - t_{nj})\frac{\partial y_{nj}}{\partial w_{ji}}
+\frac{\partial E_n}{\partial w_{ji}^{(k)}} = (y_{nj} - t_{nj})\frac{\partial y_{nj}}{\partial w_{ji}^{(k)}}
 \end{align*}
 \caption{\label{eq:derivada1}}
 \end{equ}
@@ -414,7 +421,7 @@ Utilizando la ecuación \ref{eq:activacionesv2}, podemos calcular el valor que c
 Para continuar desarrollando introducimos la siguiente notación: 
 \begin{equ}[H]
 \begin{align*}
-\delta_j = \frac{\partial E_n}{\partial a_j} 
+\delta_j^{(k)} = \frac{\partial E_n}{\partial a_j^{(k)}} 
 \end{align*}
 \caption{\label{eq:delta}}
 \end{equ}
@@ -422,7 +429,7 @@ Donde las $\delta$ se suelen llamar errores. Además si calculamos la derivada d
 
 \begin{equ}[H]
 \begin{align*}
-\frac{\partial a_j}{\partial w_{ji}} = z_i 
+\frac{\partial a_j^{(k)}}{\partial w_{ji}^{(k)}} = z_i^{(k)}
 \end{align*}
 \caption{\label{eq:derivadaactivacion}}
 \end{equ}
@@ -431,7 +438,7 @@ Utilizando la regla de la cadena sobre $\frac{\partial E_n}{\partial w_{ji}^{(k)
 
 \begin{equ}[H]
 \begin{align*}
-\frac{\partial E_n}{\partial w_{ji}^{(k)}} = \frac{\partial E_n}{\partial a_j^{(k)}} \frac{\partial a_j^{(k)}}{\partial w_{ji}} = \delta_j^{(k)} z_i^{(k)} 
+\frac{\partial E_n}{\partial w_{ji}^{(k)}} = \frac{\partial E_n}{\partial a_j^{(k)}} \frac{\partial a_j^{(k)}}{\partial w_{ji}^{(k)}} = \delta_j^{(k)} z_i^{(k)} 
 \end{align*}
 \caption{\label{eq:cadena}}
 \end{equ}
@@ -440,7 +447,7 @@ Utilizando \ref{eq:delta} con los nodos de salida y \ref{eq:error}, tenemos:
 
 \begin{equ}[H]
 \begin{align*}
-\delta_h^{M} = y_h - t_h 
+\delta_h^{(M)} = y_h - t_h 
 \end{align*}
 \caption{\label{eq:finaldelta}}
 \end{equ}
@@ -462,16 +469,16 @@ Finalmente, uniendo todo obtenemos la \textbf{fórmula de backpropagation}:
 \end{align*}
 \caption{\label{eq:backprop}}
 \end{equ}
-En resumen, el algoritmo de \textit{backpropagation} empieza con un \textit{fordward pass}(una evaluación en la que se procesa la entrada desde el principio hasta generar la salida de acuerdo con el estado actual de la red) por toda la red, con el que se calcula la $y_{n}$ y todas las activaciones $a_{ij}$, la predicción dada por la red se compara con la salida esperada ($t_n$) 
+En resumen, el algoritmo de \textit{backpropagation} empieza con un \textit{fordward pass}(una evaluación en la que se procesa la entrada desde el principio hasta generar la salida de acuerdo con el estado actual de la red) por toda la red, con el que se calcula la $y_{n}$ y todas las activaciones $a_{ij}^{(k)}$, la predicción dada por la red se compara con la salida esperada ($t_n$) 
 y se calcula un error ($\delta$) para los pesos de la salida, luego se propaga este error utilizando \ref{eq:backprop}. Finalmente utilizando \ref{eq:cadena} obtenemos los valores de las derivadas para todos los pesos.
 
-\textbf{TODO: Añadir un ejemplo, Revisar los índices de las fórmulas (añadir la capa?)}
+%\textbf{TODO: Añadir un ejemplo, Revisar los índices de las fórmulas (añadir la capa?)}
 
 
 Una vez calculadas las derivadas, se utiliza el \textit{ Stochastic Gradient Descent}, o otros métodos de minimización, para obtener los valores de los pesos que minimizan el error.
 El \textit{ Stochastic Gradient Descent} \cite{Bishop2006} es un método iterativo que, dada una función a minimizar $E(w)$ obtiene un mínimo local. 
 
-Cada nuevo valor para $w^{(i+1)}$ se calcula de la siguiente forma (partiendo de una inicialización aleatoria): 
+Cada nuevo valor para $w^{(i+1)}$ (nótese que en este caso utilizamos el super-índice para indicar la iteración a la que corresponde $w$, no como índice de la capa) se calcula de la siguiente forma (partiendo de una inicialización aleatoria): 
 \begin{equ}[H]
 \begin{align*}
 w^{(i+1)} := w^{(i)} - \lambda \nabla E (w^{(i)})
@@ -513,11 +520,18 @@ S(i,j) = (I * K)(i,j) = \sum_m \sum_n I(i +m, j+n) K(m,n)
 %\includegraphics[width = 0.5\textwidth]{Images/convolution2.png} 
 %\end{center}
 \begin{definition}
-Una \textbf{función de kernel}
+Una \textbf{función de kernel} es aquella que cumple: 
+
+\begin{equation*}
+K(x,x') = \Phi(x)^T \Phi(x')
+\end{equation*}
+
+Donde $x,x' \in X$, siendo $X$ un conjunto, y $\Phi$ es una función de base tal que $\Phi(x)^T \Phi(x') \in \mathbb{R}$. En el caso de las redes convolucionales se suele utilizar un \textit{kernel} lineal. 
+
 \end{definition}
  
 
-Típicamente las neuronas convolucionales tienen una entrada limitada, es decir están conectadas solo a un subconjunto de las neuronas de la capa anterior, de esta forma cada neurona se centra solo en parte de la entrada, lo que significa el aprendizaje de las neuronas individuales cuando hay entradas de muchas dimensiones. En contraste, las neuronas de una capa completa están conectadas a todas las neuronas de la capa anterior. %En este caso detallaremos el caso de datos en dos dimensiones, por ser el caso más común y por ser más fácil de entender. Una vez comprendida una convolución 2-dimensional, el lector puede extrapolar a tantas dimensiones como sea necesario.
+Típicamente las neuronas convolucionales tienen una entrada limitada, es decir están conectadas solo a un subconjunto de las neuronas de la capa anterior, de esta forma cada neurona se centra solo en parte de la entrada, lo que significa el aprendizaje de las neuronas individuales cuando hay entradas de muchas dimensiones. En contraste, las neuronas de una capa \textit{fully-connected} están conectadas a todas las neuronas de la capa anterior. %En este caso detallaremos el caso de datos en dos dimensiones, por ser el caso más común y por ser más fácil de entender. Una vez comprendida una convolución 2-dimensional, el lector puede extrapolar a tantas dimensiones como sea necesario.
 De esta forma se reducen la cantidad de parámetros de la red.
 %Para definir su conectividad de entrada, las neuronas convolucionales asumen la existencia de una cierta estructura en los datos. 
 %Para capturar patrones consistentes, las neuronas convolucionales están conectadas a un conjunto de neuronas de la capa anterior que definen parcelas cuadradas (en el caso de convoluciones de dos dimensiones).
@@ -610,19 +624,22 @@ Por su conectividad limitada, las capas convolucionales pueden centrarse en una 
 
 \end{figure}
 
-En la figura \ref{fig:conv} podemos ver un ejemplo del funcionamiento de una convolución con un kernel de tamaño 9 sobre una imagen, en el ejemplo podemos observar como se comparten los pesos a la hora de calcular el resultado.
+En la figura \ref{fig:conv} podemos ver un ejemplo del funcionamiento de una convolución con un kernel de tamaño 9 sobre una imagen, podemos observar como se comparten los pesos a la hora de calcular el resultado.
+Dada una sección de la red, el \textit{kernel} multiplica cada uno de sus valores por el valor correspondiente de ésta, para finalmente, sumar el resultado de todos los productos.
 
 
 Finalmente queda comentar los tipos de capa más comunes en una red convolucional: 
 \begin{itemize}
 \item Capa convolucional, capas formadas por neuronas convolucionales, la mayoría de capas de una red convolucional serán de este tipo.
-\item Capa completa, es una capa donde todas las neuronas están conectadas entre ellas. Se suele utilizar como capa de clasificación. 
-\item \textit{Pooling Layer}, consiste en una capa que aplica una reducción matemática a su input(como una media o un max). El objetivo es aportar un cierto grado de invariancia espacial (imágenes equivalentes en diferentes posiciones), además reducen el tamaño de la salida de la capa, lo que provoca una reducción de la complejidad de la red.
+\item Capa \textit{fully-connected}, es una capa donde todas las neuronas están conectadas entre ellas. Se suele utilizar como capa de clasificación. 
+\item \textit{Pooling Layer}, consiste en una capa que aplica una reducción matemática a su input(como una media o un max). El objetivo es aportar un cierto grado de invariancia espacial (imágenes equivalentes en diferentes posiciones), además reducen el tamaño de la salida de la capa, lo que provoca una reducción de la complejidad de la red. Un ejemplo de \textit{pooling layer} sería la figura \ref{fig:pooling}.
 \end{itemize}
 
-\begin{center}
+\begin{figure}[h]
+\centering
 \includegraphics[width = 0.5\textwidth]{Images/pooling1.png} 
-\end{center}
+\caption{ \label{fig:pooling}}
+\end{figure}
 
 Otro concepto que utilizaremos a lo largo del documento es el de \textit{feature}.
 
@@ -630,7 +647,7 @@ Otro concepto que utilizaremos a lo largo del documento es el de \textit{feature
 Llamaremos \textbf{feature} a los distintos subconjuntos de neuronas que ayudan a una red a cumplir con la tarea para la que fue diseñada, se generan al entrenar los pesos y pueden tener distintos grados de abstracción. 
 \end{definition}
 
-En redes convolucionales, la disposición por capas permite representar la información más compleja a partir de otra más simples. Por tanto puede acabar extrayendo \textit{features} abstractas en la figura \ref{fig:deepconcept}, podemos ver un ejemplo de \textit{features} de distinto nivel de abstracción. Por ejemplo, si queremos clasificar diferentes animales, la presencia de \textit{pico} sería una \textit{feature}. 
+En redes convolucionales, la disposición por capas permite representar la información más compleja a partir de otra más simples. Por tanto puede acabar extrayendo \textit{features} abstractas. En la figura \ref{fig:deepconcept} podemos ver un ejemplo de \textit{features} de distinto nivel de abstracción. Por ejemplo, si queremos clasificar diferentes animales, la presencia de \textit{pico} sería una \textit{feature}. 
 
 
 \begin{figure}[h]
@@ -648,20 +665,20 @@ En la práctica pocas personas entrenan una red profunda desde cero (con inicial
 Los mayores problemas que puedes encontrar son: 
 \begin{enumerate}
 \item A causa de la gran cantidad de parámetros a entrenar que tiene una red profunda necesitas un \textbf{conjunto de datos de gran tamaño}.
-\item El \textbf{coste computacional} de entrenar la red, determinado por el número de parámetros. 
-\item La búsqueda de \textbf{hiper-parámetros} (valores de los que depende el modelo) óptimos. 
+\item El \textbf{coste computacional} de entrenar la red, determinado por el número de parámetros, que en el caso de redes convolucionales pueden ser del orden de cientos de miles. 
+\item La búsqueda de \textbf{hiper-parámetros} (valores de los que depende el modelo) óptimos. \par
 
-La forma de obtener los hiper-parámetros es, entrenar la red para cada uno de los hiper-parámetros que hayamos considerado y, utilizando una partición de validación (o el método de \textit{cross-validation}) comparar los distintos resultados.  
+La forma de obtener los hiper-parámetros es, entrenar la red para cada uno de los hiper-parámetros que hayamos considerado y, utilizando una partición de validación (o el método de \textit{cross-validation}) comparar los distintos resultados.  \par
 
 Ésto incrementa los problemas \textit{1}, al necesitar una partición de validación necesitaremos más datos, y \textit{2}, el coste computacional se multiplica por cada vez que haya que entrenar la red, que puede ser varias veces por cada hiper-parámetro que tengamos.
 \end{enumerate}\par
-Por tanto, es común pre-entrenar una red convolucional en un conjunto de datos significativamente grande y usar la red convolucional como inicialización o como extractor fijo de características de la tarea de interés. 
+Por tanto, es común pre-entrenar una red convolucional en un conjunto de datos significativamente grande y usar la red convolucional como inicialización o como extractor fijo de características de la tarea de interés (como vemos en \cite{he2016deep}). 
 \begin{definition}
 Llamaremos \textbf{transfer learning} al campo de estudio que reutiliza el lenguaje de representación de un problema(que llamaremos problema origen o \textit{Source}) para resolver otro(que llamaremos objetivo o \textit{Target}). 
 
 A la hora de utilizar \textbf{transfer learning} tenemos dos componentes base:  Un dominio $\mathcal{D}$ definido por un conjunto de instancias de datos con una distribución de probabilidades y una tarea $\mathcal{T}$, definida a partir de un conjunto de clases y una función objetivo.
 
-Para un problema de \textit{transfer learning} usaremos la notación: 
+Para un problema de \textit{transfer learning} usaremos la notación(introducida en \cite{pan2010survey}): 
 \begin{itemize}
 \item Problema origen: $(\mathcal{T_S},\mathcal{D_S})$
 \item Problema objetivo: $(\mathcal{T_T},\mathcal{D_T})$
@@ -672,17 +689,17 @@ Para un problema de \textit{transfer learning} usaremos la notación:
 Los dos casos más comunes de transfer learning son: 
 
 \begin{itemize}
-\item \textbf{Fine-tuning} La primera estrategia consiste en inicializar los datos desde un estado no aleatorio (tomando los pesos ya entrenados), y a continuación, entrenar la red sobre estos datos. 
+\item \textbf{Fine-tuning}(\cite{yosinski2014transferable}): La primera estrategia consiste en inicializar los datos desde un estado no aleatorio (tomando los pesos ya entrenados), y a continuación, entrenar la red sobre estos datos. 
 De esta manera puedes reducir significativamente el conjunto de datos necesario para entrenarla, sin embargo, sigue necesitando tiempo para optimizar los múltiples hiper-parámetros involucrados en el proceso y una cantidad significativa de recursos computacionales. 
 %En el caso de redes convolucionales esto se debe a que las primeras capas tienden a ser bastante generales.
 
 
-\item \textbf{Feature Extraction} Consiste en procesar un conjunto de datos a través de una red neuronal ya entrenada y extraer valores de activación para que puedan ser utilizados por otro mecanismo de aprendizaje. Este método es aplicable a conjuntos de datos de cualquier tamaño, puesto a que cada dato es procesado independientemente. Además tiene un menor coste computacional, ya que no tiene que entrenar la red y no requiere la optimización de hiper-parámetros. Por estos motivos las aplicaciones de \textit{transfer learning for feature extraction} están limitadas solo a las  capacidades de los métodos que utilices encima de la representación profunda obtenida. 
+\item \textbf{Feature Extraction}(\cite{pan2010survey}) Consiste en procesar un conjunto de datos a través de una red neuronal ya entrenada y extraer valores de activación para que puedan ser utilizados por otro mecanismo de aprendizaje. Este método es aplicable a conjuntos de datos de cualquier tamaño(\cite{azizpour2016factors}, \cite{sharif2014cnn} ), puesto a que cada dato es procesado independientemente. Además tiene un menor coste computacional, ya que no tiene que entrenar la red y no requiere la optimización de hiper-parámetros. Por estos motivos las aplicaciones de \textit{transfer learning for feature extraction} están limitadas solo a las  capacidades de los métodos que utilices encima de la representación profunda obtenida. 
 
 
 \end{itemize}
 
-En nuestro caso nos centraremos en \textit{transfer learning for features extraction} \cite{behaviourcnn}. 
+En nuestro caso nos centraremos en un tipo concreto de \textit{transfer learning for features extraction} \cite{behaviourcnn}, que explicaremos más adelante en la sección\ref{sec:fne}. 
 
 
 
@@ -691,9 +708,11 @@ En nuestro caso nos centraremos en \textit{transfer learning for features extrac
 
 \section{Trabajo Relacionado}
 
-\subsection{Full-Network embedding}
+\subsection{Full-Network embedding} \label{sec:fne}
 
-En general en \textit{transfer learning for feature extraction} es común tomar los valores de activación de una sola capa cercana a la salida, como podemos ver en la figura \ref{fig:base}. El resto de capas se descartan por 
+En esta sección explicaré el \textit{full-network embedding} presentado en \cite{fne}.
+
+En general en \textit{transfer learning for feature extraction} es común tomar los valores de activación de una sola capa cercana a la salida, como podemos ver en la figura \ref{fig:base}, donde el proceso de \textit{feature extraction} solo se hace en las últimas capas, \textit{fully-connected}, mientras que las capas convolucionales(todas las anteriores) permanecen intactas. El resto de capas se descartan por 
 "ser poco probable que contengan una representación mejor"\cite{onlylastlayers}, sin embargo es conocido que todas las capas de una red profunda pueden contribuir a caracterizar los datos de diferentes maneras. Esto implica que la representación más versátil y rica que puede ser generada por un proceso de \textit{features extraction} debe incluir todas las capas de la red,es decir, debe definir un \textit{full-network embedding}. 
 \begin{figure}[H]
 \centering
@@ -703,11 +722,12 @@ En general en \textit{transfer learning for feature extraction} es común tomar 
 \end{figure}
 Dado un conjunto de datos \textit{t1}, queremos representarlo en el lenguaje aprendido para una tarea \textit{t0}. Para ello el \textit{full-network embedding} se divide en 4 pasos: 
 \begin{itemize}
-\item El primer paso es hacer un \textbf{forward pass} de cada instancia de datos de \textit{t1} a través del modelo entrenado en \textit{t0}, guardando todos los valores de activación de cada capa de la red, (tanto las convolucionales como las completas). 
+\item El primer paso es hacer un \textbf{forward pass} de cada instancia de datos de \textit{t1} a través del modelo entrenado en \textit{t0}, guardando todos los valores de activación de cada capa de la red, (tanto las convolucionales como las \textit{fully-connected}). 
 
-\item El segundo paso consiste en un \textbf{spatial average pooling} en los filtros convolucionales. Como se ha explicado en el capítulo sobre redes convolucionales, un filtro convolucional genera varias activaciones para una entrada, para darle la capacidad de obtener información espacial.  El objetivo de este paso es obtener un solo valor de activación para cada filtro, evitando así un aumento de la dimensionalidad. Los valores resultantes se concatenan a los de las capas completas en un solo vector, para generar el \textit{embedding} completo.
+\item El segundo paso consiste en un \textbf{spatial average pooling} en los filtros convolucionales. Como se ha explicado en el capítulo sobre redes convolucionales, un filtro convolucional genera varias activaciones para una entrada, para darle la capacidad de obtener información espacial.  El objetivo de este paso es obtener un solo valor de activación para cada filtro, evitando así un aumento de la dimensionalidad. Los valores resultantes se concatenan a los de las capas \textit{fully-connected} en un solo vector, para generar el \textit{embedding} completo.
 
-\item El tercer paso es una \textbf{estandarización de características}. Puesto a que los valores del \textit{embedding} provienen de distintos tipos de neuronas en distintos puntos de la red, la distribución de las activaciones pueden variar mucho y si se concatenasen todas algunas dominarían sobre las otras. El valor estandarizado de cada categoría se obtiene calculando la media y la desviación típica del conjunto de datos de entrenamiento, es decir, que se estandariza según el contexto de la feature en todo el conjunto de datos. De esta forma se pueden integrar los distintos valores en el \textit{embedding}. 
+\item El tercer paso es una \textbf{estandarización de características}. Puesto a que los valores del \textit{embedding} provienen de distintos tipos de neuronas en distintos puntos de la red, la distribución de las activaciones pueden variar mucho y si se concatenasen todas algunas dominarían sobre las otras. \par
+El valor estandarizado de cada categoría se obtiene calculando la media y la desviación típica del conjunto de datos de entrenamiento, es decir, que se estandariza según el contexto de la feature en todo el conjunto de datos. De esta forma se pueden integrar los distintos valores en el \textit{embedding}. 
 
 \begin{figure}
 
@@ -730,13 +750,15 @@ grid = major]
 \label{fig:caracterization}}
 \end{figure}
 
-\item Finalmente se aplica una \textbf{discretización de características} para evitar problemas al intentar explorar un espacio de dimensión tan grande(una sola capa convolucional puede llegar a tener del orden de 100,000,000 parámetros, por ejemplo \cite{cnnexample}). Ésta discretización consiste en tomar unos límites que dependen de los datos, $ft^-$ y $ft^+$ y reemplazar los valores que tienen un valor atípicamente bajo (todos los valores $x < ft^-$) por un -1, los que tienen un valor típico (todos los valores $ ft^- < x < ft^+$) por un 0 y los que tienen un valor atípicamente alto (todos los valores $ ft^+ < x$) por un 1, como podemos ver en la representación gráfica \ref{fig:caracterization}. Para encontrar los límites se basan en \cite{behaviourcnn}, donde dan una visión estadística sobre como evaluar la importancia de las diferentes características de una red convolucional comparando las activaciones para una clase concreta respecto al resto de clases del conjunto de datos. De esta forma los autores de \cite{behaviourcnn} separan las características en tres conjuntos: \textit{característico por presencia}, \textit{no característico} y \textit{característico por ausencia}.
+\item Finalmente se aplica una \textbf{discretización de características} para evitar problemas al intentar explorar un espacio de dimensión tan grande(una sola capa convolucional puede llegar a tener del orden de 100,000,000 parámetros, por ejemplo \cite{cnnexample}). Ésta discretización consiste en tomar unos límites que dependen de los datos, $ft^-$ y $ft^+$ y reemplazar los valores que tienen un valor atípicamente bajo (todos los valores $x < ft^-$) por un -1, los que tienen un valor típico (todos los valores $ ft^- < x < ft^+$) por un 0 y los que tienen un valor atípicamente alto (todos los valores $ ft^+ < x$) por un 1, como podemos ver en la representación gráfica \ref{fig:caracterization}. 
+
+Para encontrar los límites, los autores se basan en \cite{behaviourcnn}, donde dan una visión estadística sobre como evaluar la importancia de las diferentes características de una red convolucional comparando las activaciones para una clase concreta respecto al resto de clases del conjunto de datos. De esta forma los autores de \cite{behaviourcnn} separan las características en tres conjuntos: \textit{característico por presencia}, \textit{no característico} y \textit{característico por ausencia}.
 \end{itemize}
 
-Un ejemplo de la separación comentada en la \textit{discretización de características} sería, si tenemos como datos objetivo un conjunto de coches tendremos que las features que se activen con las ruedas no serán representativas, puesto a que todos los coches tienen, las categorías que se activen con el techo de un coche serán representativas por ausencia para clasificar descapotables mientras que las que se activen para la capota serán representativas por presencia.
+Un ejemplo de la separación comentada en la \textit{discretización de características} sería: si tenemos como datos objetivo un conjunto de coches tendremos que las features que se activen con las ruedas no serán representativas, puesto a que todos los coches tienen, las categorías que se activen con el techo de un coche serán representativas por ausencia para clasificar descapotables mientras que las que se activen para la capota serán representativas por presencia.
 
 
-En la figura \ref{fig:fnediagram} podemos ver un diagrama de como se desarrollarían los diferentes pasos. Nótese la diferencia con la figura \ref{fig:base}.
+En la figura \ref{fig:fnediagram} podemos ver un diagrama de como se desarrollarían los diferentes pasos. Nótese la diferencia con la figura \ref{fig:base}. Mientras que en la figura \ref{fig:base} solo se modificaban las capas finales, en esta  se modifican también las convolucionales, dando lugar al \textit{full-network embedding} explicado.
 
 \begin{figure}[h]
 \label{fig:fne}
@@ -811,7 +833,8 @@ En concreto utilizaremos las relaciones de:
     	};
 \end{tikzpicture}
 		\caption{Ejemplo de Hiperónimos \label{fig:hiperonimos}}
-	\end{subfigure}       
+	\end{subfigure}    
+	\caption{}   
 \end{figure}
 
 %
@@ -938,8 +961,8 @@ Hemos tomado estos dos conjuntos por estar distribuidos de una forma bastante un
 Partiendo de los datos comentados y del trabajo publicado en \cite{fne} tomamos varios \textbf{objetivos} a partir de los que desarrollar el trabajo.
 
 \begin{itemize}
-\item Analizar el \textit{embedding} dado y el comportamiento de las \textit{features} en las distintas capas. 
-\item Analizar si hay alguna relación entre los embeddings de las diferentes clases y synsets relacionados con ellas (sus hipónimos e hipérnimos). 
+\item Analizar el \textit{embedding} dado y el comportamiento de las \textit{features} en las distintas capas. Para ello se realizará un estudio estadístico inicial de la matriz de \textit{embeddings}. De este estudio se analizarán los diferentes puntos de interés, y finalmente se hará un estudio más detallado de estos.  
+\item Analizar si hay alguna relación entre los \textit{embeddings} de las diferentes clases y \textit{synsets} relacionados con ellas (sus hipónimos e hipérnimos). Para ello se realizarán las estadísticas del comportamiento de los \textit{synsets} de la figura \ref{fig:synsets} con respecto a la matriz de \textit{embeddings}, con intención de profundizar en los puntos de interés que se encuentren. 
 \end{itemize}
 
 \subsection{Estadísticas}\label{se:stats}
@@ -955,7 +978,7 @@ Además, ambas familias(la de seres vivos y objetos), se distribuyen de forma pa
 \begin{figure}[H] 
 	\centering
 	\includegraphics[width=0.8\textwidth] {Images/plots/25/distribution_of_synsets_bar.png}
-	\caption{ 
+	\caption{ Distribución de los \textit{synsets} en el embedding
 	\label{fig:totalsynsets}}
 \end{figure}
 
@@ -998,14 +1021,13 @@ Observamos también como se distribuyen las \textit{features} respecto al conjun
 En la figura \ref{fig:imagesperfeature} tenemos la distribución de las imágenes por categoría, es decir cuantas imágenes tienen una cierta cantidad de \textit{features}. La idea de generar esta gráfica era ver si podíamos encontrar alguna distribución concreta o patrón. %En las tres categorías se ven dos distribuciones bien diferenciadas, lo que hace plantearse si depende de los dos tipos de capas diferentes del \textit{embedding} (las convolucionales y las completas).
 
 Al estudiar la matriz de embeddings nos planteamos las siguientes hipótesis: 
-\begin{itemize}
+\begin{enumerate}
 \item Las características se distribuyen de diferente manera en los layers convolucionales y los completos. Esta hipótesis proviene de la gráfica \ref{fig:imagesperfeature}, donde 
 en las tres categorías se ven dos distribuciones bien diferenciadas. Otro motivo para pensar que las características se distribuyen de forma diferente es que las capas \textit{fully-connected} tienen más \textit{features} que las convolucionales.
 \item Cuanto más concreto es un \textit{synset}, debería haber más features representativas, tanto por ausencia como por presencia.
 \item Cuanto más profundo es el layer, debería haber más features representativas, tanto por ausencia como por presencia. Esta hipótesis viene de que en una red convolucional cuanto más profunda es una capa más concretas suelen ser las features con las que se activa, como vimos en la figura \ref{fig:deepconcept}.
 \item Se puede ver una relación entre los embeddings de synsets hipónimos. La idea sería que dada una imagen perteneciente a un \textit{synset}, compartiría \textit{features} características con sus hipónimos.
-\end{itemize}
-
+\end{enumerate}
 
 
 \newpage
@@ -1017,11 +1039,74 @@ En este apartado explicaré:
 \item Las distribuciones de las imágenes por feature son diferentes para conv y fc, y mantienen la forma entre embeddings.
 \item Las distribuciones de las imágenes por feature por layer por synset se conservan. 
 \item Explicar los resultados de las matrices de cambio. 
-\item Cuanto más concreto es el synset mayor proprción de 1. 
+\item Cuanto más concreto es el synset mayor proporción de 1. 
 
 \end{itemize}
+\subsubsection{Distribución por tipo de capa}
+Para comprobar si la hipótesis (1) es cierta calculamos las gráficas de la figura \ref{fig:imagesperfeature} distinguiendo entre las capas convlolucionales y \textit{fully-connected}, obteniendo las siguientes gráficas: 
 
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {Images/plots/25/Images_per_feature_of_-1_category_all_layers.png}
+		\caption{Categoría -1}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]  {Images/plots/25/Images_per_feature_of_0_category_all_layers.png}
+		\caption{Categoría 0}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]  {Images/plots/25/Images_per_feature_of_1_category_all_layers.png}
+		\caption{Categoría 1}
+	\end{subfigure}       
+	\caption{Imágenes por categoría \label{fig:imagesperfeature}}
+\end{figure}
 
+En ellas podemos ver claramente la distinción que suponíamos. Sobretodo para la categoría 0, hay una clara separación entre el comportamiento de los diferentes tipos de capa. En parte esto se debe a que hay más \textit{features} en las capas \textit{fully-connected}, por eso sus gráficas correspondientes son más altas, además en éstas podemos ver una menor variabilidad, que concuerda con el hecho de que solamente son 2 capas \textit{fully-connected}, contra las 5 convolucionales. También vemos que el grueso de las features características (tanto por presencia como por ausencia) se encuentran en las capas \textit{fully-connected}, cosa que concuerda con el hecho de que sean estas capas las que dan la clasificación final. 
+ 
+Con respecto a los synsets las distribuciones se mantienen bastante en los \textit{synsets} más generales, como podemos ver en la figura \ref{fig:imagesperfeatureliving}, mientras que en los menos generales se empiezan a distorsionar. Como podemos observar en la figura \ref{fig:imagesperfeaturewheel}.
+
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {Images/plots/25/synsets/Images_per_feature_of_-1_category_living_thingall_layers.png}
+		\caption{Categoría -1}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]  {Images/plots/25/synsets/Images_per_feature_of_0_category_living_thingall_layers.png}
+		\caption{Categoría 0}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]  {Images/plots/25/synsets/Images_per_feature_of_1_category_living_thingall_layers.png}
+		\caption{Categoría 1}
+	\end{subfigure}       
+	\caption{Imágenes por categoría del \textit{synset} seres vivos \label{fig:imagesperfeatureliving}}
+\end{figure}
+
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {Images/plots/25/synsets/Images_per_feature_of_-1_category_wheeled_vehicleall_layers.png}
+		\caption{Categoría -1}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]  {Images/plots/25/synsets/Images_per_feature_of_0_category_wheeled_vehicleall_layers.png}
+		\caption{Categoría 0}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]  {Images/plots/25/synsets/Images_per_feature_of_1_category_wheeled_vehicleall_layers.png}
+		\caption{Categoría 1}
+	\end{subfigure}       
+	\caption{Imágenes por categoría del \textit{synset} vehículo \label{fig:imagesperfeaturewheel}}
+\end{figure}
+
+La diferencia entre los distintos grupos de gráficas (\textit{synsets} más generales contra más específicos) se debe a que al ser una muestra más pequeña hay una mayor varianza. También se observa una disminución de la proporción de \textit{features} no característica cuanto más concreto es el synset, esto nos da una idea de que la red convolucional se adapta al nivel de generalización que tiene un \textit{synset}, por ejemplo, \textit{perro} tendrá menos \textit{features} no características (en proporción) que \textit{mamífero}. Este hecho concuerda con nuestra hipótesis (2), en la que ahondaremos más adelante.
+
+También se observan unos comportamientos simétricos entre las \textit{features} características por presencia y por ausencia en todos los synsets y en la gráfica general, ésto se debe a que el \textit{threshold} utilizado en este embedding era $ft^- = -0.25$ y $ft^+ = 0.25$.  
+
+\subsubsection{Comportamiento respecto a la profundidad}
+
+El objetivo de esta sección es comprobar si podemos comprobar o desmentir la hipótesis (3). 
 
 \subsection{Del full network embedding a wordnet}
 
@@ -1035,33 +1120,33 @@ Explicación de la distancia definida entre los synsets, demostración de que es
 %- Cuanto más profundo sea el layer más 1.
 
 
-\section{Estructura del TFG: }
-
-\begin{itemize}
-\item \textbf{Introducción (5 pags): }
-\begin{itemize}
-\item FNN (Explicar neural networks, me puedo inspirar en \url{https://upc-mai-dl.github.io/mlp-convnets-theory/})
-\item CNN 
-\item EMbeddings  (Transfer Learning)
-\end{itemize}
-\item \textbf{Related Work (10 pags):}
-\begin{itemize}
-\item FNE 
-\item Wordnet 
-\item imagenet 
-\end{itemize}
-\item \textbf{Approach }
-\begin{itemize}
-\item Hipotesis iniciales 
-\item statistics 
-\item insights 
-\end{itemize}
-\item \textbf{Analysis}
-\begin{itemize}
-\item De wordnet a fne: Dado el embedding hemos encontrado patrones con los distintos synsets que concuerdan con las hipótesis
-\item De fne a wordnet: Dado el árbol sintáctico y los patrones anteriores podemos generar una distancia con la que representamos lo parecidos que son los siynsets para la imagen. 
-\end{itemize}
-\end{itemize}
+%\section{Estructura del TFG: }
+%
+%\begin{itemize}
+%\item \textbf{Introducción (5 pags): }
+%\begin{itemize}
+%\item FNN (Explicar neural networks, me puedo inspirar en \url{https://upc-mai-dl.github.io/mlp-convnets-theory/})
+%\item CNN 
+%\item EMbeddings  (Transfer Learning)
+%\end{itemize}
+%\item \textbf{Related Work (10 pags):}
+%\begin{itemize}
+%\item FNE 
+%\item Wordnet 
+%\item imagenet 
+%\end{itemize}
+%\item \textbf{Approach }
+%\begin{itemize}
+%\item Hipotesis iniciales 
+%\item statistics 
+%\item insights 
+%\end{itemize}
+%\item \textbf{Analysis}
+%\begin{itemize}
+%\item De wordnet a fne: Dado el embedding hemos encontrado patrones con los distintos synsets que concuerdan con las hipótesis
+%\item De fne a wordnet: Dado el árbol sintáctico y los patrones anteriores podemos generar una distancia con la que representamos lo parecidos que son los siynsets para la imagen. 
+%\end{itemize}
+%\end{itemize}
 
 %\section{Introducción}
 \newpage
@@ -1079,111 +1164,15 @@ Explicación de la distancia definida entre los synsets, demostración de que es
 %______________________________________________________________
 \appendix
 \vfill\newpage 
-\section{Glosario}
-\begin{itemize}
-\item Fordward pass: 
-\item Sobreajuste: 
-\item Kernel
-\item Deep Network:
-\item Hiperparámetros
-\item Valores de activación de una red neuronal
-\end{itemize}
-
-
-
-\section{Código utilizado}
-\begin{minted}{python}
-class Data:
-    """
-    Esta clase consiste en los datos que voy a necesitar para hacer las estadísticas.
-    Que no dependen de los synsets elegidos.
-
-    Attributes:
-        version (int): versión del embedding que utilizo puede ser 19, 25 o 31
-        embedding_path (str): path
-        layers (dict): Un diccionario tal que
-            layers[string correspondiente al layer] = [inicio del layer, final del layer]
-
-         labels ()
-
-         :parameter version = Version del embedding que utilizo
-    """
-
-    def __init__(self, path, version=25):
-        """
-
-        :param version: Es la versión del embedding que queremos cargar (25,31,19)
-        """
-        self.version = version
-        _embedding_path = "../Data/vgg16_ImageNet_ALLlayers_C1avg_imagenet_train.npz"
-        self.imagenet_id_path = "../Data/synset.txt"
-        if version == 25:
-            _embedding = 'vgg16_ImageNet_imagenet_C1avg_E_FN_KSBsp0.15n0.25_Gall_train_.npy'
-        elif version == 19:
-            _embedding = 'vgg16_ImageNet_imagenet_C1avg_E_FN_KSBsp0.11n0.19_Gall_train_.npy'
-        elif version == 31:
-            _embedding = 'vgg16_ImageNet_imagenet_C1avg_E_FN_KSBsp0.19n0.31_Gall_train_.npy'
-        else:
-            _embedding = path
-            print('No has puesto un embedding válido, usando el de defoult (25)')
-        self.discretized_embedding_path = '../Data/Embeddings/' + _embedding
-        print('Estamos usando ' + _embedding[-20:-16])
-        embedding = np.load(_embedding_path)
-        self.labels = embedding['labels']
-        # self.matrix = self.embedding['data_matrix']
-        del embedding
-        self.dmatrix = np.array(np.load(self.discretized_embedding_path))
-        self.imagenet_all_ids = np.genfromtxt(self.imagenet_id_path, dtype=np.str)
-        self.features_category = [-1, 0, 1]
-        self.colors = ['#3643D2', 'c', '#722672', '#BF3FBF']
-        self.layers = {
-            'conv1_1': [0, 64],  # 1
-            'conv1_2': [64, 128],  # 2
-            'conv2_1': [128, 256],  # 3
-            'conv2_2': [256, 384],  # 4
-            'conv3_1': [384, 640],  # 5
-            'conv3_2': [640, 896],  # 6
-            'conv3_3': [896, 1152],  # 7
-            'conv4_1': [1152, 1664],  # 8
-            'conv4_2': [1664, 2176],  # 9
-            'conv4_3': [2176, 2688],  # 10
-            'conv5_1': [2688, 3200],  # 11
-            'conv5_2': [3200, 3712],  # 12
-            'conv5_3': [3712, 4224],  # 13
-            'fc6': [4224, 8320],  # 14
-            'fc7': [8320, 12416],  # 15
-            'conv1': [0, 128],  # 16
-            'conv2': [128, 384],  # 17
-            'conv3': [384, 1152],  # 18
-            'conv4': [1152, 2688],  # 19
-            'conv5': [2688, 4224],  # 20
-            'conv': [0, 4224],  # 21
-            'fc6tofc7': [4224, 12416],  # 23
-            # 'all':[0,12416]          # 24
-        }
-        self.reduced_layers = {
-            'conv1': [0, 128],
-            'conv2': [128, 384],
-            'conv3': [384, 1152],
-            'conv4': [1152, 2688],
-            'conv5': [2688, 4224],
-            'fc6': [4224, 8320],
-            'fc7': [8320, 12416]
-        }
-
-    def __del__(self):
-        self.embedding = None
-        self.dmatrix = None
-        self.version = None
-        self.embedding_path = None
-        self.layers = None
-        self.labels = None
-        self.features_category = None
-        self.colors = None
-        gc.collect()
-
-
-\end{minted}
+%\section{Glosario}
+%\begin{itemize}
+%\item Fordward pass: 
+%\item Sobreajuste: 
+%\item Kernel
+%\item Deep Network:
+%\item Hiperparámetros
+%\item Valores de activación de una red neuronal
+%\end{itemize}
 
 
 \end{document}
