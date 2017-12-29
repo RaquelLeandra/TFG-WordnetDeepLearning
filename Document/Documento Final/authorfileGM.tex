@@ -19,8 +19,7 @@
 \usepackage{tikz}
 %\usetikzlibrary{arrows}
 \usetikzlibrary{positioning}
-\usetikzlibrary{matrix}
-
+\usetikzlibrary{matrix,decorations.pathreplacing,calc}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.10}
 
@@ -101,6 +100,29 @@
   \BODY
 }
 \makeatother
+
+
+
+ \pgfkeys{tikz/mymatrixenv/.style={decoration=brace,every left delimiter/.style=    {xshift=3pt},every right delimiter/.style={xshift=-3pt}}}
+ \pgfkeys{tikz/mymatrix/.style={matrix of math nodes,left delimiter=[,right delimiter=    {]},inner sep=2pt,column sep=1em,row sep=0.5em,nodes={inner sep=0pt}}}
+ \pgfkeys{tikz/mymatrixbrace/.style={decorate,thick}}
+
+\newcommand\mymatrixbraceoffseth{0.5em}
+ \newcommand\mymatrixbraceoffsetv{0.2em}
+ 
+\newcommand*\mymatrixbracetop[4][mtr]{
+\draw[mymatrixbrace] ($(#1.north west)!(#1-1-#2.north west)!(#1.north east)+(0,\mymatrixbraceoffsetv)$)
+    -- node[above=2pt] {#4} 
+    ($(#1.north west)!(#1-1-#3.north east)!(#1.north east)+(0,\mymatrixbraceoffsetv)$);
+}
+
+\newcommand*\mymatrixbraceleft[4][mtr]{
+ \draw[mymatrixbrace] ($(#1.north east)!(#1-#2-1.north east)!(#1.south east)+    (\mymatrixbraceoffseth,0)$)
+    -- node[right=2pt] {#4} 
+     ($(#1.north east)!(#1-#3-1.south east)!(#1.south east)+    (\mymatrixbraceoffseth,0)$);
+}
+
+
 
 % Body of document
 
@@ -621,7 +643,6 @@ Por su conectividad limitada, las capas convolucionales pueden centrarse en una 
 \caption{Ejemplo de la forma de operar una convolución sobre una imagen.
 \label{fig:conv}
 }
-
 \end{figure}
 
 En la figura \ref{fig:conv} podemos ver un ejemplo del funcionamiento de una convolución con un kernel de tamaño 9 sobre una imagen, podemos observar como se comparten los pesos a la hora de calcular el resultado.
@@ -990,7 +1011,7 @@ Para empezar comparamos la cantidad de elementos de cada \textit{feature}.
 \begin{figure}[ht] 
 	\centering
 	\includegraphics[width=0.4\textwidth] {Images/plots/25/quantity_of_features_bar.png}
-	\caption{ Cantidad de características de cada categoría
+	\caption{ Cantidad de \textit{features} de cada categoría
 	\label{fig:totalfeatures}}
 
 
@@ -1022,11 +1043,11 @@ En la figura \ref{fig:imagesperfeature} tenemos la distribución de las imágene
 
 Al estudiar la matriz de embeddings nos planteamos las siguientes hipótesis: 
 \begin{enumerate}
-\item Las características se distribuyen de diferente manera en los layers convolucionales y los completos. Esta hipótesis proviene de la gráfica \ref{fig:imagesperfeature}, donde 
+\item \label{h1} Las características se distribuyen de diferente manera en los layers convolucionales y los completos. Esta hipótesis proviene de la gráfica \ref{fig:imagesperfeature}, donde 
 en las tres categorías se ven dos distribuciones bien diferenciadas. Otro motivo para pensar que las características se distribuyen de forma diferente es que las capas \textit{fully-connected} tienen más \textit{features} que las convolucionales.
-\item Cuanto más concreto es un \textit{synset}, debería haber más features representativas, tanto por ausencia como por presencia.
-\item Cuanto más profundo es el layer, debería haber más features representativas, tanto por ausencia como por presencia. Esta hipótesis viene de que en una red convolucional cuanto más profunda es una capa más concretas suelen ser las features con las que se activa, como vimos en la figura \ref{fig:deepconcept}.
-\item Se puede ver una relación entre los embeddings de synsets hipónimos. La idea sería que dada una imagen perteneciente a un \textit{synset}, compartiría \textit{features} características con sus hipónimos.
+\item \label{h2} Cuanto más concreto es un \textit{synset}, debería haber más features representativas, tanto por ausencia como por presencia.
+\item \label{h3} Cuanto más profundo es el layer, debería haber más features representativas, tanto por ausencia como por presencia. Esta hipótesis viene de que en una red convolucional cuanto más profunda es una capa más concretas suelen ser las features con las que se activa, como vimos en la figura \ref{fig:deepconcept}.
+\item \label{h4} Se puede ver una relación entre los embeddings de synsets hipónimos. La idea sería que dada una imagen perteneciente a un \textit{synset}, compartiría \textit{features} características con sus hipónimos.
 \end{enumerate}
 
 
@@ -1059,7 +1080,7 @@ Para comprobar si la hipótesis (1) es cierta calculamos las gráficas de la fig
 		\includegraphics[width=\textwidth]  {Images/plots/25/Images_per_feature_of_1_category_all_layers.png}
 		\caption{Categoría 1}
 	\end{subfigure}       
-	\caption{Imágenes por categoría \label{fig:imagesperfeature}}
+	\caption{Imágenes por \textit{feature} \label{fig:imagesperfeature}}
 \end{figure}
 
 En ellas podemos ver claramente la distinción que suponíamos. Sobretodo para la categoría 0, hay una clara separación entre el comportamiento de los diferentes tipos de capa. En parte esto se debe a que hay más \textit{features} en las capas \textit{fully-connected}, por eso sus gráficas correspondientes son más altas, además en éstas podemos ver una menor variabilidad, que concuerda con el hecho de que solamente son 2 capas \textit{fully-connected}, contra las 5 convolucionales. También vemos que el grueso de las features características (tanto por presencia como por ausencia) se encuentran en las capas \textit{fully-connected}, cosa que concuerda con el hecho de que sean estas capas las que dan la clasificación final. 
@@ -1100,13 +1121,245 @@ Con respecto a los synsets las distribuciones se mantienen bastante en los \text
 	\caption{Imágenes por categoría del \textit{synset} vehículo \label{fig:imagesperfeaturewheel}}
 \end{figure}
 
-La diferencia entre los distintos grupos de gráficas (\textit{synsets} más generales contra más específicos) se debe a que al ser una muestra más pequeña hay una mayor varianza. También se observa una disminución de la proporción de \textit{features} no característica cuanto más concreto es el synset, esto nos da una idea de que la red convolucional se adapta al nivel de generalización que tiene un \textit{synset}, por ejemplo, \textit{perro} tendrá menos \textit{features} no características (en proporción) que \textit{mamífero}. Este hecho concuerda con nuestra hipótesis (2), en la que ahondaremos más adelante.
+La diferencia entre los distintos grupos de gráficas (\textit{synsets} más generales contra más específicos) se debe a que al ser una muestra más pequeña hay una mayor varianza. También se observa una disminución de la proporción de \textit{features} no característica cuanto más concreto es el synset, esto nos da una idea de que la red convolucional se adapta al nivel de generalización que tiene un \textit{synset}, por ejemplo, \textit{perro} tendrá menos \textit{features} no características (en proporción) que \textit{mamífero}. Este hecho concuerda con nuestra hipótesis \ref{h2}, en la que ahondaremos más adelante.
 
-También se observan unos comportamientos simétricos entre las \textit{features} características por presencia y por ausencia en todos los synsets y en la gráfica general, ésto se debe a que el \textit{threshold} utilizado en este embedding era $ft^- = -0.25$ y $ft^+ = 0.25$.  
+También se observan unos comportamientos simétricos entre las \textit{features} características por presencia y por ausencia en todos los \textit{synsets} y en la gráfica general. Este tipo de simetría es una buena señal, puesto a que la caracterización que hemos dado es abstracta, es decir, la definición de característica por ausencia o por presencia no viene dada por la red convolucional sino por un estudio externo a ésta.  
 
 \subsubsection{Comportamiento respecto a la profundidad}
 
-El objetivo de esta sección es comprobar si podemos comprobar o desmentir la hipótesis (3). 
+El objetivo de esta sección es comprobar si podemos aceptar o desmentir la hipótesis \ref{h3}. 
+
+Para ello hemos calculado la cantidad de \textit{features} de cada tipo por capa respecto al \textit{embedding} total. Como podemos observar en la gráfica \ref{fig:totalfeaturesperlayer}. De esta forma se esperaba ver como se distribuyen las \textit{features} por cada capa.
+
+
+\begin{figure}[ht] 
+	\centering
+	\includegraphics[width=0.9\textwidth] {Images/plots/25/Comparative_of_synsets_all.png}
+	\caption{ Cantidad de \textit{features} de cada categoría por capa
+	\label{fig:totalfeaturesperlayer}}
+\end{figure}
+
+En la gráfica esperábamos encontrar una mayor proporción de \textit{features} características por presencia en las capas finales, sin embargo podemos ver que la mayor proporción se encuentra en la cuarta capa convolucional. En esta gráfica podemos ver claramente que todas las capas, no solo las \textit{fully-connected} contienen información importante de cara a caracterizar el espacio de representación, al contrario de lo que sostienen en \cite{onlylastlayers}.
+
+\subsubsection{Comportamiento de los synsets}
+
+A la hora de estudiar los \textit{synsets} nos hemos topado con la dificultad de decidir el valor de una \textit{feature} para el conjunto de todas las muestras que pertenecen al \textit{synset}, puesto a que para diferentes muestras puede tener distintos valores, como podemos ver en el ejemplo de la figura \ref{fig:muestrasynsets}. 
+
+
+\begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}[mymatrixenv]
+
+	\matrix (mtr) [matrix of nodes,column sep=-\pgflinewidth, row sep=-\pgflinewidth,  nodes={draw,
+      minimum height=0.5cm,
+      anchor=center,
+      text width=0.5cm,
+      align=center,
+      inner sep=0pt
+    }]
+	{
+		|[fill=blue!30]| 1 & |[fill=blue!30]| 1 & |[fill=blue!30]| -1 & |[fill=blue!30]| 1 & |[fill=blue!30]| 0 & |[fill=blue!30]| 0 & |[fill=blue!30]| -1\\
+		0 & 0 & -1 & -1 & -1 & 0 & 0\\
+		0 & 0 & 0 & 1 & -1 & -1 & 0\\
+		|[fill=green!30]| 1 & |[fill=green!30]| 1 & |[fill=green!30]| -1 & |[fill=green!30]| 1 & |[fill=green!30]| -1 & |[fill=green!30]| 0 & |[fill=green!30]| 0\\
+		0 & 0 & -1 & 1 & 0 & 0 & 0\\
+		0 & -1 & 1 & 0 & 0 & 0 & 1\\
+		|[fill=blue!30]| 1 & |[fill=blue!30]| 1 & |[fill=blue!30]| -1 & |[fill=blue!30]| -1 & |[fill=blue!30]| -1 & |[fill=blue!30]| 0 & |[fill=blue!30]| 0\\
+		-1 & -1 & 0 & 0 & 0 & 0 & 0\\
+	};
+
+	\draw[very thick, blue] (mtr-1-1.north west) rectangle (mtr-1-7.south east);
+	\draw[very thick, green] (mtr-4-1.north west) rectangle (mtr-4-7.south east);
+	\draw[very thick, blue] (mtr-7-1.north west) rectangle (mtr-7-7.south east);
+    \node[left=12pt of mtr-1-1] (left-1) {ser vivo};
+    \node[left=12pt of mtr-7-1] (left-3) {ser vivo};
+    \node[left=12pt of mtr-4-1] (left-2) {mamífero};
+    
+    \mymatrixbracetop{1}{7}{\textit{features}}
+ \mymatrixbraceleft{1}{8}{muestras}
+
+
+\end{tikzpicture}
+\end{center}
+\caption{Muestra de una sección del embedding.
+\label{fig:muestrasynsets}
+}
+\end{figure}
+
+Para solucionar este problema hemos decidido tomar dos enfoques diferentes, por un lado hemos tomado la sub-matriz correspondiente a cada \textit{synset}, por otro lado hemos tomado un vector representante para cada \textit{synset} a estudiar. 
+
+\textbf{Sub-matriz:}
+
+En este caso hemos tomado una matriz cuyas filas consisten en las muestras que pertenecen al \textit{synset} que queremos estudiar y cuyas columnas corresponden a las \textit{features}, como muestra el ejemplo de la figura \ref{fig:submatrix}.
+
+\begin{figure}[H]
+\begin{center}
+%\includegraphics[width = 0.5\textwidth]{Images/convolve.png} 
+\begin{tikzpicture}
+
+	\matrix (mtr) [matrix of nodes,column sep=-\pgflinewidth, row sep=-\pgflinewidth,  nodes={draw,
+      minimum height=0.5cm,
+      anchor=center,
+      text width=0.5cm,
+      align=center,
+      inner sep=0pt
+    }]
+	{
+		|[fill=blue!30]| 1 & |[fill=blue!30]| -1 & |[fill=blue!30]| -1 & |[fill=blue!30]| 1 & |[fill=blue!30]| 0 & |[fill=blue!30]| 0 & |[fill=blue!30]| -1\\
+		0 & 0 & -1 & -1 & -1 & 0 & 0\\
+		0 & 0 & 0 & 1 & -1 & -1 & 0\\
+		|[fill=green!30]| 0 & |[fill=green!30]| 1 & |[fill=green!30]| -1 & |[fill=green!30]| 1 & |[fill=green!30]| 1 & |[fill=green!30]| 0 & |[fill=green!30]| 0\\
+		|[fill=blue!30]| 1 & |[fill=blue!30]| 1 & |[fill=blue!30]| -1 & |[fill=blue!30]| 0 & |[fill=blue!30]| -1 & |[fill=blue!30]| 0 & |[fill=blue!30]| 0\\
+		0 & 0 & -1 & 1 & 0 & 0 & 0\\
+		0 & -1 & 1 & 0 & 0 & 0 & 1\\
+		|[fill=blue!30]| 1 & |[fill=blue!30]| 1 & |[fill=blue!30]| 1 & |[fill=blue!30]| -1 & |[fill=blue!30]| -1 & |[fill=blue!30]| 0 & |[fill=blue!30]| 0\\
+		-1 & -1 & 0 & 0 & 0 & 0 & 0\\
+	};
+
+    \node [below= of mtr-7-4.south] (lm) {embedding};
+    
+
+	\matrix (K) [right=5em of mtr,matrix of nodes,row sep=-\pgflinewidth, nodes={draw,minimum height=0.5cm,
+      anchor=center,
+      text width=0.5cm,
+      align=center,
+      inner sep=0pt, fill=blue!30}]
+	{
+		1 & -1 & -1 &  1 &  0 & 0 & -1\\
+		1 &  1 & -1 &  0 & -1 & 0 & 0\\
+		1 &  1 &  1 & -1 & -1 & 0 & 0\\
+	};
+    \node [below= of K-2-4.south] (lk) {sub-matriz};
+
+    \draw[very thick, blue] (K-1-1.north west) rectangle (K-3-7.south east);
+	
+	\draw[densely dotted, blue, thick] (mtr-1-1.north west) -- (K-1-1.north west);
+	\draw[densely dotted, blue, thick] (mtr-1-1.south west) -- (K-1-1.south west);
+	\draw[densely dotted, blue, thick] (mtr-1-7.north east) -- (K-1-7.north east);
+	\draw[densely dotted, blue, thick] (mtr-1-7.south east) -- (K-1-7.south east);
+	
+	\draw[densely dotted, blue, thick] (mtr-5-1.north west) -- (K-2-1.north west);
+	\draw[densely dotted, blue, thick] (mtr-5-1.south west) -- (K-2-1.south west);
+	\draw[densely dotted, blue, thick] (mtr-5-7.north east) -- (K-2-7.north east);
+	\draw[densely dotted, blue, thick] (mtr-5-7.south east) -- (K-2-7.south east);
+	
+    \draw[densely dotted, blue, thick] (mtr-8-1.north west) -- (K-3-1.north west);
+	\draw[densely dotted, blue, thick] (mtr-8-1.south west) -- (K-3-1.south west);
+	\draw[densely dotted, blue, thick] (mtr-8-7.north east) -- (K-3-7.north east);
+	\draw[densely dotted, blue, thick] (mtr-8-7.south east) -- (K-3-7.south east);
+\end{tikzpicture}
+\end{center}
+\caption{Ejemplo de una submatriz de un \textit{synset}.
+\label{fig:submatrix}}
+\end{figure}
+
+Este enfoque nos da información general sobre el comportamiento de los distintos \textit{synsets} en el \textit{embedding}. 
+
+Utilizando la sub-matriz de los synsets podemos obtener la cantidad de \textit{features} de cada una de las categorías por \textit{synset}, como vemos en la figura \ref{fig:totalfeaturespersynset}
+
+
+\begin{figure}[ht] 
+	\centering
+	\includegraphics[width=0.9\textwidth] {Images/plots/25/synsetslayer/Comparative_of_synsets_global.png}
+	\caption{ Cantidad de featuers por synset
+	\label{fig:totalfeaturespersynset}}
+\end{figure}
+
+Utilizando esta sub-matriz hemos calculado la cantidad de \textit{features} de cada tipo por capa, de la misma forma que calculamos los valores de la gráfica \ref{fig:featuresperlayer}. En general no se ve mucha diferencia entre las gráficas de cada \textit{synset} y la general, esto implica que la distribución de las características por capa es parecida independientemente del synset que tomemos y de lo general que éste sea, cosa que va en contra de nuestra hipótesis \ref{h2}.
+
+Podemos ver un comportamiento similar al separar las categorías por capa por \textit{synset}, como vemos en la distribución por capas de vehículo, figura \ref{fig:featuresperlayervehicle}, 
+la proporción también se mantiene en este caso, dando más motivos para pensar que debemos revocar la hipótesis \ref{h2}. 
+
+\begin{figure}[ht] 
+	\centering
+	\includegraphics[width=0.9\textwidth] {Images/plots/25/synsetslayer/Comparative_of_synsets_wheeled_vehicle_global.png}
+	\caption{ Cantidad de featuers por capa de vehículo
+	\label{fig:featuresperlayervehicle}}
+\end{figure}
+
+Mientras que la distribución de las imágenes por \textit{feature} se difuminaba con \textit{synsets} más concretos (figura \ref{fig:imagesperfeaturewheel}), vemos que la proporción de \textit{features} características se conserva, tanto por synset como por capa. Esto implica que la difuminación que veíamos sea debida a una menor cantidad de muestras a la hora de calcular la gráfica y no a una distinción por \textit{synset}. 
+
+\textbf{Representante:}
+
+Con la sub-matriz hemos logrado una visión general del comportamiento de los \textit{synsets} dentro del \textit{embedding}, pero hay información que estamos perdiendo. Sería interesante saber si a nivel de \textit{feature}(por ejemplo que se concentrasen todos los 1 en un mismo conjunto de \textit{features} para el mismo synset), diferentes \textit{synsets} se comportan distinto, o de la misma forma, como parecían indicar los descubrimientos para sub-matrices. 
+
+Para solventar este problema decidimos tomar un vector muestra para cada uno de los \textit{synsets}, al que llamaremos $m_{synset}$ de tamaño $1x12,416$ donde cada componente se toma como la categoría más frecuente para esa \textit{feature} concreta, como muestra la figura \ref{fig:representante}. 
+ 
+\begin{figure}[H]
+\begin{center}
+%\includegraphics[width = 0.5\textwidth]{Images/convolve.png} 
+\begin{tikzpicture}
+
+	\matrix (mtr) [matrix of nodes,column sep=-\pgflinewidth, row sep=-\pgflinewidth,  nodes={draw,
+      minimum height=0.5cm,
+      anchor=center,
+      text width=0.5cm,
+      align=center,
+      inner sep=0pt
+    }]
+	{
+		|[fill=blue!30]| 1 & |[fill=blue!30]| -1 & |[fill=blue!30]| -1 & |[fill=blue!30]| 1 & |[fill=blue!30]| 0 & |[fill=blue!30]| 0 & |[fill=blue!30]| -1\\
+		0 & 0 & -1 & -1 & -1 & 0 & 0\\
+		0 & 0 & 0 & 1 & -1 & -1 & 0\\
+		|[fill=green!30]| 0 & |[fill=green!30]| 1 & |[fill=green!30]| -1 & |[fill=green!30]| 1 & |[fill=green!30]| 1 & |[fill=green!30]| 0 & |[fill=green!30]| 0\\
+		|[fill=blue!30]| 1 & |[fill=blue!30]| 1 & |[fill=blue!30]| -1 & |[fill=blue!30]| 0 & |[fill=blue!30]| -1 & |[fill=blue!30]| 0 & |[fill=blue!30]| 0\\
+		0 & 0 & -1 & 1 & 0 & 0 & 0\\
+		0 & -1 & 1 & 0 & 0 & 0 & 1\\
+		|[fill=blue!30]| 1 & |[fill=blue!30]| 1 & |[fill=blue!30]| 1 & |[fill=blue!30]| -1 & |[fill=blue!30]| -1 & |[fill=blue!30]| 0 & |[fill=blue!30]| 0\\
+		-1 & -1 & 0 & 0 & 0 & 0 & 0\\
+	};
+    \node [below= of mtr-7-4.south] (lm) {embedding};
+
+
+	\matrix (K) [right=5em of mtr,matrix of nodes,row sep=-\pgflinewidth, nodes={draw, fill=blue!30}]
+	{
+		1 & 1 & -1 & 1 & -1 & 0 & 0\\
+	};
+	
+    \node [below= of K-1-4.south] (lk) {representante};
+
+    \draw[very thick, blue] (K-1-1.north west) rectangle (K-1-7.south east);
+	
+	\draw[densely dotted, blue, thick] (mtr-1-1.north west) -- (K-1-1.north west);
+	\draw[densely dotted, blue, thick] (mtr-1-1.south west) -- (K-1-1.south west);
+	\draw[densely dotted, blue, thick] (mtr-1-7.north east) -- (K-1-7.north east);
+	\draw[densely dotted, blue, thick] (mtr-1-7.south east) -- (K-1-7.south east);
+	
+	\draw[densely dotted, blue, thick] (mtr-5-1.north west) -- (K-1-1.north west);
+	\draw[densely dotted, blue, thick] (mtr-5-1.south west) -- (K-1-1.south west);
+	\draw[densely dotted, blue, thick] (mtr-5-7.north east) -- (K-1-7.north east);
+	\draw[densely dotted, blue, thick] (mtr-5-7.south east) -- (K-1-7.south east);
+	
+    \draw[densely dotted, blue, thick] (mtr-8-1.north west) -- (K-1-1.north west);
+	\draw[densely dotted, blue, thick] (mtr-8-1.south west) -- (K-1-1.south west);
+	\draw[densely dotted, blue, thick] (mtr-8-7.north east) -- (K-1-7.north east);
+	\draw[densely dotted, blue, thick] (mtr-8-7.south east) -- (K-1-7.south east);
+%	\draw[very thick, blue] (K-1-1.north west) rectangle (K-3-3.south east);
+
+\end{tikzpicture}
+\end{center}
+\caption{Ejemplo de un representante de \textit{synset}.
+\label{fig:representante}}
+\end{figure}
+
+De esta obtenemos una información más concreta respecto a cada \textit{feature}, además podemos comparar los distintos \textit{synsets}. Por ejemplo, si una \textit{feature} suele ser característica para mamíferos, quedará marcada en el representante, mientras que si tomáramos los valores de la proporción de las características respecto a la sub-matriz correspondiente al \textit{synset} esta información se perdería.
+
+Al calcular las gráficas anteriores, pero del representante, esta vez si que obtenemos diferencias. 
+
+\begin{figure}[ht] 
+	\centering
+	\includegraphics[width=0.9\textwidth] {Images/plots/25/synsetslayer/Comparative_of_synsets.png}
+	\caption{ Cantidad de featuers de los representantes
+	\label{fig:representantes}}
+\end{figure}
+
+\begin{figure}[ht] 
+	\centering
+	\includegraphics[width=0.9\textwidth] {Images/plots/25/synsetslayer/Comparative_of_synsets_wheeled_vehicle.png}
+	\caption{ Cantidad de featuers de los representantes
+	\label{fig:representantes}}
+\end{figure}
+
 
 \subsection{Del full network embedding a wordnet}
 
