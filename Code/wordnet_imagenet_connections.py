@@ -991,6 +991,44 @@ class Statistics:
 		plt.clf()
 		plt.rcParams['figure.figsize'] = [8.0, 8.0]
 
+	def plot_changes_between_synset(self):
+		"""
+		POR TESTEAR
+		Quiero que printe una gráfica tal que en el valor de las x tenga los elementos de synsets y en el de las ordenadas
+		un acumulative plot con la  cantidad de 1, 0 y -1 de las submatriz del synset en cuestión.
+		changes[synset][-1]
+		:return: void
+		"""
+		plt.rcParams['figure.figsize'] = [16.0, 8.0]
+		changes_in_synset = {}
+		ones = []
+		zeros = []
+		negones = []
+		for synset in self.synsets:
+			index = self.get_index_from_ss(synset)
+			rep = self.data.dmatrix[index, :]
+			changes_in_synset[self.ss_to_text(synset)] = self.count_features(rep)
+			negones.append(changes_in_synset[self.ss_to_text(synset)][-1])
+			zeros.append(changes_in_synset[self.ss_to_text(synset)][0])
+			ones.append(changes_in_synset[self.ss_to_text(synset)][1])
+
+		plot_index = np.arange(len(self.synsets))
+		p_negones = plt.bar(plot_index, negones, color='#4C194C')
+		p_zeros = plt.bar(plot_index, zeros, color='#7F3FBF', bottom=negones)
+		p_ones = plt.bar(plot_index, ones, color='#3F7FBF', bottom=[sum(x) for x in zip(negones, zeros)])
+
+		plt.ylabel('Cantidad')
+		plt.title('Comparativa entre las categorias por synset')
+		plt.xticks(plot_index, self.textsynsets)
+		plt.legend((p_negones[0], p_zeros[0], p_ones[0]), ('-1', '0', '1'))
+		plt.grid()
+		name = 'Comparative_of_synsets_global.png'
+		plt.savefig(self.plot_path + name)
+		self.printlatex(name)
+		plt.cla()
+		plt.clf()
+		plt.rcParams['figure.figsize'] = [8.0, 8.0]
+
 	def plot_changes_between_synset_reps_per_layer(self):
 		"""
 		Quiero que printe una gráfica para cada synset tal que en el valor de las x tenga los elementos de  los layers
@@ -1025,6 +1063,76 @@ class Statistics:
 			plt.cla()
 			plt.clf()
 		plt.rcParams['figure.figsize'] = [8.0, 8.0]
+
+	def plot_features_per_layer_per_synset(self):
+		"""
+		Esta funcion genera una gráfica de las características por layer para  cada una de las matrices de los synsets
+		:return: void
+		"""
+		plt.rcParams['figure.figsize'] = [16.0, 8.0]
+		for synset in self.synsets:
+			changes_in_synset = {}
+			ones = []
+			zeros = []
+			negones = []
+			plot_index = np.arange(len(self.data.reduced_layers))
+			index = self.get_index_from_ss(synset)
+			sub_matrix = self.data.dmatrix[index, :]
+			for layer in self.data.reduced_layers:
+				rep = sub_matrix[:, self.data.reduced_layers[layer][0]:self.data.reduced_layers[layer][1]]
+				changes_in_synset[layer] = self.count_features(rep)
+				negones.append(changes_in_synset[layer][-1])
+				zeros.append(changes_in_synset[layer][0])
+				ones.append(changes_in_synset[layer][1])
+			p_negones = plt.bar(plot_index, negones, color='#4C194C')
+			p_zeros = plt.bar(plot_index, zeros, color='#7F3FBF', bottom=negones)
+			p_ones = plt.bar(plot_index, ones, color='#3F7FBF', bottom=[sum(x) for x in zip(negones, zeros)])
+			plt.ylabel('Cantidad')
+			plt.title('Features por capa de ' + self.ss_to_text(synset))
+			plt.xticks(plot_index, list(self.data.reduced_layers))
+			plt.legend((p_negones[0], p_zeros[0], p_ones[0]), ('-1', '0', '1'))
+			plt.grid()
+			name = 'Comparative_of_synsets_' + self.ss_to_text(synset) + '_global.png'
+			plt.savefig(self.plot_path + name)
+			self.printlatex(name)
+			plt.cla()
+			plt.clf()
+		plt.rcParams['figure.figsize'] = [8.0, 8.0]
+
+
+	def plot_changes_between_all_reps_per_layer(self):
+		"""
+		:return: void
+		"""
+		plt.rcParams['figure.figsize'] = [16.0, 8.0]
+		if path.isfile(self.features_per_layer_path):
+			self.features_per_layer = pickle.load(open(self.features_per_layer_path, 'rb'))
+		else:
+			self.features_per_layer_gen()
+			self.features_per_layer = pickle.load(open(self.features_per_layer_path, 'rb'))
+		ones = []
+		zeros = []
+		negones = []
+		plot_index = np.arange(len(self.data.reduced_layers))
+		for layer in self.data.reduced_layers:
+			negones.append(self.features_per_layer[layer][-1])
+			zeros.append(self.features_per_layer[layer][0])
+			ones.append(self.features_per_layer[layer][1])
+		p_negones = plt.bar(plot_index, negones, color='#4C194C')
+		p_zeros = plt.bar(plot_index, zeros, color='#7F3FBF', bottom=negones)
+		p_ones = plt.bar(plot_index, ones, color='#3F7FBF', bottom=[sum(x) for x in zip(negones, zeros)])
+		plt.ylabel('Cantidad')
+		plt.title('Comparativa entre las categorias por layer')
+		plt.xticks(plot_index, list(self.data.reduced_layers))
+		plt.legend((p_negones[0], p_zeros[0], p_ones[0]), ('-1', '0', '1'))
+		plt.grid()
+		name = 'Comparative_of_synsets_' + 'all' + '.png'
+		plt.savefig(self.plot_path + name)
+		self.printlatex(name)
+		plt.cla()
+		plt.clf()
+		plt.rcParams['figure.figsize'] = [8.0, 8.0]
+
 
 	def plot_all(self):
 		"""
@@ -1063,6 +1171,18 @@ class Statistics:
 			plt.clf()
 			plt.close("all")
 		self.plot_features_per_layer()
+		plt.cla()
+		plt.close("all")
+		plt.clf()
+		self.plot_changes_between_all_reps_per_layer()
+		plt.cla()
+		plt.close("all")
+		plt.clf()
+		self.plot_features_per_layer_per_synset()
+		plt.cla()
+		plt.close("all")
+		plt.clf()
+		self.plot_changes_between_synset()
 		plt.cla()
 		plt.close("all")
 		plt.clf()

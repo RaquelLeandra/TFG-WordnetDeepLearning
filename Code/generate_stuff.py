@@ -42,7 +42,7 @@ def generate_stuff():
         # for synset in stats_non_living.synsets:
         #     stats_non_living.generate_restricted_labels(synset)
         ini_time = time.time()
-        stats_SUPERCOMBO.plot_all()
+        stats_SUPERCOMBO.plot_changes_between_synset()
         print('plot all time: ', datetime.timedelta(seconds=(time.time() - ini_time)))
         # print('Calculating distance1...')
         # ini_time = time.time()
