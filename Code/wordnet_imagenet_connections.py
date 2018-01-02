@@ -1543,6 +1543,15 @@ class Distances:
 		distance = np.abs(prop1 - prop2) * 100
 		return distance
 
+	def NEW_distance_between_synsets_reps(self,synset1, synset2):
+		r1 = self.get_represention_fast(synset1)
+		r2 = self.get_represention_fast(synset2)
+		cf1 = self.count_features(r1)
+		cf2 = self.count_features(r2)
+		sharedones = np.sum(np.equal(r1, 1) & np.equal(r1, r2))
+		totalones = cf1[1] + cf2[1]
+		return sharedones/totalones
+
 	def plot_changes_between_synset_reps(self, synsets):
 		"""
 		Quiero que printe una gráfica tal que en el valor de las x tenga los elementos de synsets y en el de las ordenadas

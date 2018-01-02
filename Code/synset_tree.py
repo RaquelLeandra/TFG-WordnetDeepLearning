@@ -74,7 +74,7 @@ def breadth_first_search(synset, imagenet):
 					tree[distances[child_synset]][parent_state] = []
 					str_tree[str(distances[child_synset])][ss_to_text(parent_state)] = []
 				if in_imagenet(child_synset, imagenet):
-					distance = mydis.distance_between_synsets_reps(parent_state, child_synset)
+					distance = mydis.NEW_distance_between_synsets_reps(parent_state, child_synset)
 					print(ss_to_text(parent_state), ss_to_text(child_synset), distance)
 					if distance < 9999:
 						if distance < 1:
