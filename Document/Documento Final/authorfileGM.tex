@@ -677,7 +677,6 @@ En redes convolucionales, la disposición por capas permite representar la infor
 \caption{Ejemplo de features \label{fig:deepconcept}}
 \end{figure}
 
-\newpage
 \subsection{Transfer Learning}
 %- Explicar que es transfer learning 
 
@@ -1054,17 +1053,18 @@ en las tres categorías se ven dos distribuciones bien diferenciadas. Otro motiv
 \newpage
 \section{Análisis}
 \subsection{De wordnet a full network embedding}
-En este apartado explicaré: 
+%En este apartado explicaré: 
+%
+%\begin{itemize}
+%\item Las distribuciones de las imágenes por feature son diferentes para conv y fc, y mantienen la forma entre embeddings.
+%\item Las distribuciones de las imágenes por feature por layer por synset se conservan. 
+%\item Explicar los resultados de las matrices de cambio. 
+%\item Cuanto más concreto es el synset mayor proporción de 1. 
+%\end{itemize}
 
-\begin{itemize}
-\item Las distribuciones de las imágenes por feature son diferentes para conv y fc, y mantienen la forma entre embeddings.
-\item Las distribuciones de las imágenes por feature por layer por synset se conservan. 
-\item Explicar los resultados de las matrices de cambio. 
-\item Cuanto más concreto es el synset mayor proporción de 1. 
-
-\end{itemize}
+En este apartado explicaré el estudio hecho para intentar aceptar o revocar las hipótesis comentadas. Empezaré con la distribución por tipo de capa en el \textit{embedding} general, para luego concretar estudiando el comportamiento por capa. Finalmente explicaré los descubrimientos relacionados con los \textit{synsets}. 
 \subsubsection{Distribución por tipo de capa}
-Para comprobar si la hipótesis (1) es cierta calculamos las gráficas de la figura \ref{fig:imagesperfeature} distinguiendo entre las capas convlolucionales y \textit{fully-connected}, obteniendo las siguientes gráficas: 
+Para comprobar si la hipótesis \ref{h1} es cierta calculamos las gráficas de la figura \ref{fig:imagesperfeature} distinguiendo entre las capas convlolucionales y \textit{fully-connected}, obteniendo las siguientes gráficas: 
 
 \begin{figure}[ht] 
 	\centering
@@ -1085,49 +1085,9 @@ Para comprobar si la hipótesis (1) es cierta calculamos las gráficas de la fig
 
 En ellas podemos ver claramente la distinción que suponíamos. Sobretodo para la categoría 0, hay una clara separación entre el comportamiento de los diferentes tipos de capa. En parte esto se debe a que hay más \textit{features} en las capas \textit{fully-connected}, por eso sus gráficas correspondientes son más altas, además en éstas podemos ver una menor variabilidad, que concuerda con el hecho de que solamente son 2 capas \textit{fully-connected}, contra las 5 convolucionales. También vemos que el grueso de las features características (tanto por presencia como por ausencia) se encuentran en las capas \textit{fully-connected}, cosa que concuerda con el hecho de que sean estas capas las que dan la clasificación final. 
  
-Con respecto a los synsets las distribuciones se mantienen bastante en los \textit{synsets} más generales, como podemos ver en la figura \ref{fig:imagesperfeatureliving}, mientras que en los menos generales se empiezan a distorsionar. Como podemos observar en la figura \ref{fig:imagesperfeaturewheel}.
-
-\begin{figure}[ht] 
-	\centering
-	\begin{subfigure}[b]{0.3\textwidth}
-		\includegraphics[width=\textwidth] {Images/plots/25/synsets/Images_per_feature_of_-1_category_living_thingall_layers.png}
-		\caption{Categoría -1}
-	\end{subfigure}
-	\begin{subfigure}[b]{0.3\textwidth}
-		\includegraphics[width=\textwidth]  {Images/plots/25/synsets/Images_per_feature_of_0_category_living_thingall_layers.png}
-		\caption{Categoría 0}
-	\end{subfigure}
-	\begin{subfigure}[b]{0.3\textwidth}
-		\includegraphics[width=\textwidth]  {Images/plots/25/synsets/Images_per_feature_of_1_category_living_thingall_layers.png}
-		\caption{Categoría 1}
-	\end{subfigure}       
-	\caption{Imágenes por categoría del \textit{synset} seres vivos \label{fig:imagesperfeatureliving}}
-\end{figure}
-
-\begin{figure}[ht] 
-	\centering
-	\begin{subfigure}[b]{0.3\textwidth}
-		\includegraphics[width=\textwidth] {Images/plots/25/synsets/Images_per_feature_of_-1_category_wheeled_vehicleall_layers.png}
-		\caption{Categoría -1}
-	\end{subfigure}
-	\begin{subfigure}[b]{0.3\textwidth}
-		\includegraphics[width=\textwidth]  {Images/plots/25/synsets/Images_per_feature_of_0_category_wheeled_vehicleall_layers.png}
-		\caption{Categoría 0}
-	\end{subfigure}
-	\begin{subfigure}[b]{0.3\textwidth}
-		\includegraphics[width=\textwidth]  {Images/plots/25/synsets/Images_per_feature_of_1_category_wheeled_vehicleall_layers.png}
-		\caption{Categoría 1}
-	\end{subfigure}       
-	\caption{Imágenes por categoría del \textit{synset} vehículo \label{fig:imagesperfeaturewheel}}
-\end{figure}
-
-La diferencia entre los distintos grupos de gráficas (\textit{synsets} más generales contra más específicos) se debe a que al ser una muestra más pequeña hay una mayor varianza. También se observa una disminución de la proporción de \textit{features} no característica cuanto más concreto es el synset, esto nos da una idea de que la red convolucional se adapta al nivel de generalización que tiene un \textit{synset}, por ejemplo, \textit{perro} tendrá menos \textit{features} no características (en proporción) que \textit{mamífero}. Este hecho concuerda con nuestra hipótesis \ref{h2}, en la que ahondaremos más adelante.
-
-También se observan unos comportamientos simétricos entre las \textit{features} características por presencia y por ausencia en todos los \textit{synsets} y en la gráfica general. Este tipo de simetría es una buena señal, puesto a que la caracterización que hemos dado es abstracta, es decir, la definición de característica por ausencia o por presencia no viene dada por la red convolucional sino por un estudio externo a ésta.  
-
 \subsubsection{Comportamiento respecto a la profundidad}
 
-El objetivo de esta sección es comprobar si podemos aceptar o desmentir la hipótesis \ref{h3}. 
+Una vez comprobado que los dos tipos de capa se comportan diferente, vamos a estudiar en que nivel se diferencian y a que profundidad. De esta forma veremos si podemos aceptar o desmentir la hipótesis \ref{h3}. 
 
 Para ello hemos calculado la cantidad de \textit{features} de cada tipo por capa respecto al \textit{embedding} total. Como podemos observar en la gráfica \ref{fig:totalfeaturesperlayer}. De esta forma se esperaba ver como se distribuyen las \textit{features} por cada capa.
 
@@ -1141,7 +1101,7 @@ Para ello hemos calculado la cantidad de \textit{features} de cada tipo por capa
 
 En la gráfica esperábamos encontrar una mayor proporción de \textit{features} características por presencia en las capas finales, sin embargo podemos ver que la mayor proporción se encuentra en la cuarta capa convolucional. En esta gráfica podemos ver claramente que todas las capas, no solo las \textit{fully-connected} contienen información importante de cara a caracterizar el espacio de representación, al contrario de lo que sostienen en \cite{onlylastlayers}.
 
-\subsubsection{Comportamiento de los synsets}
+\subsubsection{Comportamiento de los synsets} \label{sec:synsets}
 
 A la hora de estudiar los \textit{synsets} nos hemos topado con la dificultad de decidir el valor de una \textit{feature} para el conjunto de todas las muestras que pertenecen al \textit{synset}, puesto a que para diferentes muestras puede tener distintos valores, como podemos ver en el ejemplo de la figura \ref{fig:muestrasynsets}. 
 
@@ -1255,35 +1215,75 @@ En este caso hemos tomado una matriz cuyas filas consisten en las muestras que p
 
 Este enfoque nos da información general sobre el comportamiento de los distintos \textit{synsets} en el \textit{embedding}. 
 
-Utilizando la sub-matriz de los synsets podemos obtener la cantidad de \textit{features} de cada una de las categorías por \textit{synset}, como vemos en la figura \ref{fig:totalfeaturespersynset}
+Utilizando la sub-matriz asociada a cada uno de los \textit{synsets} hemos generado gráficas equivalentes a la de la figura \ref{fig:imagesperfeature}. En este caso, las distribuciones se mantienen bastante en los \textit{synsets} más generales, como podemos ver en la figura \ref{fig:imagesperfeatureliving}, mientras que en los menos generales se empiezan a distorsionar. Como podemos observar en la figura \ref{fig:imagesperfeaturewheel}.
+
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {Images/plots/25/synsets/Images_per_feature_of_-1_category_living_thingall_layers.png}
+		\caption{Categoría -1}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]  {Images/plots/25/synsets/Images_per_feature_of_0_category_living_thingall_layers.png}
+		\caption{Categoría 0}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]  {Images/plots/25/synsets/Images_per_feature_of_1_category_living_thingall_layers.png}
+		\caption{Categoría 1}
+	\end{subfigure}       
+	\caption{Imágenes por categoría del \textit{synset} seres vivos \label{fig:imagesperfeatureliving}}
+\end{figure}
+
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {Images/plots/25/synsets/Images_per_feature_of_-1_category_wheeled_vehicleall_layers.png}
+		\caption{Categoría -1}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]  {Images/plots/25/synsets/Images_per_feature_of_0_category_wheeled_vehicleall_layers.png}
+		\caption{Categoría 0}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]  {Images/plots/25/synsets/Images_per_feature_of_1_category_wheeled_vehicleall_layers.png}
+		\caption{Categoría 1}
+	\end{subfigure}       
+	\caption{Imágenes por categoría del \textit{synset} vehículo \label{fig:imagesperfeaturewheel}}
+\end{figure}
+
+La diferencia entre los distintos grupos de gráficas (\textit{synsets} más generales contra más específicos) se debe a que al ser una muestra más pequeña hay una mayor varianza. También se observa una disminución de la proporción de \textit{features} no característica cuanto más concreto es el synset, esto nos da una idea de que la red convolucional se adapta al nivel de generalización que tiene un \textit{synset}, por ejemplo, \textit{perro} tendrá menos \textit{features} no características (en proporción) que \textit{mamífero}. Este hecho concuerda con nuestra hipótesis \ref{h2}, en la que ahondaremos más adelante.
+
+También se observan unos comportamientos simétricos entre las \textit{features} características por presencia y por ausencia en todos los \textit{synsets} y en la gráfica general. Este tipo de simetría es una buena señal, puesto a que la caracterización que hemos dado es abstracta, es decir, la definición de característica por ausencia o por presencia no viene dada por la red convolucional sino por un estudio externo a ésta.  
+
+
+
+Otro dato que podemos obtener es la cantidad de \textit{features} de cada una de las categorías por \textit{synset}, como vemos en la figura \ref{fig:totalfeaturespersynset}, simplemente sumando los diferentes valores de las sub-matrices. 
 
 
 \begin{figure}[ht] 
 	\centering
 	\includegraphics[width=0.9\textwidth] {Images/plots/25/synsetslayer/Comparative_of_synsets_global.png}
-	\caption{ Cantidad de featuers por synset
+	\caption{ Cantidad de features por synset
 	\label{fig:totalfeaturespersynset}}
 \end{figure}
 
-Utilizando esta sub-matriz hemos calculado la cantidad de \textit{features} de cada tipo por capa, de la misma forma que calculamos los valores de la gráfica \ref{fig:featuresperlayer}. En general no se ve mucha diferencia entre las gráficas de cada \textit{synset} y la general, esto implica que la distribución de las características por capa es parecida independientemente del synset que tomemos y de lo general que éste sea, cosa que va en contra de nuestra hipótesis \ref{h2}.
+Además utilizando esta sub-matriz hemos calculado la cantidad de \textit{features} de cada tipo por capa, de la misma forma que calculamos los valores de la gráfica \ref{fig:totalfeaturesperlayer}. En general no se ve mucha diferencia entre las gráficas de cada \textit{synset} y la general( como podemos observar en la figura \ref{fig:featuresperlayervehicle}), esto implica que la cantidad de \textit{features} con los distintos valores por capa es parecida independientemente del synset que tomemos y de lo general que éste sea, cosa que va en contra de nuestra hipótesis \ref{h2}.
 
-Podemos ver un comportamiento similar al separar las categorías por capa por \textit{synset}, como vemos en la distribución por capas de vehículo, figura \ref{fig:featuresperlayervehicle}, 
-la proporción también se mantiene en este caso, dando más motivos para pensar que debemos revocar la hipótesis \ref{h2}. 
 
 \begin{figure}[ht] 
 	\centering
 	\includegraphics[width=0.9\textwidth] {Images/plots/25/synsetslayer/Comparative_of_synsets_wheeled_vehicle_global.png}
-	\caption{ Cantidad de featuers por capa de vehículo
+	\caption{ Cantidad de features por capa de vehículo
 	\label{fig:featuresperlayervehicle}}
 \end{figure}
 
-Mientras que la distribución de las imágenes por \textit{feature} se difuminaba con \textit{synsets} más concretos (figura \ref{fig:imagesperfeaturewheel}), vemos que la proporción de \textit{features} características se conserva, tanto por synset como por capa. Esto implica que la difuminación que veíamos sea debida a una menor cantidad de muestras a la hora de calcular la gráfica y no a una distinción por \textit{synset}. 
+Mientras que la distribución de las imágenes por \textit{feature} se difuminaba con \textit{synsets} más concretos (figura \ref{fig:imagesperfeaturewheel}), vemos que la proporción de \textit{features} características se conserva, tanto por synset como por capa. Esto nos confirma que la difuminación que veíamos sea debida a una menor cantidad de muestras a la hora de calcular la gráfica y no a una distinción por \textit{synset}. 
 
 \textbf{Representante:}
 
-Con la sub-matriz hemos logrado una visión general del comportamiento de los \textit{synsets} dentro del \textit{embedding}, pero hay información que estamos perdiendo. Sería interesante saber si a nivel de \textit{feature}(por ejemplo que se concentrasen todos los 1 en un mismo conjunto de \textit{features} para el mismo synset), diferentes \textit{synsets} se comportan distinto, o de la misma forma, como parecían indicar los descubrimientos para sub-matrices. 
+Con la sub-matriz hemos logrado una visión general del comportamiento de los \textit{synsets} dentro del \textit{embedding}, pero hay información que estamos perdiendo. Sería interesante saber si a nivel de \textit{feature} diferentes \textit{synsets} se comportan distinto, o de la misma forma, como parecían indicar los descubrimientos para sub-matrices. Por ejemplo que se concentrasen todos los 1 en un mismo conjunto de \textit{features} para el mismo synset.
 
-Para solventar este problema decidimos tomar un vector muestra para cada uno de los \textit{synsets}, al que llamaremos $m_{synset}$ de tamaño $1x12,416$ donde cada componente se toma como la categoría más frecuente para esa \textit{feature} concreta, como muestra la figura \ref{fig:representante}. 
+Para solventar este problema decidimos tomar un vector muestra para cada uno de los \textit{synsets} de tamaño $1x12,416$ donde cada componente se toma como la categoría más frecuente para esa \textit{feature} concreta, como muestra la figura \ref{fig:representante}. 
  
 \begin{figure}[H]
 \begin{center}
@@ -1342,30 +1342,111 @@ Para solventar este problema decidimos tomar un vector muestra para cada uno de 
 \label{fig:representante}}
 \end{figure}
 
-De esta obtenemos una información más concreta respecto a cada \textit{feature}, además podemos comparar los distintos \textit{synsets}. Por ejemplo, si una \textit{feature} suele ser característica para mamíferos, quedará marcada en el representante, mientras que si tomáramos los valores de la proporción de las características respecto a la sub-matriz correspondiente al \textit{synset} esta información se perdería.
+De esta obtenemos una información más concreta respecto a cada \textit{feature}, además podemos comparar los distintos \textit{synsets} de una forma más efectiva. Por ejemplo, si una \textit{feature} suele ser característica para mamíferos, quedará marcada en el representante, mientras que si tomáramos los valores de la proporción de las características respecto a la sub-matriz correspondiente al \textit{synset} esta información se perdería, ya que la proporción de \textit{features} no características es muy superior a la del resto de opciones.
 
 Al calcular las gráficas anteriores, pero del representante, esta vez si que obtenemos diferencias. 
 
+Primero de todo observamos que en la gráfica \ref{fig:comparativaCategoriasporSynset}, cuanto más concreto es el \textit{synset} mayor proporción de features características por presencia tenemos, además que las \textit{features} no características desaparecen prácticamente por completo. Esto implica que las \textit{features} no características no sólo están en minoría para la mayoría de imágenes y \textit{features},sino que además no se concentran en conjuntos concretos de \textit{features}.   
 \begin{figure}[ht] 
 	\centering
 	\includegraphics[width=0.9\textwidth] {Images/plots/25/synsetslayer/Comparative_of_synsets.png}
-	\caption{ Cantidad de featuers de los representantes
-	\label{fig:representantes}}
+	\caption{ Cantidad de features de los representantes
+	\label{fig:comparativaCategoriasporSynset}}
 \end{figure}
 
+Si además comparamos la gráfica \ref{fig:comparativaCategoriasporSynset} con la de \ref{fig:totalfeaturespersynset} vemos que las features características aparecen en mayor proporción. Si no estuvieran concentradas, las \textit{features} tomarían todas el valor -1, puesto a que es el más común en el embedding. 
 \begin{figure}[ht] 
 	\centering
 	\includegraphics[width=0.9\textwidth] {Images/plots/25/synsetslayer/Comparative_of_synsets_wheeled_vehicle.png}
-	\caption{ Cantidad de featuers de los representantes
-	\label{fig:representantes}}
+	\caption{ Cantidad de features de los representantes
+	\label{fig:comparativaVehiculo}}
+\end{figure}
+
+Respecto a las proporciones por capa, para todos los synsets han salido resultados parecidos, siendo el más visible el correspondiente a Vehículo, como  vemos en la \ref{fig:comparativaVehiculo}. En este caso también vemos una desaparición de las \textit{features} no representativas en todas las capas. 
+Además la proporción de \textit{features} características aumenta en las capas convolucionales, mientras que disminuye en las \textit{fully-connected}. Lo que implica una dispersión de los valores característicos con respecto a los que no lo son. 
+
+Para comparar los \textit{synsets} a un nivel todavía más concreto hemos generado diferentes matrices de cambio a partir de los representantes, éstas están definidas como vemos en la figura \ref{fig:matrizss1ss2}. 
+ \begin{figure}[ht] 
+	\centering
+	\includegraphics[width=0.4\textwidth] {Images/plots/25/matrices/Changesfromsynset1tosynset2.png}
+	\caption{ Matriz de cambios
+	\label{fig:matrizss1ss2}}
+\end{figure}
+
+Donde $C_{(i,j)}$ es la cantidad de valores que en el primer \textit{synset} valían $i$ y en el segundo valen $j$, comparando elemento a elemento. La suma total de todas las $C_{(i,j)}$ es 12,416, es decir, la cantidad total de \textit{features} de un representante. Además, si sumamos todas las $C_{(i,j)}$ de una columna concreta obtenemos el total de \textit{features} con valor $i$ del primer \textit{synset}, y de forma simétrica, si sumamos las filas obtenemos el total de \textit{features} con valor $j$ del segundo \textit{synset}.
+
+
+En la diagonal contienen la cantidad de valores que se conservan, es decir, que para el primer \textit{synset} y el segundo tienen el mismo valor. En el resto de posiciones contiene la cantidad de \textit{features} que en el primer \textit{synset} tenían un valor y en el segundo pasa a tener otro.
+
+En nuestro primer ejemplo de matrices de cambio (figura \ref{fig:matrixliving}) podemos observar que, tanto la columna como la fila correspondiente al cero (las \textit{features} no características) tiene unos valores muy bajos con respecto al resto. Esto se repite en todas las matrices para todos los \textit{synsets}, puesto a que el total de \textit{features} con este valor es muy bajo. Respecto al resto de valores, los explicaré por columnas para facilitar la comprensión. 
+
+En la columna de las \textit{features} características por ausencia se acumulan la mayoría de los valores, como era de esperar. En la figura \ref{fig:matrixlivinginstrum}, vemos una respetable cantidad de \textit{features} que eran representativas por ausencia para seres vivos pasan a ser representativas por presencia en \textit{instrumentos}, además, este fenómeno se acentua en \textit{synsets} más concretos, como vemos en la figura \ref{fig:matrixlivingwheel}. Un ejemplo de este comportamiento podrían ser \textit{features} que detectaran ruedas, a la hora de clasificar, sería representativo para seres vivos que no tuvieran ruedas, mientras que el \textit{synset} de los instrumentos, contiene los vehículos, para los que esta \textit{feature} sería característica por presencia.   
+Para Perro de caza, sin embargo, la cantidad de \textit{features} de valor -1 que pasan a valer 1, es significativamente menor. Las que hay podrían ser \textit{features} bastante concretas, que se asociaran a perros de caza, pero no al conjunto general de seres vivos, como por ejemplo ser cierta raza de perro. 
+
+Finalmente en la columna de las \textit{features} características por presencia, vemos en la figura en al que se conservan más es \ref{fig:matrixlivinghunting}, mientras que en el resto casi todas pasan a ser características por ausencia. De forma simétrica al comportamiento de la columna de las \textit{features} características por ausencia, pero a menor escala. 
+ \begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {Images/plots/25/matrices/matrixlivinginstrum.png}
+		\caption{Ser Vivo a Instrumento \label{fig:matrixlivinginstrum}}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]  {Images/plots/25/matrices/matrixLivingWheel.png}
+		\caption{Ser Vivo a Vehículo \label{fig:matrixlivingwheel}}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]  {Images/plots/25/matrices/matrixLivingHunting.png}
+		\caption{Ser Vivo a Perro de Caza \label{fig:matrixlivinghunting}}
+	\end{subfigure}       
+	\caption{Matrices de cambio de Ser Vivo \label{fig:matrixliving}}
+\end{figure}
+
+El siguiente ejemplo (\ref{fig:matrixconcret}) es para ver el comportamiento en \textit{synsets} más concretos. Podemos ver claramente que la red está captando la similitud entre Perro y Perro de caza, puesto a que casi todas las \textit{features} se mantienen en la diagonal. Se comporta de forma parecida con Transporte y Vehículo. Mientras que entre Perro de Caza y Vehículo la mayoría de las \textit{features} pasan de características a no características y viceversa. Nótese la similitud de la figura \ref{fig:MatrixWheelHunt} y la figura \ref{fig:matrixlivinginstrum}, aun siendo en el primer caso los synsets más concretos y en el segundo los más generales, el comportamiento es parecido.
+
+\begin{figure}[ht] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {Images/plots/25/matrices/MatrixDogHunting.png}
+		\caption{Perro a Perro de caza \label{fig:MatrixDogHunting}}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]  {Images/plots/25/matrices/matrixConveyanceWheel.png}
+		\caption{Transporte a Vehículo \label{fig:matrixConveyanceWheel}}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]  {Images/plots/25/matrices/matrixhuntingwheel.png}
+		\caption{Perro de caza a Vehículo\label{fig:MatrixWheelHunt}}
+	\end{subfigure}       
+	\caption{Matrices de cambio\label{fig:matrixconcret}}
 \end{figure}
 
 
 \subsection{Del full network embedding a wordnet}
 
-Explicación de la distancia definida entre los synsets, demostración de que es distancia, los grafos con las distancias. 
+%Explicación de la distancia definida entre los synsets, demostración de que es distancia, los grafos con las distancias. 
 
+Partiendo de los resultados del apartado \ref{sec:synsets} hemos generado una distancia que representa lo diferentes que son cada uno de los \textit{synsets} que aparecen en \textit{imagenet} para la red convolucional entrenada. En este apartado explicaremos como se ha obtenido y que representa. 
 
+\begin{definition}
+Para empezar, tenemos el conjunto de 1,000 clases posibles en las que clasifica nuestra red convolucional, cada una correspondiente a un \textit{synset} al que llamaremos $\mathfrak{C}$.  
+
+Llamaremos $\mathfrak{I}$ al conjunto de todos los \textit{synsets} que pertenecen a $\mathfrak{C}$ junto con todos los \textit{synsets} de \textit{wordnet} que tienen algún hipónimo en $\mathfrak{C}$. 
+
+Al conjunto de \textit{synsets} de \textit{wordnet} lo denotaremos $\mathfrak{W}$. 
+\end{definition}
+
+Por construcción tenemos: 
+
+\begin{equ}[H]
+\begin{equation*}
+\mathfrak{C} \in \mathfrak{I} \in \mathfrak{W}
+\end{equation*}
+\end{equ}
+
+Nuestro objetivo es construir una distancia para $\mathfrak{I}$ que dependa de la red convolucional entrenada.
+Para ello primero notamos que la forma natural de conectar diferentes \textit{synsets} sería a partir de un árbol utilizando las conexiones de hiponimia e hiperonimia, como vimos en la figura \ref{fig:hiponimos}. Sin embargo, una distancia que utilizase solamente esta información no dependería de nuestra red. 
+
+Para solventar este problema utilizamos la información obtenida en la sección \ref{sec:synsets}, específicamente la relacionada con la figura \ref{fig:comparativaCategoriasporSynset}. En ella vimos que utilizando los vectores representantes de cada \textit{synset} se podía distinguir lo concreto que era un \textit{synset} 
 
 %La idea principal de tfg es buscar relaciones entre los synsets de wordnet y el full network embedding. 
 %Hipótesis iniciales: 
