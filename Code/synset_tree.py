@@ -7,7 +7,7 @@ from Code.wordnet_imagenet_connections import Data
 from Code.wordnet_imagenet_connections import Distances as dis
 import _pickle as pickle
 import pygraphviz as PG
-
+from os import path,makedirs
 import json
 
 
@@ -74,13 +74,18 @@ def breadth_first_search(synset, imagenet):
 					tree[distances[child_synset]][parent_state] = []
 					str_tree[str(distances[child_synset])][ss_to_text(parent_state)] = []
 				if in_imagenet(child_synset, imagenet):
-					distance = mydis.NEW_distance_between_synsets_reps(parent_state, child_synset)
-					print(ss_to_text(parent_state), ss_to_text(child_synset), distance)
+					distance = mydis.NEW_distance_between_synsets_reps(parent_state, child_synset)*5
+
 					if distance < 9999:
-						if distance < 1:
-							distance += 1
+						#if distance < 1:
+						#	distance += 1
+						#print(ss_to_text(parent_state), ss_to_text(child_synset), distance)
+						if distance == 0:
+							distance += 0.1
 						graph.add_edge(ss_to_text(parent_state), ss_to_text(child_synset), len=distance)
-					graph.draw('../Data/Distances/plots/mammals/' + ss_to_text(synset) + str(i) + '.png',  format='png', prog='neato')
+						if not path.isdir('../Data/Distances/plots/' + ss_to_text(synset)+'/'):
+							makedirs('../Data/Distances/plots/' + ss_to_text(synset)+'/')
+						graph.draw('../Data/Distances/plots/' + ss_to_text(synset)+'/' + ss_to_text(synset) + str(i) + '.png',  format='png', prog='neato')
 					i = i + 1
 					tree[distances[child_synset]][parent_state].append(child_synset)
 					str_tree[str(distances[child_synset])][ss_to_text(parent_state)].append(ss_to_text(child_synset))
@@ -103,6 +108,7 @@ def graph_from_dict(tree):
 
 
 def get_hyponims(synset):
+	print('tree of ' + ss_to_text(synset))
 	imagenet_clases = load_imagenet_synsets()
 	print(len(imagenet_clases))
 	synset_tree, synset_str_tree = breadth_first_search(synset, imagenet_clases)
@@ -164,7 +170,7 @@ def load_imagenet_synsets():
 
 def testin_dog():
 	dog = wn.synsets('dog')[0]
-	ini_time = time.time()
+	#ini_time = time.time()
 	ss_list = []
 	hypo = lambda s: s.hyponyms()
 	for thing in list(dog.closure(hypo)):
@@ -177,17 +183,36 @@ def testin_dog():
 	print('total time', timedelta(seconds=(time.time() - ini_time)))
 
 
-def test_graph():
-	living_things = wn.synsets('mammal')[0]
-	syn_mammals, syn_str_mammals = get_hyponims(living_things)
+def test_graph(synset):
+	#living_things = wn.synset('living_thing.n.01')
+	syn_mammals, syn_str_mammals = get_hyponims(synset)
 	print(syn_str_mammals)
-	print(json.dumps(syn_str_mammals, indent=4, sort_keys=True))
+	#print(json.dumps(syn_str_mammals, indent=4, sort_keys=True))
 
 
+def get_distance(synset):
+	ss_list = []
+	hypo = lambda s: s.hyponyms()
+	for thing in list(synset.closure(hypo)):
+		ss_list.append(thing)
+	data = Data('', 25)
+	distance = dis(data)
+	for ss1 in ss_list:
+		for ss2 in ss_list:
+			d = distance.NEW_distance_between_synsets_reps(ss1, ss2)
+			if d < 9999:
+				print(ss_to_text(ss1), ss_to_text(ss2), 'distance', d)
 
 def main():
 	ini_time = time.time()
-	test_graph()
+
+	dog = wn.synsets('dog')[0]
+	mammal = wn.synsets('mammal')[0]
+	living_things = wn.synset('living_thing.n.01')
+	hunting_dogs = wn.synsets('hunting_dog')[0]
+
+	#test_graph(mammal)
+	get_distance(hunting_dogs)
 	print('total time', timedelta(seconds=(time.time() - ini_time)))
 
 if __name__ == "__main__":

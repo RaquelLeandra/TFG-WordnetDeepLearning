@@ -1515,6 +1515,7 @@ class Distances:
 		if index != []:
 			sub_matrix = self.data.dmatrix[index, :]
 			rep = st.mode(sub_matrix, axis=0)[0]
+			#print(self.ss_to_text(synset), sub_matrix.shape)
 			return rep
 		return []
 
@@ -1544,13 +1545,18 @@ class Distances:
 		return distance
 
 	def NEW_distance_between_synsets_reps(self,synset1, synset2):
+		#print(self.ss_to_text(synset1), self.ss_to_text(synset2))
 		r1 = self.get_represention_fast(synset1)
 		r2 = self.get_represention_fast(synset2)
 		cf1 = self.count_features(r1)
 		cf2 = self.count_features(r2)
+		if (cf1[-1] + cf1[0] + cf1[1]) == 0 or (cf2[-1] + cf2[0] + cf2[1]) == 0:
+			return 9999
 		sharedones = np.sum(np.equal(r1, 1) & np.equal(r1, r2))
 		totalones = cf1[1] + cf2[1]
-		return sharedones/totalones
+		d = 1 - (sharedones/(totalones - sharedones))
+		#print(self.ss_to_text(synset1), self.ss_to_text(synset2), 'distance', d)
+		return d
 
 	def plot_changes_between_synset_reps(self, synsets):
 		"""

@@ -1425,10 +1425,11 @@ El siguiente ejemplo (\ref{fig:matrixconcret}) es para ver el comportamiento en 
 
 %Explicación de la distancia definida entre los synsets, demostración de que es distancia, los grafos con las distancias. 
 
-Partiendo de los resultados del apartado \ref{sec:synsets} hemos generado una distancia que representa lo diferentes que son cada uno de los \textit{synsets} que aparecen en \textit{imagenet} para la red convolucional entrenada. En este apartado explicaremos como se ha obtenido y que representa. 
+Partiendo de los resultados del apartado \ref{sec:synsets} hemos generado una distancia que representa lo diferentes que son cada uno de los \textit{synsets} que aparecen en \textit{imagenet} para la red convolucional entrenada. En este apartado explicaremos como se ha obtenido y como se relaciona con lo estudiado en el apartado anterior. 
 
+Para empezar, definimos los siguientes conjuntos.
 \begin{definition}
-Para empezar, tenemos el conjunto de 1,000 clases posibles en las que clasifica nuestra red convolucional, cada una correspondiente a un \textit{synset} al que llamaremos $\mathfrak{C}$.  
+Llamaremos $\mathfrak{C}$ al conjunto de \textit{synsets} correspondientes a cada una de las  1,000 clases posibles en las que clasifica nuestra red convolucional.  
 
 Llamaremos $\mathfrak{I}$ al conjunto de todos los \textit{synsets} que pertenecen a $\mathfrak{C}$ junto con todos los \textit{synsets} de \textit{wordnet} que tienen algún hipónimo en $\mathfrak{C}$. 
 
@@ -1439,14 +1440,119 @@ Por construcción tenemos:
 
 \begin{equ}[H]
 \begin{equation*}
-\mathfrak{C} \in \mathfrak{I} \in \mathfrak{W}
+\mathfrak{C} \subset \mathfrak{I} \subset \mathfrak{W}
 \end{equation*}
 \end{equ}
 
-Nuestro objetivo es construir una distancia para $\mathfrak{I}$ que dependa de la red convolucional entrenada.
-Para ello primero notamos que la forma natural de conectar diferentes \textit{synsets} sería a partir de un árbol utilizando las conexiones de hiponimia e hiperonimia, como vimos en la figura \ref{fig:hiponimos}. Sin embargo, una distancia que utilizase solamente esta información no dependería de nuestra red. 
+Nuestro objetivo es construir una métrica para $\mathfrak{I}$ que dependa de la red convolucional entrenada. Para de esta forma poder medir lo diferentes que son dos \textit{synsets} en términos de la red. 
 
-Para solventar este problema utilizamos la información obtenida en la sección \ref{sec:synsets}, específicamente la relacionada con la figura \ref{fig:comparativaCategoriasporSynset}. En ella vimos que utilizando los vectores representantes de cada \textit{synset} se podía distinguir lo concreto que era un \textit{synset} 
+Para ello recordamos la definición de métrica:
+\begin{definition}
+Sea $X$ un conjunto, una \textbf{métrica} o distancia es una función:
+$$
+d:X\times X \rightarrow [0,\infty)\subset \mathbb{R}
+$$
+
+Donde dados $x,y,z\in X$ se cumple:
+\begin{enumerate}
+\item $d(x,y) \geq 0$
+\item $d(x,y)=0 \iff x=y $ \label{indiscernibles}
+\item $d(x,y) = d(y,x)$
+\item $d(x,z) \geq d(x,y) + d(y,z)$
+\end{enumerate}
+\end{definition}
+
+La forma natural de conectar diferentes \textit{synsets} sería a partir de un árbol utilizando las conexiones de hiponimia e hiperonimia, similar la de la figura \ref{fig:hiponimos} y utilizar la distancia discreta. Sin embargo, una distancia que utilizase solamente esta información no dependería de la red. 
+
+Para solventar este problema utilizamos la información obtenida en la sección \ref{sec:synsets}, donde vimos que se podía definir matrices de cambio a partir de los representantes de cada \textit{synset}. Estas matrices nos pueden dar una idea de lo parecidos que son dos \textit{synsets} en términos de la red. 
+
+Otro problema que nos encontramos es que, de la forma en la que hemos definido $\mathfrak{I}$ se puede dar el caso de que dos \textit{synsets} diferentes tengan las mismas \textit{features} (y en consecuencia la misma matriz). Por ejemplo, si tomamos un \textit{synset} que sólo contenga un hipónimo en $\mathfrak{C}$ y lo comparamos con éste, los dos tendrían exactamente el mismo vector representante. Esto hace que no podamos utilizar la definición de métrica estándar, puesto a que fallaría la propiedad \ref{indiscernibles}, así que utilizaremos una \textbf{pseudométrica}.
+
+\begin{definition}
+Sea $X$ un conjunto, una \textbf{pseudo-métrica} es una función:
+$$
+d:X\times X \rightarrow [0,\infty)\subset \mathbb{R}
+$$
+
+Donde dados $x,y,z\in X$ se cumple:
+\begin{enumerate}
+\item $d(x,y) \geq 0$
+\item $d(x,x)=0$ 
+\item $d(x,y) = d(y,x)$
+\item $d(x,z) \geq d(x,y) + d(y,z)$
+\end{enumerate}
+\end{definition}
+
+ Como nuestro objetivo es medir lo diferentes que son los \textit{synsets} para la red, una pseudo-métrica es suficiente. La definiremos 
+utilizando la notación introducida en la figura \ref{fig:matrizss1ss2}: 
+
+\begin{equ}[H]
+\begin{equation*}
+d(s_1,s_2) = 1 - \frac{C_{(1,1)}(s_1,s_2)}{C_{(1,-1)}(s_1,s_2) + C_{(1,0)}(s_1,s_2) + C_{(1,1)}(s_1,s_2) + C_{(1,1)}(s_1,s_2) + C_{(0,1)}(s_1,s_2) + C_{(-1,1)}(s_1,s_2)}
+\end{equation*}
+\caption{Distancia entre el \textit{synset} $s_1$ y el $s_2$ \label{eq:distance}}
+\end{equ}
+Donde $s_1, s_2 \in \mathfrak{I}$. Es trivial comprobar que esta función cumple las propiedades necesarias para ser pseudo-métrica. Puesto a que se basa en una proporción, los valores de la pseudo-métrica estarán entre cero y uno. 
+
+Esta distancia corresponde a la proporción de \textit{features} características por presencia que se conservan entre $s_1$ y $s_2$ respecto a la suma de \textit{features} características por presencia de los dos \textit{synsets}.
+De esta manera podemos medir la similitud de dos \textit{synsets} respecto al \textit{embedding} y por tanto, respecto a la red convolucional entrenada.
+
+Si la utilizamos para comparar los ejemplos de las figuras \ref{fig:matrixliving} y \ref{fig:matrixconcret} tenemos las siguientes distancias: 
+\begin{align*}
+d(\text{Ser vivo, Instrumento}) &= 0.9965 & d(\text{Ser vivo, Vehículo}) &= 0.9333 \\ 
+d(\text{Ser vivo, Perro de caza}) &= 0.5520 & d(\text{Perro, Perro de caza}) &= 0.1614 \\
+d(\text{Transporte, Vehículo}) &= 0.2201 & d(\text{Perro de caza, Vehículo}) &=0.8751 & 
+\end{align*}
+	
+Donde vemos claramente que capta bien la similitud entre los distintos \textit{synsets}, siendo los más diferentes entre si Ser vivo e Instrumento y los más similares perro y perro de caza. 
+
+Para terminar de visualizar las distancias hemos generado el árbol de hipónimos de diferentes \textit{synsets} utilizando la psedudo-métrica definida como distancia entre los nodos. Para ello hemos hecho un BFS en el grafo de \textit{wordnet} tomando como aristas la relación de hiponimia y como nodo padre el \textit{synset} del que queríamos generar el árbol.Se podrían obtener también las distancias entre el resto de nodos y generar un grafo completo, pero esto dificultaría la visualización, y en consecuencia, la obtención de conclusiones. 
+
+Un ejemplo de ello sería la figura \ref{fig:grafoperro}, donde vemos que la distancia entre Perro con Perro de caza, y Perro con Perro de trabajo son inferiores que las de razas concretas de perro con sus respectivos hiperónimos. Lo que significa que, dentro del conjunto de perros, para la red se parecen más \textit{synsets} más generales que razas concretas.
+
+
+Para tener una idea de las relaciones entre razas concretas hemos calculado todas las distancias entre los diferentes \textit{synsets} del conjunto de hipónimos de Perro de caza. Un ejemplo de ello serían las razas de la figura \ref{fig:dogexample}, donde vemos tres razas de perro claramente diferenciadas. 
+
+\begin{figure}[H] 
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth] {Images/examples/spaniel.jpg}
+		\caption{Spaniel \label{fig:spaniel}}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]  {Images/examples/greyhound.jpg}
+		\caption{Greyhound \label{fig:greyhound}}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]  {Images/examples/waterspaniel.jpg}
+		\caption{Water Spaniel\label{fig:waterspaniel}}
+	\end{subfigure}       
+	\caption{Ejemplos de razas\label{fig:dogexample}}
+\end{figure}
+
+Sus respectivas distancias son: 
+
+\begin{table}[H]
+\centering
+\caption{Distancias entre las razas del ejemplo}
+\label{tabledogs}
+\begin{tabular}{l|l|l|l}
+              & Spaniel & Grayhound & Water Spaniel               \\ \hline
+Spaniel       & 0       & 0.7371    & \multicolumn{1}{l|}{0.6442} \\ \hline
+Grayhound     & 0.7371  & 0         & \multicolumn{1}{l|}{0.8330} \\ \hline
+Water Spaniel & 0.6442  & 0.8330    & \multicolumn{1}{l|}{0}      \\ \cline{2-4} 
+\end{tabular}
+\end{table}
+
+En la tabla \ref{tabledogs} podemos ver que el Spaniel se parece más al Water-spaniel que al Grayhound, cosa que es coerente con la imagen \ref{fig:dogexample}. 
+ 
+
+ \begin{figure}[H] 
+	\centering
+	\includegraphics[width=0.9\textwidth] {Images/forest/dog.png}
+	\caption{ Árbol del \textit{synset} perro
+	\label{fig:grafoperro}}
+\end{figure}
 
 %La idea principal de tfg es buscar relaciones entre los synsets de wordnet y el full network embedding. 
 %Hipótesis iniciales: 
@@ -1483,7 +1589,7 @@ Para solventar este problema utilizamos la información obtenida en la sección 
 %\end{itemize}
 
 %\section{Introducción}
-\newpage
+\vfill\newpage 
 %\addcontentsline{toc}{chapter}{Bibliography}
 \bibliographystyle{unsrt}
 \bibliography{biblio}
