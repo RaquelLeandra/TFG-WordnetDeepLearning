@@ -139,7 +139,9 @@
 Gracias a Dario y Ulises por ser mis supervisores. Gracias a Ferran y Armand por ayudarme cuando tenía dudas. Gracias a mis amigos por apoyarme cuando estaba desbordada de trabajo y por leerse los distintos borradores que hice cuando estaba redactando el documento.}
 
 
-\abstracteng{This should be an abstract in english, up to 1000 characters.}
+\abstracteng{Convolutional neural networks (CNN) are representation learning techniques that achieve
+state-of-the-art performance on almost every image-related, machine learning task. Applying the representation languages build by these models to tasks beyond the one they were
+originally trained for is a field of interest known as transfer learning for feature extraction. In this work we will study a Full-Network Embedding made ussing transfer learning from a deep convolutional neural network trained for image classification ussing the dataset of Imagenet and it's rellation with different synsets of Wordnet. }
 
 %%%%%%%%%
 
@@ -167,8 +169,6 @@ Todo esto basándonos en el trabajo presentado en \cite{fne}.
 
 Para ello empezaremos explicando a nivel general que son una red neuronal, una red convolucional y \textit{transfer learning} en la sección \ref{sec:conocimientosprevios}. Seguidamente explicaremos el contenido del paper \cite{fne} y que son \textit{Wordnet} e \textit{Imagenet} (Sección \ref{sec:trabajorelacionado}).
 Una vez explicadas las bases en las que se fundamenta el trabajo, haremos un análisis de un \textit{Full Network Embedding} generado a partir de una red convolucional entrenada con un conjunto de datos de \textit{Imagenet} y estudiaremos las relaciones encontradas entre el \textit{embedding} y unos \textit{synsets} seleccionados (Secciones \ref{sec:enfoque} y \ref{sec:analisis}). Finalmente explicaremos las conclusiones obtenidas a partir de este estudio.    
-
-
 
 \section{Conocimientos previos}
 \label{sec:conocimientosprevios}
@@ -923,12 +923,13 @@ Para el full-network embedding utilizaron el subconjunto correspondiente al reto
 \end{itemize}
 
 Entre las posibles categorías podemos encontrar \textit{synsets} de diferentes niveles de especificación, por ejemplo tenemos las categorías: perro, dálmata, pastor alemán... 
+
 \newpage
 \section{Enfoque}
 \label{sec:enfoque}
 En nuestro caso estudiaremos un \textit{full-network embedding} obtenido a partir de la tarea origen  $(\mathcal{T_S} = $Clasificación de imágenes$,\mathcal{D_S} =$ 1.2 M imágenes de imagenet con sus correspondientes clases$ )$ y una tarea de destino $(\mathcal{T_T} = $Clasificación de imágenes$,\mathcal{D_T} =$ 50,000 imágenes de imagenet con sus correspondientes clases$ )$. Es decir, partiendo de una red convolucional entrenada con todo el conjunto de datos de entrenamiento de imagenet, hemos generado un lenguaje de representación para el conjunto de datos de validación de imagenet. Lo que resulta en el \textit{full-network embedding} con el que trabajaremos. 
 
-El \textit{full-network embedding} consiste en una matriz de tamaño 50,000 muestras por 12,416 características, como observamos en la figura \ref{fig:featuresperlayer}, cuyos valores están en $\{-1,0,1\}$. Para cada muestra también tenemos su correspondiente clasificación(un valor entre 0 y 999 que representa la clase de imagenet con la que fue clasificado).
+El \textit{full-network embedding} consiste en una matriz de tamaño 50,000 muestras por 12,416 características, como observamos en la figura \ref{fig:featuresperlayer}, cuyos valores están en $\{-1,0,1\}$. Para cada muestra también tenemos su correspondiente clasificación (un valor entre 0 y 999 que representa la clase de imagenet con la que fue clasificado).
 
 Es importante remarcar el significado de las diferentes categorías.
 \begin{itemize}
@@ -961,7 +962,7 @@ Las características están ordenadas en capas de la siguiente manera:
 %\item Un embedding menos restrictivo con los límites en $ft^+ = -0.31$ y $ft^+ = +0.31$ 
 %\end{itemize}
 
-Y finalmente, de todos los \textit{synsets} posibles tomamos dos subconjuntos diferentes: 
+Finalmente, de todos los \textit{synsets} posibles tomamos dos subconjuntos diferentes: 
 
 \begin{figure}[H]
 \centering
@@ -1020,14 +1021,14 @@ Partiendo de los datos comentados y del trabajo publicado en \cite{fne} tomamos 
 \end{itemize}
 
 \subsection{Estadísticas}\label{se:stats}
-La finalidad de este capítulo es hacer un estudio inicial de los datos de los que se dispone, es decir, de los correspondientes a los distintos \textit{embeddings} y a los \textit{synsets} que hemos tomado para el estudio. 
+La finalidad de este capítulo es hacer un estudio inicial de los datos de los que se dispone, es decir, de los correspondientes al \textit{embedding} y a los \textit{synsets} que hemos tomado para el estudio. 
 
 \subsubsection{Synsets}
 
 Como comentamos en la sección anterior los \textit{synsets} que hemos tomado son \ref{fig:synsets}. 
-El criterio que hemos utilizado para decidir que una categoría pertenece a un \textit{synset} es que sea hipónimo de esta, por tanto es coherente que los \textit{synsets} más generales tengan más imágenes. 
+El criterio que hemos utilizado para decidir que una clase de \textit{Imagenet} pertenece a un \textit{synset} es que sea hipónimo de esta, por tanto es coherente que los \textit{synsets} más generales tengan más imágenes. 
  
-Además, ambas familias(la de seres vivos y objetos), se distribuyen de forma parecida(cada \textit{synset} hijo tiene aproximadamente la mitad de imágenes que su \textit{synset} padre), como podemos ver en la figura \ref{fig:totalsynsets}. Elegimos dos familias de \textit{synsets} que cumplieran esto para que al comparar los resultados se distorsionaran lo menos posible por la cantidad de imágenes pertenecientes a ellas.
+Además, ambas familias (la de seres vivos y objetos), se distribuyen de forma parecida (cada \textit{synset} hijo tiene aproximadamente la mitad de imágenes que su \textit{synset} padre), como podemos ver en la figura \ref{fig:totalsynsets}. Elegimos dos familias de \textit{synsets} que cumplieran esto para que al comparar los resultados se distorsionaran lo menos posible por la cantidad de imágenes pertenecientes a ellas.
 
 \begin{figure}[H] 
 	\centering
@@ -1037,9 +1038,9 @@ Además, ambas familias(la de seres vivos y objetos), se distribuyen de forma pa
 \end{figure}
 
 
-\subsubsection{Visión de conjunto de del Embedding e Hipótesis iniciales}
+\subsubsection{Visión de conjunto del Embedding e Hipótesis iniciales}
 Primero de todo estudiaremos las estadísticas generales del \textit{embeddings}.
-Para empezar comparamos la cantidad de elementos de cada \textit{feature}. 
+Empezando con la cantidad de elementos de cada categoría. 
 
 \begin{figure}[ht] 
 	\centering
@@ -1050,7 +1051,7 @@ Para empezar comparamos la cantidad de elementos de cada \textit{feature}.
 
 \end{figure}
 
-En la figura \ref{fig:totalfeatures} vemos la cantidad de \textit{features} de cada categoría. Podemos observar que la cantidad total de -1 es significativamente mayor, esta distribución se conserva(en general) para los distintos \textit{synsets}, independientemente de lo específicos que sean. Teniendo en cuenta que al hacer \textit{transfer learning} se suele pasar de un conjunto de datos más general a uno más específico que haya más \textit{features} características por ausencia es coherente. Más adelante veremos también como se distribuyen las categorías entre las diferentes capas del \textit{embedding}. 
+En la figura \ref{fig:totalfeatures} vemos la cantidad de \textit{features} de cada categoría. Podemos observar que la cantidad total de -1 es significativamente mayor, esta distribución se conserva (en general) para los distintos \textit{synsets}, independientemente de lo específicos que sean. Teniendo en cuenta que al hacer \textit{transfer learning} se suele pasar de un conjunto de datos más general a uno más específico que haya más \textit{features} características por ausencia es coherente. Más adelante veremos también como se distribuyen las categorías entre las diferentes capas del \textit{embedding}. 
 
 
 Observamos también como se distribuyen las \textit{features} respecto al conjunto de imágenes que tenemos. 
@@ -1076,7 +1077,7 @@ En la figura \ref{fig:imagesperfeature} tenemos la distribución de las imágene
 
 Al estudiar la matriz de embeddings nos planteamos las siguientes hipótesis: 
 \begin{enumerate}
-\item \label{h1} Las características se distribuyen de diferente manera en los layers convolucionales y los completos. Esta hipótesis proviene de la gráfica \ref{fig:imagesperfeature}, donde 
+\item \label{h1} Las características se distribuyen de diferente manera en las capas convolucionales y los completos. Esta hipótesis proviene de la gráfica \ref{fig:imagesperfeature}, donde 
 en las tres categorías se ven dos distribuciones bien diferenciadas. Otro motivo para pensar que las características se distribuyen de forma diferente es que las capas \textit{fully-connected} tienen más \textit{features} que las convolucionales.
 \item \label{h2} Cuanto más concreto es un \textit{synset}, debería haber más features representativas, tanto por ausencia como por presencia.
 \item \label{h3} Cuanto más profundo es el layer, debería haber más features representativas, tanto por ausencia como por presencia. Esta hipótesis viene de que en una red convolucional cuanto más profunda es una capa más concretas suelen ser las features con las que se activa, como vimos en la figura \ref{fig:deepconcept}.
@@ -1320,7 +1321,7 @@ Con la sub-matriz hemos logrado una visión general del comportamiento de los \t
 
 Para solventar este problema decidimos tomar un vector muestra para cada uno de los \textit{synsets} de tamaño $1x12,416$ donde cada componente se toma como la categoría más frecuente para esa \textit{feature} concreta, como muestra la figura \ref{fig:representante}. 
  
-\begin{figure}[H]
+\begin{figure}[ht]
 \begin{center}
 %\includegraphics[width = 0.5\textwidth]{Images/convolve.png} 
 \begin{tikzpicture}
@@ -1590,8 +1591,43 @@ En la tabla \ref{tabledogs} podemos ver que el Spaniel se parece más al Water-s
 	\label{fig:grafoperro}}
 \end{figure}
 
+\newpage
 
 \section{Conclusiones}
+
+En esta sección explicaremos las conclusiones obtenidas a partir de las secciones anteriores. Además revisaremos las hipótesis planteadas en \ref{sec:enfoque}. Los puntos base de la concusión son los siguientes: 
+
+\begin{itemize}
+\item Las capas \textit{fully-connected} tienen una distribución diferente de las convolucionales, tanto a nivel general como por \textit{synset}. Lo que implica que aun después de la estandarización hecha a las capas convolucionales, éstas mantienen sus diferencias respecto a las \textit{fully-connected}. Además en todas las distribuciones se ve una cierta simetría entre las gráficas de la categoría de las \textit{features} representativas por ausencia y las representativas por presencia. Por estos motivos aceptamos la hipótesis \ref{h1}.
+
+\item Las \textit{features} no características no solo son minoría, sino que además no están concentradas para ninguna \textit{feature} concreta. De esta forma vemos que todas las \textit{features} contienen información que caracteriza el espacio de representación. 
+
+\item La proporción de las \textit{features} características por ausencia, presencia o no características se mantiene tanto por capa como por synset. Sin embargo, en el estudio utilizando representantes hemos visto que estas se distribuyen en grupos, es decir, aunque en la proporción global las \textit{features} características por ausencia siempre son mayoría, para ciertas \textit{features} hay una mayoría de \textit{features} características por presencia, y por tanto las proporciones son significativamente diferentes a nivel de representante, donde se observan los siguientes fenómenos: 
+
+\begin{itemize}
+\item Las \textit{features} representativas por presencia se concentran en las capas convolucionales, sobretodo en la cuarta y la quinta. Mientras que en las \textit{fully-connected} se concentran las representativas por ausencia. 
+\item Cuanto más concreto es el \textit{synset} mayor proporción de \textit{features} representativas contiene. 
+\end{itemize}
+
+Puesto a que la proporción a nivel global era similar tanto en las capas como en los \textit{synsets} esto significa que, a diferencia de lo que pensábamos en un primer lugar,en las capas convolucionales cuanto más concreto es el \textit{synset} o más profunda es la capa más se agrupan las \textit{features} características por presencia en \textit{features} concretas. Esto nos hace revocar las hipótesis \ref{h2} y \ref{h3}.
+
+\item El \textit{embedding} detecta similitud a nivel de \textit{synset}. Si comparamos representantes de diferentes \textit{synsets} observamos que entre \textit{synsets} cercanos a nivel de hiponimia e hipernimia coinciden muchas más \textit{features} que en \textit{synsets} lejanos. Por tanto aceptamos la hipótesis \ref{h4}
+\item Utilizando la pseudo-métrica definida podemos medir esta distancia y representarla gráficamente. De esta forma obtenemos información sobre como está decidiendo que clase corresponde a que imagen. Por ejemplo, entre mamífero y mamífero acuático(figura \ref{fig:wordnetexample}) se veía una gran distancia. Al comparar ambos conjuntos de imágenes se puede ver que mientras los mamíferos acuáticos tienen fondo azul por el mar, los mamíferos suelen contener colores más marrones o verdes. De esta forma podemos ver que algo que está teniendo en cuenta para clasificar es si están en el mar o no.
+\end{itemize}
+
+\begin{figure}[H] 
+	\centering
+	\begin{subfigure}[b]{0.43\textwidth}
+		
+		\includegraphics[width=\textwidth] {Images/imagenet/aquatic_mamal.png}
+		\caption{Mamífero Acuático \label{fig:aquaticmammal}}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.43\textwidth}
+		\includegraphics[width=\textwidth]{Images/imagenet/mammal.png}
+		\caption{Mamífero\label{fig:mammal}}
+	\end{subfigure}       
+	\caption{Ejemplos de synsets\label{fig:wordnetexample}}
+\end{figure}
 
 
 %La idea principal de tfg es buscar relaciones entre los synsets de wordnet y el full network embedding. 
