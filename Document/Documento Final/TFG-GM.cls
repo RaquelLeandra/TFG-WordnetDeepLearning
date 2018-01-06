@@ -69,13 +69,13 @@
 \thispagestyle{empty}
 
 \begin{center} \LARGE
-Universitat Polit\`ecnica de Catalunya\\[0.2em]
-Facultat de Matem\`atiques i Estad\'{i}stica
+Universidad Polit\'{e}cnica de Catalunya\\[0.2em]
+Facultad de Matem\'{a}tiques i Estad\'{i}stica
 \end{center}
 \vspace{1cm}
 \begin{center} \LARGE
-Degree in Mathematics\\[0.2em]
-\huge Bachelor's Degree Thesis
+Grado en Matem\'{a}ticas\\[0.2em]
+\huge Trabajo de fin de grado
 \end{center}
 \vspace{2cm}
 \begin{center}
@@ -84,7 +84,7 @@ Degree in Mathematics\\[0.2em]
 \end{center}
 \vspace{4cm}
 \begin{center}
-\Large Supervised by \l@supervisors \\[0.5em]
+\Large Supervisado por \l@supervisors \\[0.5em]
 \l@monthYear
 \end{center}
 
