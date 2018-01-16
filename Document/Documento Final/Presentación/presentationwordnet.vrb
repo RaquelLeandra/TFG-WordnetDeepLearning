@@ -1,0 +1,59 @@
+\frametitle{Representante}
+
+\begin{figure}[ht]
+\begin{center}
+%\includegraphics[width = 0.5\textwidth]{Images/convolve.png}
+\begin{tikzpicture}
+
+	\matrix (mtr) [matrix of nodes,column sep=-\pgflinewidth, row sep=-\pgflinewidth,  nodes={draw,
+      minimum height=0.5cm,
+      anchor=center,
+      text width=0.5cm,
+      align=center,
+      inner sep=0pt
+    }]
+	{
+		|[fill=blue!30]| 1 & |[fill=blue!30]| -1 & |[fill=blue!30]| -1 & |[fill=blue!30]| 1 & |[fill=blue!30]| 0 & |[fill=blue!30]| 0 & |[fill=blue!30]| -1\\
+		0 & 0 & -1 & -1 & -1 & 0 & 0\\
+		0 & 0 & 0 & 1 & -1 & -1 & 0\\
+		|[fill=green!30]| 0 & |[fill=green!30]| 1 & |[fill=green!30]| -1 & |[fill=green!30]| 1 & |[fill=green!30]| 1 & |[fill=green!30]| 0 & |[fill=green!30]| 0\\
+		|[fill=blue!30]| 1 & |[fill=blue!30]| 1 & |[fill=blue!30]| -1 & |[fill=blue!30]| 0 & |[fill=blue!30]| -1 & |[fill=blue!30]| 0 & |[fill=blue!30]| 0\\
+		0 & 0 & -1 & 1 & 0 & 0 & 0\\
+		0 & -1 & 1 & 0 & 0 & 0 & 1\\
+		|[fill=blue!30]| 1 & |[fill=blue!30]| 1 & |[fill=blue!30]| 1 & |[fill=blue!30]| -1 & |[fill=blue!30]| -1 & |[fill=blue!30]| 0 & |[fill=blue!30]| 0\\
+		-1 & -1 & 0 & 0 & 0 & 0 & 0\\
+	};
+    \node [below= of mtr-7-4.south] (lm) {embedding};
+
+
+	\matrix (K) [right=5em of mtr,matrix of nodes,row sep=-\pgflinewidth, nodes={draw, fill=blue!30}]
+	{
+		1 & 1 & -1 & 1 & -1 & 0 & 0\\
+	};
+
+    \node [below= of K-1-4.south] (lk) {representante};
+
+    \draw[very thick, blue] (K-1-1.north west) rectangle (K-1-7.south east);
+
+	\draw[densely dotted, blue, thick] (mtr-1-1.north west) -- (K-1-1.north west);
+	\draw[densely dotted, blue, thick] (mtr-1-1.south west) -- (K-1-1.south west);
+	\draw[densely dotted, blue, thick] (mtr-1-7.north east) -- (K-1-7.north east);
+	\draw[densely dotted, blue, thick] (mtr-1-7.south east) -- (K-1-7.south east);
+
+	\draw[densely dotted, blue, thick] (mtr-5-1.north west) -- (K-1-1.north west);
+	\draw[densely dotted, blue, thick] (mtr-5-1.south west) -- (K-1-1.south west);
+	\draw[densely dotted, blue, thick] (mtr-5-7.north east) -- (K-1-7.north east);
+	\draw[densely dotted, blue, thick] (mtr-5-7.south east) -- (K-1-7.south east);
+
+    \draw[densely dotted, blue, thick] (mtr-8-1.north west) -- (K-1-1.north west);
+	\draw[densely dotted, blue, thick] (mtr-8-1.south west) -- (K-1-1.south west);
+	\draw[densely dotted, blue, thick] (mtr-8-7.north east) -- (K-1-7.north east);
+	\draw[densely dotted, blue, thick] (mtr-8-7.south east) -- (K-1-7.south east);
+%	\draw[very thick, blue] (K-1-1.north west) rectangle (K-3-3.south east);
+
+\end{tikzpicture}
+\end{center}
+\caption{Ejemplo de un representante de \textit{synset}.
+\label{fig:representante}}
+\end{figure}
+

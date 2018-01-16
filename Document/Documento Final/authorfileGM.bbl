@@ -1,5 +1,13 @@
 \begin{thebibliography}{10}
 
+\bibitem{fne}
+Dario Garcia{-}Gasulla, Armand Vilalta, Ferran Par{\'{e}}s, Jonathan Moreno,
+  Eduard Ayguad{\'{e}}, Jes{\'{u}}s Labarta, Ulises Cort{\'{e}}s, and Toyotaro
+  Suzumura.
+\newblock An out-of-the-box full-network embedding for convolutional neural
+  networks.
+\newblock {\em CoRR}, abs/1705.07706, 2017.
+
 \bibitem{Bishop2006}
 Christopher~M. Bishop.
 \newblock {\em {Pattern recognition and machine learning}}.
@@ -62,13 +70,5 @@ Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E Hinton.
 \newblock In F.~Pereira, C.~J.~C. Burges, L.~Bottou, and K.~Q. Weinberger,
   editors, {\em Advances in Neural Information Processing Systems 25}, pages
   1097--1105. Curran Associates, Inc., 2012.
-
-\bibitem{fne}
-Dario Garcia{-}Gasulla, Armand Vilalta, Ferran Par{\'{e}}s, Jonathan Moreno,
-  Eduard Ayguad{\'{e}}, Jes{\'{u}}s Labarta, Ulises Cort{\'{e}}s, and Toyotaro
-  Suzumura.
-\newblock An out-of-the-box full-network embedding for convolutional neural
-  networks.
-\newblock {\em CoRR}, abs/1705.07706, 2017.
 
 \end{thebibliography}
