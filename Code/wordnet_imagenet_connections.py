@@ -9,6 +9,7 @@ import gc
 from scipy import stats as st
 import json
 
+
 class Data:
 	"""
 	Esta clase consiste en los datos que voy a necesitar para hacer las estadísticas.
@@ -263,7 +264,8 @@ class Statistics:
 			restricted_labels[i] = 1
 
 		np.savez(rl_npz, np.array(restricted_labels))
-		# return np.array(restricted_labels)
+
+	# return np.array(restricted_labels)
 
 	def printlatex(self, filename):
 		path = self.dir_path + 'latex'
@@ -499,7 +501,7 @@ class Statistics:
 				# print(text)
 				stats_file.write(text)
 			j = j + 1
-			# print('embedding común')
+		# print('embedding común')
 		with open(self.intra_synset_path, 'wb') as handle:
 			pickle.dump(self.intra_synset, handle)
 		stats_file.close()
@@ -993,8 +995,7 @@ class Statistics:
 
 	def plot_changes_between_synset(self):
 		"""
-		POR TESTEAR
-		Quiero que printe una gráfica tal que en el valor de las x tenga los elementos de synsets y en el de las ordenadas
+		Quiero que printe una gráfica tal que en el valor de las x tenga los elementos de synsets y en el         de las ordenadas
 		un acumulative plot con la  cantidad de 1, 0 y -1 de las submatriz del synset en cuestión.
 		changes[synset][-1]
 		:return: void
@@ -1099,7 +1100,6 @@ class Statistics:
 			plt.clf()
 		plt.rcParams['figure.figsize'] = [8.0, 8.0]
 
-
 	def plot_changes_between_all_reps_per_layer(self):
 		"""
 		:return: void
@@ -1132,7 +1132,6 @@ class Statistics:
 		plt.cla()
 		plt.clf()
 		plt.rcParams['figure.figsize'] = [8.0, 8.0]
-
 
 	def plot_all(self):
 		"""
@@ -1186,18 +1185,18 @@ class Statistics:
 		plt.cla()
 		plt.close("all")
 		plt.clf()
-		# self.plot_matrix()
-		# plt.cla()
-		# plt.clf()
-		# plt.close("all")
-		# self.plot_changes_between_synset_reps()
-		# plt.cla()
-		# plt.clf()
-		# plt.close("all")
-		# self.plot_changes_between_synset_reps_per_layer()
-		# plt.cla()
-		# plt.clf()
-		# plt.close("all")
+		self.plot_matrix()
+		plt.cla()
+		plt.clf()
+		plt.close("all")
+		self.plot_changes_between_synset_reps()
+		plt.cla()
+		plt.clf()
+		plt.close("all")
+		self.plot_changes_between_synset_reps_per_layer()
+		plt.cla()
+		plt.clf()
+		plt.close("all")
 
 	def existsfile(self, path):
 		"""
@@ -1462,7 +1461,7 @@ class Distances:
 		_path = '../Data/Distances/Common_Data/'
 		label_to_wordnet = json.load(_path + 'imagenet_label_to_wordnet_synset.txt')
 		wordnet_to_label = {}
-		for i in range(0,999):
+		for i in range(0, 999):
 			wordnet_to_label[label_to_wordnet[i]] = i
 		print(wordnet_to_label)
 
@@ -1515,7 +1514,7 @@ class Distances:
 		if index != []:
 			sub_matrix = self.data.dmatrix[index, :]
 			rep = st.mode(sub_matrix, axis=0)[0]
-			#print(self.ss_to_text(synset), sub_matrix.shape)
+			# print(self.ss_to_text(synset), sub_matrix.shape)
 			return rep
 		return []
 
@@ -1544,8 +1543,8 @@ class Distances:
 		distance = np.abs(prop1 - prop2) * 100
 		return distance
 
-	def NEW_distance_between_synsets_reps(self,synset1, synset2):
-		#print(self.ss_to_text(synset1), self.ss_to_text(synset2))
+	def NEW_distance_between_synsets_reps(self, synset1, synset2):
+		# print(self.ss_to_text(synset1), self.ss_to_text(synset2))
 		r1 = self.get_represention_fast(synset1)
 		r2 = self.get_represention_fast(synset2)
 		cf1 = self.count_features(r1)
@@ -1554,8 +1553,8 @@ class Distances:
 			return 9999
 		sharedones = np.sum(np.equal(r1, 1) & np.equal(r1, r2))
 		totalones = cf1[1] + cf2[1]
-		d = 1 - (sharedones/(totalones - sharedones))
-		#print(self.ss_to_text(synset1), self.ss_to_text(synset2), 'distance', d)
+		d = 1 - (sharedones / (totalones - sharedones))
+		# print(self.ss_to_text(synset1), self.ss_to_text(synset2), 'distance', d)
 		return d
 
 	def plot_changes_between_synset_reps(self, synsets):
