@@ -1,11 +1,12 @@
-import numpy as np
+"""
+In this code I explore the synsets trees of wordnet ussing a pseudometric defined ussing the FNE. 
+"""
 from nltk.corpus import wordnet as wn
 import time
 from datetime import timedelta
 import queue
 from Code.wordnet_imagenet_connections import Data
 from Code.wordnet_imagenet_connections import Distances as dis
-import _pickle as pickle
 import pygraphviz as PG
 from os import path,makedirs
 import json
@@ -36,6 +37,7 @@ def in_imagenet(synset, imagenet):
 		if thing in imagenet:
 			return True
 	return False
+
 
 def breadth_first_search(synset, imagenet):
 	dat = Data('', 25)
@@ -77,9 +79,6 @@ def breadth_first_search(synset, imagenet):
 					distance = mydis.NEW_distance_between_synsets_reps(parent_state, child_synset)*5
 
 					if distance < 9999:
-						#if distance < 1:
-						#	distance += 1
-						#print(ss_to_text(parent_state), ss_to_text(child_synset), distance)
 						if distance == 0:
 							distance += 0.1
 						graph.add_edge(ss_to_text(parent_state), ss_to_text(child_synset), len=distance)
@@ -170,7 +169,7 @@ def load_imagenet_synsets():
 
 def testin_dog():
 	dog = wn.synsets('dog')[0]
-	#ini_time = time.time()
+	ini_time = time.time()
 	ss_list = []
 	hypo = lambda s: s.hyponyms()
 	for thing in list(dog.closure(hypo)):
@@ -184,10 +183,9 @@ def testin_dog():
 
 
 def test_graph(synset):
-	#living_things = wn.synset('living_thing.n.01')
 	syn_mammals, syn_str_mammals = get_hyponims(synset)
 	print(syn_str_mammals)
-	#print(json.dumps(syn_str_mammals, indent=4, sort_keys=True))
+	print(json.dumps(syn_str_mammals, indent=4, sort_keys=True))
 
 
 def get_distance(synset):
@@ -203,6 +201,7 @@ def get_distance(synset):
 			if d < 9999:
 				print(ss_to_text(ss1), ss_to_text(ss2), 'distance', d)
 
+
 def main():
 	ini_time = time.time()
 
@@ -211,7 +210,7 @@ def main():
 	living_things = wn.synset('living_thing.n.01')
 	hunting_dogs = wn.synsets('hunting_dog')[0]
 
-	#test_graph(mammal)
+	test_graph(mammal)
 	get_distance(hunting_dogs)
 	print('total time', timedelta(seconds=(time.time() - ini_time)))
 
