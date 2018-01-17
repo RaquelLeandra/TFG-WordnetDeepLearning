@@ -1,5 +1,5 @@
 """
-In this code I explore the synsets trees of wordnet ussing a pseudometric defined ussing the FNE. 
+In this code I explore the synsets trees of wordnet ussing a pseudometric defined ussing the FNE.
 """
 from nltk.corpus import wordnet as wn
 import time
