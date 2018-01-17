@@ -1,21 +1,14 @@
-tfg
+# Wordnet y Deep Learning: Una posible unión
 
-Objetivos:
-1. Comprobar que los datos concuerdan.
-    *Comprobado, parece que todo va bien.
-2. Aprender como funciona el tema.
+**Autor**: Raquel Leandra Pérez Arnal
 
-3. Ver que cambios hay entre wordnet 3.1(actual) y 3.0(relacionado con imagenet)
-    *Ni idea, pero tengo el 3.0
-    *Comprobar cual es el del vaio -> 3.0 :D
-4.Agrupar las im?genes que pertenezcan a synsets hyp?nimos de "living_thing", "mammal", "dog"
-    y alg?n tipo de perro especialmente frecuente. (Hecho)
-5.Hacer que el c?digo sea legible y ir document?ndolo.
-6.Hacer estad?sticas de TODO (scipy matplotlib)
-7.Hacer estad?sticas de las relaciones entre los distintos embeddings
-    *relaciones inter synset con los datos
-    *relaciones intra synset con los datos
-    *relaciones entre los embeddings
-    -Distribución de features por imágen. Cuantas features se activan (de cada tipo) para las imágenes de los diversos synsets, y en general (para todas las imágenes).
-    -Distribución de imágenes por feature. Lo mismo pero al revés. También para los diversos synsets y para todo el dataset. También separado por tipo (-1, 0, 1).
-    Ves montando un documento con todas estas pruebas, añadiendo todas las gráficas que puedan ser relevantes. Cuando vuelva las miramos y discutimos.
+**Directores**: Dario Garcia Gasulla y Claudio Ulises Cortés
+García
+
+### Abstract
+Convolutional neural networks (CNN) are representation learning techniques that achieve state-of-the-art
+performance on almost every image-related, machine learning task. Applying the representation languages
+build by these models to tasks beyond the one they were originally trained for is a field of interest known as
+transfer learning for feature extraction. In this work we will study a Full-Network Embedding made ussing
+transfer learning from a deep convolutional neural network trained for image classification ussing the dataset
+of Imagenet and it’s rellation with different synsets of Wordnet.
